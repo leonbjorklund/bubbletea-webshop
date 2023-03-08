@@ -1,6 +1,6 @@
-# Webbshop med React & Typescript
+# Boba webshop using React & Typescript by Mimmi, Caisa, Felicia och Leon
 
-## Starta Projektet
+## Installation
 
 Här är en lista på de olika skripten som kan köras i terminalen:
 
@@ -9,13 +9,9 @@ Här är en lista på de olika skripten som kan köras i terminalen:
 - `npm run dev` - Startar Vite dev servern.
 - `npm test` - Startar dev servern & Cypress så du kan jobba med kravlistan.
 
-> Om du får felet `Cypress verification timed out` kan du förlänga tiden för verifieringen - [läs mer här](https://stackoverflow.com/questions/63667880/cypress-verification-timed-out-after-30000-milliseconds).
-
 ## Rättning
 
-Den här uppgiften rättas automatiskt utifrån de skriva testerna som finns i projektet. Det innebär att du kommer kunna se vilka krav du har uppfyllt när du utvecklar lokalt på din dator med Cypress. Du kommer också kunna se rättningen som en GitHub Action som körs varje gång du pushar kod till ditt repo.
-
-Det kan vara bra att du kollar att rättning på GitHub stämmer överrens med testerna lokalt i Cypress. Om de inte visa samma resultat kan du behöva köra `npm run update` för att få hem de senaste testerna så du kan åtgärda eventuella fel i din kod.
+Om de inte visa samma resultat kan du behöva köra `npm run update` för att få hem de senaste testerna så du kan åtgärda eventuella fel i din kod.
 
 ## Beskrivning
 
