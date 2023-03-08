@@ -1,4 +1,5 @@
-import { products } from "../ProductsData"
+import { products } from "../../data/index";
+
 
 export function ProductsPage() {
   return (
@@ -13,6 +14,7 @@ export function ProductsPage() {
           />
           <p>{product.price} kr</p>
           <p>{product.description}</p>
+          <p>id: {product.id}</p>
         </div>
       ))}
     </div>
