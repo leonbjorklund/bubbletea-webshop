@@ -3,11 +3,9 @@
   padding: 0;
 }
 
-body {
+html, body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-}
-
-html {
-  height: 100vh;
+  position: relative; 
+  min-height: 100%;
 }
 

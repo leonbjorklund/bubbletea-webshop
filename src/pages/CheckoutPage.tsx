@@ -1,8 +1,8 @@
-
+import { Heading } from "@chakra-ui/react";
 export function CheckoutPage() {
   return (
     <div>
-      <h1>This is checkout page!</h1>
+      <Heading>This is product page!</Heading> 
     </div>
   )
 }

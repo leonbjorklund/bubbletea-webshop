@@ -8,6 +8,7 @@ Här är en lista på de olika skripten som kan köras i terminalen:
 - `npm run update` - Uppdaterar testerna och behöver köras om läraren har ändrat dom.
 - `npm run dev` - Startar Vite dev servern.
 - `npm test` - Startar dev servern & Cypress så du kan jobba med kravlistan.
+- `npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion` - Laddar ner Chakra UI
 
 ## Rättning
 

@@ -1,24 +1,21 @@
-import { Link } from "react-router-dom";
+import { Flex, Heading, HStack, Link as ChakraLink, Spacer } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
+
 
 export function Header() {
 
   return (
-    <header style={headerStyle}>
-      <h1>I'm the header!</h1>
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="products">Products</Link>
-        <Link to="checkout">Cart</Link>
-        <Link to="admin">Admin Page</Link>
-      </div>
-    </header>
+
+    <Flex as="nav" p="10px" bg="pink" alignItems="center">
+      <Heading as="h1">Boba shop!</Heading>
+      <Spacer />
+
+      <HStack spacing="20px">
+        <ChakraLink as={RouterLink} to="/">Home</ChakraLink>
+        <ChakraLink as={RouterLink} to="/products">Products</ChakraLink>
+        <ChakraLink as={RouterLink} to="/checkout">Cart</ChakraLink>
+        <ChakraLink as={RouterLink} to="/admin">Admin Page</ChakraLink>
+      </HStack>
+    </Flex>
   )
 }
-
-const headerStyle: React.CSSProperties = {
-  display: 'flex',
-  height: '100%',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  backgroundColor: 'pink',
-};

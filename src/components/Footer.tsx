@@ -8,8 +8,7 @@ export function Footer() {
 }
 
 const footerStyle: React.CSSProperties = {
-  position: 'absolute',
-  bottom: 0,
+  position: 'relative',
   textAlign: 'center',
   width: '100%',
   backgroundColor: 'pink',
