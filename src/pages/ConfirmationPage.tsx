@@ -1,8 +1,9 @@
+import { Heading } from "@chakra-ui/react";
 
 export function ConfirmationPage() {
   return (
     <div>
-      <h1>This is the Confirmation page!</h1>
+      <Heading>This is the Confirmation page!</Heading>
     </div>
   )
 }

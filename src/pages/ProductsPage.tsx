@@ -1,25 +1,37 @@
+import { Button, Card, CardFooter, Container, Heading } from "@chakra-ui/react";
 import { products } from "../../data/index";
-
+import { useCart } from "../CartContext";
 
 export function ProductsPage() {
+
+  const { addToCart } = useCart();
+
   return (
-    <div>
-      <h1>This is product page!</h1>
-      {products.map((product) => (
-        <div key={product.id} style={{width: '200px', margin: '10px', border: '2px solid black'}}>
+    <Container maxWidth="4xl" my="30px">
+      <Heading>This is product page!</Heading>
+        {products.map((product) => (
+        <Card key={product.id} sx={cardStyle}>
           <p>{product.title}</p>
           <img
             src={product.image}
-            style={{ height: '100px', width: '100px' }}
+            style={{ width: '100px' }}
           />
           <p>{product.price} kr</p>
           <p>{product.description}</p>
           <p>id: {product.id}</p>
-        </div>
+          <CardFooter>
+            <Button colorScheme="blue" onClick={() => addToCart(product)}>
+              Add to cart!
+            </Button>
+          </CardFooter>
+        </Card>
       ))}
-    </div>
+    </Container>
   )
 }
 
-
-
+const cardStyle = {
+  width: '200px',
+  margin: '10px',
+  border: '2px solid black'
+}

@@ -1,8 +1,10 @@
+import { Container, Heading } from "@chakra-ui/react";
 
 export function HomePage() {
+
   return (
-    <div>
-      <h1>This is homepage!</h1>
-    </div>
+    <Container as="section" maxWidth="4xl"  my="30px">
+      <Heading>This is homepage!</Heading>
+    </Container>
   )
 }

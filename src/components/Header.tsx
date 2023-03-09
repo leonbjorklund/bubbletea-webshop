@@ -1,24 +1,34 @@
-import { Link } from "react-router-dom";
-
+import { Container, Flex, Heading, HStack, Link as ChakraLink, Spacer } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
+import { useCart } from "../CartContext";
 export function Header() {
 
+  const { cartList } = useCart();
+
   return (
-    <header style={headerStyle}>
-      <h1>I'm the header!</h1>
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="products">Products</Link>
-        <Link to="checkout">Cart</Link>
-        <Link to="admin">Admin Page</Link>
-      </div>
-    </header>
+    <Container as="header" sx={containerStyle}>
+      <Flex as="nav" sx={flexStyle}>
+        <Heading as="h1" width="100%">Boba shop!</Heading>
+        <Spacer />
+
+        <HStack spacing="20px" whiteSpace="nowrap">
+          <ChakraLink as={RouterLink} to="/">Home</ChakraLink>
+          <ChakraLink as={RouterLink} to="/products">Products</ChakraLink>
+          <ChakraLink as={RouterLink} to="/checkout">Cart ({cartList.length})</ChakraLink>
+          <ChakraLink as={RouterLink} to="/admin">Admin Page</ChakraLink>
+        </HStack>
+      </Flex>
+    </Container>
   )
 }
 
-const headerStyle: React.CSSProperties = {
-  display: 'flex',
-  height: '100%',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  backgroundColor: 'pink',
-};
+
+const containerStyle = {
+  maxWidth: "100%",
+  bg: "pink"
+}
+
+const flexStyle = {
+  p: "10px",
+  alignItems: "center"
+}
