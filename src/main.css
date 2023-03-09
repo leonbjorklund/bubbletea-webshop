@@ -3,9 +3,16 @@
   padding: 0;
 }
 
-html, body {
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  position: relative; 
+  position: relative;
   min-height: 100%;
+  padding-bottom: 50px;
+  box-sizing: inherit;
 }
 

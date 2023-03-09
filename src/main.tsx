@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import App from './App';
+import { CartProvider } from './CartContext';
 import { NotFound } from './components/NotFound';
 import './main.css';
 import { AdminPage } from './pages/AdminPage';
@@ -29,8 +30,10 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ChakraProvider>
-      <RouterProvider router= {router}/>
-    </ChakraProvider>
+    <CartProvider>
+      <ChakraProvider>
+        <RouterProvider router= {router}/>
+      </ChakraProvider>
+    </CartProvider>
   </React.StrictMode>
 );

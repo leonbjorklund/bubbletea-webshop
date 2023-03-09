@@ -1,9 +1,9 @@
-import { Heading } from "@chakra-ui/react";
+import { Container, Heading } from "@chakra-ui/react";
 
 export function AdminPage() {
   return (
-    <div>
+    <Container maxWidth="4xl" my="30px">
       <Heading>This is Admin page</Heading>
-    </div>
+    </Container>
   )
 }
