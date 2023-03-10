@@ -1,4 +1,4 @@
-import { Container, Flex, Heading, HStack, Link as ChakraLink, Spacer } from "@chakra-ui/react";
+import { Container, Flex, Heading, HStack, Link as ChakraLink, Spacer, SystemStyleObject } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
 export function Header() {
@@ -22,13 +22,12 @@ export function Header() {
   )
 }
 
-
-const containerStyle = {
+const containerStyle: SystemStyleObject = {
   maxWidth: "100%",
   bg: "pink"
 }
 
-const flexStyle = {
+const flexStyle: SystemStyleObject = {
   p: "10px",
   alignItems: "center"
 }
