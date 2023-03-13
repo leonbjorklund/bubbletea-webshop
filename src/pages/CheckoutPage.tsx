@@ -1,5 +1,6 @@
 import { Button, Container, Heading } from "@chakra-ui/react";
 import { useCart } from "../CartContext";
+import { CartCard } from "../components/CartCard";
 
 export function CheckoutPage() {
 
@@ -22,6 +23,9 @@ export function CheckoutPage() {
           </li>
         ))}
       </ul>
+
+      <CartCard />
+
     </Container>
   )
 }
