@@ -1,22 +1,19 @@
-import { Container, Heading } from "@chakra-ui/react";
-import theme from "../DefaultThemes";
+import { AspectRatio, Container, Image } from "@chakra-ui/react";
 
 export function Footer() {
   return (
-    <Container
-      as="footer"
-      bg={theme.colors.strawberryTeaCircle}
-      minWidth="100%"
-      position="absolute"
-      height="20rem"
-      bottom="0"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Heading as="h2" size="md" textAlign="center" bg= {theme.colors.bigMatchaCard} borderRadius= {theme.borderRadius.border1}>
-        I'm the footer!
-      </Heading>
+    <Container as="footer">
+      <AspectRatio maxW="59rem" ratio={1}>
+        <iframe
+          title="naruto"
+          src="https://www.youtube.com/embed/QhBnZ6NPOY0"
+          allowFullScreen
+        />
+      </AspectRatio>
+      <AspectRatio maxW='400px' ratio={4 / 3}>
+        <Image src='https://bit.ly/naruto-sage' alt='naruto' objectFit='cover' />
+      </AspectRatio>
+
     </Container>
   );
 }
