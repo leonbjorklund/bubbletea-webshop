@@ -13,7 +13,7 @@ export function Footer() {
       justifyContent="center"
       alignItems="center"
     >
-      <Heading as="h2" size="md" textAlign="center">
+      <Heading as="h2" size="md" textAlign="center" bg={colors.white}>
         I'm the footer!
       </Heading>
     </Container>

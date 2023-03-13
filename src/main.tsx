@@ -1,4 +1,4 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, theme } from '@chakra-ui/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
@@ -32,7 +32,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <CartProvider>
-      <ChakraProvider>
+      <ChakraProvider  theme={theme}>
         <RouterProvider router= {router}/>
       </ChakraProvider>
     </CartProvider>
