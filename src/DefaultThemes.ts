@@ -28,6 +28,10 @@ const colors = {
   footerBottom: '#412D2D',
 };
 
-const theme = extendTheme({ colors });
+const borderRadius = {
+    border1: "1rem"
+}
+
+const theme = extendTheme({ colors, borderRadius });
 
 export default theme;
