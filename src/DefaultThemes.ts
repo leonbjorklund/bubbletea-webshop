@@ -1,5 +1,9 @@
 import { extendTheme } from '@chakra-ui/react';
 
+interface Props {
+  colorMode: 'light' | 'dark';
+}
+
 const colors = {
   transparent: 'transparent',
   black: '#000',
@@ -28,33 +32,6 @@ const colors = {
   footerBottom: '#412D2D',
 };
 
-const darkColors = {
-  transparent: 'transparent',
-  black: '#fff',
-  white: '#000',
-  pink: '#ff8d8e',
-  lightBrownText: '#b4a9a9',
-  darkBrownText: '#b4a9a9',
-  CartBackgroundYellow: '#1c1b1b',
-  yellowGradient: '#242424',
-  lightYellow: '#2c2b2b',
-  darkPinkButton: '#FFADAD',
-  lightGreenButton: '#6FCF97',
-  cardBackground: '#2c2b2b',
-  matchaCard: '#6DDA6B',
-  darkGreenButton: '#6DDA6B',
-  bigMatchaCard: '#6DDA6B',
-  yellowCardCircle: '#FEE5BE',
-  strawberryTeaCircle: '#FC6868',
-  pinkCardButton: '#FFADAD',
-  milkTeaCircle: '#E4BC80',
-  yellowButton: '#FEE5BE',
-  darkYellowButton: '#E4BC80',
-  chocolateBrown: '#D98F7E',
-  darkChocolateBubbles: '#9A7771',
-  beige: '#C9A69B',
-  footerBottom: '#9A7771',
-};
 
 const borderRadius = {
   border1: '1rem',
@@ -62,9 +39,6 @@ const borderRadius = {
 
 const theme = extendTheme({
   colors,
-  darkMode: {
-    colors: darkColors,
-  },
   borderRadius,
 });
 
