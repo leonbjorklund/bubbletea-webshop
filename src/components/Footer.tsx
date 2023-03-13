@@ -1,14 +1,15 @@
-import { Center, Container, HStack } from "@chakra-ui/react";
+import { Container, HStack } from "@chakra-ui/react";
 import theme from "../DefaultThemes";
 import ToggleColorMode from "./toggleButton";
 
 export function Footer() {
   return (
     <Container as="footer" sx={footerStyle}>
-      <HStack>
-        <Center w="40px" h="40px" bg="tomato" color="white">
+      <HStack spacing="1rem">
           <ToggleColorMode />
-        </Center>
+          <ToggleColorMode />
+          <ToggleColorMode />
+          <ToggleColorMode />
       </HStack>
     </Container>
   );

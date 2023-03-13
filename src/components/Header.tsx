@@ -1,6 +1,7 @@
-import { Container, Flex, Heading, HStack, Link as ChakraLink, Spacer, SystemStyleObject } from "@chakra-ui/react";
+import { Container, Flex, Heading, HStack, Link as ChakraLink, Spacer, SystemStyleObject, theme } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
+
 export function Header() {
 
   const { cartList } = useCart();
@@ -24,7 +25,7 @@ export function Header() {
 
 const containerStyle: SystemStyleObject = {
   maxWidth: "100%",
-  bg: "pink"
+  bg: theme.colors.pink
 }
 
 const flexStyle: SystemStyleObject = {
