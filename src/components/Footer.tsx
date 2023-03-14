@@ -12,7 +12,7 @@ export function Footer() {
 
 const footerStyle = {
   backgroundColor: "darkPinkButton",
-  maxWidth: "70rem",
+  maxWidth: "100%",
   height: "30rem",
 };
 
