@@ -1,4 +1,5 @@
-import { Box, Container, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Center, Container, Flex, Grid, GridItem, Icon } from "@chakra-ui/react";
+
 
 export function Footer() {
   return (
@@ -8,7 +9,12 @@ export function Footer() {
           <GridItem sx={gridItemStyle} />
           <GridItem sx={gridItemStyle} />
           <GridItem sx={gridItemStyle} />
-          <GridItem sx={gridItemStyle} />
+          <Flex sx={gridItemStyle}>
+            <Center h="100%" w="15%" bg="red">
+            <Icon as={faBear} />
+
+            </Center>
+          </Flex>
         </Grid>
       </Container>
     </Box>
@@ -35,7 +41,7 @@ const gridStyles = {
 };
 
 const gridItemStyle = {
-  backgroundColor: "blue.500",
+  backgroundColor: "cardBackground",
   height: ["6rem", "10rem", "10rem"],
   width: "100%",
 };
