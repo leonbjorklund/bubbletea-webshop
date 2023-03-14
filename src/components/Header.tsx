@@ -9,7 +9,7 @@ export function Header() {
   return (
     <Container as="header" sx={containerStyle}>
       <Flex as="nav" sx={flexStyle}>
-        <Heading as="h1" width="100%">Boba shop!</Heading>
+        <Heading as="h1" width="100%" fontFamily={'Comfortaa, sans-serif'} fontSize={"2rem"}>Boba shop!</Heading>
         <Spacer />
 
         <HStack spacing="20px" whiteSpace="nowrap">
