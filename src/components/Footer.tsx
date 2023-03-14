@@ -7,7 +7,7 @@ import {
   GridItem, Icon,
   Text
 } from "@chakra-ui/react";
-import { HiLocationMarker } from "react-icons/hi";
+import { IoLocationOutline } from "react-icons/io5";
 
 export function Footer() {
   return (
@@ -15,35 +15,16 @@ export function Footer() {
       <Container sx={containerStyle}>
         <Grid sx={gridStyles}>
           <Flex sx={gridItemStyle}>
-            <Center h="100%" w="20%" bg="">
-              <Icon as={HiLocationMarker} />
-            </Center>
-            <Flex
-              h="100%"
-              w="70%"
-              direction={"column"}
-              justify={"center"}
-              whiteSpace={"nowrap"}
-            >
-              <Text as="address" fontSize="sm">
-                Sverigegatan 112
-              </Text>
-              <Text as="address" fontSize="sm">
-                Göteborg 45762
-              </Text>
-              <Text as="address" fontSize="sm">
-                Sweden
-              </Text>
-            </Flex>
           </Flex>
           <GridItem sx={gridItemStyle} />
           <Flex sx={gridItemStyle}>
-            <Center h="100%" w="20%" bg="">
-              <Icon as={HiLocationMarker} />
+            <Center h="100%" w="25%">
+              <Icon w={6} h={6} 
+               as={IoLocationOutline} />
             </Center>
             <Flex
               h="100%"
-              w="70%"
+              w="7%"
               direction={"column"}
               justify={"center"}
               whiteSpace={"nowrap"}
@@ -88,7 +69,7 @@ const gridStyles = {
 
 const gridItemStyle = {
   padding: ".5rem",
-  backgroundColor: "darkGreenButton",
+  backgroundColor: "transparent",
   height: ["6rem", "10rem", "10rem"],
   width: ["70%", "100%", "100%"],
 };
