@@ -9,6 +9,13 @@ Här är en lista på de olika skripten som kan köras i terminalen:
 - `npm run dev` - Startar Vite dev servern.
 - `npm test` - Startar dev servern & Cypress så du kan jobba med kravlistan.
 - `npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion` - Laddar ner Chakra UI
+Icons: 
+- `npm install react-icons --save` - Laddar ner react icons
+hitta ikonen du vill ha på https://react-icons.github.io/react-icons
+"<Icon as={HiLocationMarker} />"
+och se till att den är importerad från rätt ställe(kolla hemsidan)
+import { HiLocationMarker } from "react-icons/hi";
+
 
 ## Rättning
 
