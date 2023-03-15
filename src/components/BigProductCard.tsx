@@ -48,7 +48,7 @@ export function BigProductCard({
           <Button sx={buttonStyle} onClick={() => addToCart(products[0])}>
            +
           </Button>
-        <Button sx={addButtonStyle}><Icon sx={iconStyle} as={BsCartPlus} /></Button>
+        <Button sx={addButtonStyle} onClick={() => addToCart(products[0])}><Icon sx={iconStyle} as={BsCartPlus} /></Button>
         
       </CardFooter>
     </Card>
@@ -60,10 +60,11 @@ export function BigProductCard({
 
 const cardStyle = {
   height: "100%",
-  width: "100%",
+  width: "30%",
   boxShadow: "3px 3px 3px gray",
   backgroundColor: "matchaCard",
   position: "relative",
+  borderRadius: "1rem",
 }
 
 const xButton = {
@@ -86,7 +87,7 @@ const textStyle = {
 }
 
 const roundBG = {
-  backgroundColor: "matchaBackground",
+  backgroundColor: "bigMatchaCard",
   height: "13rem",
   width: "13rem",
   borderRadius: "50%",
