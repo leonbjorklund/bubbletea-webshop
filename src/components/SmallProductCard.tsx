@@ -30,6 +30,7 @@ export function SmallProductCard({
     borderRadius: "50%",
     mt: "1rem",
     position: "relative",
+    boxShadow: "1px 5px 5px gray"
   };
 
   return (
@@ -52,6 +53,7 @@ export function SmallProductCard({
 const cardStyle = {
   backgroundColor: "lightYellow",
   m: "1rem",
+  boxShadow: "3px 3px 5px gray"
 };
 
 const headerStyle = {
