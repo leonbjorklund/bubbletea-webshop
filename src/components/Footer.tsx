@@ -1,4 +1,3 @@
-import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
 import {
   Box,
   Center,
@@ -9,24 +8,32 @@ import {
   Image,
   Text
 } from "@chakra-ui/react";
-import { IoLocationOutline } from "react-icons/io5";
+import { FaTiktok, FaTwitter } from "react-icons/fa";
+import { FiInstagram } from "react-icons/fi";
+import { MdFacebook, MdOutlineLocationOn, MdPhoneIphone } from "react-icons/md";
 import { TbCup } from "react-icons/tb";
 
 export function Footer() {
   return (
     <Box as="footer" sx={footerStyle}>
+      <Center sx= {socialMediaFooter}>
+        <Icon w={8} h={8} as={MdFacebook}></Icon>
+        <Icon w={8} h={8} as={FiInstagram}></Icon>
+        <Icon w={8} h={8} as={FaTiktok}></Icon>
+        <Icon w={8} h={8} as={FaTwitter}></Icon>
+      </Center>
       <Container sx={containerStyle}>
         <Grid sx={gridStyles}>
-          <Flex sx={gridItemStyle}>
-            <Center paddingLeft={"1rem"} h="" w="6rem">
+          <Flex  sx={logo}>
+            <Center h="7rem">
               <Image src="/images/bobasmile.png" alt="bobasmile"></Image>
             </Center>
-            <Center h="100%" w="60%">
+            <Center>
               <Image src="/images/bobatitle.png"></Image>
             </Center>
           </Flex>
           <Flex sx={gridItemStyle}>
-            <Center h="100%" w="20%">
+            <Center  sx= {leftIconBox}>
               <Icon w={6} h={6} as={TbCup} />
             </Center>
             <Flex
@@ -51,50 +58,37 @@ export function Footer() {
             </Flex>
           </Flex>
           <Flex sx={gridItemStyle}>
-            <Center h="100%" w="20%">
-              <Icon w={6} h={6} as={IoLocationOutline} />
+            <Center sx={leftIconBox}>
+              <Icon w={6} h={6} as={MdOutlineLocationOn} />
             </Center>
-            <Flex
-              h="100%"
-              w="7%"
-              direction={"column"}
-              justify={"center"}
-              whiteSpace={"nowrap"}
+            <Flex sx= {rightTextBox}
             >
-              <Text as="address" fontSize="sm">
+              <Text as="address" sx={rightBoxText}>
                 Sverigegatan 112
               </Text>
-              <Text as="address" fontSize="sm">
+              <Text as="address" sx={rightBoxText}>
                 Göteborg 45762
               </Text>
-              <Text as="address" fontSize="sm">
+              <Text as="address" sx={rightBoxText}>
                 Sweden
               </Text>
             </Flex>
           </Flex>
-          <Flex sx={gridItemStyle} direction={"column"} justify={"center"} >
+          <Flex sx={gridItemStyle} >
+            <Center sx={leftIconBox}>
+              <Icon w={5} h={6} as={MdPhoneIphone} />
+            </Center>
             <Flex
-              h="2.5rem"
-              w="100%"
-              direction={"row"}
-              align="center"
-              paddingLeft="10%"
+              sx={rightTextBox}
             >
-              <PhoneIcon w={5} h={5}></PhoneIcon>
-              <Text as="p" fontSize="sm" paddingLeft={".5rem"}>
-                073XX- XXXXXX
+              <Text as="p" sx={rightBoxText}>
+                Contact us:
               </Text>
-            </Flex>
-            <Flex
-              h="2.5rem"
-              w="100%"
-              direction={"row"}
-              align="center"
-              paddingLeft="10%"
-            >
-              <EmailIcon w={5} h={5}></EmailIcon>
-              <Text as="p" fontSize="sm" whiteSpace={"normal"} paddingLeft={".5rem"}>
-                Boba@mail.hej
+              <Text as="p" sx={rightBoxText}>
+                Boba@email.se
+              </Text>
+              <Text as="p" sx={rightBoxText}>
+                0723-XXXXX
               </Text>
             </Flex>
           </Flex>
@@ -104,11 +98,28 @@ export function Footer() {
   );
 }
 
+const socialMediaFooter =  {
+  height:"2.5rem",
+  background: "beige",
+  gap: ["1rem", "2rem", "3rem"]
+
+}
+
+const logo= {
+  flexDirection: ["column"],
+  paddingLeft: ["2rem", "-2rem", "1rem"],
+  padding: ".5rem",
+  paddingBottom: "1rem",
+  backgroundColor: "transparent",
+  height: ["8.5rem", "10rem", "10rem"],
+  width: ["70%", "100%", "100%"],
+}
+
 const footerStyle = {
   color: "lightBrownText",
   backgroundColor: "pink",
   maxWidth: "100%",
-  height: ["33rem", "27rem", "16rem"],
+  height: ["35.5rem", "29.5rem", "18.5rem"],
 };
 
 const containerStyle = {
@@ -119,14 +130,29 @@ const containerStyle = {
 
 const gridStyles = {
   templateColumns: "repeat(1, 1fr)",
-  gap: ["1rem", "1.1rem", "2rem"],
+  gap: ["1rem", "0rem", "2rem"],
   gridTemplateColumns: ["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(4, 1fr)"],
   placeItems: "center",
 };
 
 const gridItemStyle = {
   padding: ".5rem",
+  paddingTop: "1.8rem",
   backgroundColor: "transparent",
-  height: ["7rem", "10rem", "10rem"],
+  height: ["6rem", "10rem", "10rem"],
   width: ["70%", "100%", "100%"],
 };
+
+const leftIconBox = {
+  width:"20%",
+  flexDirection:"column"
+}
+const rightTextBox = {
+  width:"75%",
+  flexDirection:"column",
+  justifyContent:"center",
+  whiteSpace: "nowrap"
+}
+const rightBoxText = {
+  fontSize: "sm"
+}
