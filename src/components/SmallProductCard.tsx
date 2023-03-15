@@ -1,12 +1,12 @@
 import {
-    Box,
-    Button,
-    Card,
-    CardBody,
-    CardFooter,
-    CardHeader,
-    Image,
-    Text
+  Box,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Image,
+  Text
 } from "@chakra-ui/react";
 import { useCart } from "../CartContext";
 
@@ -25,8 +25,8 @@ export function SmallProductCard({
 
   const roundBG = {
     backgroundColor: bgColor,
-    height: "15rem",
-    width: "15rem",
+    height: "13rem",
+    width: "13rem",
     borderRadius: "50%",
     mt: "1rem",
     position: "relative",
@@ -52,8 +52,9 @@ export function SmallProductCard({
 
 const cardStyle = {
   backgroundColor: "lightYellow",
-  m: "1rem",
-  boxShadow: "3px 3px 5px gray"
+  boxShadow: "3px 3px 5px gray",
+  height: "100%",
+  width: "100%",
 };
 
 const headerStyle = {
@@ -82,4 +83,5 @@ const imageStyle = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   objectFit: "cover",
+  width: "35%",
 };

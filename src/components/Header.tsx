@@ -1,4 +1,6 @@
-import { Container, Flex, Heading, HStack, Link as ChakraLink, Spacer, SystemStyleObject, theme } from "@chakra-ui/react";
+import { Container, Flex, Heading, HStack, Icon, Link as ChakraLink, Spacer, SystemStyleObject, theme } from "@chakra-ui/react";
+import { IoMdCart } from "react-icons/io";
+import { RiAdminFill } from "react-icons/ri";
 import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
 
@@ -15,8 +17,8 @@ export function Header() {
         <HStack spacing="20px" whiteSpace="nowrap">
           <ChakraLink as={RouterLink} to="/">Home</ChakraLink>
           <ChakraLink as={RouterLink} to="/products">Products</ChakraLink>
-          <ChakraLink as={RouterLink} to="/checkout">Cart ({cartList.length})</ChakraLink>
-          <ChakraLink as={RouterLink} to="/admin">Admin Page</ChakraLink>
+          <ChakraLink as={RouterLink} to="/admin"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={RiAdminFill}/></ChakraLink>
+          <ChakraLink as={RouterLink} to="/checkout"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
         </HStack>
       </Flex>
     </Container>
