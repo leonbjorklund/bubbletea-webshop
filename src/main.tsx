@@ -28,6 +28,7 @@ const colors = {
   lightGreenButton: "#ACCDB5",
   cardBackground: "#FFF2E5",
   matchaCard: "#98D16B",
+  matchaBackground: "#ADAF99",
   darkGreenButton: "#3A8669",
   bigMatchaCard: "#A2AA70",
   yellowCardCircle: "#FEE5BE",
