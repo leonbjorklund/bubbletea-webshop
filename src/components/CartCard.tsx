@@ -7,7 +7,7 @@ export function CartCard() {
   const { addToCart, removeFromCart, cartList } = useCart();
 
   return (
-    <Card width="20rem" sx={cartStyle}>
+    <Card sx={cartStyle}>
       <Flex sx={flexStyle}>
       <CardHeader p="5px">
         <Heading size='md'>Cart</Heading>
@@ -43,7 +43,7 @@ const cartStyle: SystemStyleObject = {
   bg: "#FFF9F4",
   border: "1px solid rgb(0,0,0, 0.2)",
   borderRadius: "10px",
-  padding: "20px",
+  padding: "15px",
   position: "relative",
 }
 
