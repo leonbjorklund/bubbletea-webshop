@@ -1,54 +1,50 @@
-import { Button, Card, CardFooter, Container, Heading } from "@chakra-ui/react";
-import { products } from "../../data";
+import { Container, Grid, GridItem, Heading, useMediaQuery } from "@chakra-ui/react";
 import { useCart } from "../CartContext";
-import { SmallProductCard } from "../components/SmallProductCard";
+import { CartCard } from "../components/CartCard";
+import { ProductsLayout } from "../layout/ProductsLayout";
 
 export function ProductsPage() {
 
   const { addToCart } = useCart();
+  const [isSmallerThan1042] = useMediaQuery('(max-width: 1156px)');
+
 
   return (
-    <Container maxWidth="4xl" my="30px">
+    //   {products.map((product) => (
+    //     <Card key={product.id} sx={cardStyle}>
+    //       <p>{product.title}</p>
+    //       <img src={product.image} style={{ width: "100px" }} />
+    //       <p>{product.price} kr</p>
+    //       <p>{product.description}</p>
+    //       <p>id: {product.id}</p>
+    //       <CardFooter>
+    //         <Button colorScheme="blue" onClick={() => addToCart(product)}>
+    //           Add to cart!
+    //         </Button>
+    //       </CardFooter>
+    //     </Card>
+    //   ))}
+
+    <Container maxWidth="container.xl" my="30px">
       <Heading>This is product page!</Heading>
-      {products.map((product) => (
-        <Card key={product.id} sx={cardStyle}>
-          <p>{product.title}</p>
-          <img src={product.image} style={{ width: "100px" }} />
-          <p>{product.price} kr</p>
-          <p>{product.description}</p>
-          <p>id: {product.id}</p>
-          <CardFooter>
-            <Button colorScheme="blue" onClick={() => addToCart(product)}>
-              Add to cart!
-            </Button>
-          </CardFooter>
-        </Card>
-      ))}
-      <SmallProductCard
-        bgColor="pink"
-        imageUrl="/images/pinkboba.png"
-        imageAlt="Strawberry Fruit Tea"
-      />
-      <SmallProductCard
-      bgColor="yellowCardCircle"
-      imageUrl="/images/yellowboba.png"
-      imageAlt="Brown Sugar Milk Tea"
-      />
-      <SmallProductCard
-      bgColor="matchaBackground"
-      imageUrl="/images/greenboba.png"
-      imageAlt="Matcha Latte"
-      
-      />
+      <Grid
+      mx="auto"
+      maxW="container.xl"
+      templateColumns="3fr 1fr"
+      my="30px"
+      columnGap="20px"
+      px={isSmallerThan1042 ? "20px" : "20px"} // set px to 35px when screen width is less than 1042px, otherwise set it to 20px
+      >
+        <GridItem>
+          <ProductsLayout />
+        </GridItem>
+
+        <GridItem as="aside">
+          <CartCard />
+        </GridItem>
+
+      </Grid>
     </Container>
-    // <Container maxWidth="4xl">
-    //   <BigProductCard />
-    // </Container>
   );
 }
 
-const cardStyle = {
-  width: '200px',
-  margin: '10px',
-  border: '2px solid black'
-}
