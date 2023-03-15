@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardHeader, Flex, Heading, ListItem, SystemStyleObject, Text, UnorderedList } from "@chakra-ui/react";
+  import { Button, Card, CardBody, CardHeader, Flex, Heading, ListItem, SystemStyleObject, Text, UnorderedList } from "@chakra-ui/react";
 
 export function CartCard() {
   return (
