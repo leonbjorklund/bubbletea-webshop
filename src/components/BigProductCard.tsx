@@ -1,4 +1,5 @@
 import { Box, Button, Card, CardFooter, CardHeader, CloseButton, Icon, Image, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
 import { products } from "../../data";
 import { useCart } from "../CartContext";
@@ -18,10 +19,18 @@ export function BigProductCard({
  }: BigProductCardProps) {
   const { addToCart, removeFromCart, cartList } = useCart();
 
+  const [visible, setVisible] = useState(true);
+
+  const handleClose = () => {
+    setVisible(false);
+  };
+
  
   return (
+    <div>
+    {visible && (
     <Card align="center" sx={cardStyle}>
-      <CloseButton sx={xButton} />
+      <CloseButton sx={xButton} onClick={handleClose} />
       <Box sx={roundBG}>
         <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
         <Image sx={imageStyle} src={imageUrl} alt={imageAlt} />
@@ -43,7 +52,10 @@ export function BigProductCard({
         
       </CardFooter>
     </Card>
-  )
+    
+    )}
+    </div>
+  );
 }
 
 const cardStyle = {
