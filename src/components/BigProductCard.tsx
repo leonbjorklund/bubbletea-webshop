@@ -1,4 +1,7 @@
-import { Box, Card, CardFooter, CardHeader, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Card, CardFooter, CardHeader, CloseButton, Icon, Image, Text } from "@chakra-ui/react";
+import { BsCartPlus } from "react-icons/Bs";
+import { products } from "../../data";
+import { useCart } from "../CartContext";
 
 interface BigProductCardProps {
   name: string;
@@ -13,17 +16,12 @@ interface BigProductCardProps {
 export function BigProductCard({ 
   name, price, description, imageUrl, imageAlt, backgroundUrl, backgroundAlt, 
  }: BigProductCardProps) {
-  const roundBG = {
-    backgroundColor: "matchaBackground",
-    height: "13rem",
-    width: "13rem",
-    borderRadius: "50%",
-    mt: "1rem",
-    position: "relative",
-    boxShadow: "1px 5px 5px gray"
-  };
+  const { addToCart, removeFromCart, cartList } = useCart();
+
+ 
   return (
     <Card align="center" sx={cardStyle}>
+      <CloseButton sx={xButton} />
       <Box sx={roundBG}>
         <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
         <Image sx={imageStyle} src={imageUrl} alt={imageAlt} />
@@ -34,6 +32,14 @@ export function BigProductCard({
         <Text sx={textStyle}>{description}</Text>
       </CardHeader>
       <CardFooter>
+          <Button sx={buttonStyle} onClick={() => removeFromCart(products[0].id)}>
+           -
+          </Button>
+          <Text>{cartList.length}</Text>
+          <Button sx={buttonStyle} onClick={() => addToCart(products[0])}>
+           +
+          </Button>
+        <Button sx={addButtonStyle}><Icon sx={iconStyle} as={BsCartPlus} /></Button>
         
       </CardFooter>
     </Card>
@@ -45,6 +51,14 @@ const cardStyle = {
   width: "100%",
   boxShadow: "3px 3px 3px gray",
   backgroundColor: "matchaCard",
+  position: "relative",
+}
+
+const xButton = {
+  position: "absolute",
+  top: "0.5rem",
+  right: "0.5rem",
+  zIndex: "400",
 }
 
 const headingStyle = {
@@ -58,6 +72,15 @@ const priceStyle = {
 const textStyle = {
   color: "lightBrownText",
 }
+
+const roundBG = {
+  backgroundColor: "matchaBackground",
+  height: "13rem",
+  width: "13rem",
+  borderRadius: "50%",
+  mt: "1rem",
+  position: "relative",
+};
 
 const imageStyle = {
   position: "absolute",
@@ -78,6 +101,23 @@ const imageStyle2 = {
   height: "100%",
   zIndex: "100"
 };
+
+const buttonStyle = {
+  backgroundColor: "darkGreenButton",
+  color: "white",
+  borderRadius: "4rem",
+}
+
+const addButtonStyle ={
+  backgroundColor: "yellowButton",
+  borderRadius: "4rem",
+  width: "5rem",
+}
+
+const iconStyle = {
+  height: "1.5rem",
+  width: "1.5rem",
+}
 
 
 
