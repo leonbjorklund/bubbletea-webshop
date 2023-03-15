@@ -44,6 +44,7 @@ const cartStyle: SystemStyleObject = {
   border: "1px solid rgb(0,0,0, 0.2)",
   borderRadius: "10px",
   padding: "20px",
+  position: "relative",
 }
 
 const flexStyle: SystemStyleObject = {
