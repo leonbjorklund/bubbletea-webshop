@@ -1,80 +1,64 @@
-import {
-  Box,
-  Button,
-  Card, Image,
-  Text
-} from "@chakra-ui/react";
+import { Box, Button, Card, Image, Text } from "@chakra-ui/react";
 import { Product } from "../../data";
 import { useCart } from "../CartContext";
 
-
 interface SmallProductCardProps {
-  product:Product;
+  product: Product;
 }
 
-export function SmallProductCard({
-  product
-}: SmallProductCardProps) {
+export function SmallProductCard({ product }: SmallProductCardProps) {
   const { addToCart } = useCart();
 
   const roundBG = {
-    backgroundColor: "pink",
+    backgroundColor: product.bgColor,
     height: "auto",
-    width:"90%",
-    aspectRatio:"1",
+    width: "90%",
+    aspectRatio: "1",
     borderRadius: "50%",
     mt: ["5%"],
-    mb: [".3rem",".5rem","0rem","1rem"],
+    mb: [".3rem", ".5rem", "0rem", "1rem"],
     position: "relative",
-    boxShadow: "1px 5px 5px gray"
+    boxShadow: "1px 5px 5px gray",
   };
 
   return (
-    <Card  align="center" sx={cardStyle}>
+    <Card align="center" sx={cardStyle}>
       <Box sx={roundBG}>
         <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
-        <Text as="h6" sx={headerStyle}>{product.title}</Text>
+      <Text as="h6" sx={headerStyle}>
+        {product.title}
+      </Text>
       <Text sx={textStyle}>{product.price}</Text>
-        <Button sx={buttonStyle}>Add to cart </Button>
+      <Button sx={buttonStyle}>Add to cart </Button>
     </Card>
   );
 }
 
-/*{products.map((product) => (
-  <Card key={product.id} align="center" sx={cardStyle}>
-    <Box sx={roundBG} style={{ backgroundColor: product.title.includes('Matcha') ? 'pink' : 'yellowCardCircle' }}>
-      <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
-    </Box>
-      <Text as="h6" sx={headerStyle}>{product.title}</Text>
-      <Text sx={textStyle>{product.price}</Text>
-      <Button sx={buttonStyle}>Add to cart </Button>
-  </Card>
-))}*/
 const cardStyle = {
   backgroundColor: "lightYellow",
   boxShadow: "3px 3px 5px gray",
   height: "100%",
   display: "Flex",
-  justifyContent:"space-between",
+  justifyContent: "space-between",
   width: "100%",
 };
 
 const headerStyle = {
-  textAlign:"center",
+  textAlign: "center",
   color: "darkBrownText",
-  margin:".5rem",
-  fontSize: ["1rem","1rem","1.4rem",],
+  margin: ".5rem",
+  fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
 const textStyle = {
-  textAlign:"center",
+  textAlign: "center",
   color: "lightBrownText",
-  fontSize: ["1rem","1rem","1.4rem",],
+  fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
 const buttonStyle = {
-  margin:"5%",
+  margin: "5%",
   backgroundColor: "pinkCardButton",
   color: "lightBrownText",
   _hover: {

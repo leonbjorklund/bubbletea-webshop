@@ -5,6 +5,7 @@ export interface Product {
   title: string;
   description: string;
   price: number;
+  bgColor: string;
 
 }
 
@@ -24,6 +25,7 @@ export const products: Product[] = [
     title: "Brown sugar Fresh Milk",
     description: "Description of the drink!",
     price: 6.50,
+    bgColor: "pink"
   },
   {
     id: "2",
@@ -32,6 +34,7 @@ export const products: Product[] = [
     title: "Taro Latte",
     description: "Description of the drink!",
     price: 6.50,
+    bgColor: "fruitTeaCircle"
   },
   {
     id: "3",
@@ -40,6 +43,7 @@ export const products: Product[] = [
     title: "Milk Tea",
     description: "Description of the drink!",
     price: 6.50,
+    bgColor: "fruitTeaCircle"
   },
   {
     id: "4",
@@ -48,6 +52,7 @@ export const products: Product[] = [
     title: "Matcha Latte",
     description: "Description of the drink!",
     price: 6.50,
+    bgColor: "fruitTeaCircle"
   },
   {
     id: "5",
@@ -56,6 +61,7 @@ export const products: Product[] = [
     title: "Thai Iced Tea",
     description: "Description of the drink!",
     price: 6.50,
+    bgColor: "fruitTeaCircle"
   },
   {
     id: "6",
@@ -64,6 +70,7 @@ export const products: Product[] = [
     title: "Peach Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
+    bgColor: "fruitTeaCircle"
   },
   {
     id: "7",
@@ -72,6 +79,7 @@ export const products: Product[] = [
     title: "Passion Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
+    bgColor: "fruitTeaCircle"
   },
   {
     id: "8",
@@ -80,6 +88,7 @@ export const products: Product[] = [
     title: "Strawberry Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
+    bgColor: "fruitTeaCircle"
   },
   {
     id: "9",
@@ -88,6 +97,7 @@ export const products: Product[] = [
     title: "Blueberry Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
+    bgColor: "fruitTeaCircle"
   },
   {
     id: "10",
@@ -96,6 +106,7 @@ export const products: Product[] = [
     title: "Oolong Tea",
     description: "Description of the drink!",
     price: 6.00,
+    bgColor: "fruitTeaCircle"
   },
 ];
 

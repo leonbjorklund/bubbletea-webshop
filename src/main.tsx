@@ -33,7 +33,7 @@ const colors = {
   darkGreenButton: "#3A8669",
   bigMatchaCard: "#A2AA70",
   yellowCardCircle: "#FEE5BE",
-  strawberryTeaCircle: "#FC6868",
+  fruitTeaCircle: "#EEA6B4",
   darkPinkButton: "#AF6969",
   pinkCardButton: "#F79DA3",
   milkTeaCircle: "#E4BC80",
