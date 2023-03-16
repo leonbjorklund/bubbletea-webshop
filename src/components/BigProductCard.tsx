@@ -25,7 +25,7 @@ interface BigProductCardProps {
 export function BigProductCard({
   product,
   backgroundAlt,
-  backgroundUrl
+  backgroundUrl,
 }: BigProductCardProps) {
   const { addToCart, removeFromCart, cartList } = useCart();
 
@@ -55,13 +55,17 @@ export function BigProductCard({
           <Box sx={imageContainerStyle}>
             <Box sx={roundBG}>
               <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
-              <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
+              <Image
+                sx={imageStyle}
+                src={product.image}
+                alt={product.imageAlt}
+              />
             </Box>
           </Box>
           <Box>
             <CardHeader align="center" sx={cardHeaderStyle}>
               <Heading sx={headingStyle}>{product.title}</Heading>
-              <Heading sx={priceStyle}>{product.price}</Heading>
+              <Heading sx={priceStyle}>${product.price}</Heading>
               <Text sx={textStyle}>{product.description}</Text>
             </CardHeader>
             <CardFooter sx={cardFooterStyle}>
@@ -162,7 +166,7 @@ const imageStyle = {
   transform: "translate(-50%, -50%)",
   objectFit: "cover",
   width: ["35%", "40%", "40%", "40%"],
-  zIndex: "300",
+  zIndex: "200",
 };
 
 const imageStyle2 = {

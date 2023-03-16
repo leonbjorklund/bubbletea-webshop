@@ -10,7 +10,7 @@ export function HomePage() {
       <BigProductCard
       product={products[0]}
       backgroundAlt="boba"
-      backgroundUrl="/images/greenboba.png"
+      backgroundUrl="/images/fancyBackground.png"
       />
     </Container>
   )
