@@ -10,6 +10,7 @@ import { AdminPage } from './pages/AdminPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { ConfirmationPage } from './pages/ConfirmationPage';
 import { HomePage } from './pages/HomePage';
+import { ProductPage } from './pages/Product';
 import { ProductsPage } from './pages/ProductsPage';
 
 //extent the theme
@@ -57,7 +58,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     {/* Outlet start */}
     <Route index element={<HomePage/>}></Route>
     <Route path="products" element={<ProductsPage />} />
-    {/* <Route path="products/:id" element={<ProductsPage />} /> */}
+    <Route path="product/:id" element={<ProductPage />} />
     <Route path="checkout" element={<CheckoutPage />}/>
     <Route path="confirmation" element={<ConfirmationPage />}/>
     <Route path="admin" element={<AdminPage/>}/>
