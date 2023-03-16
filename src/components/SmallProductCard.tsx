@@ -24,7 +24,7 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
   return (
     <Card align="center" sx={cardStyle}>
       <Box sx={roundBG}>
-        <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
+          <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
       <Text as="h6" sx={headerStyle}>
         {product.title}
@@ -35,13 +35,20 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
   );
 }
 
+
 const cardStyle = {
   backgroundColor: "lightYellow",
   boxShadow: "3px 3px 5px gray",
   height: "100%",
-  display: "Flex",
+  display: "flex",
   justifyContent: "space-between",
   width: "100%",
+  overflow: "hidden",
+  transition: "0.3s ease-in-out",
+  ":hover": {
+    backgroundColor: "#f3e5d7",
+    transform: "scale(0.96)",
+  },
 };
 
 const headerStyle = {

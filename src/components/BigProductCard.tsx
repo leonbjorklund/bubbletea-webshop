@@ -46,7 +46,8 @@ export function BigProductCard({
       alignItems="center"
       justifyContent="center"
       height="calc(100vh-3rem)"
-      width="100vw"
+      width="100%"
+      
       position="fixed"
       top="3rem"
       left="0"
@@ -54,6 +55,7 @@ export function BigProductCard({
       {visible && (
         <Card
           align="center"
+
           direction={["column", "column", "row"]}
           sx={cardStyle}
         >
@@ -102,6 +104,7 @@ export function BigProductCard({
 const cardStyle = {
   height: ["85vh", "85vh", "88vh", "88vh"],
   width: ["17rem", "90%", "95%", "95%"],
+  maxWidth:"container.xl",
   boxShadow: "3px 3px 3px gray",
   backgroundColor: "product.bgColor",
   position: "relative",
