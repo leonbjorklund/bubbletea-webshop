@@ -1,4 +1,5 @@
 import { Container, Heading } from "@chakra-ui/react";
+import { products } from "../../data";
 import { BigProductCard } from "../components/BigProductCard";
 
 export function HomePage() {
@@ -7,13 +8,9 @@ export function HomePage() {
     <Container as="section" maxWidth="4xl"  my="30px">
       <Heading>This is homepage!</Heading>
       <BigProductCard
-      name="Matcha Latte"
-      price="$6.50"
-      description="Matcha with oat milk and tapioca pearls"
-      imageUrl="/images/greenboba.png"
-      imageAlt=""
-      backgroundUrl="/images/fancyBackground.png"
-      backgroundAlt=""
+      product={products[0]}
+      backgroundAlt="boba"
+      backgroundUrl="/images/greenboba.png"
       />
     </Container>
   )

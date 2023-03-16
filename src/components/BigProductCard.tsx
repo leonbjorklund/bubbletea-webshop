@@ -13,27 +13,19 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
-import { products } from "../../data";
+import { Product, products } from "../../data";
 import { useCart } from "../CartContext";
 
 interface BigProductCardProps {
-  name: string;
-  price: string;
-  description: string;
-  imageUrl: string;
-  imageAlt: string;
+  product: Product;
   backgroundUrl: string;
   backgroundAlt: string;
 }
 
 export function BigProductCard({
-  name,
-  price,
-  description,
-  imageUrl,
-  imageAlt,
-  backgroundUrl,
+  product,
   backgroundAlt,
+  backgroundUrl
 }: BigProductCardProps) {
   const { addToCart, removeFromCart, cartList } = useCart();
 
@@ -63,14 +55,14 @@ export function BigProductCard({
           <Box sx={imageContainerStyle}>
             <Box sx={roundBG}>
               <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
-              <Image sx={imageStyle} src={imageUrl} alt={imageAlt} />
+              <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
             </Box>
           </Box>
           <Box>
             <CardHeader align="center" sx={cardHeaderStyle}>
-              <Heading sx={headingStyle}>{name}</Heading>
-              <Heading sx={priceStyle}>{price}</Heading>
-              <Text sx={textStyle}>{description}</Text>
+              <Heading sx={headingStyle}>{product.title}</Heading>
+              <Heading sx={priceStyle}>{product.price}</Heading>
+              <Text sx={textStyle}>{product.description}</Text>
             </CardHeader>
             <CardFooter sx={cardFooterStyle}>
               <Button
@@ -101,7 +93,7 @@ const cardStyle = {
   height: ["85vh", "85vh", "88vh", "88vh"],
   width: ["17rem", "90%", "95%", "95%"],
   boxShadow: "3px 3px 3px gray",
-  backgroundColor: "matchaCard",
+  backgroundColor: "product.bgColor",
   position: "relative",
   borderRadius: "1rem",
   bgGradient: "linear(green.100 30%, yellow.50 90%)",
