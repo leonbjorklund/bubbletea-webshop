@@ -13,8 +13,10 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
+import { useNavigate } from "react-router-dom";
 import { Product, products } from "../../data";
 import { useCart } from "../CartContext";
+
 
 interface BigProductCardProps {
   product: Product;
@@ -28,11 +30,12 @@ export function BigProductCard({
   backgroundUrl,
 }: BigProductCardProps) {
   const { addToCart, removeFromCart, cartList } = useCart();
-
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
 
   const handleClose = () => {
     setVisible(false);
+    navigate("/products");
   };
 
   return (
