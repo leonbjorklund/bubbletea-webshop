@@ -143,7 +143,7 @@ const textStyle = {
 
 const imageContainerStyle = {
   position: ["static", "static", "absolute"],
-  top: ["50%", "50%", "50%"], // Adjust the top position for mobile, tablet, and desktop
+  top: ["50%", "50%", "55%", "50%"], // Adjust the top position for mobile, tablet, and desktop
   left: ["50%", "60%", "75%", "75%"], // Center the image horizontally for all screen sizes
   transform: ["none", "none", "translate(-50%, -50%)"],
   alignSelf: ["center", "center", "none"],
