@@ -4,9 +4,15 @@ import { SmallProductCard } from "../components/SmallProductCard";
 import { products } from "../../data";
 
 export function ProductsLayout() {
-  console.log(products)
+  console.log(products);
   return (
-    <Flex gap={[2,2,3,4]} my={1} direction="row" wrap={"wrap"} width={["100%","100%","100%", "70%"]}>
+    <Flex
+      gap={[2, 2, 3, 4]}
+      my={1}
+      direction="row"
+      wrap={"wrap"}
+      width={["100%", "100%", "100%", "70%"]}
+    >
       {products.map((product) => (
         <Box sx={box} key={product.id}>
           <SmallProductCard product={product} />
@@ -17,5 +23,10 @@ export function ProductsLayout() {
 }
 
 const box = {
-  width: ["calc(100%/2.08)","calc(100%/3.13)","calc(100%/3.2)","calc(100%/3.2)"]
+  width: [
+    "calc(100%/2.08)",
+    "calc(100%/3.13)",
+    "calc(100%/3.2)",
+    "calc(100%/3.2)",
+  ],
 };

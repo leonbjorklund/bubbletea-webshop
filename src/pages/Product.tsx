@@ -1,13 +1,15 @@
 import { Container, Heading } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import { products } from "../../data";
 import { useCart } from "../CartContext";
-
+ 
 export function ProductPage() {
   const { addToCart } = useCart();
   const params = useParams();
   console.log(params.id);
 
-  const product = "????";
+const product = products.find((p) => p.id === params.id);
+
 
   if (!product) {
     return <p>Produkten hittades inte...</p>
@@ -22,7 +24,7 @@ export function ProductPage() {
       p={"1rem"}
     >
       <Heading h={["5vh", "5vh", "3rem"]} mb={"1vh"} bg="blue">
-        This is product details page!
+        {product.title}
       </Heading>
     </Container>
   );
