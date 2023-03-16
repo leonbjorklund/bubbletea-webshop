@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading } from "@chakra-ui/react";
+import { Box, Container, Flex, Tab, TabList, Tabs } from "@chakra-ui/react";
 import { useCart } from "../CartContext";
 import { CartCard } from "../components/CartCard";
 import { ProductsLayout } from "../layout/ProductsLayout";
@@ -24,10 +24,21 @@ export function ProductsPage() {
     //     </Card>
     //   ))}
 
-    <Container maxWidth="container.xl" my="0rem">
-      <Heading>This is product page!</Heading>
-      <Flex direction={["column","column","column","row"]} justify={["center","center","center","space-between"]} gap={1}>
-          <ProductsLayout/>
+    <Container maxWidth="container.xl" my=".3rem">
+      <Tabs variant="unstyled" bg={"white"} my={5} width={["100%","100%","98%", "68.5%"]}>
+        <TabList>
+          <Tab _selected={{ color: "white", bg: "blue.500" }}>MILK TEA</Tab>
+          <Tab _selected={{ color: "white", bg: "red.400" }}>FRUIT TEA</Tab>
+          <Tab _selected={{ color: "white", bg: "green.400" }}>ALL TEAS</Tab>
+        </TabList>
+      </Tabs>
+
+      <Flex
+        direction={["column", "column", "column", "row"]}
+        justify={["center", "center", "center", "space-between"]}
+        gap={1}
+      >
+        <ProductsLayout />
         <Box as="aside">
           <CartCard />
         </Box>
