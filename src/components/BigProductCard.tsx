@@ -69,7 +69,7 @@ export function BigProductCard({
             </Box>
           </Box>
           <Box>
-            <CardHeader align="center" sx={cardHeaderStyle}>
+            <CardHeader sx={cardHeaderStyle}>
               <Heading sx={headingStyle}>{product.title}</Heading>
               <Heading sx={priceStyle}>${product.price}</Heading>
               <Text sx={textStyle}>{product.description}</Text>
