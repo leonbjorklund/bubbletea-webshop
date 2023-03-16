@@ -4,23 +4,21 @@ import {
   Card, Image,
   Text
 } from "@chakra-ui/react";
+import { Product } from "../../data";
 import { useCart } from "../CartContext";
 
+
 interface SmallProductCardProps {
-  bgColor?: string;
-  imageUrl?: string;
-  imageAlt?: string;
+  product:Product;
 }
 
 export function SmallProductCard({
-  bgColor = "pink",
-  imageUrl,
-  imageAlt,
+  product
 }: SmallProductCardProps) {
   const { addToCart } = useCart();
 
   const roundBG = {
-    backgroundColor: bgColor,
+    backgroundColor: "pink",
     height: "auto",
     width:"90%",
     aspectRatio:"1",
@@ -32,17 +30,27 @@ export function SmallProductCard({
   };
 
   return (
-    <Card align="center" sx={cardStyle}>
+    <Card  align="center" sx={cardStyle}>
       <Box sx={roundBG}>
-        <Image sx={imageStyle} src={imageUrl} alt={imageAlt} />
+        <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
-        <Text as="h6" sx={headerStyle}>Matcha Latte Matcha</Text>
-      <Text sx={textStyle}>$6.50</Text>
+        <Text as="h6" sx={headerStyle}>{product.title}</Text>
+      <Text sx={textStyle}>{product.price}</Text>
         <Button sx={buttonStyle}>Add to cart </Button>
     </Card>
   );
 }
 
+/*{products.map((product) => (
+  <Card key={product.id} align="center" sx={cardStyle}>
+    <Box sx={roundBG} style={{ backgroundColor: product.title.includes('Matcha') ? 'pink' : 'yellowCardCircle' }}>
+      <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
+    </Box>
+      <Text as="h6" sx={headerStyle}>{product.title}</Text>
+      <Text sx={textStyle>{product.price}</Text>
+      <Button sx={buttonStyle}>Add to cart </Button>
+  </Card>
+))}*/
 const cardStyle = {
   backgroundColor: "lightYellow",
   boxShadow: "3px 3px 5px gray",

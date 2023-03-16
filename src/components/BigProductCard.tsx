@@ -35,7 +35,7 @@ export function BigProductCard({
         <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
         <Image sx={imageStyle} src={imageUrl} alt={imageAlt} />
       </Box>
-      <CardHeader align="center">
+      <CardHeader >
         <Text sx={headingStyle}>{name}</Text> 
         <Text sx={priceStyle}>{price}</Text>
         <Text sx={textStyle}>{description}</Text>
