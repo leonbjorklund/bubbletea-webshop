@@ -29,6 +29,7 @@ export function Header() {
 const containerStyle: SystemStyleObject = {
   maxWidth: "100%",
   backgroundColor: theme.colors.pink,
+  color:"darkBrownText"
 }
 
 const flexStyle: SystemStyleObject = {
