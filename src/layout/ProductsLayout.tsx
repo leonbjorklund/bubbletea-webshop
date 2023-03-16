@@ -32,12 +32,33 @@ export function ProductsLayout() {
           imageAlt="Strawberry Fruit Tea"
         />
       </Box>
+      <Box sx={box} >
+        <SmallProductCard
+          bgColor="pink"
+          imageUrl="/images/pinkboba.png"
+          imageAlt="Strawberry Fruit Tea"
+        />
+      </Box>
+      <Box sx={box} >
+        <SmallProductCard
+          bgColor="pink"
+          imageUrl="/images/pinkboba.png"
+          imageAlt="Strawberry Fruit Tea"
+        />
+      </Box>
+      <Box sx={box} >
+        <SmallProductCard
+          bgColor="pink"
+          imageUrl="/images/pinkboba.png"
+          imageAlt="Strawberry Fruit Tea"
+        />
+      </Box>
 
   </Flex>
   )
 }
 
 const box = {
-  width: ["calc(100%/2.08)","calc(100%/3.11)","calc(100%/3.2)","calc(100%/3.2)"]
+  width: ["calc(100%/2.08)","calc(100%/3.13)","calc(100%/3.2)","calc(100%/3.2)"]
   
 }

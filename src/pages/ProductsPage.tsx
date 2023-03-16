@@ -24,7 +24,7 @@ export function ProductsPage() {
     //     </Card>
     //   ))}
 
-    <Container maxWidth="container.xl" my="2rem">
+    <Container maxWidth="container.xl" my="0rem">
       <Heading>This is product page!</Heading>
       <Flex direction={["column","column","column","row"]} justify={["center","center","center","space-between"]} gap={1}>
           <ProductsLayout/>
