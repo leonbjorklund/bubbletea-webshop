@@ -25,7 +25,7 @@ export const products: Product[] = [
     title: "Brown sugar Fresh Milk",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "pink"
+    bgColor: "yellowCardCircle"
   },
   {
     id: "2",
@@ -34,7 +34,7 @@ export const products: Product[] = [
     title: "Taro Latte",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "fruitTeaCircle"
+    bgColor: "bigMatchaCard"
   },
   {
     id: "3",
@@ -52,7 +52,7 @@ export const products: Product[] = [
     title: "Matcha Latte",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "fruitTeaCircle"
+    bgColor: "bigMatchaCard"
   },
   {
     id: "5",
@@ -61,7 +61,7 @@ export const products: Product[] = [
     title: "Thai Iced Tea",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "fruitTeaCircle"
+    bgColor: "yellowCardCircle"
   },
   {
     id: "6",
@@ -86,9 +86,9 @@ export const products: Product[] = [
     image: "/images/pinkboba.png",
     imageAlt: "boba",
     title: "Strawberry Fruit Tea",
-    description: "Description of the drink!",
+    description: "Description of the drink!", 
     price: 6.00,
-    bgColor: "fruitTeaCircle"
+    bgColor: "yellowCardCircle"
   },
   {
     id: "9",
@@ -97,7 +97,7 @@ export const products: Product[] = [
     title: "Blueberry Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
-    bgColor: "fruitTeaCircle"
+    bgColor: "bigMatchaCard"
   },
   {
     id: "10",
@@ -106,7 +106,7 @@ export const products: Product[] = [
     title: "Oolong Tea",
     description: "Description of the drink!",
     price: 6.00,
-    bgColor: "fruitTeaCircle"
+    bgColor: "yellowCardCircle"
   },
 ];
 

@@ -32,14 +32,13 @@ export function ProductsPage() {
           <Tab _selected={{ color: "white", bg: "green.400" }}>MILK TEA</Tab>
         </TabList>
       </Tabs>
-
       <Flex
         direction={["column", "column", "column", "row"]}
         justify={["center", "center", "center", "space-between"]}
         gap={1}
       >
         <ProductsLayout />
-        <Box as="aside">
+        <Box as="aside"  width={["100%", "100%","100%","40%",]}>
           <CartCard />
         </Box>
       </Flex>
