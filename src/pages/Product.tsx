@@ -2,6 +2,7 @@ import { Container, Heading } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { products } from "../../data";
 import { useCart } from "../CartContext";
+import { BigProductCard } from "../components/BigProductCard";
  
 export function ProductPage() {
   const { addToCart } = useCart();
@@ -26,6 +27,11 @@ const product = products.find((p) => p.id === params.id);
       <Heading h={["5vh", "5vh", "3rem"]} mb={"1vh"} bg="blue">
         {product.title}
       </Heading>
+      <BigProductCard 
+      product={products[0]}
+      backgroundAlt="boba"
+      backgroundUrl="/images/fancyBackground.png"
+      />
     </Container>
   );
 }
