@@ -1,4 +1,4 @@
-import { Container, Grid, GridItem, Heading, useMediaQuery } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading } from "@chakra-ui/react";
 import { useCart } from "../CartContext";
 import { CartCard } from "../components/CartCard";
 import { ProductsLayout } from "../layout/ProductsLayout";
@@ -6,7 +6,6 @@ import { ProductsLayout } from "../layout/ProductsLayout";
 export function ProductsPage() {
 
   const { addToCart } = useCart();
-  const [isSmallerThan1042] = useMediaQuery('(max-width: 1156px)');
 
 
   return (
@@ -25,25 +24,14 @@ export function ProductsPage() {
     //     </Card>
     //   ))}
 
-    <Container maxWidth="container.xl" my="30px">
+    <Container maxWidth="container.xl" my="2rem">
       <Heading>This is product page!</Heading>
-      <Grid
-      mx="auto"
-      maxW="container.xl"
-      templateColumns="3fr 1fr"
-      my="30px"
-      columnGap="20px"
-      px={isSmallerThan1042 ? "20px" : "20px"} // set px to 35px when screen width is less than 1042px, otherwise set it to 20px
-      >
-        <GridItem>
-          <ProductsLayout />
-        </GridItem>
-
-        <GridItem as="aside">
+      <Flex direction={["column","column","column","row"]} justify={["center","center","center","space-between"]} gap={1}>
+          <ProductsLayout/>
+        <Box as="aside">
           <CartCard />
-        </GridItem>
-
-      </Grid>
+        </Box>
+      </Flex>
     </Container>
   );
 }
