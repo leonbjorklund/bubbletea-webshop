@@ -4,6 +4,7 @@ import { SmallProductCard } from "../components/SmallProductCard";
 import { products } from "../../data";
 
 export function ProductsLayout() {
+  console.log(products)
   return (
     <Flex gap={[2,2,3,4]} my={1} direction="row" wrap={"wrap"} width={["100%","100%","100%", "70%"]}>
       {products.map((product) => (

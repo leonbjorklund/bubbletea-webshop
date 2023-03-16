@@ -27,9 +27,9 @@ export function ProductsPage() {
     <Container maxWidth="container.xl" my=".3rem">
       <Tabs variant="unstyled" bg={"white"} my={5} width={["100%","100%","98%", "68.5%"]}>
         <TabList>
-          <Tab _selected={{ color: "white", bg: "blue.500" }}>MILK TEA</Tab>
+          <Tab _selected={{ color: "white", bg: "blue.500" }}>ALL TEAS</Tab>
           <Tab _selected={{ color: "white", bg: "red.400" }}>FRUIT TEA</Tab>
-          <Tab _selected={{ color: "white", bg: "green.400" }}>ALL TEAS</Tab>
+          <Tab _selected={{ color: "white", bg: "green.400" }}>MILK TEA</Tab>
         </TabList>
       </Tabs>
 
