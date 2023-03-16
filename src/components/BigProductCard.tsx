@@ -9,13 +9,14 @@ import {
   Heading,
   Icon,
   Image,
-  Text
+  Text, useBreakpointValue
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
 import { useNavigate } from "react-router-dom";
 import { Product, products } from "../../data";
 import { useCart } from "../CartContext";
+
 
 
 interface BigProductCardProps {
@@ -32,6 +33,8 @@ export function BigProductCard({
   const { addToCart, removeFromCart, cartList } = useCart();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
+  const closeButtonSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
+
 
   const handleClose = () => {
     setVisible(false);
@@ -54,7 +57,7 @@ export function BigProductCard({
           direction={["column", "column", "row"]}
           sx={cardStyle}
         >
-          <CloseButton sx={xButton} onClick={handleClose} />
+          <CloseButton sx={xButton} size={closeButtonSize} onClick={handleClose} />
           <Box sx={imageContainerStyle}>
             <Box sx={roundBG}>
               <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
