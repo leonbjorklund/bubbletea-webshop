@@ -22,7 +22,7 @@ export const products: Product[] = [
     id: "1",
     image: "/images/yellowboba.png",
     imageAlt: "boba",
-    title: "Brown sugar Fresh Milk",
+    title: "Brown sugar Milk",
     description: "Description of the drink!",
     price: 6.50,
     bgColor: "yellowCardCircle"
