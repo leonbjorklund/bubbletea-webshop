@@ -9,7 +9,7 @@ function ToastExample() {
             title: 'Added to cart!',
             description: "Go to cart to complete your order",
             status: 'success',
-            duration: 9000,
+            duration: 4000,
             isClosable: true,
           })
         }
