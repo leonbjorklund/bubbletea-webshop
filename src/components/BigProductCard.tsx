@@ -2,9 +2,7 @@ import {
   Box,
   Button,
   Card,
-  CardFooter,
-  CardHeader,
-  CloseButton,
+  CardFooter, CloseButton,
   Flex,
   Heading,
   Icon,
@@ -47,7 +45,6 @@ export function BigProductCard({
       justifyContent="center"
       height="calc(100vh-3rem)"
       width="100%"
-      
       position="fixed"
       top="3rem"
       left="0"
@@ -57,6 +54,8 @@ export function BigProductCard({
           align="center"
 
           direction={["column", "column", "row"]}
+          gap={3}
+          justifyContent={["center","center","space-between","space-between"]}
           sx={cardStyle}
         >
           <CloseButton sx={xButton} size={closeButtonSize} onClick={handleClose} />
@@ -70,12 +69,12 @@ export function BigProductCard({
               />
             </Box>
           </Box>
-          <Box>
-            <CardHeader sx={cardHeaderStyle}>
+          <Box display={"flex"} flexDirection="column" justifyContent={"center"}>
+            <Box sx={cardHeaderStyle}>
               <Heading sx={headingStyle}>{product.title}</Heading>
               <Heading sx={priceStyle}>${product.price}</Heading>
               <Text sx={textStyle}>{product.description}</Text>
-            </CardHeader>
+            </Box>
             <CardFooter sx={cardFooterStyle}>
               <Button
                 sx={buttonStyle}
@@ -102,8 +101,8 @@ export function BigProductCard({
 }
 
 const cardStyle = {
-  height: ["85vh", "85vh", "88vh", "88vh"],
-  width: ["17rem", "90%", "95%", "95%"],
+  height: ["88vh", "89vh", "90vh", "88vh"],
+  width: ["90%", "90%", "95%", "95%"],
   maxWidth:"container.xl",
   boxShadow: "3px 3px 3px gray",
   backgroundColor: "product.bgColor",
@@ -111,6 +110,7 @@ const cardStyle = {
   borderRadius: "1rem",
   bgGradient: "linear(green.100 30%, yellow.50 90%)",
   m: "1rem",
+  
 };
 
 const xButton = {
@@ -124,16 +124,19 @@ const xButton = {
 const headingStyle = {
   color: "darkBrownText",
   textAlign: ["center", "center", "left"],
-  fontSize: ["40px", "40px", "60px"],
+  fontSize: ["1.5rem", "2rem", "3rem","3.5rem"],
 };
 
 const cardHeaderStyle = {
-  mt: ["5rem", "-5rem", "-5rem"],
+  mt: ["-5rem", "-5rem", "-5rem"],
   m: ["0rem", "2rem"],
+  display:"flex",
+  flexDirection:"column",
+  justifyContent:"center",
 };
 
 const cardFooterStyle = {
-  mt: ["0", "3rem", "3rem"],
+  mt: ["0", "1rem", "3rem"],
   m: ["0rem", "1rem"],
   justifyContent: ["space-around", "space-around", "flex-start"],
 };
@@ -152,17 +155,17 @@ const textStyle = {
 
 const imageContainerStyle = {
   position: ["static", "static", "absolute"],
-  top: ["50%", "50%", "55%", "50%"], // Adjust the top position for mobile, tablet, and desktop
+  top: ["50%", "50%", "50%", "50%"], // Adjust the top position for mobile, tablet, and desktop
   left: ["50%", "60%", "75%", "75%"], // Center the image horizontally for all screen sizes
   transform: ["none", "none", "translate(-50%, -50%)"],
   alignSelf: ["center", "center", "none"],
-  mt: ["1rem", "1rem", "0"],
+  mt: ["1rem", "1rem", "1rem"],
 };
 
 const roundBG = {
   backgroundColor: "bigMatchaCard",
-  height: ["13rem", "13rem", "20rem", "25rem"],
-  width: ["13rem", "13rem", "20rem", "25rem"],
+  height: ["16rem", "18rem", "21rem", "26rem"],
+  aspectRatio: "1",
   borderRadius: "50%",
   mt: "1rem",
   position: "relative",
