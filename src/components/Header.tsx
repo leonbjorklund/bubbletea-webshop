@@ -1,4 +1,5 @@
-import { Container, Flex, HStack, Icon, Image, Link as ChakraLink, Spacer, SystemStyleObject, theme } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { Container, Flex, HStack, Icon, IconButton, Image, Link as ChakraLink, Spacer, SystemStyleObject, theme } from "@chakra-ui/react";
 import { IoMdCart } from "react-icons/io";
 import { RiAdminFill } from "react-icons/ri";
 import { Link as RouterLink } from "react-router-dom";
@@ -11,6 +12,14 @@ export function Header() {
   return (
     <Container as="header" sx={containerStyle}>
       <Flex as="nav" sx={flexStyle}>
+      <IconButton
+          aria-label="Hamburger menu"
+          icon={<HamburgerIcon />}
+          variant="ghost"
+          size="lg"
+          display={{ base: "block", md: "none" }}
+          mr={2}
+        />
         <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
         <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
         <Spacer />
@@ -29,7 +38,7 @@ export function Header() {
 const containerStyle: SystemStyleObject = {
   maxWidth: "100%",
   backgroundColor: theme.colors.pink,
-  color:"darkBrownText"
+  color:"lightBrownText"
 }
 
 const flexStyle: SystemStyleObject = {
