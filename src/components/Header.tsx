@@ -24,7 +24,7 @@ export function Header() {
         <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
         <Spacer />
 
-        <HStack spacing="20px" whiteSpace="nowrap">
+        <HStack spacing="20px" whiteSpace="nowrap" display={{ base: "none", md: "flex" }}>
           <ChakraLink as={RouterLink} to="/">Home</ChakraLink>
           <ChakraLink as={RouterLink} to="/products">Products</ChakraLink>
           <ChakraLink as={RouterLink} to="/admin"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={RiAdminFill}/></ChakraLink>
