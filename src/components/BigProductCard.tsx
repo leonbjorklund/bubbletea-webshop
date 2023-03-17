@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
 import { useNavigate } from "react-router-dom";
-import { Product, products } from "../../data";
+import { Product } from "../../data";
 import { useCart } from "../CartContext";
 
 
@@ -78,17 +78,17 @@ export function BigProductCard({
             <CardFooter sx={cardFooterStyle}>
               <Button
                 sx={buttonStyle}
-                onClick={() => removeFromCart(products[0].id)}
+                onClick={() => removeFromCart(product.id)}
               >
                 -
               </Button>
               <Text>{cartList.find((item) => item.id === product.id)?.quantity || 0}</Text>
-              <Button sx={buttonStyle} onClick={() => addToCart(products[0])}>
+              <Button sx={buttonStyle} onClick={() => addToCart(product)}>
                 +
               </Button>
               <Button
                 sx={addButtonStyle}
-                onClick={() => addToCart(products[0])}
+                onClick={() => addToCart(product)}
               >
                 <Icon sx={iconStyle} as={BsCartPlus} />
               </Button>
