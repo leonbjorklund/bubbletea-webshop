@@ -14,6 +14,7 @@ export function ProductsPage() {
         bg={"white"}
         my={5}
         width={["100%", "100%", "98%", "63.5%"]}
+        isFitted
       >
         <TabList>
           <Tab borderRadius=".6rem" _selected={{ color: "white", bg: "blue.500" }}>ALL TEAS</Tab>
