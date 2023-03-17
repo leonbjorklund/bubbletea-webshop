@@ -110,7 +110,7 @@ const cardStyle = {
   borderRadius: "1rem",
   bgGradient: "linear(green.100 30%, yellow.50 90%)",
   m: "1rem",
-  
+
 };
 
 const xButton = {

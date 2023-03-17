@@ -9,6 +9,11 @@ interface SmallProductCardProps {
 export function SmallProductCard({ product }: SmallProductCardProps) {
   const { addToCart } = useCart();
 
+  const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    addToCart(product);
+  };
+
   const roundBG = {
     backgroundColor: product.bgColor,
     height: "auto",
@@ -29,8 +34,8 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
       <Text as="h6" sx={headerStyle}>
         {product.title}
       </Text>
-      <Text sx={textStyle}>{product.price}</Text>
-      <Button sx={buttonStyle}>Add to cart </Button>
+      <Text sx={textStyle}>${product.price}</Text>
+      <Button sx={buttonStyle} onClick={handleAddToCartClick}>Add to cart </Button>
     </Card>
   );
 }
