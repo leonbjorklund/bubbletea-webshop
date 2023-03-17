@@ -82,7 +82,7 @@ export function BigProductCard({
               >
                 -
               </Button>
-              <Text>{cartList.length}</Text>
+              <Text>{cartList.find((item) => item.id === product.id)?.quantity || 0}</Text>
               <Button sx={buttonStyle} onClick={() => addToCart(products[0])}>
                 +
               </Button>
