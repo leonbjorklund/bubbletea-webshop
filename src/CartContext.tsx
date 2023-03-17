@@ -1,6 +1,6 @@
 import { Toast } from "@chakra-ui/react";
 import { createContext, useContext, useEffect, useState } from "react";
-import { Product } from "../../data";
+import { Product } from "../data";
 
 interface CartContextValue {
   cartList: Product[];
