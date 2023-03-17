@@ -19,7 +19,7 @@ const product = products.find((p) => p.id === params.id);
   return (
     <Container maxWidth="container.xl" my=".3rem">
       <BigProductCard
-        product={products[0]}
+        product={product}
         backgroundAlt="boba"
         backgroundUrl="/images/fancyBackground.png"
       />
