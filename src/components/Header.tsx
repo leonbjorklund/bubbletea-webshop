@@ -28,8 +28,8 @@ export function Header() {
           <ChakraLink as={RouterLink} to="/">Home</ChakraLink>
           <ChakraLink as={RouterLink} to="/products">Products</ChakraLink>
           <ChakraLink as={RouterLink} to="/admin"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={RiAdminFill}/></ChakraLink>
-          <ChakraLink as={RouterLink} to="/checkout"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
         </HStack>
+        <ChakraLink as={RouterLink} to="/checkout"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
       </Flex>
     </Container>
   )
@@ -52,4 +52,5 @@ const logo: SystemStyleObject = {
 
 const logoText: SystemStyleObject = {
   width: "10rem",
+  ml: "1rem"
 }
