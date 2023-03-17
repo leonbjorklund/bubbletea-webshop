@@ -33,13 +33,26 @@ export function CartProvider({ children }: Props) {
   }, [cartList]);
 
   const toast = useToast();
-  const toastId = 'addToCartToast';
 
   const addToCart = (item: Product) => {
     setCartList((prevCartList) => {
       const existingCartItem = prevCartList.find(
         (cartItem) => cartItem.id === item.id
       );
+
+     // Generate a new toast ID using the current timestamp
+     const newToastId = `addToCartToast-${Date.now()}`;
+
+     // Display the toast
+     toast({
+       id: newToastId,
+       title: "Added to cart!",
+       description: "Go to cart to complete your order",
+       status: "success",
+       duration: 4000,
+       isClosable: true,
+     });
+
       if (existingCartItem) {
         return prevCartList.map((cartItem) =>
           cartItem.id === item.id
@@ -47,17 +60,6 @@ export function CartProvider({ children }: Props) {
             : cartItem
         );
       } else {
-        if(!toast.isActive(toastId)){
-          toast({
-          id: toastId,
-          title: "Added to cart!",
-          description: "Go to cart to complete your order",
-          status: "success",
-          duration: 4000,
-          isClosable: true,
-        });
-      }
-
         return [...prevCartList, { ...item, quantity: 1 }];
       }
     });
