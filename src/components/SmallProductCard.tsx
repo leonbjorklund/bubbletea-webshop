@@ -11,6 +11,7 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
 
   const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+
     addToCart(product);
   };
 

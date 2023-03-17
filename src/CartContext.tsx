@@ -1,91 +1,72 @@
-import { useToast } from "@chakra-ui/react";
+import { Toast } from "@chakra-ui/react";
 import { createContext, useContext, useEffect, useState } from "react";
-import { CartItem, Product } from "../data";
+import { Product } from "../../data";
 
-type CartContextType = {
-  cartList: CartItem[];
+interface CartContextValue {
+  cartList: Product[];
   addToCart: (item: Product) => void;
-  removeFromCart: (itemId: string) => void;
-};
-
-const CartContext = createContext<CartContextType>({
-  cartList: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
-});
-
-export function useCart() {
-  return useContext(CartContext);
+  removeFromCart: (id: number) => void;
 }
 
-type Props = {
-  children: React.ReactNode;
-};
+const CartContext = createContext<CartContextValue | undefined>(undefined);
 
-export function CartProvider({ children }: Props) {
-  const [cartList, setCartList] = useState<CartItem[]>(() => {
-    const storedCartList = localStorage.getItem("cartList");
-    return storedCartList ? JSON.parse(storedCartList) : [];
-  });
+export const CartProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [cartList, setCartList] = useState<Product[]>([]);
+  const [toastId, setToastId] = useState<string | null>(null);
 
   useEffect(() => {
-    localStorage.setItem("cartList", JSON.stringify(cartList));
-  }, [cartList]);
-
-  const toast = useToast();
+    if (toastId) {
+      Toast({
+        id: toastId,
+        title: "Added to cart!",
+        description: "Go to cart to complete your order",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+  }, [toastId]);
 
   const addToCart = (item: Product) => {
     setCartList((prevCartList) => {
       const existingCartItem = prevCartList.find(
         (cartItem) => cartItem.id === item.id
       );
-  
-      // Generate a new toast ID
-      const newToastId = `addToCartToast-${Date.now()}`;
-  
-      toast({
-        id: newToastId,
-        title: "Added to cart!",
-        description: "Go to cart to complete your order",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
-        onCloseComplete: () => {
-          toast.close(newToastId);
-        },
-      });
-  
+
       if (existingCartItem) {
-        return prevCartList.map((cartItem) =>
+        const updatedCartList = prevCartList.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
+
+        setToastId(`addToCartToast-${Date.now()}`);
+        return updatedCartList;
       } else {
+        setToastId(`addToCartToast-${Date.now()}`);
         return [...prevCartList, { ...item, quantity: 1 }];
       }
     });
   };
-  
 
-  const removeFromCart = (itemId: string) => {
+  const removeFromCart = (id: number) => {
     setCartList((prevCartList) => {
-      const itemIndex = prevCartList.findIndex(
-        (cartItem) => cartItem.id === itemId
+      const existingCartItem = prevCartList.find(
+        (cartItem) => cartItem.id === id
       );
-      if (itemIndex >= 0) {
-        if (prevCartList[itemIndex].quantity > 1) {
-          const updatedCartList = [...prevCartList];
-          updatedCartList[itemIndex] = {
-            ...updatedCartList[itemIndex],
-            quantity: updatedCartList[itemIndex].quantity - 1,
-          };
-          return updatedCartList;
-        } else {
-          return prevCartList.filter((cartItem) => cartItem.id !== itemId);
-        }
+
+      if (existingCartItem && existingCartItem.quantity > 1) {
+        return prevCartList.map((cartItem) =>
+          cartItem.id === id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        );
       } else {
-        return prevCartList;
+        return prevCartList.filter((cartItem) => cartItem.id !== id);
       }
     });
   };
@@ -95,4 +76,12 @@ export function CartProvider({ children }: Props) {
       {children}
     </CartContext.Provider>
   );
+};
+
+export function useCart() {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+  return context;
 }
