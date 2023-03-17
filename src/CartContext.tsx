@@ -1,51 +1,45 @@
 import { useToast } from "@chakra-ui/react";
-import { createContext, ReactNode, useContext, useState } from "react";
-import { Product } from "../data";
+import { createContext, useContext, useEffect, useState } from "react";
+import { CartItem, Product } from "../data";
 
-interface CartItem extends Product {
-  quantity: number;
-}
-
-interface CartContextData {
+type CartContextType = {
   cartList: CartItem[];
   addToCart: (item: Product) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (itemId: string) => void;
+};
+
+const CartContext = createContext<CartContextType>({
+  cartList: [],
+  addToCart: () => {},
+  removeFromCart: () => {},
+});
+
+export function useCart() {
+  return useContext(CartContext);
 }
 
-const CartContext = createContext<CartContextData>({} as CartContextData);
+type Props = {
+  children: React.ReactNode;
+};
 
-interface CartProviderProps {
-  children: ReactNode;
-}
+export function CartProvider({ children }: Props) {
+  const [cartList, setCartList] = useState<CartItem[]>(() => {
+    const storedCartList = localStorage.getItem("cartList");
+    return storedCartList ? JSON.parse(storedCartList) : [];
+  });
 
-export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cartList, setCartList] = useState<CartItem[]>([]);
+  useEffect(() => {
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+  }, [cartList]);
+
   const toast = useToast();
-  const [toastId, setToastId] = useState<string | number>(0);
+  const toastId = 'addToCartToast';
 
   const addToCart = (item: Product) => {
-    if (toast.isActive(toastId)) {
-      toast.close(toastId);
-    }
-
-    const newToastId = `addToCartToast-${Date.now()}`;
-
-    toast({
-      id: newToastId,
-      title: "Added to cart!",
-      description: "Go to cart to complete your order",
-      status: "success",
-      duration: 4000,
-      isClosable: true,
-    });
-
-    setToastId(newToastId);
-
     setCartList((prevCartList) => {
       const existingCartItem = prevCartList.find(
         (cartItem) => cartItem.id === item.id
       );
-
       if (existingCartItem) {
         return prevCartList.map((cartItem) =>
           cartItem.id === item.id
@@ -53,23 +47,40 @@ export const CartProvider = ({ children }: CartProviderProps) => {
             : cartItem
         );
       } else {
+        if(!toast.isActive(toastId)){
+          toast({
+          id: toastId,
+          title: "Added to cart!",
+          description: "Go to cart to complete your order",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+        });
+      }
+
         return [...prevCartList, { ...item, quantity: 1 }];
       }
     });
   };
 
-  const removeFromCart = (id: number) => {
+  const removeFromCart = (itemId: string) => {
     setCartList((prevCartList) => {
-      const existingCartItem = prevCartList.find((cartItem) => cartItem.id === id);
-
-      if (existingCartItem && existingCartItem.quantity > 1) {
-        return prevCartList.map((cartItem) =>
-          cartItem.id === id
-            ? { ...cartItem, quantity: cartItem.quantity - 1 }
-            : cartItem
-        );
+      const itemIndex = prevCartList.findIndex(
+        (cartItem) => cartItem.id === itemId
+      );
+      if (itemIndex >= 0) {
+        if (prevCartList[itemIndex].quantity > 1) {
+          const updatedCartList = [...prevCartList];
+          updatedCartList[itemIndex] = {
+            ...updatedCartList[itemIndex],
+            quantity: updatedCartList[itemIndex].quantity - 1,
+          };
+          return updatedCartList;
+        } else {
+          return prevCartList.filter((cartItem) => cartItem.id !== itemId);
+        }
       } else {
-        return prevCartList.filter((cartItem) => cartItem.id !== id);
+        return prevCartList;
       }
     });
   };
@@ -79,14 +90,4 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       {children}
     </CartContext.Provider>
   );
-};
-
-export function useCart(): CartContextData {
-  const context = useContext(CartContext);
-
-  if (!context) {
-    throw new Error("useCart must be used within a CartProvider");
-  }
-
-  return context;
 }
