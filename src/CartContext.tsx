@@ -40,10 +40,9 @@ export function CartProvider({ children }: Props) {
         (cartItem) => cartItem.id === item.id
       );
   
-      // Generate a new toast ID using the current timestamp
+      // Generate a new toast ID
       const newToastId = `addToCartToast-${Date.now()}`;
   
-      // Display the toast
       toast({
         id: newToastId,
         title: "Added to cart!",
@@ -52,7 +51,6 @@ export function CartProvider({ children }: Props) {
         duration: 4000,
         isClosable: true,
         onCloseComplete: () => {
-          // Remove the toast when it's closed
           toast.close(newToastId);
         },
       });
