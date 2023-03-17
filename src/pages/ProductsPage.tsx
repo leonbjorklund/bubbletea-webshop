@@ -1,4 +1,4 @@
-import { Container, Grid, GridItem, Heading, useMediaQuery } from "@chakra-ui/react";
+import { Box, Container, Flex, Tab, TabList, Tabs } from "@chakra-ui/react";
 import { useCart } from "../CartContext";
 import { CartCard } from "../components/CartCard";
 import { ProductsLayout } from "../layout/ProductsLayout";
@@ -6,7 +6,6 @@ import { ProductsLayout } from "../layout/ProductsLayout";
 export function ProductsPage() {
 
   const { addToCart } = useCart();
-  const [isSmallerThan1042] = useMediaQuery('(max-width: 1156px)');
 
 
   return (
@@ -25,25 +24,24 @@ export function ProductsPage() {
     //     </Card>
     //   ))}
 
-    <Container maxWidth="container.xl" my="30px">
-      <Heading>This is product page!</Heading>
-      <Grid
-      mx="auto"
-      maxW="container.xl"
-      templateColumns="3fr 1fr"
-      my="30px"
-      columnGap="20px"
-      px={isSmallerThan1042 ? "20px" : "20px"} // set px to 35px when screen width is less than 1042px, otherwise set it to 20px
+    <Container maxWidth="container.xl" my=".3rem">
+      <Tabs variant="unstyled" bg={"white"} my={5} width={["100%","100%","98%", "68.5%"]}>
+        <TabList>
+          <Tab _selected={{ color: "white", bg: "blue.500" }}>ALL TEAS</Tab>
+          <Tab _selected={{ color: "white", bg: "red.400" }}>FRUIT TEA</Tab>
+          <Tab _selected={{ color: "white", bg: "green.400" }}>MILK TEA</Tab>
+        </TabList>
+      </Tabs>
+      <Flex
+        direction={["column", "column", "column", "row"]}
+        justify={["center", "center", "center", "space-between"]}
+        gap={1}
       >
-        <GridItem>
-          <ProductsLayout />
-        </GridItem>
-
-        <GridItem as="aside">
+        <ProductsLayout />
+        <Box as="aside"  width={["100%", "100%","100%","40%",]}>
           <CartCard />
-        </GridItem>
-
-      </Grid>
+        </Box>
+      </Flex>
     </Container>
   );
 }

@@ -1,51 +1,36 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Image,
-  Text
-} from "@chakra-ui/react";
+import { Box, Button, Card, Image, Text } from "@chakra-ui/react";
+import { Product } from "../../data";
 import { useCart } from "../CartContext";
 
 interface SmallProductCardProps {
-  bgColor?: string;
-  imageUrl?: string;
-  imageAlt?: string;
+  product: Product;
 }
 
-export function SmallProductCard({
-  bgColor = "pink",
-  imageUrl,
-  imageAlt,
-}: SmallProductCardProps) {
+export function SmallProductCard({ product }: SmallProductCardProps) {
   const { addToCart } = useCart();
 
   const roundBG = {
-    backgroundColor: bgColor,
-    height: "13rem",
-    width: "13rem",
+    backgroundColor: product.bgColor,
+    height: "auto",
+    width: "90%",
+    aspectRatio: "1",
     borderRadius: "50%",
-    mt: "1rem",
+    mt: ["5%"],
+    mb: [".3rem", ".5rem", "0rem", "1rem"],
     position: "relative",
-    boxShadow: "1px 5px 5px gray"
+    boxShadow: "1px 5px 5px gray",
   };
 
   return (
     <Card align="center" sx={cardStyle}>
       <Box sx={roundBG}>
-        <Image sx={imageStyle} src={imageUrl} alt={imageAlt} />
+        <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
-      <CardHeader>
-        <Text sx={headerStyle}>Matcha Latte</Text>
-      </CardHeader>
-      <Text sx={textStyle}>$6.50</Text>
-      <CardBody></CardBody>
-      <CardFooter>
-        <Button sx={buttonStyle}>Add to cart </Button>
-      </CardFooter>
+      <Text as="h6" sx={headerStyle}>
+        {product.title}
+      </Text>
+      <Text sx={textStyle}>{product.price}</Text>
+      <Button sx={buttonStyle}>Add to cart </Button>
     </Card>
   );
 }
@@ -54,21 +39,26 @@ const cardStyle = {
   backgroundColor: "lightYellow",
   boxShadow: "3px 3px 5px gray",
   height: "100%",
+  display: "Flex",
+  justifyContent: "space-between",
   width: "100%",
 };
 
 const headerStyle = {
+  textAlign: "center",
   color: "darkBrownText",
-  fontSize: "l",
+  margin: ".5rem",
+  fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
 const textStyle = {
+  textAlign: "center",
   color: "lightBrownText",
-  fontSize: "l",
-  mb: "-3rem",
+  fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
 const buttonStyle = {
+  margin: "5%",
   backgroundColor: "pinkCardButton",
   color: "lightBrownText",
   _hover: {
