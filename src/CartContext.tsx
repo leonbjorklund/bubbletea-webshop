@@ -33,34 +33,36 @@ export function CartProvider({ children }: Props) {
   }, [cartList]);
 
   const toast = useToast();
-  const toastId = 'addToCartToast';
 
   const addToCart = (item: Product) => {
-    setCartList((prevCartList) => {
-      const existingCartItem = prevCartList.find(
-        (cartItem) => cartItem.id === item.id
-      );
-      if (existingCartItem) {
-        return prevCartList.map((cartItem) =>
+    const existingCartItem = cartList.find(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (existingCartItem) {
+      setCartList((prevCartList) =>
+        prevCartList.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
-        );
-      } else {
-        if(!toast.isActive(toastId)){
-          toast({
-          id: toastId,
-          title: "Added to cart!",
-          description: "Go to cart to complete your order",
-          status: "success",
-          duration: 4000,
-          isClosable: true,
-        });
-      }
-
-        return [...prevCartList, { ...item, quantity: 1 }];
-      }
-    });
+        )
+      );
+      toast({
+        title: "Increased item quantity!",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+    } else {
+      setCartList([...cartList, { ...item, quantity: 1 }]);
+      toast({
+        title: "Added to cart!",
+        description: "Go to cart to complete your order",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
   };
 
   const removeFromCart = (itemId: string) => {
