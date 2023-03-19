@@ -26,10 +26,10 @@ export function TimeForTeaCard() {
           w={["100%", "100%", "50%"]}
         >
           <Box maxW={"22rem"} marginLeft={[0, 0, 4, 7]}>
-            <Heading fontSize={["2rem", "2.5rem", "3rem"]} mb={[1, 2]}>
+            <Heading fontSize={["2rem", "2.5rem", "3rem"]} mb={[1, 2]} color={"darkBrownText"}>
               Time for tea
             </Heading>
-            <Text>
+            <Text color={"darkBrownText"} >
               Time for tea - weird placeholder text about tea. This talks about
               tea on and on, I am sad but tea makes me happy. Happy happy happy.
             </Text>
