@@ -26,21 +26,25 @@ export function TimeForTeaCard() {
           w={["100%", "100%", "50%"]}
         >
           <Box maxW={"22rem"} marginLeft={[0, 0, 4, 7]}>
-            <Heading fontSize={["2rem", "2.5rem", "3rem"]} mb={[1, 2]} color={"darkBrownText"}>
+            <Heading
+              fontSize={["2rem", "2.5rem", "3rem"]}
+              mb={[1, 2]}
+              color={"darkBrownText"}
+            >
               Time for tea
             </Heading>
-            <Text color={"darkBrownText"} >
+            <Text color={"darkBrownText"}>
               Time for tea - weird placeholder text about tea. This talks about
               tea on and on, I am sad but tea makes me happy. Happy happy happy.
             </Text>
             <Button
-            color={"white"}
-            fontSize={[13,13,14]}
+              color={"white"}
+              fontSize={[13, 13, 14]}
               backgroundColor={"darkPinkButton"}
               mt={[2, 2, 3]}
               ml={[0, 0, -1]}
               _hover={{ backgroundColor: "#c27b7b" }}
-              _active={{transform: "scale(0.96)"}}
+              _active={{ transform: "scale(0.96)" }}
             >
               See all drinks!
             </Button>
