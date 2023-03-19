@@ -32,13 +32,12 @@ export function Header() {
         <Spacer />
         
         {/* HYPERLINKS */}
-        <HStack spacing="20px" whiteSpace="nowrap" display={{ base: "none", md: "flex" }}>
-          <ChakraLink as={RouterLink} to="/">Home</ChakraLink>
-          <ChakraLink as={RouterLink} to="/products">Products</ChakraLink>
-          <ChakraLink as={RouterLink} to="/admin"><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={RiAdminFill}/></ChakraLink>
+        <HStack spacing="2rem" whiteSpace="nowrap" display={{ base: "none", md: "flex" }}>
+          <ChakraLink as={RouterLink} to="/" sx={linkStyles}>Home</ChakraLink>
+          <ChakraLink as={RouterLink} to="/products" sx={linkStyles}>Products</ChakraLink>
+          <ChakraLink as={RouterLink} to="/admin" ><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={RiAdminFill}/></ChakraLink>
         </HStack>
-        <ChakraLink as={RouterLink} to="/checkout" sx={{ display: "flex", alignItems: "center" }}><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
-
+        <ChakraLink as={RouterLink} to="/checkout" sx={{ linkStyles, display: "flex", alignItems: "center", ml: "1rem"}}><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
 
          {/* HAMBURGER MENU */}
         <IconButton
@@ -72,6 +71,12 @@ const containerStyle: SystemStyleObject = {
   maxWidth: "100%",
   backgroundColor: theme.colors.pink,
   color:"lightBrownText",
+}
+
+const linkStyles: SystemStyleObject = {
+  _hover: {
+    fontWeight: "bold",
+  },
 }
 
 const flexStyle: SystemStyleObject = {
