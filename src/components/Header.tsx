@@ -26,8 +26,22 @@ export function Header() {
   return (
     <Container as="header" sx={containerStyle}>
       <Flex as="nav" sx={flexStyle}>
+         {/* LOGO */}
+        <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
+        <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
+        <Spacer />
+        
+        {/* HYPERLINKS */}
+        <HStack spacing="20px" whiteSpace="nowrap" display={{ base: "none", md: "flex" }}>
+          <ChakraLink as={RouterLink} to="/">Home</ChakraLink>
+          <ChakraLink as={RouterLink} to="/products">Products</ChakraLink>
+          <ChakraLink as={RouterLink} to="/admin"><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={RiAdminFill}/></ChakraLink>
+        </HStack>
+        <ChakraLink as={RouterLink} to="/checkout" sx={{ display: "flex", alignItems: "center" }}><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
 
-      <IconButton
+
+         {/* HAMBURGER MENU */}
+        <IconButton
         aria-label="Hamburger menu"
         variant="ghost"
         icon={<HamburgerIcon />}
@@ -35,27 +49,17 @@ export function Header() {
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
       />
-
-        <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
-        <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
-        <Spacer />
-
-        <HStack spacing="20px" whiteSpace="nowrap" display={{ base: "none", md: "flex" }}>
-          <ChakraLink as={RouterLink} to="/">Home</ChakraLink>
-          <ChakraLink as={RouterLink} to="/products">Products</ChakraLink>
-          <ChakraLink as={RouterLink} to="/admin"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={RiAdminFill}/></ChakraLink>
-        </HStack>
-        <ChakraLink as={RouterLink} to="/checkout"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
       </Flex>
-
-      <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
+      
+      {/* HAMBURGER MENU DRAWER */}
+      <Drawer placement="top" onClose={onClose} isOpen={isOpen} >
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent sx={hamburgerMenuStyling}>
           <DrawerCloseButton />
           <Box py="4">
           <ChakraLink as={RouterLink} to="/" display="block" mx="4" my="2" >Home</ChakraLink>
           <ChakraLink as={RouterLink} to="/products" display="block" mx="4" my="2" >Products</ChakraLink>
-          <ChakraLink as={RouterLink} to="/admin" display="block" mx="4" my="2" ><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={RiAdminFill}/></ChakraLink>
+          <ChakraLink as={RouterLink} to="/admin" display="block" mx="4" my="2" >Admin</ChakraLink>
           </Box>
         </DrawerContent>
       </Drawer>
@@ -67,12 +71,13 @@ export function Header() {
 const containerStyle: SystemStyleObject = {
   maxWidth: "100%",
   backgroundColor: theme.colors.pink,
-  color:"lightBrownText"
+  color:"lightBrownText",
 }
 
 const flexStyle: SystemStyleObject = {
   p: "10px",
-  alignItems: "center"
+  alignItems: "center",
+  justifyContent: "center"
 }
 
 const logo: SystemStyleObject = {
@@ -82,4 +87,9 @@ const logo: SystemStyleObject = {
 const logoText: SystemStyleObject = {
   width: "10rem",
   ml: "1rem"
+}
+
+const hamburgerMenuStyling: SystemStyleObject = {
+  color: "lightBrownText",
+  backgroundColor: "pink",
 }
