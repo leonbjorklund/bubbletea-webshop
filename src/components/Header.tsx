@@ -1,5 +1,6 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { Container, Flex, HStack, Icon, IconButton, Image, Link as ChakraLink, Spacer, SystemStyleObject, theme } from "@chakra-ui/react";
+import { Box, Container, Drawer, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, HStack, Icon, IconButton, Image, Link as ChakraLink, Spacer, SystemStyleObject, theme, useDisclosure } from "@chakra-ui/react";
+import { useState } from "react";
 import { IoMdCart } from "react-icons/io";
 import { RiAdminFill } from "react-icons/ri";
 import { Link as RouterLink } from "react-router-dom";
@@ -7,19 +8,34 @@ import { useCart } from "../CartContext";
 
 export function Header() {
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setIsMobileView(true);
+    } else {
+      setIsMobileView(false);
+    }
+  };
+
+  window.addEventListener("resize", handleResize);
+
   const { cartList } = useCart();
 
   return (
     <Container as="header" sx={containerStyle}>
       <Flex as="nav" sx={flexStyle}>
+
       <IconButton
-          aria-label="Hamburger menu"
-          icon={<HamburgerIcon />}
-          variant="ghost"
-          size="lg"
-          display={{ base: "block", md: "none" }}
-          mr={2}
-        />
+        aria-label="Hamburger menu"
+        variant="ghost"
+        icon={<HamburgerIcon />}
+        size="lg"
+        display={{ base: "flex", md: "none" }}
+        onClick={onOpen}
+      />
+
         <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
         <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
         <Spacer />
@@ -31,7 +47,20 @@ export function Header() {
         </HStack>
         <ChakraLink as={RouterLink} to="/checkout"><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
       </Flex>
+
+      <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <Box py="4">
+          <ChakraLink as={RouterLink} to="/" display="block" mx="4" my="2" >Home</ChakraLink>
+          <ChakraLink as={RouterLink} to="/products" display="block" mx="4" my="2" >Products</ChakraLink>
+          <ChakraLink as={RouterLink} to="/admin" display="block" mx="4" my="2" ><Icon verticalAlign="sub" width="1.5em" height="1.5em" as={RiAdminFill}/></ChakraLink>
+          </Box>
+        </DrawerContent>
+      </Drawer>
     </Container>
+    
   )
 }
 
