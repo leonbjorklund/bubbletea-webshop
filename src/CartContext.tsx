@@ -6,12 +6,14 @@ type CartContextType = {
   cartList: CartItem[];
   addToCart: (item: Product) => void;
   removeFromCart: (itemId: string) => void;
+  totalItems: number;
 };
 
 const CartContext = createContext<CartContextType>({
   cartList: [],
   addToCart: () => {},
   removeFromCart: () => {},
+  totalItems: 0,
 });
 
 export function useCart() {
@@ -22,14 +24,21 @@ type Props = {
   children: React.ReactNode;
 };
 
+function calculateTotalItems(cartList: CartItem[]) {
+  return cartList.reduce((total, item) => total + item.quantity, 0);
+}
+
 export function CartProvider({ children }: Props) {
   const [cartList, setCartList] = useState<CartItem[]>(() => {
     const storedCartList = localStorage.getItem("cartList");
     return storedCartList ? JSON.parse(storedCartList) : [];
   });
 
+  const [totalItems, setTotalItems] = useState(() => calculateTotalItems(cartList));
+
   useEffect(() => {
     localStorage.setItem("cartList", JSON.stringify(cartList));
+    setTotalItems(calculateTotalItems(cartList));
   }, [cartList]);
 
   const toast = useToast();
@@ -88,7 +97,7 @@ export function CartProvider({ children }: Props) {
   };
 
   return (
-    <CartContext.Provider value={{ cartList, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cartList, addToCart, removeFromCart, totalItems }}>
       {children}
     </CartContext.Provider>
   );
