@@ -1,4 +1,5 @@
 import { Card, CardBody, CardFooter, CardHeader, Flex, Heading, SystemStyleObject } from "@chakra-ui/react";
+import { AdminForm } from "./AdminForm";
 
 export function AdminCard() {
     return(
@@ -8,6 +9,7 @@ export function AdminCard() {
             <Heading size="md">Add Product</Heading>
           </CardHeader>
           <CardBody width="100%" p="0">
+            <AdminForm></AdminForm>
           </CardBody>
           <CardFooter sx={cardFooterStyle}>
           </CardFooter>

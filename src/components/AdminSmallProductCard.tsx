@@ -1,4 +1,4 @@
-import { Box, Button, Card, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Card, Flex, Image, Text } from "@chakra-ui/react";
 
 interface WTF {
   image: string;
@@ -20,15 +20,18 @@ export function AdminSmallProductCard({ image, imageAlt }: WTF) {
   };
 
   return (
-    <Card data-cy="product" align="center" sx={cardStyle}>
+    <Card align="center" sx={cardStyle}>
       <Box sx={roundBG}>
           <Image sx={imageStyle} src={image} alt={imageAlt} />
       </Box>
       <Text sx={headerStyle}>
-        TITLE
+        Title
       </Text>
-      <Text sx={textStyle}>PRICE</Text>
+      <Text sx={textStyle}>Price</Text>
+      <Flex>
       <Button sx={buttonStyle}>Edit </Button>
+      <Button sx={deleteButtonStyle}>Delete</Button>
+      </Flex>
     </Card>
   );
 }
@@ -65,6 +68,16 @@ const textStyle = {
 const buttonStyle = {
   margin: "5%",
   backgroundColor: "pinkCardButton",
+  color: "lightBrownText",
+  _hover: {
+    backgroundColor: "darkPinkButton",
+    color: "white",
+  },
+};
+
+const deleteButtonStyle = {
+  margin: "5%",
+  backgroundColor: "#eb3f3f",
   color: "lightBrownText",
   _hover: {
     backgroundColor: "darkPinkButton",

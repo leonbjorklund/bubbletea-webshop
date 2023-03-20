@@ -46,7 +46,7 @@ export function AdminForm() {
         category: Yup.string()
         .oneOf(["milk", "fruit"], "Category must be either 'milk' or 'fruit'")
         .required("Required")
-    })
+    }),
     onSubmit: (values, actions) => {
       console.log("Form submitted with values:", values);
       alert(JSON.stringify(values, null));
@@ -117,15 +117,52 @@ export function AdminForm() {
         id="description"
         name="description"
         type="text"
-        placeholder="Image Alt"
+        placeholder="description"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
          value={formik.values.description}
         />
         {formik.touched.description && formik.errors.description ? <Text sx={requiredText}>{formik.errors.description}</Text> : null}
       </FormControl>
-
-
+      <FormControl>
+        <FormLabel>Price</FormLabel>
+        <Input
+        id="price"
+        name="price"
+        type="text"
+        placeholder="price"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+         value={formik.values.price}
+        />
+        {formik.touched.price && formik.errors.price ? <Text sx={requiredText}>{formik.errors.price}</Text> : null}
+      </FormControl>
+      <FormControl>
+        <FormLabel>BackgroundColor</FormLabel>
+        <Input
+        id="bgColor"
+        name="bgColor"
+        type="text"
+        placeholder="backgroundcolor"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+         value={formik.values.bgColor}
+        />
+        {formik.touched.bgColor && formik.errors.bgColor ? <Text sx={requiredText}>{formik.errors.bgColor}</Text> : null}
+      </FormControl>
+      <FormControl>
+        <FormLabel>Category</FormLabel>
+        <Input
+        id="category"
+        name="category"
+        type="text"
+        placeholder="backgroundcolor"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+         value={formik.values.category}
+        />
+        {formik.touched.category && formik.errors.category ? <Text sx={requiredText}>{formik.errors.category}</Text> : null}
+      </FormControl>
       <Button type="submit">Submit</Button>
     </form>
   )
