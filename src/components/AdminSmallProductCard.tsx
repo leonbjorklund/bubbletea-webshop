@@ -109,8 +109,8 @@ const textStyle = {
 
 const buttonStyle = {
   margin: "5%",
-  backgroundColor: "pinkCardButton",
-  color: "lightBrownText",
+  backgroundColor: "#f5c945",
+  color: "white",
   _hover: {
     backgroundColor: "darkPinkButton",
     color: "white",
