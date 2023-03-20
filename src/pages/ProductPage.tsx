@@ -4,11 +4,9 @@ import { products } from "../../data";
 import { BigProductCard } from "../components/BigProductCard";
 
 export function ProductPage() {
+
   const params = useParams();
-  console.log(params.id);
-
-const product = products.find((p) => p.id === params.id);
-
+  const product = products.find((p) => p.id === params.id);
 
   if (!product) {
     return <p>Produkten hittades inte...</p>;

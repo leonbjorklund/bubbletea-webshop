@@ -1,107 +1,78 @@
-import { Button, FormControl, FormLabel, Input, SystemStyleObject, Text } from "@chakra-ui/react";
-import { useFormik } from "formik";
+import { Button } from "@chakra-ui/button";
+import { Heading } from "@chakra-ui/layout";
+import { Formik } from "formik";
 import * as Yup from "yup";
+import { TextField } from "./TextField";
+
+import { Flex, FormLabel, SystemStyleObject } from "@chakra-ui/react";
 
 export function CheckoutForm() {
 
-  const formik = useFormik({
-    initialValues: {
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      address: "",
-    },
-    validationSchema: Yup.object({
-      fullName: Yup.string()
-      .max(15, "Must be 15 characters or less")
-      .required("Required"),
-
-      email: Yup.string()
-      .email("Invalid email adress!")
-      .required("Required"),
-
-      phoneNumber: Yup.string()
-      .max(20, "Must be 15 characters or less")
-      .required("Required"),
-
-      address: Yup.string()
-      .max(20, "Must be 15 characters or less")
-      .required("Required"),
-    }),
-    onSubmit: (values, actions) => {
-      alert(JSON.stringify(values, null, 4));
-      actions.resetForm();
-      // console.log("Form submitted with values:", values);
-    },
-  });
-
   return (
-    <form
-    // as="form"
-      onSubmit={formik.handleSubmit as React.FormEventHandler<HTMLFormElement>}
-      >
-      <FormControl>
-        <FormLabel>Full Name</FormLabel>
-        <Input
-          id="fullName"
-          name="fullName"
-          type="text"
-          placeholder="Full name"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.fullName}
-          />
-          {formik.touched.fullName && formik.errors.fullName ? <Text sx={requiredText}>{formik.errors.fullName}</Text> : null}
-      </FormControl>
+    <Formik
+      initialValues={{ firstName: "", lastName: "",   email: "", phone: "", street: "", zipCode: "", city: "" }}
+      validationSchema={Yup.object({
+        firstName: Yup.string()
+          .required("First name required")
+          .min(2, "First name is too short"),
+        lastName: Yup.string()
+          .required("Last name required")
+          .min(2, "Last name is too short"),
+        email: Yup.string().email("invalid email").required("email required"),
+        phone: Yup.string()
+          .required("Phone required")
+          .min(2, "Phone is too short"),
+        street: Yup.string()
+          .required("Street required")
+          .min(2, "Street is too short"),
+        zipCode: Yup.string()
+          .required("Zip code required")
+          .min(2, "Zip code is too short"),
+        city: Yup.string()
+          .required("City required")
+          .min(2, "City is too short"),
+      })}
+      onSubmit={(values, actions) => {
+        alert(JSON.stringify(values, null, 2));
+        actions.resetForm();
+      }}
+    >
+      {formik => (
+        <Flex
+          sx={FormStyle}
+          as="form"
+          bg="white"
+          flexDirection="column"
+          onSubmit={formik.handleSubmit as any}
+        >
+          <Heading>Enter details</Heading>
 
-      <FormControl>
-        <FormLabel>Email</FormLabel>
-        <Input
-          id="email"
-          name="email"
-          type="text"
-          placeholder="email"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-          />
-          {formik.touched.email && formik.errors.email ? <Text sx={requiredText}>{formik.errors.email}</Text> : null}
-      </FormControl>
+          <FormLabel textAlign="left">First name</FormLabel>
+          <TextField name="firstName"/>
+          <FormLabel>Last name</FormLabel>
+          <TextField name="lastName"/>
+          <FormLabel>Email</FormLabel>
+          <TextField name="email"/>
+          <FormLabel>Phone</FormLabel>
+          <TextField name="phone"/>
+          <FormLabel>Street</FormLabel>
+          <TextField name="street"/>
+          <FormLabel>Zip code</FormLabel>
+          <TextField name="zipCode"/>
+          <FormLabel>City</FormLabel>
+          <TextField name="city"/>
 
-      <FormControl>
-        <FormLabel>Phone Number</FormLabel>
-        <Input
-          id="phoneNumber"
-          name="phoneNumber"
-          type="text"
-          placeholder="Phone number"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.phoneNumber}
-          />
-          {formik.touched.phoneNumber && formik.errors.phoneNumber ? <Text sx={requiredText}>{formik.errors.phoneNumber}</Text> : null}
-      </FormControl>
-
-      <FormControl>
-        <FormLabel>Address</FormLabel>
-        <Input
-          id="address"
-          name="address"
-          type="text"
-          placeholder="Address"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.address}
-          />
-          {formik.touched.address && formik.errors.address ? <Text sx={requiredText}>{formik.errors.address}</Text> : null}
-      </FormControl>
-      <Button type="submit">Submit</Button>
-    </form>
-  )
+          <Button type="submit" variant="outline" colorScheme="teal">
+            Submit
+          </Button>
+        </Flex>
+      )}
+    </Formik>
+  );
 }
 
-const requiredText: SystemStyleObject = {
-  color: "red",
+const FormStyle: SystemStyleObject = {
+  px: "1rem"
 }
 
 
