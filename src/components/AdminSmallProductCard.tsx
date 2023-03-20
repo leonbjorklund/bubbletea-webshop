@@ -120,7 +120,7 @@ const buttonStyle = {
 const deleteButtonStyle = {
   margin: "5%",
   backgroundColor: "#eb3f3f",
-  color: "lightBrownText",
+  color: "white",
   _hover: {
     backgroundColor: "darkPinkButton",
     color: "white",
