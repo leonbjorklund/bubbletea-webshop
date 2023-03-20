@@ -94,6 +94,10 @@ export function Footer() {
           </Flex>
         </Grid>
       </Container>
+      <Center sx= {copyrightMediaFooter}>
+        <Text fontSize = {[".8rem", ".9rem"]}>BOBA BLISS © || 2021-2023 </Text>
+
+      </Center>
     </Box>
   );
 }
@@ -103,6 +107,13 @@ const socialMediaFooter =  {
   background: "beige",
   gap: ["1rem", "2rem", "3rem"]
 
+}
+const copyrightMediaFooter =  {
+  height: ["1.5rem", "1.7rem", "2rem"],
+  background: "footerBottom",
+  color:"white",
+  textAlign:"center",
+  FontSize: ["1.2rem", "1.7rem", "2rem"]
 }
 
 const logo= {
@@ -116,6 +127,7 @@ const logo= {
 }
 
 const footerStyle = {
+  marginTop: "1rem",
   color: "lightBrownText",
   backgroundColor: "pink",
   maxWidth: "100%",

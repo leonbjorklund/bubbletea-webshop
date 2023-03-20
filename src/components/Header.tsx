@@ -8,6 +8,8 @@ import { useCart } from "../CartContext";
 
 export function Header() {
 
+  const { totalItems } = useCart();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -37,7 +39,7 @@ export function Header() {
           <ChakraLink as={RouterLink} to="/products" sx={linkStyles}>Products</ChakraLink>
           <ChakraLink as={RouterLink} to="/admin" ><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={RiAdminFill}/></ChakraLink>
         </HStack>
-        <ChakraLink as={RouterLink} to="/checkout" sx={{ linkStyles, display: "flex", alignItems: "center", ml: "1rem"}}><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={IoMdCart} /> ({cartList.length})</ChakraLink>
+        <ChakraLink as={RouterLink} to="/checkout" sx={{ linkStyles, display: "flex", alignItems: "center", ml: "1rem"}}><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={IoMdCart} /> ({totalItems})</ChakraLink>
 
          {/* HAMBURGER MENU */}
         <IconButton

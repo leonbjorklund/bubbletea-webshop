@@ -9,6 +9,12 @@ interface SmallProductCardProps {
 export function SmallProductCard({ product }: SmallProductCardProps) {
   const { addToCart } = useCart();
 
+  const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    addToCart(product);
+  };
+
   const roundBG = {
     backgroundColor: product.bgColor,
     height: "auto",
@@ -24,24 +30,31 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
   return (
     <Card align="center" sx={cardStyle}>
       <Box sx={roundBG}>
-        <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
+          <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
       <Text as="h6" sx={headerStyle}>
         {product.title}
       </Text>
-      <Text sx={textStyle}>{product.price}</Text>
-      <Button sx={buttonStyle}>Add to cart </Button>
+      <Text sx={textStyle}>${product.price}</Text>
+      <Button sx={buttonStyle} onClick={handleAddToCartClick}>Add to cart </Button>
     </Card>
   );
 }
+
 
 const cardStyle = {
   backgroundColor: "lightYellow",
   boxShadow: "3px 3px 5px gray",
   height: "100%",
-  display: "Flex",
+  display: "flex",
   justifyContent: "space-between",
   width: "100%",
+  overflow: "hidden",
+  transition: "0.3s ease-in-out",
+  ":hover": {
+    backgroundColor: "#f3e5d7",
+    transform: "scale(0.96)",
+  },
 };
 
 const headerStyle = {

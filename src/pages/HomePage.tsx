@@ -1,17 +1,13 @@
-import { Container, Heading } from "@chakra-ui/react";
-import { products } from "../../data";
-import { BigProductCard } from "../components/BigProductCard";
+import { Box, Container, Heading } from "@chakra-ui/react";
+import { TimeForTeaCard } from "../components/TimeForTeaCard";
 
 export function HomePage() {
-
   return (
-    <Container as="section" maxWidth="4xl"  my="30px">
-      <Heading>This is homepage!</Heading>
-      <BigProductCard
-      product={products[0]}
-      backgroundAlt="boba"
-      backgroundUrl="/images/fancyBackground.png"
-      />
-    </Container>
-  )
+    <Box>
+      <Container as="section" maxWidth="4xl" my="">
+        <Heading>This is homepage!</Heading>
+      </Container>
+      <TimeForTeaCard></TimeForTeaCard>
+    </Box>
+  );
 }
