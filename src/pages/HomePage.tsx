@@ -7,7 +7,7 @@ export function HomePage() {
 
 <Flex sx={background}>
     <Container marginRight="auto">
-    <Image src="path/to/image" alt="Image description" />
+    <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height="auto" />
   </Container>
 
   <Container>
