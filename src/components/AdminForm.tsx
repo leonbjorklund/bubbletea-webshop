@@ -12,28 +12,45 @@ export function AdminForm() {
       description:"",
       price:"",
       bgColor: "",
+      category:""
     },
     validationSchema: Yup.object({
       id: Yup.string()
-      .max(15, "Must be 15 characters or less")
-      .required("Required"),
-
-      email: Yup.string()
-      .email("Invalid email adress!")
-      .required("Required"),
-
-      phoneNumber: Yup.string()
-      .max(20, "Must be 15 characters or less")
-      .required("Required"),
-
-      address: Yup.string()
-      .max(20, "Must be 15 characters or less")
-      .required("Required"),
-    }),
+        .max(15, "Must be 15 characters or less")
+        .required("Required"),
+    
+      image: Yup.string()
+        .url("Invalid image URL!")
+        .required("Required"),
+    
+      imageAlt: Yup.string()
+        .max(20, "Must be 20 characters or less")
+        .required("Required"),
+    
+      title: Yup.string()
+        .max(50, "Must be 50 characters or less")
+        .required("Required"),
+    
+      description: Yup.string()
+        .max(200, "Must be 200 characters or less")
+        .required("Required"),
+    
+      price: Yup.number()
+        .typeError("Must be a number")
+        .positive("Price must be positive")
+        .required("Required"),
+    
+      bgColor: Yup.string()
+        .required("Required"),
+    
+        category: Yup.string()
+        .oneOf(["milk", "fruit"], "Category must be either 'milk' or 'fruit'")
+        .required("Required")
+    })
     onSubmit: (values, actions) => {
       alert(JSON.stringify(values, null, 4));
       actions.resetForm();
-      // console.log("Form submitted with values:", values);
+      console.log("Form submitted with values:", values);
     },
   });
 
