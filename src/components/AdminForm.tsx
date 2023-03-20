@@ -9,8 +9,9 @@ export function AdminForm() {
       image: "",
       imageAlt: "",
       title: "",
-      phoneNumber: "",
-      address: "",
+      description:"",
+      price:"",
+      bgColor: "",
     },
     validationSchema: Yup.object({
       id: Yup.string()

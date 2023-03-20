@@ -6,6 +6,7 @@ export interface Product {
   description: string;
   price: number;
   bgColor: string;
+  category: string;
 }
 
 export interface CartItem extends Product {
@@ -24,7 +25,8 @@ export const products: Product[] = [
     title: "Brown sugar Milk",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "yellowCardCircle"
+    bgColor: "yellowCardCircle",
+    category: "milk"
   },
   {
     id: "2",
@@ -33,7 +35,8 @@ export const products: Product[] = [
     title: "Taro Latte",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "bigMatchaCard"
+    bgColor: "bigMatchaCard",
+    category: "milk"
   },
   {
     id: "3",
@@ -42,7 +45,8 @@ export const products: Product[] = [
     title: "Milk Tea",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "fruitTeaCircle"
+    bgColor: "fruitTeaCircle",
+    category: "milk"
   },
   {
     id: "4",
@@ -51,7 +55,8 @@ export const products: Product[] = [
     title: "Matcha Latte",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "bigMatchaCard"
+    bgColor: "bigMatchaCard",
+    category: "milk"
   },
   {
     id: "5",
@@ -60,7 +65,8 @@ export const products: Product[] = [
     title: "Thai Iced Tea",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "yellowCardCircle"
+    bgColor: "yellowCardCircle",
+    category: "fruit"
   },
   {
     id: "6",
@@ -69,7 +75,8 @@ export const products: Product[] = [
     title: "Peach Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
-    bgColor: "fruitTeaCircle"
+    bgColor: "fruitTeaCircle",
+    category: "fruit"
   },
   {
     id: "7",
@@ -78,7 +85,8 @@ export const products: Product[] = [
     title: "Passion Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
-    bgColor: "fruitTeaCircle"
+    bgColor: "fruitTeaCircle",
+    category: "fruit"
   },
   {
     id: "8",
@@ -87,7 +95,8 @@ export const products: Product[] = [
     title: "Strawberry Fruit Tea",
     description: "Description of the drink!", 
     price: 6.00,
-    bgColor: "yellowCardCircle"
+    bgColor: "yellowCardCircle",
+    category: "fruit"
   },
   {
     id: "9",
@@ -96,7 +105,8 @@ export const products: Product[] = [
     title: "Blueberry Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
-    bgColor: "bigMatchaCard"
+    bgColor: "bigMatchaCard",
+    category: "fruit"
   },
   {
     id: "10",
@@ -105,7 +115,8 @@ export const products: Product[] = [
     title: "Oolong Tea",
     description: "Description of the drink!",
     price: 6.00,
-    bgColor: "yellowCardCircle"
+    bgColor: "yellowCardCircle",
+    category: "milk"
   },
 ];
 
