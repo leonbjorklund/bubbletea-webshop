@@ -1,13 +1,12 @@
-import { Box, Container, Flex, Tab, TabList, Tabs } from "@chakra-ui/react";
-import { useCart } from "../CartContext";
-import { CartCard } from "../components/CartCard";
-import { ProductsLayout } from "../layout/ProductsLayout";
+import { Box, Container, Flex, Heading, Tab, TabList, Tabs } from "@chakra-ui/react";
+import { CartCard } from "./CartCard";
+import { ProductsLayout } from "./ProductsLayout";
 
-export function ProductsPage() {
-  const { addToCart } = useCart();
+export function Products() {
 
   return (
     <Container maxWidth="container.xl" my=".3rem">
+      <Heading>Our Drinks</Heading>
       <Tabs
         borderRadius=".6rem"
         variant="unstyled"
@@ -27,7 +26,9 @@ export function ProductsPage() {
         justify={["center", "center", "center", "space-between"]}
         gap={1}
       >
+
         <ProductsLayout />
+
         <Box as="aside" width={["100%", "100%", "100%", "40%"]}>
           <CartCard />
         </Box>

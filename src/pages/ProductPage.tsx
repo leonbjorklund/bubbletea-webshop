@@ -1,11 +1,9 @@
 import { Container } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { products } from "../../data";
-import { useCart } from "../CartContext";
 import { BigProductCard } from "../components/BigProductCard";
 
 export function ProductPage() {
-  const { addToCart } = useCart();
   const params = useParams();
   console.log(params.id);
 
