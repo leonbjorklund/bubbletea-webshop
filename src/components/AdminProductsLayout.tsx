@@ -1,5 +1,4 @@
 import { Box, Flex } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 import { AdminSmallProductCard } from "./AdminSmallProductCard";
 
 import { products } from "../../data";
@@ -15,9 +14,7 @@ export function AdminProductsLayout() {
     >
       {products.map((product) => (
         <Box sx={boxStyle} key={product.id}>
-          <Link key={product.id} to={`/product/${product.id}`}>
           <AdminSmallProductCard />
-          </Link>
         </Box>
       ))}
     </Flex>

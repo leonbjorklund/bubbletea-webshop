@@ -1,4 +1,19 @@
-import { Box, Button, Card, Flex, Image, Text } from "@chakra-ui/react";
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Box,
+  Button,
+  Card,
+  Flex,
+  Image,
+  Text,
+  useDisclosure
+} from "@chakra-ui/react";
+import React from "react";
 
 interface WTF {
   image: string;
@@ -6,6 +21,8 @@ interface WTF {
 }
 
 export function AdminSmallProductCard({ image, imageAlt }: WTF) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef<HTMLButtonElement>(null);
 
   const roundBG = {
     backgroundColor: "#FFF",
@@ -22,20 +39,46 @@ export function AdminSmallProductCard({ image, imageAlt }: WTF) {
   return (
     <Card align="center" sx={cardStyle}>
       <Box sx={roundBG}>
-          <Image sx={imageStyle} src={image} alt={imageAlt} />
+        <Image sx={imageStyle} src={image} alt={imageAlt} />
       </Box>
-      <Text sx={headerStyle}>
-        Title
-      </Text>
+      <Text sx={headerStyle}>Title</Text>
       <Text sx={textStyle}>Price</Text>
       <Flex>
-      <Button sx={buttonStyle}>Edit </Button>
-      <Button sx={deleteButtonStyle}>Delete</Button>
+        <Button sx={buttonStyle}>Edit </Button>
+        <Button sx={deleteButtonStyle} onClick={onOpen}>
+          Delete
+        </Button>
+
+        <AlertDialog
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+        >
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                Delete Customer
+              </AlertDialogHeader>
+
+              <AlertDialogBody>
+                Are you sure? You can't undo this action afterwards.
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button ref={cancelRef} onClick={onClose}>
+                  Cancel
+                </Button>
+                <Button colorScheme="red" onClick={onClose} ml={3}>
+                  Delete
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
       </Flex>
     </Card>
   );
 }
-
 
 const cardStyle = {
   backgroundColor: "lightYellow",
@@ -48,7 +91,6 @@ const cardStyle = {
   transition: "0.3s ease-in-out",
   ":hover": {
     backgroundColor: "#f3e5d7",
-    transform: "scale(0.96)",
   },
 };
 
