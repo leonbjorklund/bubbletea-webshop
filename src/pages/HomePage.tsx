@@ -32,7 +32,8 @@ export function HomePage() {
       In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next 
       In love with React Next  In love with React Next  In love with React Next  In love with React Next
     </Text>
-    <Stack direction='row' spacing={4} align='center'>
+
+    <Stack direction='row' spacing={4} align='center' justifyContent="center">
       <Button colorScheme='brown' variant='outline' borderRadius="50px" border="2px" padding="20px">
         Button
         </Button>
@@ -51,12 +52,12 @@ export function HomePage() {
 }
 
 const background: SystemStyleObject = {
-  background: 'rgb(255, 240, 221)',
-  backgroundImage: 'radial-gradient(circle, rgba(255,240,221,1) 9%, rgba(254,211,212,1) 100%)',
+  background: 'rgb(254,211,212)',
+  backgroundImage: 'linear-gradient(0deg, rgba(254,211,212,1) 0%, rgba(255,241,221,1) 47%, rgba(254,211,212,1) 100%, rgba(255,255,255,1) 100%)',
   justifyContent: "center",
   alignItems: "center",
   margin: "0",
   width: "100%",
-  height: "20rem",
+  height: "40rem",
 };
 
