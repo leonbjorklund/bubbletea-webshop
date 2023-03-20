@@ -3,7 +3,7 @@ import { Button, useToast } from "@chakra-ui/react"
 function ToastExample() {
     const toast = useToast()
     return (
-      <Button
+      <Button data-cy="added-to-cart-toast"
         onClick={() =>
           toast({
             title: 'Added to cart!',

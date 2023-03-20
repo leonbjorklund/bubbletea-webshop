@@ -16,6 +16,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
 
 export function CartCard() {
+
   const { addToCart, removeFromCart, cartList } = useCart();
 
   const totalPrice = cartList.reduce((total, cartItem) => {

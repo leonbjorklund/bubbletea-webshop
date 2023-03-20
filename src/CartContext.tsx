@@ -30,14 +30,14 @@ function calculateTotalItems(cartList: CartItem[]) {
 
 export function CartProvider({ children }: Props) {
   const [cartList, setCartList] = useState<CartItem[]>(() => {
-    const storedCartList = localStorage.getItem("cartList");
+    const storedCartList = localStorage.getItem("cart");
     return storedCartList ? JSON.parse(storedCartList) : [];
   });
 
   const [totalItems, setTotalItems] = useState(() => calculateTotalItems(cartList));
 
   useEffect(() => {
-    localStorage.setItem("cartList", JSON.stringify(cartList));
+    localStorage.setItem("cart", JSON.stringify(cartList));
     setTotalItems(calculateTotalItems(cartList));
   }, [cartList]);
 
