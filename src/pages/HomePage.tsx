@@ -9,42 +9,42 @@ export function HomePage() {
     <Container marginRight="auto">
     <Image src="path/to/image" alt="Image description" />
   </Container>
+
   <Container>
     <Heading
       fontSize={["2rem", "2.5rem", "3rem"]}
-      mb={[1, 2]}
-      color={"darkBrownText"}
+      color={"lightBrownText"}
     >
       Best boba ever
     </Heading>
 
     <Text 
-      fontSize='2xl'
-      color={"darkBrownText"}
+      fontSize={["2rem", "2.5rem", "2rem"]}
+      color={"lightBrownText"}
+      fontWeight="bold"
     >
       In love with React Next
     </Text>
 
     <Text 
       fontSize='16px'
-      color={"darkBrownText"}
+      color={"lightBrownText"}
     >
       In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next 
       In love with React Next  In love with React Next  In love with React Next  In love with React Next
     </Text>
 
-    <Stack direction='row' spacing={4} align='center' justifyContent="center">
-      <Button colorScheme='brown' variant='outline' borderRadius="50px" border="2px" padding="20px">
-        Button
+    <Stack direction='row' spacing={4} align='center' justifyContent="center" marginTop="40px">
+      <Button sx={buttonStyling}>
+        PRODUCTS
         </Button>
-        <Button colorScheme='brown' variant='outline' borderRadius="50px" border="2px" padding="20px">
-        Button
+        <Button sx={buttonStyling}>
+        RECIPIES
         </Button>
         
         </Stack>
         </Container>
         </Flex>
-
 
       <TimeForTeaCard></TimeForTeaCard>
     </Box>
@@ -59,5 +59,17 @@ const background: SystemStyleObject = {
   margin: "0",
   width: "100%",
   height: "40rem",
+  color: "lightBrownText",
+  fontFamily: 'Inconsolata',
 };
+
+const buttonStyling: SystemStyleObject = {
+  colorScheme:'brown',
+  variant:'outline',
+  borderRadius:"50px",
+  border:"2px",
+  padding:"25px",
+  fontFamily: 'Comfortaa',
+  background: "none",
+}
 
