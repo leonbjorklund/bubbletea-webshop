@@ -2,7 +2,9 @@ import {
   Box,
   Button,
   Card,
-  CardFooter, CloseButton,
+  CardFooter,
+  CardHeader,
+  CloseButton,
   Flex,
   Heading,
   Icon,
@@ -12,7 +14,7 @@ import {
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
 import { useNavigate } from "react-router-dom";
-import { Product } from "../../data";
+import { Product, products } from "../../data";
 import { useCart } from "../CartContext";
 
 
@@ -44,7 +46,7 @@ export function BigProductCard({
       alignItems="center"
       justifyContent="center"
       height="calc(100vh-3rem)"
-      width="100%"
+      width="100vw"
       position="fixed"
       top="3rem"
       left="0"
@@ -52,10 +54,7 @@ export function BigProductCard({
       {visible && (
         <Card
           align="center"
-
           direction={["column", "column", "row"]}
-          gap={3}
-          justifyContent={["center","center","space-between","space-between"]}
           sx={cardStyle}
         >
           <CloseButton sx={xButton} size={closeButtonSize} onClick={handleClose} />
@@ -69,26 +68,26 @@ export function BigProductCard({
               />
             </Box>
           </Box>
-          <Box display={"flex"} flexDirection="column" justifyContent={"center"}>
-            <Box sx={cardHeaderStyle}>
+          <Box>
+            <CardHeader sx={cardHeaderStyle}>
               <Heading sx={headingStyle}>{product.title}</Heading>
               <Heading sx={priceStyle}>${product.price}</Heading>
               <Text sx={textStyle}>{product.description}</Text>
-            </Box>
+            </CardHeader>
             <CardFooter sx={cardFooterStyle}>
               <Button
                 sx={buttonStyle}
-                onClick={() => removeFromCart(product.id)}
+                onClick={() => removeFromCart(products[0].id)}
               >
                 -
               </Button>
-              <Text>{cartList.find((item) => item.id === product.id)?.quantity || 0}</Text>
-              <Button sx={buttonStyle} onClick={() => addToCart(product)}>
+              <Text>{cartList.length}</Text>
+              <Button sx={buttonStyle} onClick={() => addToCart(products[0])}>
                 +
               </Button>
               <Button
                 sx={addButtonStyle}
-                onClick={() => addToCart(product)}
+                onClick={() => addToCart(products[0])}
               >
                 <Icon sx={iconStyle} as={BsCartPlus} />
               </Button>
@@ -101,16 +100,14 @@ export function BigProductCard({
 }
 
 const cardStyle = {
-  height: ["88vh", "89vh", "90vh", "88vh"],
-  width: ["90%", "90%", "95%", "95%"],
-  maxWidth:"container.xl",
+  height: ["85vh", "85vh", "88vh", "88vh"],
+  width: ["17rem", "90%", "95%", "95%"],
   boxShadow: "3px 3px 3px gray",
   backgroundColor: "product.bgColor",
   position: "relative",
   borderRadius: "1rem",
   bgGradient: "linear(green.100 30%, yellow.50 90%)",
   m: "1rem",
-
 };
 
 const xButton = {
@@ -124,19 +121,16 @@ const xButton = {
 const headingStyle = {
   color: "darkBrownText",
   textAlign: ["center", "center", "left"],
-  fontSize: ["1.5rem", "2rem", "3rem","3.5rem"],
+  fontSize: ["40px", "40px", "60px"],
 };
 
 const cardHeaderStyle = {
-  mt: ["-5rem", "-5rem", "-5rem"],
+  mt: ["5rem", "-5rem", "-5rem"],
   m: ["0rem", "2rem"],
-  display:"flex",
-  flexDirection:"column",
-  justifyContent:"center",
 };
 
 const cardFooterStyle = {
-  mt: ["0", "1rem", "3rem"],
+  mt: ["0", "3rem", "3rem"],
   m: ["0rem", "1rem"],
   justifyContent: ["space-around", "space-around", "flex-start"],
 };
@@ -155,17 +149,17 @@ const textStyle = {
 
 const imageContainerStyle = {
   position: ["static", "static", "absolute"],
-  top: ["50%", "50%", "50%", "50%"], // Adjust the top position for mobile, tablet, and desktop
+  top: ["50%", "50%", "55%", "50%"], // Adjust the top position for mobile, tablet, and desktop
   left: ["50%", "60%", "75%", "75%"], // Center the image horizontally for all screen sizes
   transform: ["none", "none", "translate(-50%, -50%)"],
   alignSelf: ["center", "center", "none"],
-  mt: ["1rem", "1rem", "1rem"],
+  mt: ["1rem", "1rem", "0"],
 };
 
 const roundBG = {
   backgroundColor: "bigMatchaCard",
-  height: ["16rem", "18rem", "21rem", "26rem"],
-  aspectRatio: "1",
+  height: ["13rem", "13rem", "20rem", "25rem"],
+  width: ["13rem", "13rem", "20rem", "25rem"],
   borderRadius: "50%",
   mt: "1rem",
   position: "relative",
