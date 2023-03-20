@@ -38,7 +38,7 @@ export function BigProductCard({
 
   const handleClose = () => {
     setVisible(false);
-    navigate("/products");
+    navigate("/");
   };
 
   return (
