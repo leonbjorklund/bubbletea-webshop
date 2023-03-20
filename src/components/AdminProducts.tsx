@@ -1,6 +1,6 @@
 import { Box, Container, Flex } from "@chakra-ui/react";
-import { CartCard } from "./CartCard";
-import { ProductsLayout } from "./ProductsLayout";
+import { AdminCard } from "./AdminCard";
+import { AdminProductsLayout } from "./AdminProductsLayout";
 
 export function AdminProducts() {
 
@@ -11,9 +11,9 @@ export function AdminProducts() {
         justify={["center", "center", "center", "space-between"]}
         gap={1}
       >
-        <ProductsLayout />
+        <AdminProductsLayout />
         <Box as="aside" width={["100%", "100%", "96%", "40%"]}>
-          <CartCard />
+          <AdminCard />
         </Box>
       </Flex>
     </Container>
