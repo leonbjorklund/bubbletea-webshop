@@ -48,10 +48,10 @@ export function AdminForm() {
         .required("Required")
     })
     onSubmit: (values, actions) => {
-      alert(JSON.stringify(values, null, 4));
-      actions.resetForm();
       console.log("Form submitted with values:", values);
-    },
+      alert(JSON.stringify(values, null));
+      actions.resetForm();
+    }
   });
 
   return (

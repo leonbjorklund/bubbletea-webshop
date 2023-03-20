@@ -24,8 +24,7 @@ type Props = {
 };
 
 export function productProvider({ children }: Props) {
-
-
+  
     const [productList, setproductList] = useState<Product[]>(() => {
     const storedproductList = localStorage.getItem("productList");
     return storedproductList ? JSON.parse(storedproductList) : [];
