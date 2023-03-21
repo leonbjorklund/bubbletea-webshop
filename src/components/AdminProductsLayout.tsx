@@ -14,7 +14,7 @@ export function AdminProductsLayout() {
     >
       {products.map((product) => (
         <Box sx={boxStyle} key={product.id}>
-          <AdminSmallProductCard />
+          <AdminSmallProductCard image="" imageAlt=""/>
         </Box>
       ))}
     </Flex>
