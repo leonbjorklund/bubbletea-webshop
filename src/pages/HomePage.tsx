@@ -1,12 +1,14 @@
-import { Box, Button, Container, Flex, Heading, Image, Stack, SystemStyleObject, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Container, Flex, Heading, Image, Stack, SystemStyleObject, Text } from "@chakra-ui/react";
 import { TimeForTeaCard } from "../components/TimeForTeaCard";
 
 export function HomePage() {
   return (
-    <Box sx={boxStyling}>
+    <Box marginTop={[ "0rem", "0rem", "5rem"]}>
       <Flex sx={gradientBackground} display={["row", "row", "flex"]}>
         <Container marginRight="auto">
-          <Image src="/image/path" alt="Image of bubble tea" width="auto" height="auto" />
+          <Center>
+            <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]}/>
+          </Center>
         </Container>
         <Container>
           <Heading fontSize={["2rem", "2.5rem", "3rem"]} color={"lightBrownText"}>
@@ -33,10 +35,6 @@ export function HomePage() {
     </Box>
   );
 }
-
-const boxStyling: SystemStyleObject = {
-  marginTop: "5rem",
-};
 
 const gradientBackground: SystemStyleObject = {
   background: 'rgb(254, 211, 212)',
