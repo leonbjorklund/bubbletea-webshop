@@ -4,8 +4,16 @@ import { products } from "../../data";
 import { useProduct } from "../ProductContext";
 import { SmallProductCard } from "./SmallProductCard";
 
-export function ProductsLayout() {
+
+interface ProductsLayoutProps {
+  filterCategory: "fruit" | "milk" | null;
+}
+
+export function ProductsLayout({ filterCategory }:ProductsLayoutProps) {
   const { productList } = useProduct()
+  const filteredProductList = filterCategory
+    ? productList.filter((product) => product.category === filterCategory)
+    : products;
 
   return (
     <Flex
@@ -15,7 +23,7 @@ export function ProductsLayout() {
       wrap={"wrap"}
       width={["100%", "100%", "100%", "70%"]}
     >
-      {productList.map((product) => (
+      {filteredProductList.map((product) => (
         <Box sx={boxStyle} key={product.id}>
           <Link key={product.id} to={`/product/${product.id}`}>
           <SmallProductCard product={product} />
