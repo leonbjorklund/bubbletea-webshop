@@ -9,17 +9,17 @@ export function HomePage() {
             <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]} display={["none", "none", "flex"]}/>
         </Container>
         <Container>
-          <Heading fontSize={["2rem", "2.5rem", "3rem"]} color={"lightBrownText"}>
+          <Heading fontSize={["2rem", "2.5rem", "3.5rem"]} color={"lightBrownText"}>
             Best boba ever
           </Heading>
-          <Text fontSize={["2rem", "2.5rem", "2rem"]} color={"lightBrownText"} fontWeight="bold" display={["none", null, "flex"]}>
+          <Text fontSize={[ "2.5rem", "2rem"]} color={"lightBrownText"} fontWeight="bold" display={["none", null, "flex"]}>
             In love with React Next
           </Text>
           <Text fontSize='16px' color={"lightBrownText"} fontFamily='Comfortaa' marginTop="1rem">
             In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next In love with React Next  In love with React Next  In love with React Next  In love with React Next
           </Text>
           <Center>
-          <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]} display={["flex", "flex", "none"]}/>
+          <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","13rem","auto"]} display={["flex", "flex", "none"]}/>
           </Center>
           <Stack direction={['column', null, 'row']} spacing={4} align='center' justifyContent="center" marginTop="40px" display={["none", null, "flex"]}>
             <Button sx={buttonStyling}>
@@ -54,4 +54,7 @@ const buttonStyling: SystemStyleObject = {
   padding: "25px",
   fontFamily: 'Comfortaa',
   background: "none",
+  _hover: {
+    color: "white",
+  },
 };
