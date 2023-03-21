@@ -33,7 +33,7 @@ export function Header() {
         <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
         <Spacer />
         
-        {/* HYPERLINKS */}
+        {/* LINKS */}
         <HStack spacing="2rem" whiteSpace="nowrap" display={{ base: "none", md: "flex" }}>
           <ChakraLink as={RouterLink} to="/" sx={linkStyles}>Home</ChakraLink>
           <ChakraLink as={RouterLink} to="/products" sx={linkStyles}>Products</ChakraLink>
