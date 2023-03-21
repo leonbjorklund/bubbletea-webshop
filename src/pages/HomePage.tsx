@@ -12,7 +12,7 @@ export function HomePage() {
           <Heading fontSize={["2rem", "2.5rem", "3.5rem"]} color={"lightBrownText"}>
             Best boba ever
           </Heading>
-          <Text fontSize={[ "2.5rem", "2rem"]} color={"lightBrownText"} fontWeight="bold" display={["none", null, "flex"]}>
+          <Text fontSize={[ "2.5rem", "2rem"]} color={"lightBrownText"} fontWeight="bold" display={["none", "none", "flex"]}>
             In love with React Next
           </Text>
           <Text fontSize='16px' color={"lightBrownText"} fontFamily='Comfortaa' marginTop="1rem">
@@ -21,7 +21,7 @@ export function HomePage() {
           <Center>
           <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","13rem","auto"]} display={["flex", "flex", "none"]}/>
           </Center>
-          <Stack direction={['column', null, 'row']} spacing={4} align='center' justifyContent="center" marginTop="40px" display={["none", null, "flex"]}>
+          <Stack direction={['column', null, 'row']} spacing={4} align='center' justifyContent="center" marginTop="40px" display={["none", "none", "none", "flex"]}>
             <Button sx={buttonStyling}>
               PRODUCTS
             </Button>
