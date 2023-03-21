@@ -1,8 +1,20 @@
-import { Box, Container, Flex, Heading, Tab, TabList, Tabs } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Tab,
+  TabList,
+  Tabs
+} from "@chakra-ui/react";
+import { useState } from "react";
 import { CartCard } from "./CartCard";
 import { ProductsLayout } from "./ProductsLayout";
 
 export function Products() {
+  const [selectedCategory, setSelectedCategory] = useState<
+    "fruit" | "milk" | null
+  >(null);
 
   return (
     <Container maxWidth="container.xl" my=".3rem">
@@ -14,11 +26,31 @@ export function Products() {
         my={5}
         width={["100%", "100%", "98%", "63.5%"]}
         isFitted
+        onChange={(index) => {
+          if (index === 0) setSelectedCategory(null);
+          if (index === 1) setSelectedCategory("fruit");
+          if (index === 2) setSelectedCategory("milk");
+        }}
       >
         <TabList>
-          <Tab borderRadius=".6rem" _selected={{ color: "white", bg: "blue.500" }}>ALL TEAS</Tab>
-          <Tab borderRadius=".6rem" _selected={{ color: "white", bg: "red.400" }}>FRUIT TEA</Tab>
-          <Tab borderRadius=".6rem" _selected={{ color: "white", bg: "green.400" }}>MILK TEA</Tab>
+          <Tab
+            borderRadius=".6rem"
+            _selected={{ color: "white", bg: "pinkCardButton" }}
+          >
+            ALL TEAS
+          </Tab>
+          <Tab
+            borderRadius=".6rem"
+            _selected={{ color: "white", bg: "pinkCardButton" }}
+          >
+            FRUIT TEA
+          </Tab>
+          <Tab
+            borderRadius=".6rem"
+            _selected={{ color: "white", bg: "pinkCardButton" }}
+          >
+            MILK TEA
+          </Tab>
         </TabList>
       </Tabs>
       <Flex
@@ -26,8 +58,7 @@ export function Products() {
         justify={["center", "center", "center", "space-between"]}
         gap={1}
       >
-
-        <ProductsLayout />
+        <ProductsLayout filterCategory={selectedCategory} />
 
         <Box as="aside" width={["100%", "100%", "100%", "40%"]}>
           <CartCard />
