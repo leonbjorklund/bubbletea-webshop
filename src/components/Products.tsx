@@ -60,7 +60,13 @@ export function Products() {
       >
         <ProductsLayout filterCategory={selectedCategory} />
 
-        <Box as="aside" width={["100%", "100%", "100%", "40%"]}>
+        <Box as="aside" 
+        width={["100%", "100%", "100%", "40%"]}
+        position="sticky"
+          top={0}
+          maxHeight="calc(100vh - 3rem)"
+          overflowY="auto"
+        >
           <CartCard />
         </Box>
       </Flex>
