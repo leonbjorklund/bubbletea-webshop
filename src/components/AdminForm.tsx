@@ -2,6 +2,7 @@ import { Button, FormControl, FormLabel, Input, SystemStyleObject, Text } from "
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Product } from "../../data";
+import { useProduct } from "../ProductContext";
 
 type ProductValues = Record<keyof Product, Yup.AnySchema>
 
@@ -39,7 +40,16 @@ interface Props {
   product?: Product
 }
 
+function generateUniqueId(): string {
+  const timestamp = new Date().getTime();
+  const randomValue = Math.floor(Math.random() * 1000000);
+  return `${timestamp}-${randomValue}`;
+}
+
 export function AdminForm({ product }: Props) {
+
+  const { productList, addProduct } = useProduct();
+
   const formik = useFormik<Product>({
     initialValues: {
       id: "",
@@ -53,11 +63,12 @@ export function AdminForm({ product }: Props) {
     },
     validationSchema: schema,
     onSubmit: (values, actions) => {
-      // Todo: Generate ID
-      const product = { ...values, id: '123' };
+      const newProduct = { ...values, id: generateUniqueId() };
+      addProduct(newProduct);
       console.log("Form submitted with values:", values);
       alert(JSON.stringify(values, null));
       actions.resetForm();
+      console.log(productList)
     }
   });
 
