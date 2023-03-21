@@ -3,50 +3,52 @@ import { TimeForTeaCard } from "../components/TimeForTeaCard";
 
 export function HomePage() {
   return (
-    <Box>
+    <Box position="relative">
 
-<Flex sx={background}>
-    <Container marginRight="auto">
-    <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height="auto" />
-  </Container>
+      {/* <Box sx={circleBackground} /> */}
 
-  <Container>
-    <Heading
-      fontSize={["2rem", "2.5rem", "3rem"]}
-      color={"lightBrownText"}
-    >
-      Best boba ever
-    </Heading>
-
-    <Text 
-      fontSize={["2rem", "2.5rem", "2rem"]}
-      color={"lightBrownText"}
-      fontWeight="bold"
-    >
-      In love with React Next
-    </Text>
-
-    <Text 
-      fontSize='16px'
-      color={"lightBrownText"}
-    >
-      In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next 
-      In love with React Next  In love with React Next  In love with React Next  In love with React Next
-    </Text>
-
-    <Stack direction='row' spacing={4} align='center' justifyContent="center" marginTop="40px">
-      <Button sx={buttonStyling}>
-        PRODUCTS
-        </Button>
-        <Button sx={buttonStyling}>
-        RECIPIES
-        </Button>
-        
-        </Stack>
+      <Flex sx={background}>
+        <Container marginRight="auto">
+          <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height="auto" />
         </Container>
-        </Flex>
 
-      <TimeForTeaCard></TimeForTeaCard>
+        <Container>
+          <Heading
+            fontSize={["2rem", "2.5rem", "3rem"]}
+            color={"lightBrownText"}
+          >
+            Best boba ever
+          </Heading>
+
+          <Text 
+            fontSize={["2rem", "2.5rem", "2rem"]}
+            color={"lightBrownText"}
+            fontWeight="bold"
+          >
+            In love with React Next
+          </Text>
+
+          <Text 
+            fontSize='16px'
+            color={"lightBrownText"}
+          >
+            In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next 
+            In love with React Next  In love with React Next  In love with React Next  In love with React Next
+          </Text>
+
+          <Stack direction='row' spacing={4} align='center' justifyContent="center" marginTop="40px">
+            <Button sx={buttonStyling}>
+              PRODUCTS
+            </Button>
+            <Button sx={buttonStyling}>
+              RECIPIES
+            </Button>
+          </Stack>
+        </Container>
+      </Flex>
+      <Image src="/images/crescent.png" alt="" width="auto" height="auto" />
+
+      <TimeForTeaCard />
     </Box>
   );
 }
@@ -58,7 +60,7 @@ const background: SystemStyleObject = {
   alignItems: "center",
   margin: "0",
   width: "100%",
-  height: "40rem",
+  height: "20rem",
   color: "lightBrownText",
   fontFamily: 'Inconsolata',
 };
@@ -72,4 +74,3 @@ const buttonStyling: SystemStyleObject = {
   fontFamily: 'Comfortaa',
   background: "none",
 }
-
