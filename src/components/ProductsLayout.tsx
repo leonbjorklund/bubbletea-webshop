@@ -1,6 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { products } from "../../data";
 import { useProduct } from "../ProductContext";
 import { SmallProductCard } from "./SmallProductCard";
 
@@ -13,7 +12,7 @@ export function ProductsLayout({ filterCategory }:ProductsLayoutProps) {
   const { productList } = useProduct()
   const filteredProductList = filterCategory
     ? productList.filter((product) => product.category === filterCategory)
-    : products;
+    : productList;
 
   return (
     <Flex
