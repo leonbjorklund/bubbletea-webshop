@@ -7,35 +7,48 @@ import {
   Divider,
   Flex,
   Heading,
-  HStack, Link as ChakraLink, ListItem,
+  HStack,
+  Image,
+  Link as ChakraLink,
+  ListItem,
   SystemStyleObject,
   Text,
-  UnorderedList
+  UnorderedList,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
 
-export function CartCard({ showOrderButton = true }) {
-
+export function CartCard({ checkOutPage = true }) {
   const { addToCart, removeFromCart, cartList } = useCart();
 
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
   }, 0);
 
+  const cardBodyFontSize = useBreakpointValue({ base: "1rem", sm: "1.2rem" });
+  const cardFooterFontSize = useBreakpointValue({ base: "1rem", sm: "1.2rem" });
+
   return (
     <Card sx={cartStyle}>
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
-          <Heading size="md">Cart</Heading>
+          <Heading size="lg">{checkOutPage ? "Your Cart" : "Cart"}</Heading>
         </CardHeader>
-        <CardBody width="100%" p="0">
+        <CardBody fontSize={cardBodyFontSize} width="100%" p="0">
           {cartList.length > 0 ? (
             <UnorderedList listStyleType="none" marginInlineStart="0">
               {cartList.map((cartItem) => (
                 <ListItem key={cartItem.id}>
                   <Flex sx={cartItemStyle}>
-                    <HStack marginRight="0.5rem">
+                    {checkOutPage && (
+                      <Image
+                        sx={thumbNailStyle}
+                        src={cartItem.image}
+                        alt={cartItem.imageAlt}
+                      />
+                    )}
+                    <HStack paddingTop="10px" marginRight="0.5rem">
                       <Button
                         sx={incrementButtonStyle}
                         onClick={() => removeFromCart(cartItem.id)}
@@ -50,25 +63,29 @@ export function CartCard({ showOrderButton = true }) {
                         +
                       </Button>
                     </HStack>
-                    <Text flex={1} textAlign="left">
+                    <Text paddingTop="10px" flex={1} textAlign="left">
                       {cartItem.title}
                     </Text>
-                    <Text>${cartItem.quantity * cartItem.price}</Text>
+                    <Text paddingTop="10px">
+                      ${cartItem.quantity * cartItem.price}
+                    </Text>
                   </Flex>
                 </ListItem>
               ))}
             </UnorderedList>
           ) : (
-              <Heading textAlign="center" size="md">Your cart is empty!</Heading>
+            <Heading textAlign="center" size="md">
+              Your cart is empty!
+            </Heading>
           )}
         </CardBody>
-        <CardFooter sx={cardFooterStyle}>
-          <Divider opacity="1" />
+        <CardFooter fontSize={cardFooterFontSize} sx={cardFooterStyle}>
+          <Divider bg="gray" opacity="1" />
           <Flex my="0.625rem" width="100%" justifyContent="space-between">
             <Text>Total:</Text>
             <Text>${totalPrice}</Text>
           </Flex>
-          {showOrderButton && (
+          {!checkOutPage && (
             <ChakraLink as={RouterLink} to="/checkout">
               <Button sx={orderButtonStyle}>Order</Button>
             </ChakraLink>
@@ -86,6 +103,11 @@ const cartStyle: SystemStyleObject = {
   borderRadius: "0.625rem",
   padding: "1rem",
   position: "relative",
+};
+
+const thumbNailStyle: SystemStyleObject = {
+  width: "2rem",
+  marginRight: "1rem",
 };
 
 const flexStyle: SystemStyleObject = {
@@ -117,10 +139,11 @@ const orderButtonStyle: SystemStyleObject = {
   width: "100%",
   bg: "lightGreenButton",
   color: "black",
+  fontSize: "1.2rem",
 };
 
 const cardFooterStyle: SystemStyleObject = {
   width: "100%",
   display: "block",
   p: "0",
-}
+};
