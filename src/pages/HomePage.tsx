@@ -6,9 +6,7 @@ export function HomePage() {
     <Box marginTop={[ "0rem", "0rem", "5rem"]}>
       <Flex sx={gradientBackground} display={["row", "row", "flex"]}>
         <Container marginRight="auto">
-          <Center>
-            <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]}/>
-          </Center>
+            <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]} display={["none", "none", "flex"]}/>
         </Container>
         <Container>
           <Heading fontSize={["2rem", "2.5rem", "3rem"]} color={"lightBrownText"}>
@@ -20,6 +18,9 @@ export function HomePage() {
           <Text fontSize='16px' color={"lightBrownText"} fontFamily='Comfortaa' marginTop="1rem">
             In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next In love with React Next  In love with React Next  In love with React Next  In love with React Next
           </Text>
+          <Center>
+          <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]} display={["flex", "flex", "none"]}/>
+          </Center>
           <Stack direction={['column', null, 'row']} spacing={4} align='center' justifyContent="center" marginTop="40px" display={["none", null, "flex"]}>
             <Button sx={buttonStyling}>
               PRODUCTS
