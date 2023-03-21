@@ -1,14 +1,19 @@
-import { Container } from "@chakra-ui/react";
+import { Container, SystemStyleObject } from "@chakra-ui/react";
 import { CartCard } from "../components/CartCard";
 import { CheckoutForm } from "../components/CheckoutForm";
 
 export function CheckoutPage() {
-
   return (
-    <Container maxWidth="container.lg" >
-      <CartCard showOrderButton={false} />
+    <Container sx={checkoutContainer} maxW="container.md">
+      <CartCard checkOutPage={true} />
       <CheckoutForm />
     </Container>
-  )
+  );
 }
 
+const checkoutContainer: SystemStyleObject = {
+  my: "2rem",
+  borderRadius: "0.625rem",
+  py: "1rem",
+  bg: "lightYellow",
+};

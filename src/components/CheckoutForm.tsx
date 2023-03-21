@@ -4,13 +4,20 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { TextField } from "./TextField";
 
-import { Flex, FormLabel, SystemStyleObject } from "@chakra-ui/react";
+import { Box, Flex, HStack, Stack, SystemStyleObject } from "@chakra-ui/react";
 
 export function CheckoutForm() {
-
   return (
     <Formik
-      initialValues={{ firstName: "", lastName: "",   email: "", phone: "", street: "", zipCode: "", city: "" }}
+      initialValues={{
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        street: "",
+        zipCode: "",
+        city: "",
+      }}
       validationSchema={Yup.object({
         firstName: Yup.string()
           .required("First name required")
@@ -37,44 +44,72 @@ export function CheckoutForm() {
         actions.resetForm();
       }}
     >
-      {formik => (
-        <Flex
-          sx={FormStyle}
-          as="form"
-          bg="white"
-          flexDirection="column"
-          onSubmit={formik.handleSubmit as any}
-        >
-          <Heading>Enter details</Heading>
-
-          <FormLabel textAlign="left">First name</FormLabel>
-          <TextField name="firstName"/>
-          <FormLabel>Last name</FormLabel>
-          <TextField name="lastName"/>
-          <FormLabel>Email</FormLabel>
-          <TextField name="email"/>
-          <FormLabel>Phone</FormLabel>
-          <TextField name="phone"/>
-          <FormLabel>Street</FormLabel>
-          <TextField name="street"/>
-          <FormLabel>Zip code</FormLabel>
-          <TextField name="zipCode"/>
-          <FormLabel>City</FormLabel>
-          <TextField name="city"/>
-
-          <Button type="submit" variant="outline" colorScheme="teal">
-            Submit
-          </Button>
+      {(formik) => (
+        <Flex sx={formStyle} onSubmit={formik.handleSubmit as any}>
+          <Stack spacing={8} paddingTop="2rem">
+            <Stack align={"center"}>
+              <Heading fontSize={"4xl"} textAlign={"center"}>
+                Contact Details
+              </Heading>
+            </Stack>
+            <Box sx={formBoxStyle}>
+              <Stack spacing={4}>
+                <HStack>
+                  <TextField name="firstName" label="First Name" />
+                  <TextField name="lastName" label="Last Name" />
+                </HStack>
+                <TextField name="email" label="Email" />
+                <TextField name="phone" label="Phone nr." />
+                <TextField name="street" label="Street" />
+                <TextField name="zipCode" label="Zip Code" />
+                <TextField name="city" label="City" />
+                <Stack spacing={10} pt={2}>
+                  <Button
+                    loadingText="Submitting"
+                    sx={submitButtonStyle}
+                    type="submit"
+                    variant="outline"
+                    colorScheme="teal"
+                  >
+                    Place Order
+                  </Button>
+                </Stack>
+              </Stack>
+            </Box>
+          </Stack>
         </Flex>
       )}
     </Formik>
   );
 }
 
-const FormStyle: SystemStyleObject = {
-  px: "1rem"
-}
+const formStyle: SystemStyleObject = {
+  mx: "auto",
+  as: "form",
+  bg: "white",
+  marginTop: "1rem",
+  border: "2px solid rgb(0,0,0, 0.2)",
+  borderRadius: "0.625rem",
+  flexDirection: "column",
+  align: "center",
+  justify: "center",
+};
 
+const formBoxStyle: SystemStyleObject = {
+  rounded: "lg",
+  boxShadow: "lg",
+  p: "0.5rem",
+  paddingTop: "0",
+};
+
+const submitButtonStyle: SystemStyleObject = {
+  width: "14rem",
+  height: "4rem",
+  mx: "auto",
+  bg: "lightGreenButton",
+  color: "black",
+  border: "none",
+};
 
 // Ska vara ett formulär där användaren fyller i
 // namn,
@@ -83,7 +118,6 @@ const FormStyle: SystemStyleObject = {
 // adress.
 // Fälten i formuläret ska gå att automatisk fyllas i.
 // Samtliga fält ska valideras så att endast rätt information kan matas in.
-
 
 // När alla delar har fyllts i på kassasidan så ska användaren kunna slutföra köpet
 //och då få en bekräftelse på köpet tillsammans med ett unikt ordernummer.
