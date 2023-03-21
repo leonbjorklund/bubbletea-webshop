@@ -42,14 +42,16 @@ export function Header() {
         <ChakraLink as={RouterLink} to="/checkout" sx={{ linkStyles, display: "flex", alignItems: "center", ml: "1rem"}}><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={IoMdCart} /> ({totalItems})</ChakraLink>
 
          {/* HAMBURGER MENU */}
-        <IconButton
-        aria-label="Hamburger menu"
-        variant="ghost"
-        icon={<HamburgerIcon />}
-        size="lg"
-        display={{ base: "flex", md: "none" }}
-        onClick={onOpen}
-      />
+         <IconButton
+           aria-label="Hamburger menu"
+           variant="ghost"
+           icon={<HamburgerIcon />}
+           size="lg"
+           display={{ base: "flex", md: "none" }}
+           onClick={onOpen}
+           _hover={{ backgroundColor: "darkPinkButton", color: "white" }}
+/>
+
       </Flex>
       
       {/* HAMBURGER MENU DRAWER */}
@@ -77,7 +79,7 @@ const containerStyle: SystemStyleObject = {
 
 const linkStyles: SystemStyleObject = {
   _hover: {
-    fontWeight: "bold",
+    color:"white",
   },
 }
 
