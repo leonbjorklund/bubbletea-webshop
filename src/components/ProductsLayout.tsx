@@ -1,10 +1,12 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { products } from "../../data";
+import { useProduct } from "../ProductContext";
 import { SmallProductCard } from "./SmallProductCard";
 
-import { products } from "../../data";
-
 export function ProductsLayout() {
+  const { productList } = useProduct()
+
   return (
     <Flex
       gap={[2, 2, 3, 4]}
@@ -13,7 +15,7 @@ export function ProductsLayout() {
       wrap={"wrap"}
       width={["100%", "100%", "100%", "70%"]}
     >
-      {products.map((product) => (
+      {productList.map((product) => (
         <Box sx={boxStyle} key={product.id}>
           <Link key={product.id} to={`/product/${product.id}`}>
           <SmallProductCard product={product} />

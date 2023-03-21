@@ -1,50 +1,32 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, PropsWithChildren } from "react";
 import { Product, products } from "../data";
 
-type productContextType = {
+type ProductContextType = {
   productList: Product[];
-  addProduct: (item: Product) => void;
-  removeProduct: (itemId: string) => void;
-  editProduct: (itemId: string) => void;
+  addProduct: (product: Product) => void;
+  removeProduct: (id: string) => void;
+  editProduct: (product: Product) => void;
 };
 
-const productContext = createContext<productContextType>({
-  productList: products,
-  addProduct: () => {},
-  removeProduct: () => {},
-  editProduct: () => {},
-});
+const ProductContext = createContext<ProductContextType>(null as any);
 
 export function useProduct() {
-  return useContext(productContext);
+  return useContext(ProductContext);
 }
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export function productProvider({ children }: Props) {
-  
-    const [productList, setproductList] = useState<Product[]>(() => {
+export function ProductProvider({ children }: PropsWithChildren) {
+  const [productList, setproductList] = useState<Product[]>(() => {
     const storedproductList = localStorage.getItem("productList");
-    return storedproductList ? JSON.parse(storedproductList) : [];
+    return storedproductList ? JSON.parse(storedproductList) : products;
   });
 
-  const addProduct = (item: Product) => {
-
-
-  };
-
-  const removeFromproduct = (itemId: string) => {
-
-    };
-  const editProduct = (itemId: string) => {
-
-  };
+  const addProduct = (product: Product) => {};
+  const removeProduct = (id: string) => {};
+  const editProduct = (product: Product) => {};
 
   return (
-    <productContext.Provider value = {{productList, addProduct, removeProduct }}>
+    <ProductContext.Provider value={{ productList, addProduct, removeProduct, editProduct }}>
       {children}
-    </productContext.Provider>
+    </ProductContext.Provider>
   );
 }

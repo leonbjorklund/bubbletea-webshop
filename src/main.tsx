@@ -11,6 +11,7 @@ import { CheckoutPage } from './pages/CheckoutPage';
 import { ConfirmationPage } from './pages/ConfirmationPage';
 import { HomePage } from './pages/HomePage';
 import { ProductPage } from './pages/ProductPage';
+import { ProductProvider } from './ProductContext';
 
 //extent the theme
 
@@ -70,9 +71,11 @@ const router = createBrowserRouter(createRoutesFromElements(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <CartProvider>
-      <ChakraProvider  theme={theme}>
-        <RouterProvider router= {router}/>
-      </ChakraProvider>
+      <ProductProvider>
+        <ChakraProvider  theme={theme}>
+          <RouterProvider router= {router}/>
+        </ChakraProvider>
+      </ProductProvider>
     </CartProvider>
   </React.StrictMode>
 );

@@ -1,53 +1,60 @@
 import { Button, FormControl, FormLabel, Input, SystemStyleObject, Text } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Product } from "../../data";
 
-export function AdminForm() {
-  const formik = useFormik({
+type ProductValues = Record<keyof Product, Yup.AnySchema>
+
+const schema = Yup.object<ProductValues>().shape({
+  image: Yup.string()
+    .url("Invalid image URL!")
+    .required("Required"),
+
+  imageAlt: Yup.string()
+    .max(20, "Must be 20 characters or less")
+    .required("Required"),
+
+  title: Yup.string()
+    .max(50, "Must be 50 characters or less")
+    .required("Required"),
+
+  description: Yup.string()
+    .max(200, "Must be 200 characters or less")
+    .required("Required"),
+
+  price: Yup.number()
+    .typeError("Must be a number")
+    .positive("Price must be positive")
+    .required("Required"),
+
+  bgColor: Yup.string()
+    .required("Required"),
+
+    category: Yup.string()
+    .oneOf(["milk", "fruit"], "Category must be either 'milk' or 'fruit'")
+    .required("Required")
+});
+
+interface Props {
+  product?: Product
+}
+
+export function AdminForm({ product }: Props) {
+  const formik = useFormik<Product>({
     initialValues: {
       id: "",
       image: "",
       imageAlt: "",
       title: "",
       description:"",
-      price:"",
+      price: "" as any,
       bgColor: "",
       category:""
     },
-    validationSchema: Yup.object({
-      id: Yup.string()
-        .max(15, "Must be 15 characters or less")
-        .required("Required"),
-    
-      image: Yup.string()
-        .url("Invalid image URL!")
-        .required("Required"),
-    
-      imageAlt: Yup.string()
-        .max(20, "Must be 20 characters or less")
-        .required("Required"),
-    
-      title: Yup.string()
-        .max(50, "Must be 50 characters or less")
-        .required("Required"),
-    
-      description: Yup.string()
-        .max(200, "Must be 200 characters or less")
-        .required("Required"),
-    
-      price: Yup.number()
-        .typeError("Must be a number")
-        .positive("Price must be positive")
-        .required("Required"),
-    
-      bgColor: Yup.string()
-        .required("Required"),
-    
-        category: Yup.string()
-        .oneOf(["milk", "fruit"], "Category must be either 'milk' or 'fruit'")
-        .required("Required")
-    }),
+    validationSchema: schema,
     onSubmit: (values, actions) => {
+      // Todo: Generate ID
+      const product = { ...values, id: '123' };
       console.log("Form submitted with values:", values);
       alert(JSON.stringify(values, null));
       actions.resetForm();
@@ -59,19 +66,6 @@ export function AdminForm() {
     // as="form"
       onSubmit={formik.handleSubmit as React.FormEventHandler<HTMLFormElement>}
       >
-      <FormControl>
-        <FormLabel>id</FormLabel>
-        <Input
-        id="id"
-        name="id"
-        type="text"
-        placeholder="id"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.id}
-        />
-      {formik.touched.id && formik.errors.id ? <Text sx={requiredText}>{formik.errors.id}</Text> : null}
-      </FormControl>
       <FormControl>
         <FormLabel>Image URL</FormLabel>
         <Input
@@ -131,7 +125,7 @@ export function AdminForm() {
         name="price"
         type="text"
         placeholder="price"
-        onChange={formik.handleChange}
+        onChange={(e) => formik.setFieldValue('price', Number(e.target.value))}
         onBlur={formik.handleBlur}
          value={formik.values.price}
         />
