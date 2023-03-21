@@ -6,7 +6,7 @@ export function HomePage() {
     <Box sx={boxStyling}>
       <Flex sx={gradientBackground}>
         <Container marginRight="auto">
-          <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height="auto" />
+          <Image src="/image/path" alt="Image of bubble tea" width="auto" height="auto" />
         </Container>
         <Container>
           <Heading fontSize={["2rem", "2.5rem", "3rem"]} color={"lightBrownText"}>
