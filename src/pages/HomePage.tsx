@@ -4,7 +4,7 @@ import { TimeForTeaCard } from "../components/TimeForTeaCard";
 export function HomePage() {
   return (
     <Box sx={boxStyling}>
-      <Flex sx={gradientBackground}>
+      <Flex sx={gradientBackground} display={["row", "row", "flex"]}>
         <Container marginRight="auto">
           <Image src="/image/path" alt="Image of bubble tea" width="auto" height="auto" />
         </Container>
