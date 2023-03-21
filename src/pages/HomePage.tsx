@@ -1,4 +1,5 @@
 import { Box, Button, Center, Container, Flex, Heading, Image, Stack, SystemStyleObject, Text } from "@chakra-ui/react";
+import { Products } from "../components/Products";
 import { TimeForTeaCard } from "../components/TimeForTeaCard";
 
 export function HomePage() {
@@ -32,6 +33,7 @@ export function HomePage() {
         </Container>
       </Flex>
       <Image src="/images/crescent.png" alt="" width="auto" height="auto" />
+      <Products />
       <TimeForTeaCard />
     </Box>
   );

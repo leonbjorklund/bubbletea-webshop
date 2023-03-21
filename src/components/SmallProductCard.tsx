@@ -11,7 +11,6 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
 
   const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
     addToCart(product);
   };
 
@@ -28,15 +27,15 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
   };
 
   return (
-    <Card align="center" sx={cardStyle}>
+    <Card data-cy="product" align="center" sx={cardStyle}>
       <Box sx={roundBG}>
           <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
-      <Text as="h6" sx={headerStyle}>
+      <Text data-cy="product-title" as="h6" sx={headerStyle}>
         {product.title}
       </Text>
-      <Text sx={textStyle}>${product.price}</Text>
-      <Button sx={buttonStyle} onClick={handleAddToCartClick}>Add to cart </Button>
+      <Text data-cy="product-price" sx={textStyle}>${product.price}</Text>
+      <Button data-cy="product-buy-button" sx={buttonStyle} onClick={handleAddToCartClick}>Add to cart </Button>
     </Card>
   );
 }

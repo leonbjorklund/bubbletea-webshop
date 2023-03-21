@@ -30,18 +30,22 @@ function calculateTotalItems(cartList: CartItem[]) {
 
 export function CartProvider({ children }: Props) {
   const [cartList, setCartList] = useState<CartItem[]>(() => {
-    const storedCartList = localStorage.getItem("cartList");
+    const storedCartList = localStorage.getItem("cart");
     return storedCartList ? JSON.parse(storedCartList) : [];
   });
 
   const [totalItems, setTotalItems] = useState(() => calculateTotalItems(cartList));
 
   useEffect(() => {
-    localStorage.setItem("cartList", JSON.stringify(cartList));
+    localStorage.setItem("cart", JSON.stringify(cartList));
     setTotalItems(calculateTotalItems(cartList));
   }, [cartList]);
 
   const toast = useToast();
+
+  // // cypress-workaround
+  const toastElement = document.getElementById("chakra-toast-manager-bottom");
+  toastElement?.setAttribute("data-cy", "added-to-cart-toast");
 
   const addToCart = (item: Product) => {
     const existingCartItem = cartList.find(
@@ -57,7 +61,7 @@ export function CartProvider({ children }: Props) {
         )
       );
       toast({
-        title: "Increased item quantity!",
+        title: "Another one has been added!",
         status: "success",
         duration: 4000,
         isClosable: true,
@@ -65,7 +69,7 @@ export function CartProvider({ children }: Props) {
     } else {
       setCartList([...cartList, { ...item, quantity: 1 }]);
       toast({
-        title: "Added to cart!",
+        title: "Item has been added!",
         description: "Go to cart to complete your order",
         status: "success",
         duration: 4000,

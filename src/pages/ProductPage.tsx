@@ -1,16 +1,15 @@
 import { Container } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import { products } from "../../data";
-import { useCart } from "../CartContext";
 import { BigProductCard } from "../components/BigProductCard";
+import { Products } from "../components/Products";
+import { useProduct } from "../ProductContext";
 
 export function ProductPage() {
-  const { addToCart } = useCart();
+
+  const { productList } = useProduct()
+
   const params = useParams();
-  console.log(params.id);
-
-const product = products.find((p) => p.id === params.id);
-
+  const product = productList.find((p) => p.id === params.id);
 
   if (!product) {
     return <p>Produkten hittades inte...</p>;
@@ -18,6 +17,7 @@ const product = products.find((p) => p.id === params.id);
 
   return (
     <Container maxWidth="container.xl" my=".3rem">
+      <Products />
       <BigProductCard
         product={product}
         backgroundAlt="boba"
