@@ -3,11 +3,9 @@ import { TimeForTeaCard } from "../components/TimeForTeaCard";
 
 export function HomePage() {
   return (
-    <Box position="relative">
+    <Box sx={boxStyling}>
 
-      {/* <Box sx={circleBackground} /> */}
-
-      <Flex sx={background}>
+      <Flex sx={gradientBackground}>
         <Container marginRight="auto">
           <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height="auto" />
         </Container>
@@ -24,6 +22,7 @@ export function HomePage() {
             fontSize={["2rem", "2.5rem", "2rem"]}
             color={"lightBrownText"}
             fontWeight="bold"
+            
           >
             In love with React Next
           </Text>
@@ -31,6 +30,8 @@ export function HomePage() {
           <Text 
             fontSize='16px'
             color={"lightBrownText"}
+            fontFamily= 'Comfortaa'
+            marginTop="1rem"
           >
             In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next  In love with React Next 
             In love with React Next  In love with React Next  In love with React Next  In love with React Next
@@ -53,24 +54,13 @@ export function HomePage() {
   );
 }
 
-const circleBackground: SystemStyleObject = {
-  width: "100%",
-  height: "50vh",
-  borderRadius: "50%",
-  backgroundColor: "pink",
-  position: "absolute",
-  top: "0",
-  left: "0",
-  zIndex: "1"
-};
- 
-const background: SystemStyleObject = {
-  position:"relative",
+const boxStyling: SystemStyleObject = {
+  marginTop:"5rem",
+}
+
+const gradientBackground: SystemStyleObject = {
   background: 'rgb(254,211,212)',
   backgroundImage: 'linear-gradient(0deg, rgba(254,211,212,1) 0%, rgba(255,241,221,1) 47%, rgba(254,211,212,1) 100%, rgba(255,255,255,1) 100%)',
-  justifyContent: "center",
-  alignItems: "center",
-  margin: "0",
   width: "100%",
   height: "20rem",
   color: "lightBrownText",
