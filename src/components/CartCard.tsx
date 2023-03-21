@@ -15,7 +15,7 @@ import {
 import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
 
-export function CartCard() {
+export function CartCard({ showOrderButton = true }) {
 
   const { addToCart, removeFromCart, cartList } = useCart();
 
@@ -68,7 +68,11 @@ export function CartCard() {
             <Text>Total:</Text>
             <Text>${totalPrice}</Text>
           </Flex>
-          <ChakraLink as={RouterLink} to="/checkout"><Button sx={orderButtonStyle}>Order</Button></ChakraLink>
+          {showOrderButton && (
+            <ChakraLink as={RouterLink} to="/checkout">
+              <Button sx={orderButtonStyle}>Order</Button>
+            </ChakraLink>
+          )}
         </CardFooter>
       </Flex>
     </Card>

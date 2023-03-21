@@ -7,7 +7,7 @@ interface SmallProductCardProps {
 }
 
 export function SmallProductCard({ product }: SmallProductCardProps) {
-  const { addToCart, cartList } = useCart();
+  const { addToCart } = useCart();
 
   const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
