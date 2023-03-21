@@ -1,6 +1,7 @@
 import { Container } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { BigProductCard } from "../components/BigProductCard";
+import { Products } from "../components/Products";
 import { useProduct } from "../ProductContext";
 
 export function ProductPage() {
@@ -16,6 +17,7 @@ export function ProductPage() {
 
   return (
     <Container maxWidth="container.xl" my=".3rem">
+      <Products />
       <BigProductCard
         product={product}
         backgroundAlt="boba"
