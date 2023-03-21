@@ -1,9 +1,11 @@
 import { Box, Flex } from "@chakra-ui/react";
+import { useProduct } from "../ProductContext";
 import { AdminSmallProductCard } from "./AdminSmallProductCard";
 
-import { products } from "../../data";
 
 export function AdminProductsLayout() {
+
+  const {productList} = useProduct()
   return (
     <Flex
       gap={[2, 2, 3, 4]}
@@ -12,9 +14,9 @@ export function AdminProductsLayout() {
       wrap={"wrap"}
       width={["100%", "100%", "100%", "70%"]}
     >
-      {products.map((product) => (
+      {productList.map((product) => (
         <Box sx={boxStyle} key={product.id}>
-          <AdminSmallProductCard image="" imageAlt=""/>
+          <AdminSmallProductCard product = {product} />
         </Box>
       ))}
     </Flex>

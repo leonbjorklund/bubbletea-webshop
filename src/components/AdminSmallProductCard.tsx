@@ -14,15 +14,18 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 import React from "react";
+import { Product } from "../../data";
+import { useProduct } from "../ProductContext";
 
-interface WTF {
-  image: string;
-  imageAlt: string;
+interface SmallProductCardProps {
+  product: Product;
 }
 
-export function AdminSmallProductCard({ image, imageAlt }: WTF) {
+export function AdminSmallProductCard({ product }: SmallProductCardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef<HTMLButtonElement>(null);
+
+  const { removeProduct } = useProduct()
 
   const roundBG = {
     backgroundColor: "#FFF",
@@ -36,15 +39,20 @@ export function AdminSmallProductCard({ image, imageAlt }: WTF) {
     boxShadow: "1px 5px 5px gray",
   };
 
+  const handleDelete = () => {
+    removeProduct(product.id);
+    onClose();
+  }
+
   return (
     <Card align="center" sx={cardStyle}>
       <Box sx={roundBG}>
-        <Image sx={imageStyle} src={image} alt={imageAlt} />
+        <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
-      <Text sx={headerStyle}>Title</Text>
-      <Text sx={textStyle}>Price</Text>
+      <Text sx={headerStyle}>{product.title}</Text>
+      <Text sx={textStyle}>${product.price.toFixed(2)}</Text>
       <Flex>
-        <Button sx={buttonStyle}>Edit </Button>
+        <Button sx={buttonStyle}>Edit</Button>
         <Button sx={deleteButtonStyle} onClick={onOpen}>
           Delete
         </Button>
@@ -68,7 +76,7 @@ export function AdminSmallProductCard({ image, imageAlt }: WTF) {
                 <Button ref={cancelRef} onClick={onClose}>
                   Cancel
                 </Button>
-                <Button colorScheme="red" onClick={onClose} ml={3}>
+                <Button colorScheme="red" onClick={handleDelete} ml={3}>
                   Delete
                 </Button>
               </AlertDialogFooter>
