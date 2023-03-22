@@ -1,11 +1,11 @@
 import {
-    Box,
-    Button,
-    Container,
-    Flex,
-    Heading,
-    Image,
-    Text
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Image,
+  Text
 } from "@chakra-ui/react";
 
 export function TimeForTeaCard() {

@@ -26,10 +26,10 @@ export function Footer() {
         <Grid sx={gridStyles}>
           <Flex  sx={logo}>
             <Center h="7rem">
-              <Image src="/images/bobasmile.png" alt="bobasmile"></Image>
+              <Image src="/images/bobablissicon.png" alt="bobasmile" height="7rem"></Image>
             </Center>
             <Center>
-              <Image src="/images/bobatitle.png"></Image>
+              <Image src="/images/bobablisstextlogo.png" width="10rem"></Image>
             </Center>
           </Flex>
           <Flex sx={gridItemStyle}>

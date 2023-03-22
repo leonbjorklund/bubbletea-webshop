@@ -31,22 +31,24 @@ export function Header() {
           <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
           <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
         <Spacer />
-
-        {/* HYPERLINKS */}
+        
+        {/* LINKS */}
         <HStack spacing="2rem" whiteSpace="nowrap" display={{ base: "none", md: "flex" }}>
           <ChakraLink as={RouterLink} to="/" sx={linkStyles}>Home</ChakraLink>
           <ChakraLink as={RouterLink} to="/admin" ><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={RiAdminFill}/></ChakraLink>
         </HStack>
         <ChakraLink data-cy="cart-items-count-badge" as={RouterLink} to="/checkout" sx={{ linkStyles, display: "flex", alignItems: "center", ml: "1rem"}}><Icon verticalAlign="sub" width="1.8em" height="1.8em" as={IoMdCart}/>({totalItems})</ChakraLink>
          {/* HAMBURGER MENU */}
-        <IconButton
-        aria-label="Hamburger menu"
-        variant="ghost"
-        icon={<HamburgerIcon />}
-        size="lg"
-        display={{ base: "flex", md: "none" }}
-        onClick={onOpen}
-      />
+         <IconButton
+           aria-label="Hamburger menu"
+           variant="ghost"
+           icon={<HamburgerIcon />}
+           size="lg"
+           display={{ base: "flex", md: "none" }}
+           onClick={onOpen}
+           _hover={{ backgroundColor: "darkPinkButton", color: "white" }}
+/>
+
       </Flex>
 
       {/* HAMBURGER MENU DRAWER */}
@@ -73,7 +75,7 @@ const containerStyle: SystemStyleObject = {
 
 const linkStyles: SystemStyleObject = {
   _hover: {
-    fontWeight: "bold",
+    color:"white",
   },
 }
 
