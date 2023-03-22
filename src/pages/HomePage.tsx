@@ -4,7 +4,7 @@ import { TimeForTeaCard } from "../components/TimeForTeaCard";
 
 export function HomePage() {
   return (
-    <Box bg={"CartBackgroundYellow"}  >
+    <Box sx={bigGradient}>
       <Flex sx={gradientBackground} display={["row", "row", "flex"]} paddingTop={[ "0rem", "0rem", "5rem"]} >
         <Container marginRight="auto" zIndex={20}>
             <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]} display={["none", "none", "flex"]}/>
@@ -47,6 +47,12 @@ const gradientBackground: SystemStyleObject = {
   color: "lightBrownText",
   fontFamily: 'Inconsolata',
 };
+
+const bigGradient: SystemStyleObject = {
+  backgroundImage: 'linear-gradient(to bottom, transparent 30%, #FED3D4)',
+  backgroundColor: "#fffaf4"
+};
+
 
 const buttonStyling: SystemStyleObject = {
   colorScheme: 'brown',
