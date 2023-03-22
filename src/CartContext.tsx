@@ -69,7 +69,7 @@ export function CartProvider({ children }: Props) {
     } else {
       setCartList([...cartList, { ...item, quantity: 1 }]);
       toast({
-        title: "Item has been added!",
+        title: "Added to cart!",
         description: "Go to cart to complete your order",
         status: "success",
         duration: 4000,
