@@ -119,8 +119,8 @@ const cardStyle = {
   borderRadius: "1rem",
   bgGradient: "linear(green.100 30%, yellow.50 90%)",
   m: "1rem",
-  pt: ["3rem", "3rem", "4rem", "4rem"],
-  pb: ["7rem", "4rem", "4rem", "4rem"],
+  pt: ["0rem", "0rem", "4rem", "4rem"],
+  pb: ["2rem", "1rem", "4rem", "4rem"],
 };
 
 const xButton = {
