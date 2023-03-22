@@ -111,7 +111,7 @@ export function BigProductCard({
 
 
 const cardStyle = {
-  height: ["85vh", "85vh", "85vh", "85vh"],
+  height: ["auto", "auto", "85vh", "85vh"],
   width: ["90%", "90%", "95%", "95%"],
   boxShadow: "3px 3px 3px gray",
   backgroundColor: "product.bgColor",
@@ -119,6 +119,8 @@ const cardStyle = {
   borderRadius: "1rem",
   bgGradient: "linear(green.100 30%, yellow.50 90%)",
   m: "1rem",
+  pt: ["3rem", "3rem", "4rem", "4rem"],
+  pb: ["7rem", "4rem", "4rem", "4rem"],
 };
 
 const xButton = {
@@ -141,7 +143,7 @@ const cardHeaderStyle = {
 };
 
 const infoBoxStyle = {
-  mt: ["-2rem", "-2rem", "2rem"],
+  mt: ["1rem", "-2rem", "2rem"],
   textAlign: ["center", "center", "left"],
   position: ["static", "static", "absolute"],
   left: ["auto", "auto", "42%"],
