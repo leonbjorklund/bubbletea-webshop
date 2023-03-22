@@ -169,6 +169,7 @@ const logoText = {
 };
 
 const hamburgerMenuStyling = {
+  zIndex:"3000",
   color: "lightBrownText",
   backgroundColor: "pink",
 };
