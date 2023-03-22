@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Container maxW="100%" px={["0rem"]} as="main">
+      <Container maxW="100%" px={["0rem"]} as="main" mt={"4.3rem"}>
         <Outlet />
       </Container>
       <Footer />

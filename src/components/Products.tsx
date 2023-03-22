@@ -34,18 +34,21 @@ export function Products() {
       >
         <TabList>
           <Tab
+            fontSize={[".8rem",".9rem","1rem"]}
             borderRadius=".6rem"
             _selected={{ color: "white", bg: "pinkCardButton" }}
           >
             ALL TEAS
           </Tab>
           <Tab
+            fontSize={[".8rem",".9rem","1rem"]}
             borderRadius=".6rem"
             _selected={{ color: "white", bg: "pinkCardButton" }}
           >
             FRUIT TEA
           </Tab>
           <Tab
+          fontSize={[".8rem",".9rem","1rem"]}
             borderRadius=".6rem"
             _selected={{ color: "white", bg: "pinkCardButton" }}
           >
