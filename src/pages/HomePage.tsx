@@ -10,7 +10,7 @@ export function HomePage() {
             <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]} display={["none", "none", "flex"]}/>
         </Container>
         <Container>
-          <Heading fontSize={["2rem", "2.5rem", "3.5rem"]} color={"lightBrownText"}>
+          <Heading fontSize={["2rem", "2.5rem", "3rem", "3.5rem"]} color={"lightBrownText"}>
             Best boba ever
           </Heading>
           <Text fontSize={[ "2.5rem", "2rem"]} color={"lightBrownText"} fontWeight="bold" display={["none", "none", "flex"]}>
