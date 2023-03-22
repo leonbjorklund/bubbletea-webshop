@@ -14,7 +14,6 @@ import {
   Link as ChakraLink,
   Spacer,
   Text,
-  theme,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -139,7 +138,7 @@ export function Header() {
 
 const containerStyle = {
   maxWidth: "100%",
-  backgroundColor: theme.colors.pink,
+  backgroundColor: "pink",
   color: "lightBrownText",
 };
 
