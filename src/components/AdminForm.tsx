@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input, SystemStyleObject, Text } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input, Select, SystemStyleObject, Text } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Product } from "../../data";
@@ -157,16 +157,20 @@ export function AdminForm({ product }: Props) {
       </FormControl>
       <FormControl>
         <FormLabel>Category</FormLabel>
-        <Input
-        id="category"
-        name="category"
-        type="text"
-        placeholder="backgroundcolor"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-         value={formik.values.category}
-        />
-        {formik.touched.category && formik.errors.category ? <Text sx={requiredText}>{formik.errors.category}</Text> : null}
+        <Select
+          id="category"
+          name="category"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.category}
+          placeholder="Select a category"
+        >
+          <option value="milk">Milk</option>
+          <option value="fruit">Fruit</option>
+        </Select>
+        {formik.touched.category && formik.errors.category ? (
+          <Text sx={requiredText}>{formik.errors.category}</Text>
+        ) : null}
       </FormControl>
       <Button type="submit">Submit</Button>
     </form>
