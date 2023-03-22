@@ -17,7 +17,7 @@ export function Products() {
   >(null);
 
   return (
-    <Container maxWidth="container.xl" my=".3rem">
+    <Container maxWidth="container.xl" my=".3rem"  >
       <Heading>Our Drinks</Heading>
       <Tabs
         borderRadius=".6rem"
@@ -57,6 +57,7 @@ export function Products() {
         direction={["column", "column", "column", "row"]}
         justify={["center", "center", "center", "space-between"]}
         gap={1}
+        
       >
         <ProductsLayout filterCategory={selectedCategory} />
 

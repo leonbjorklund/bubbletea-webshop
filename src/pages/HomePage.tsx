@@ -4,9 +4,9 @@ import { TimeForTeaCard } from "../components/TimeForTeaCard";
 
 export function HomePage() {
   return (
-    <Box marginTop={[ "0rem", "0rem", "5rem"]}>
-      <Flex sx={gradientBackground} display={["row", "row", "flex"]}>
-        <Container marginRight="auto">
+    <Box bg={"CartBackgroundYellow"}  >
+      <Flex sx={gradientBackground} display={["row", "row", "flex"]} paddingTop={[ "0rem", "0rem", "5rem"]} >
+        <Container marginRight="auto" zIndex={20}>
             <Image src="/images/showcaseimg.png" alt="Image of bubble tea" width="auto" height={["100px","150px","auto"]} display={["none", "none", "flex"]}/>
         </Container>
         <Container>
@@ -32,7 +32,7 @@ export function HomePage() {
           </Stack>
         </Container>
       </Flex>
-      <Image src="/images/crescent.png" alt="" width="auto" height="auto" />
+      <Image src="/images/crescent.png" alt="" width="auto" height="auto" bg={"pink"} />
       <Products />
       <TimeForTeaCard />
     </Box>

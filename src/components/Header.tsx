@@ -14,9 +14,7 @@ import {
   Link as ChakraLink,
   Spacer,
   SystemStyleObject,
-  Text,
-  theme,
-  useDisclosure
+  Text, useDisclosure
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { IoMdCart } from "react-icons/io";
@@ -119,7 +117,7 @@ export function Header() {
 
 const containerStyle: SystemStyleObject = {
   maxWidth: "100%",
-  backgroundColor: theme.colors.pink,
+  backgroundColor: "pink",
   color: "lightBrownText",
 };
 
