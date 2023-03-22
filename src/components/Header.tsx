@@ -13,12 +13,12 @@ import {
   Image,
   Link as ChakraLink,
   Spacer,
-  SystemStyleObject,
   Text,
   theme,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { AiFillHome } from "react-icons/ai";
 import { IoMdCart } from "react-icons/io";
 import { RiAdminFill } from "react-icons/ri";
 import { Link as RouterLink } from "react-router-dom";
@@ -44,18 +44,33 @@ export function Header() {
     <Container as="header" sx={containerStyle}>
       <Flex as="nav" sx={flexStyle}>
         {/* LOGO */}
-        <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
-        <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
+        <HStack>
+          <ChakraLink as={RouterLink} to="/" sx={linkStyles}>
+            <Image src="/images/bobablissiconupdate.png" alt="Logo" sx={logo} />
+          </ChakraLink>
+          <ChakraLink as={RouterLink} to="/" sx={linkStyles}>
+            <Image
+              src="/images/bobablisstextlogotest.png"
+              alt="Logo"
+              sx={logoText}
+            />
+          </ChakraLink>
+        </HStack>
         <Spacer />
 
         {/* LINKS */}
         <HStack
-          spacing="2rem"
+          spacing="1rem"
           whiteSpace="nowrap"
           display={{ base: "none", md: "flex" }}
         >
-          <ChakraLink as={RouterLink} to="/" sx={linkStyles}>
-            Home
+          <ChakraLink as={RouterLink} to="/">
+            <Icon
+              verticalAlign="sub"
+              width="1.8em"
+              height="1.8em"
+              as={AiFillHome}
+            />
           </ChakraLink>
           <ChakraLink as={RouterLink} to="/admin">
             <Icon
@@ -65,21 +80,26 @@ export function Header() {
               as={RiAdminFill}
             />
           </ChakraLink>
+          <ChakraLink
+            data-cy="cart-link"
+            as={RouterLink}
+            to="/checkout"
+            sx={{
+              linkStyles,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Icon
+              verticalAlign="sub"
+              width="1.8em"
+              height="1.8em"
+              as={IoMdCart}
+            />
+            <Text data-cy="cart-items-count-badge">({totalItems})</Text>
+          </ChakraLink>
         </HStack>
-        <ChakraLink
-          data-cy="cart-link"
-          as={RouterLink}
-          to="/checkout"
-          sx={{ linkStyles, display: "flex", alignItems: "center", ml: "1rem" }}
-        >
-          <Icon
-            verticalAlign="sub"
-            width="1.8em"
-            height="1.8em"
-            as={IoMdCart}
-          />
-          <Text data-cy="cart-items-count-badge">({totalItems})</Text>
-        </ChakraLink>
+
         {/* HAMBURGER MENU */}
         <IconButton
           aria-label="Hamburger menu"
@@ -117,34 +137,34 @@ export function Header() {
   );
 }
 
-const containerStyle: SystemStyleObject = {
+const containerStyle = {
   maxWidth: "100%",
   backgroundColor: theme.colors.pink,
   color: "lightBrownText",
 };
 
-const linkStyles: SystemStyleObject = {
+const linkStyles = {
   _hover: {
     color: "white",
   },
 };
 
-const flexStyle: SystemStyleObject = {
+const flexStyle = {
   p: "10px",
   alignItems: "center",
   justifyContent: "center",
 };
 
-const logo: SystemStyleObject = {
-  width: "4rem",
+const logo = {
+  width: "5rem",
 };
 
-const logoText: SystemStyleObject = {
+const logoText = {
   width: "10rem",
   ml: "1rem",
 };
 
-const hamburgerMenuStyling: SystemStyleObject = {
+const hamburgerMenuStyling = {
   color: "lightBrownText",
   backgroundColor: "pink",
 };
