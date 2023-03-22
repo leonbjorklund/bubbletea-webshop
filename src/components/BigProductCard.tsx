@@ -36,6 +36,9 @@ export function BigProductCard({
   const closeButtonSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
 
 
+
+
+
   const handleClose = () => {
     setVisible(false);
     navigate("/");
@@ -45,7 +48,7 @@ export function BigProductCard({
     <Flex
       alignItems="center"
       justifyContent="center"
-      height="calc(100vh-3rem)"
+      height="100vh"
       width="100vw"
       position="fixed"
       top="3rem"
@@ -74,6 +77,13 @@ export function BigProductCard({
               <Heading sx={priceStyle}>${product.price}</Heading>
               <Text sx={textStyle}>{product.description}</Text>
             </CardHeader>
+          <Box sx={infoBoxStyle}>
+            <Text sx={textMarginStyle}>Allergens:</Text>
+            <Flex direction="column" align={["center", "center", "left",]}><Text sx={inputText}>Milk</Text></Flex>
+            <Text sx={textMarginStyle}>Ingredients:</Text>
+            <Flex direction="column" align={["center", "center", "left"]}><Text sx={inputText}>Milk, sugar, black tea, taro powder, hopes and dreams. like whyMilk, sugar, black tea, taro powder, hopes and dreams. like why </Text></Flex>
+            
+          </Box>
             <CardFooter sx={cardFooterStyle}>
               <Button
                 sx={buttonStyle}
@@ -99,15 +109,18 @@ export function BigProductCard({
   );
 }
 
+
 const cardStyle = {
-  height: ["85vh", "85vh", "88vh", "88vh"],
-  width: ["17rem", "90%", "95%", "95%"],
+  height: ["auto", "auto", "85vh", "85vh"],
+  width: ["90%", "90%", "95%", "95%"],
   boxShadow: "3px 3px 3px gray",
   backgroundColor: "product.bgColor",
   position: "relative",
   borderRadius: "1rem",
   bgGradient: "linear(green.100 30%, yellow.50 90%)",
   m: "1rem",
+  pt: ["0rem", "0rem", "4rem", "4rem"],
+  pb: ["2rem", "1rem", "4rem", "4rem"],
 };
 
 const xButton = {
@@ -128,6 +141,30 @@ const cardHeaderStyle = {
   mt: ["5rem", "-5rem", "-5rem"],
   m: ["0rem", "2rem"],
 };
+
+const infoBoxStyle = {
+  mt: ["1rem", "-2rem", "2rem"],
+  textAlign: ["center", "center", "left"],
+  position: ["static", "static", "absolute"],
+  left: ["auto", "auto", "42%"],
+  top: ["auto", "auto", "30%"],
+  transform: ["none", "none", "translateX(-50%)"],
+};
+
+const textMarginStyle = {
+  fontFamily: 'Inconsolata, sans-serif',
+  fontSize: ["16px", "16px", "22px", "22px"],
+  color: "darkBrownText"
+};
+
+const inputText = {
+  color: "lightBrownText",
+  fontSize: ["12px", "12px", "16px", "16px"],
+  whiteSpace: "pre-wrap",
+  maxWidth: "200px",
+  alignSelf: ["center", "center", "flex-start"]
+}
+
 
 const cardFooterStyle = {
   mt: ["0", "3rem", "3rem"],
