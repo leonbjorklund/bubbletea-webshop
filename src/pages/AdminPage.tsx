@@ -3,7 +3,7 @@ import { AdminProducts } from "../components/AdminProducts";
 
 export function AdminPage() {
   return (
-    <Box>
+    <Box bg={"pink"}>
       <Container as="section" maxWidth="container.xl" my="">
         <Heading>This is ADMINPAGE :D!</Heading>
       </Container>
