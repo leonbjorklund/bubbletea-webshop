@@ -46,11 +46,11 @@ export function Header() {
         {/* LOGO */}
         <HStack>
           <ChakraLink as={RouterLink} to="/" sx={linkStyles}>
-            <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
+            <Image src="/images/bobablissiconupdate.png" alt="Logo" sx={logo} />
           </ChakraLink>
           <ChakraLink as={RouterLink} to="/" sx={linkStyles}>
             <Image
-              src="/images/bobablisstextlogoglare.png"
+              src="/images/bobablisstextlogotest.png"
               alt="Logo"
               sx={logoText}
             />
