@@ -15,6 +15,8 @@ import { useProduct } from "../ProductContext";
 export function ProductPage() {
   const { productList } = useProduct();
 
+
+
   const params = useParams();
   const product = productList.find((p) => p.id === params.id);
 
@@ -23,7 +25,7 @@ export function ProductPage() {
   }
 
   return (
-    <Box sx={bigGradient}>
+    <Box sx={bigGradient} className="parent">
       <Flex
         sx={gradientBackground}
         display={["row", "row", "flex"]}

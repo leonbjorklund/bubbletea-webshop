@@ -25,7 +25,7 @@ export const products: Product[] = [
     title: "Brown sugar Milk",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "yellowCardCircle",
+    bgColor: "yellow",
     category: "milk"
   },
   {
@@ -45,7 +45,7 @@ export const products: Product[] = [
     title: "Milk Tea",
     description: "Description of the drink!",
     price: 6.50,
-    bgColor: "fruitTeaCircle",
+    bgColor: "#EEA6B4",
     category: "milk"
   },
   {
@@ -75,7 +75,7 @@ export const products: Product[] = [
     title: "Peach Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
-    bgColor: "fruitTeaCircle",
+    bgColor: "#EEA6B4",
     category: "fruit"
   },
   {
@@ -85,7 +85,7 @@ export const products: Product[] = [
     title: "Passion Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
-    bgColor: "fruitTeaCircle",
+    bgColor: "#EEA6B4",
     category: "fruit"
   },
   {
