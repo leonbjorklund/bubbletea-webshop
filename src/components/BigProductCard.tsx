@@ -78,12 +78,11 @@ export function BigProductCard({
               <Text sx={textStyle}>{product.description}</Text>
             </CardHeader>
           <Box sx={infoBoxStyle}>
-            <Flex direction="column" align={["center", "center", "left"]}>
             <Text sx={textMarginStyle}>Allergens:</Text>
-            <Text sx={inputText}>Milk</Text>
+            <Flex direction="column" align={["center", "center", "left",]}><Text sx={inputText}>Milk</Text></Flex>
             <Text sx={textMarginStyle}>Ingredients:</Text>
-            <Text sx={inputText}>Milk, sugar, black tea, taro powder, hopes and dreams. like whyMilk, sugar, black tea, taro powder, hopes and dreams. like why </Text>
-            </Flex>
+            <Flex direction="column" align={["center", "center", "left"]}><Text sx={inputText}>Milk, sugar, black tea, taro powder, hopes and dreams. like whyMilk, sugar, black tea, taro powder, hopes and dreams. like why </Text></Flex>
+            
           </Box>
             <CardFooter sx={cardFooterStyle}>
               <Button
@@ -161,6 +160,7 @@ const inputText = {
   fontSize: ["12px", "12px", "16px", "16px"],
   whiteSpace: "pre-wrap",
   maxWidth: "200px",
+  alignSelf: ["center", "center", "flex-start"]
 }
 
 
