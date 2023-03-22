@@ -44,8 +44,14 @@ export function Header() {
     <Container as="header" sx={containerStyle}>
       <Flex as="nav" sx={flexStyle}>
         {/* LOGO */}
-        <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
-        <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
+        <HStack>
+          <ChakraLink as={RouterLink} to="/" sx={linkStyles}>
+            <Image src="/images/bobablissicon.png" alt="Logo" sx={logo} />
+          </ChakraLink>
+          <ChakraLink as={RouterLink} to="/" sx={linkStyles}>
+          <Image src="/images/bobablisstextlogo.png" alt="Logo" sx={logoText} />
+          </ChakraLink>
+        </HStack>
         <Spacer />
 
         {/* LINKS */}
