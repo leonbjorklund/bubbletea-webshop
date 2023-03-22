@@ -136,7 +136,7 @@ const flexStyle: SystemStyleObject = {
 };
 
 const logo: SystemStyleObject = {
-  width: "5rem",
+  width: "4rem",
 };
 
 const logoText: SystemStyleObject = {

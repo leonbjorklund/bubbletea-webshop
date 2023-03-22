@@ -34,6 +34,7 @@ export function BigProductCard({
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
   const closeButtonSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
+  const inputTextMaxWidth = useBreakpointValue({ base: "100px", md: "150px", lg: "200px" });
 
 
   const handleClose = () => {
@@ -45,7 +46,7 @@ export function BigProductCard({
     <Flex
       alignItems="center"
       justifyContent="center"
-      height="calc(100vh-3rem)"
+      height="100vh"
       width="100vw"
       position="fixed"
       top="3rem"
@@ -74,6 +75,12 @@ export function BigProductCard({
               <Heading sx={priceStyle}>${product.price}</Heading>
               <Text sx={textStyle}>{product.description}</Text>
             </CardHeader>
+          <Box sx={infoBoxStyle}>
+            <Text sx={textMarginStyle}>Allergens:</Text>
+            <Text sx={inputText}>Milk</Text>
+            <Text sx={textMarginStyle}>Ingredients:</Text>
+            <Text sx={inputText}>Milk, sugar, black tea, taro powder, hopes and dreams. like whyMilk, sugar, black tea, taro powder, hopes and dreams. like why </Text>
+          </Box>
             <CardFooter sx={cardFooterStyle}>
               <Button
                 sx={buttonStyle}
@@ -100,8 +107,8 @@ export function BigProductCard({
 }
 
 const cardStyle = {
-  height: ["85vh", "85vh", "88vh", "88vh"],
-  width: ["17rem", "90%", "95%", "95%"],
+  height: ["85vh", "85vh", "85vh", "85vh"],
+  width: ["90%", "90%", "95%", "95%"],
   boxShadow: "3px 3px 3px gray",
   backgroundColor: "product.bgColor",
   position: "relative",
@@ -128,6 +135,29 @@ const cardHeaderStyle = {
   mt: ["5rem", "-5rem", "-5rem"],
   m: ["0rem", "2rem"],
 };
+
+const infoBoxStyle = {
+  mt: ["-2rem", "-2rem", "2rem"],
+  textAlign: ["center", "center", "left"],
+  position: ["static", "static", "absolute"],
+  left: ["auto", "auto", "42%"],
+  top: ["auto", "auto", "30%"],
+  transform: ["none", "none", "translateX(-50%)"],
+};
+
+const textMarginStyle = {
+  fontFamily: 'Inconsolata, sans-serif',
+  fontSize: ["16px", "16px", "22px", "22px"],
+  color: "darkBrownText"
+};
+
+const inputText = {
+  color: "lightBrownText",
+  fontSize: ["12px", "12px", "16px", "16px"],
+  whiteSpace: "pre-wrap", // Add this line
+  maxWidth: "200px", // Add this line, adjust the value as needed
+}
+
 
 const cardFooterStyle = {
   mt: ["0", "3rem", "3rem"],
