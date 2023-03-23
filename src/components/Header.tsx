@@ -14,7 +14,7 @@ import {
   Link as ChakraLink,
   Spacer,
   Text,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
@@ -137,9 +137,13 @@ export function Header() {
 }
 
 const containerStyle = {
+  position: "fixed",
+  zIndex:"1000",
+  top:0,
   maxWidth: "100%",
   backgroundColor: "pink",
   color: "lightBrownText",
+  height:["4.3rem"]
 };
 
 const linkStyles = {
@@ -149,21 +153,23 @@ const linkStyles = {
 };
 
 const flexStyle = {
-  p: "10px",
+  p: ".5rem",
   alignItems: "center",
   justifyContent: "center",
+  height:["4.3rem"]
 };
 
 const logo = {
-  width: "5rem",
+  width: ["3.5rem"],
 };
 
 const logoText = {
-  width: "10rem",
-  ml: "1rem",
+  width: ["6rem","6rem","9rem"],
+  ml: [".5rem",".5rem"],
 };
 
 const hamburgerMenuStyling = {
+  zIndex:"3000",
   color: "lightBrownText",
   backgroundColor: "pink",
 };
