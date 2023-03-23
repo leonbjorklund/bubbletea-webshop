@@ -43,6 +43,8 @@ export function BigProductCard2({
     }
   };
 
+  const cardRef = useRef<HTMLDivElement | null>(null);
+
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
   const closeButtonSize = useBreakpointValue({
@@ -80,8 +82,13 @@ export function BigProductCard2({
     navigate("/");
   };
 
+  useOutsideClick({
+    ref: cardRef,
+    handler: () => handleClose(),
+  });
+
   return (
-    <Box sx={cardStyle}>
+    <Box ref={cardRef} sx={cardStyle}>
       <CloseButton sx={xButton} size={closeButtonSize} onClick={handleClose} />
       <Flex
         w={"100%"}
