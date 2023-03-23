@@ -6,6 +6,7 @@ import {
   Center,
   Flex,
   Heading,
+  Icon,
   Image,
   ListItem,
   SystemStyleObject,
@@ -13,6 +14,8 @@ import {
   UnorderedList,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { BsCupStraw } from "react-icons/bs";
+import { FaTruckMoving } from "react-icons/fa";
 import { useCart } from "../CartContext";
 
 export function OrderConfirmationCard({ checkOutPage = true }) {
@@ -29,7 +32,7 @@ export function OrderConfirmationCard({ checkOutPage = true }) {
     <Card sx={cartStyle}>
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
-          <Heading size="lg">
+          <Heading size="lg" padding="15px">
             Thank you for your order! {"#Unique order number"}
           </Heading>
         </CardHeader>
@@ -38,14 +41,12 @@ export function OrderConfirmationCard({ checkOutPage = true }) {
             {cartList.map((cartItem) => (
               <ListItem key={cartItem.id}>
                 <Flex sx={cartItemStyle}>
-                  <Text>{cartItem.quantity}</Text>
-                  {checkOutPage && (
-                    <Image
-                      sx={thumbNailStyle}
-                      src={cartItem.image}
-                      alt={cartItem.imageAlt}
-                    />
-                  )}
+                  <Text marginRight="20px">{cartItem.quantity}</Text>
+                  <Image
+                    sx={thumbNailStyle}
+                    src={cartItem.image}
+                    alt={cartItem.imageAlt}
+                  />
                   <Text paddingTop="10px" flex={1} textAlign="left">
                     {cartItem.title}
                   </Text>
@@ -58,14 +59,25 @@ export function OrderConfirmationCard({ checkOutPage = true }) {
           </UnorderedList>
         </CardBody>
         <CardFooter fontSize={cardFooterFontSize} sx={cardFooterStyle}>
-          {/* <Divider bg="gray" opacity="1" /> */}
           <Center>
-            <Text>Your delivery will be delivered as soon as possible!</Text>
+            <Text>Your order will be delivered as soon as possible!</Text>
           </Center>
-          <Flex float="right">
-            <Text>Total:</Text>
-            <Text>${totalPrice}</Text>
-          </Flex>
+          <Flex></Flex>
+          <Center marginTop="2rem">
+            <Icon
+              verticalAlign="sub"
+              width="1.8em"
+              height="1.8em"
+              as={FaTruckMoving}
+            />
+            <Icon
+              verticalAlign="sub"
+              width="1.8em"
+              height="1.8em"
+              as={BsCupStraw}
+            />
+          </Center>
+          <Text float="right">Total: ${totalPrice}</Text>
         </CardFooter>
       </Flex>
     </Card>
@@ -79,6 +91,7 @@ const cartStyle: SystemStyleObject = {
   borderRadius: "0.625rem",
   padding: "1rem",
   position: "relative",
+  color: "darkBrownText",
 };
 
 const thumbNailStyle: SystemStyleObject = {
@@ -98,37 +111,9 @@ const cartItemStyle: SystemStyleObject = {
   my: "0.625rem",
 };
 
-const incrementButtonStyle: SystemStyleObject = {
-  bg: "pinkCardButton",
-  marginStart: "0!important",
-  marginEnd: "0!important",
-};
-
-const quantityStyle: SystemStyleObject = {
-  m: "0",
-  w: "1.375rem",
-  textAlign: "center",
-  marginStart: "0!important",
-};
-
-const orderButtonStyle: SystemStyleObject = {
-  width: "100%",
-  bg: "lightGreenButton",
-  color: "black",
-  fontSize: "1.2rem",
-};
-
 const cardFooterStyle: SystemStyleObject = {
   width: "100%",
   display: "block",
   p: "0",
-};
-
-const submitButtonStyle: SystemStyleObject = {
-  width: "14rem",
-  height: "4rem",
-  mx: "auto",
-  bg: "lightGreenButton",
-  color: "black",
-  border: "none",
+  color: "darkBrownText",
 };
