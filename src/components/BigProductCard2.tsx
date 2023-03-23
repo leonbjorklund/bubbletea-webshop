@@ -130,7 +130,7 @@ export function BigProductCard2({
                 <Button sx={buttonStyle} onClick={decreaseQuantity}>
                   -
                 </Button>
-                <Text>{quantity}</Text>
+                <Text sx={quantityStyling}>{quantity}</Text>
                 <Button sx={buttonStyle} onClick={increaseQuantity}>
                   +
                 </Button>
@@ -176,11 +176,11 @@ export function BigProductCard2({
 
 const imageStyle = {
   position: "absolute",
-  top: ["50%", "50%", "50%", "46%"],
+  top: ["40%", "40%", "40%", "40%"],
   left: "50%",
   transform: "translate(-50%, -50%)",
   objectFit: "cover",
-  width: ["41%", "45%", "46%", "48%"],
+  width: ["40%", "40%", "40%", "40%"],
   zIndex: "200",
 };
 
@@ -204,6 +204,14 @@ const xButton = {
 const boxStyling = {
   padding: "3%",
 };
+
+const quantityStyling = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "1.5rem",
+  mx: "1rem",
+}
 
 const inputText = {
   color: "lightBrownText",
