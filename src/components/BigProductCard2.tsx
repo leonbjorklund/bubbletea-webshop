@@ -51,13 +51,6 @@ export function BigProductCard2({
     lg: "lg",
   });
 
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useOutsideClick({
-    ref: cardRef,
-    handler: () => handleClose(),
-  });
-
   const cardStyle = {
     height: ["85vh"],
     width: ["90%", "94%", "94%", "94%", "78%"],
