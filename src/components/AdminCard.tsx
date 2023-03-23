@@ -17,7 +17,7 @@ export function AdminCard() {
       </Card>
     );
   }
-  
+
   const cartStyle: SystemStyleObject = {
     marginTop: "var(--chakra-space-1)",
     bg: "#FFF9F4",
@@ -26,38 +26,38 @@ export function AdminCard() {
     padding: "1rem",
     position: "relative",
   };
-  
+
   const flexStyle: SystemStyleObject = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     rowGap: "1.25rem",
   };
-  
+
   const cartItemStyle: SystemStyleObject = {
     alignItems: "center",
     my: "0.625rem",
   };
-  
+
   const incrementButtonStyle: SystemStyleObject = {
     bg: "pinkCardButton",
     marginStart: "0!important",
     marginEnd: "0!important",
   };
-  
+
   const quantityStyle: SystemStyleObject = {
     m: "0",
     w: "1.375rem",
     textAlign: "center",
     marginStart: "0!important",
   };
-  
+
   const orderButtonStyle: SystemStyleObject = {
     width: "100%",
     bg: "lightGreenButton",
     color: "black",
   };
-  
+
   const cardFooterStyle: SystemStyleObject = {
     width: "100%",
     display: "block",

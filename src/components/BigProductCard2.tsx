@@ -7,7 +7,7 @@ import {
   Icon,
   Image,
   Text,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
@@ -27,6 +27,15 @@ export function BigProductCard2({
   backgroundUrl,
 }: BigProductCardProps) {
   const { addToCart, removeFromCart, cartList } = useCart();
+
+  const [quantity, setQuantity] = useState(0);
+
+  const handleClick = () => {
+
+    setQuantity(quantity + 1);
+
+  }
+
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
   const closeButtonSize = useBreakpointValue({
@@ -110,13 +119,13 @@ export function BigProductCard2({
                 >
                   -
                 </Button>
-                <Text>{cartList.length}</Text>
-                <Button sx={buttonStyle} onClick={() => addToCart(products[0])}>
+                <Text>{quantity}</Text>
+                <Button sx={buttonStyle} onClick={handleClick}>
                   +
                 </Button>
                 <Button
                   sx={addButtonStyle}
-                  onClick={() => addToCart(products[0])}
+                  onClick={() => addToCart(product)}
                 >
                   <Icon sx={iconStyle} as={BsCartPlus} />
                 </Button>
