@@ -176,11 +176,11 @@ export function BigProductCard2({
 
 const imageStyle = {
   position: "absolute",
-  top: ["50%", "50%", "50%", "40%"],
+  top: ["40%", "40%", "40%", "40%"],
   left: "50%",
   transform: "translate(-50%, -50%)",
   objectFit: "cover",
-  width: ["41%", "45%", "46%", "40%"],
+  width: ["40%", "40%", "40%", "40%"],
   zIndex: "200",
 };
 
