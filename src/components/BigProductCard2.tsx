@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
 import { useNavigate } from "react-router-dom";
-import { Product, products } from "../../data";
+import { Product } from "../../data";
 import { useCart } from "../CartContext";
 
 interface BigProductCardProps {
@@ -28,12 +28,18 @@ export function BigProductCard2({
 }: BigProductCardProps) {
   const { addToCart, removeFromCart, cartList } = useCart();
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
-  const handleClick = () => {
-
+  const increaseQuantity = () => {
     setQuantity(quantity + 1);
+  }
 
+  const decreaseQuantity = () => {
+    if (quantity == 1) {
+      return false
+    } else {
+    setQuantity(quantity - 1)
+    }
   }
 
   const navigate = useNavigate();
@@ -115,17 +121,17 @@ export function BigProductCard2({
               <Flex>
                 <Button
                   sx={buttonStyle}
-                  onClick={() => removeFromCart(products[0].id)}
+                  onClick={decreaseQuantity}
                 >
                   -
                 </Button>
                 <Text>{quantity}</Text>
-                <Button sx={buttonStyle} onClick={handleClick}>
+                <Button sx={buttonStyle} onClick={increaseQuantity}>
                   +
                 </Button>
                 <Button
                   sx={addButtonStyle}
-                  onClick={() => addToCart(product)}
+                  onClick={() => addToCart(product, quantity)}
                 >
                   <Icon sx={iconStyle} as={BsCartPlus} />
                 </Button>

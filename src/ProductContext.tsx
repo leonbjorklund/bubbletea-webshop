@@ -29,6 +29,7 @@ export function ProductProvider({ children }: PropsWithChildren) {
       return updatedProductList;
     });
   };
+
   const removeProduct = (id: string) => {
     setProductList((prevProductsList) => {
       const itemIndex = prevProductsList.findIndex(
