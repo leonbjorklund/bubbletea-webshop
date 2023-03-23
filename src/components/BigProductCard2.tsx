@@ -1,7 +1,13 @@
-import { Box, CloseButton, useBreakpointValue } from "@chakra-ui/react";
+import {
+    Box, Button, CloseButton,
+    Flex,
+    Heading,
+    Icon, Image, Text, useBreakpointValue
+} from "@chakra-ui/react";
 import { useState } from "react";
+import { BsCartPlus } from "react-icons/Bs";
 import { useNavigate } from "react-router-dom";
-import { Product } from "../../data";
+import { Product, products } from "../../data";
 import { useCart } from "../CartContext";
 
 interface BigProductCardProps {
@@ -24,9 +30,8 @@ export function BigProductCard2({
     lg: "lg",
   });
 
-
   const cardStyle = {
-    height: ["83vh"],
+    height: ["85vh"],
     width: ["90%", "94%", "94%", "94%", "78%"],
     position: "fixed",
     top: 20,
@@ -36,20 +41,168 @@ export function BigProductCard2({
     boxShadow: "3px 3px 3px gray",
     bgGradient: `linear(${product.bgColor} 30%, yellow.50 90%)`,
   };
+  const roundBG = {
+    marginTop:".5rem",
+    backgroundColor: `${product.bgColor}`,
+    height: ["16rem", "17rem", "18.5rem", "25rem", "28rem"],
+    width: ["16rem", "17rem", "18.5rem", "25rem","28rem"],
+    borderRadius: "50%",
+    border: "2px solid darkBrownText",
+    position: "relative",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
 
   const handleClose = () => {
     setVisible(false);
     navigate("/");
   };
 
-  return <Box sx={cardStyle}>
-    <CloseButton sx={xButton} size={closeButtonSize} onClick={handleClose} /> 
-  </Box>;}
+  return (
+    <Box sx={cardStyle}>
+      <CloseButton sx={xButton} size={closeButtonSize} onClick={handleClose} />
+      <Flex
+        w={"100%"}
+        h={"100%"}
+        direction={["column-reverse", "column-reverse", "row", "row"]}
+        justify={"center"}
+        alignItems={"center"}
+        padding={"1%"}
+      >
+        <Flex
+          direction={["column-reverse", "column-reverse", "row", "row"]}
+          textAlign={["center", "center", "left"]}
+          justifyContent={["space-evenly", "space-evenly","space-between","space-around"]}
+          alignItems={["center", "center", "space-evenly", "space-evenly"]}
+          sx={boxStyling}
+          h={["50%", "50%", "80%"]}
+          w={["80%", "70%", "60%", "60%"]}
+        >
+          <Flex
+            direction={"column"}
+            h={"100%"}
+            justifyContent={"center"}
+            gap={[0, 1, 3, 4]}
+          >
+            <Heading fontSize={["1.5rem", "1.7rem", "2rem", "2.5rem"]}>
+              {product.title}
+            </Heading>
+            <Heading fontSize={["1.5rem", "1.7rem", "1.7rem", "2rem"]}>
+              ${product.price}
+            </Heading>
+            <Text>{product.description}</Text>
+            <Box>
+              <Flex>
+                <Button
+                  sx={buttonStyle}
+                  onClick={() => removeFromCart(products[0].id)}
+                >
+                  -
+                </Button>
+                <Text>{cartList.length}</Text>
+                <Button sx={buttonStyle} onClick={() => addToCart(products[0])}>
+                  +
+                </Button>
+                <Button
+                  sx={addButtonStyle}
+                  onClick={() => addToCart(products[0])}
+                >
+                  <Icon sx={iconStyle} as={BsCartPlus} />
+                </Button>
+              </Flex>
+            </Box>
+          </Flex>
+          <Box>
+            <Text>Allergens:</Text>
+            <Flex direction="column" align={["center", "center", "left"]}>
+              <Text sx={inputText}>Milk</Text>
+            </Flex>
+            <Text>Ingredients:</Text>
+            <Flex direction="column" align={["center", "center", "left"]}>
+              <Text sx={inputText}>
+                Milk, sugar, black tea, taro powder, hopes and dreams. like
+                whyMilk, sugar, black tea, taro powder, hopes and dreams. like
+                why{" "}
+              </Text>
+            </Flex>
+          </Box>
+        </Flex>
+        <Box 
+          sx={boxStyling}
+          h={["50%", "50%", "80%"]}
+          w={["80%", "70%", "40%", "45%"]} 
+        >
+          <Box sx={roundBG}>
+          <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
+              <Image
+                sx={imageStyle}
+                src={product.image}
+                alt={product.imageAlt}
+              />
+          </Box>
+          <Box></Box>
+        </Box>
+      </Flex>
+    </Box>
+  );
+}
+
+  const imageStyle = {
+    position: "absolute",
+    top: ["50%", "50%", "50%", "46%"],
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    objectFit: "cover",
+    width: ["41%", "45%", "46%", "48%"],
+    zIndex: "200",
+  };
+  
+  const imageStyle2 = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "100%",
+    height: "100%",
+    zIndex: "100",
+  };
 
 
 const xButton = {
-    position: "absolute",
-    top: "0.5rem",
-    right: "0.5rem",
-    size: ["sm", "md", "lg"],
+  position: "absolute",
+  top: "0.5rem",
+  right: "0.5rem",
+  size: ["sm", "md", "lg"],
 };
+
+const boxStyling = {
+  padding: "3%",
+};
+
+const inputText = {
+    color: "lightBrownText",
+    fontSize: [".7rem", ".7rem", ".9rem", "1rem"],
+    whiteSpace: "pre-wrap",
+    maxWidth: "200px",
+    alignSelf: ["center", "center", "flex-start"]
+  }
+
+  const buttonStyle = {
+    backgroundColor: "darkGreenButton",
+    color: "white",
+    borderRadius: "4rem",
+    mx: "1rem",
+  };
+
+  
+  const addButtonStyle = {
+    backgroundColor: "yellowButton",
+    borderRadius: "4rem",
+    width: "5rem",
+  };
+  
+  const iconStyle = {
+    height: "1.5rem",
+    width: "1.5rem",
+  };

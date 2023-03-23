@@ -138,7 +138,7 @@ export function Header() {
 
 const containerStyle = {
   position: "fixed",
-  zIndex:"2000",
+  zIndex:"1000",
   top:0,
   maxWidth: "100%",
   backgroundColor: "pink",
