@@ -25,7 +25,7 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef<HTMLButtonElement>(null);
 
-  const { removeProduct } = useProduct()
+  const { removeProduct, editProduct } = useProduct()
 
   const roundBG = {
     backgroundColor: "#FFF",
@@ -44,6 +44,10 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
     onClose();
   }
 
+  const handleEdit = () => {
+    editProduct(product)
+  }
+
   return (
     <Card align="center" sx={cardStyle}>
       <Box sx={roundBG}>
@@ -52,7 +56,7 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
       <Text sx={headerStyle}>{product.title}</Text>
       <Text sx={textStyle}>${product.price.toFixed(2)}</Text>
       <Flex>
-        <Button sx={buttonStyle}>Edit</Button>
+        <Button onClick={handleEdit} sx={buttonStyle}>Edit</Button>
         <Button sx={deleteButtonStyle} onClick={onOpen}>
           Delete
         </Button>

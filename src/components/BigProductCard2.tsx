@@ -7,12 +7,12 @@ import {
   Icon,
   Image,
   Text,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
 import { useNavigate } from "react-router-dom";
-import { Product, products } from "../../data";
+import { Product } from "../../data";
 import { useCart } from "../CartContext";
 
 interface BigProductCardProps {
@@ -27,6 +27,21 @@ export function BigProductCard2({
   backgroundUrl,
 }: BigProductCardProps) {
   const { addToCart, removeFromCart, cartList } = useCart();
+
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  }
+
+  const decreaseQuantity = () => {
+    if (quantity == 1) {
+      return false
+    } else {
+    setQuantity(quantity - 1)
+    }
+  }
+
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
   const closeButtonSize = useBreakpointValue({
@@ -106,17 +121,17 @@ export function BigProductCard2({
               <Flex>
                 <Button
                   sx={buttonStyle}
-                  onClick={() => removeFromCart(products[0].id)}
+                  onClick={decreaseQuantity}
                 >
                   -
                 </Button>
-                <Text>{cartList.length}</Text>
-                <Button sx={buttonStyle} onClick={() => addToCart(products[0])}>
+                <Text>{quantity}</Text>
+                <Button sx={buttonStyle} onClick={increaseQuantity}>
                   +
                 </Button>
                 <Button
                   sx={addButtonStyle}
-                  onClick={() => addToCart(products[0])}
+                  onClick={() => addToCart(product, quantity)}
                 >
                   <Icon sx={iconStyle} as={BsCartPlus} />
                 </Button>
