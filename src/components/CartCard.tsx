@@ -58,7 +58,7 @@ export function CartCard({ checkOutPage = true }) {
                       <Text sx={quantityStyle}>{cartItem.quantity}</Text>
                       <Button
                         sx={incrementButtonStyle}
-                        onClick={() => addToCart(cartItem)}
+                        onClick={() => addToCart(cartItem, 1)}
                       >
                         +
                       </Button>
