@@ -18,8 +18,8 @@ import { BsCupStraw } from "react-icons/bs";
 import { FaTruckMoving } from "react-icons/fa";
 import { useCart } from "../CartContext";
 
-export function OrderConfirmationCard({ checkOutPage = true }) {
-  const { addToCart, removeFromCart, cartList } = useCart();
+export function OrderConfirmationCard() {
+  const { cartList } = useCart();
 
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
@@ -33,7 +33,7 @@ export function OrderConfirmationCard({ checkOutPage = true }) {
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
           <Heading size="lg" padding="15px">
-            Thank you for your order! {"#Unique order number"}
+            Thank you {"Name"} for your order! {"#Unique order number"}
           </Heading>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">
@@ -77,7 +77,14 @@ export function OrderConfirmationCard({ checkOutPage = true }) {
               as={BsCupStraw}
             />
           </Center>
-          <Text float="right">Total: ${totalPrice}</Text>
+          <Flex justifyContent="space-between" alignItems="center">
+            <Image
+              src="/images/bobablissiconupdate.png"
+              alt="Logo"
+              height="5rem"
+            />
+            <Text float="right">Total: ${totalPrice}</Text>
+          </Flex>
         </CardFooter>
       </Flex>
     </Card>
