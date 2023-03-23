@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardBody,
   CardFooter,
@@ -42,11 +43,18 @@ export function OrderConfirmationCard() {
               <ListItem key={cartItem.id}>
                 <Flex sx={cartItemStyle}>
                   <Text marginRight="20px">{cartItem.quantity}</Text>
-                  <Image
-                    sx={thumbNailStyle}
-                    src={cartItem.image}
-                    alt={cartItem.imageAlt}
-                  />
+                  <Box
+                    width="70px"
+                    height="70px"
+                    backgroundColor={cartItem.bgColor}
+                    borderRadius="5px"
+                  >
+                    <Image
+                      sx={thumbNailStyle}
+                      src={cartItem.image}
+                      alt={cartItem.imageAlt}
+                    />
+                  </Box>
                   <Text paddingTop="10px" flex={1} textAlign="left">
                     {cartItem.title}
                   </Text>
