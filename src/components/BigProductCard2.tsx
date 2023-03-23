@@ -1,8 +1,13 @@
 import {
-    Box, Button, CloseButton,
-    Flex,
-    Heading,
-    Icon, Image, Text, useBreakpointValue
+  Box,
+  Button,
+  CloseButton,
+  Flex,
+  Heading,
+  Icon,
+  Image,
+  Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
@@ -42,10 +47,10 @@ export function BigProductCard2({
     bgGradient: `linear(${product.bgColor} 30%, yellow.50 90%)`,
   };
   const roundBG = {
-    marginTop:".5rem",
+    marginTop: ".5rem",
     backgroundColor: `${product.bgColor}`,
     height: ["16rem", "17rem", "18.5rem", "25rem", "28rem"],
-    width: ["16rem", "17rem", "18.5rem", "25rem","28rem"],
+    width: ["16rem", "17rem", "18.5rem", "25rem", "28rem"],
     borderRadius: "50%",
     border: "2px solid darkBrownText",
     position: "relative",
@@ -73,7 +78,12 @@ export function BigProductCard2({
         <Flex
           direction={["column-reverse", "column-reverse", "row", "row"]}
           textAlign={["center", "center", "left"]}
-          justifyContent={["space-evenly", "space-evenly","space-between","space-around"]}
+          justifyContent={[
+            "space-evenly",
+            "space-evenly",
+            "space-between",
+            "space-around",
+          ]}
           alignItems={["center", "center", "space-evenly", "space-evenly"]}
           sx={boxStyling}
           h={["50%", "50%", "80%"]}
@@ -128,18 +138,14 @@ export function BigProductCard2({
             </Flex>
           </Box>
         </Flex>
-        <Box 
+        <Box
           sx={boxStyling}
           h={["50%", "50%", "80%"]}
-          w={["80%", "70%", "40%", "45%"]} 
+          w={["80%", "70%", "40%", "45%"]}
         >
           <Box sx={roundBG}>
-          <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
-              <Image
-                sx={imageStyle}
-                src={product.image}
-                alt={product.imageAlt}
-              />
+            <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
+            <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
           </Box>
           <Box></Box>
         </Box>
@@ -148,26 +154,25 @@ export function BigProductCard2({
   );
 }
 
-  const imageStyle = {
-    position: "absolute",
-    top: ["50%", "50%", "50%", "46%"],
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    objectFit: "cover",
-    width: ["41%", "45%", "46%", "48%"],
-    zIndex: "200",
-  };
-  
-  const imageStyle2 = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "100%",
-    height: "100%",
-    zIndex: "100",
-  };
+const imageStyle = {
+  position: "absolute",
+  top: ["50%", "50%", "50%", "46%"],
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  objectFit: "cover",
+  width: ["41%", "45%", "46%", "48%"],
+  zIndex: "200",
+};
 
+const imageStyle2 = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "100%",
+  height: "100%",
+  zIndex: "100",
+};
 
 const xButton = {
   position: "absolute",
@@ -181,28 +186,27 @@ const boxStyling = {
 };
 
 const inputText = {
-    color: "lightBrownText",
-    fontSize: [".7rem", ".7rem", ".9rem", "1rem"],
-    whiteSpace: "pre-wrap",
-    maxWidth: "200px",
-    alignSelf: ["center", "center", "flex-start"]
-  }
+  color: "lightBrownText",
+  fontSize: [".7rem", ".7rem", ".9rem", "1rem"],
+  whiteSpace: "pre-wrap",
+  maxWidth: "200px",
+  alignSelf: ["center", "center", "flex-start"],
+};
 
-  const buttonStyle = {
-    backgroundColor: "darkGreenButton",
-    color: "white",
-    borderRadius: "4rem",
-    mx: "1rem",
-  };
+const buttonStyle = {
+  backgroundColor: "darkGreenButton",
+  color: "white",
+  borderRadius: "4rem",
+  mx: "1rem",
+};
 
-  
-  const addButtonStyle = {
-    backgroundColor: "yellowButton",
-    borderRadius: "4rem",
-    width: "5rem",
-  };
-  
-  const iconStyle = {
-    height: "1.5rem",
-    width: "1.5rem",
-  };
+const addButtonStyle = {
+  backgroundColor: "yellowButton",
+  borderRadius: "4rem",
+  width: "5rem",
+};
+
+const iconStyle = {
+  height: "1.5rem",
+  width: "1.5rem",
+};
