@@ -7,9 +7,10 @@ import {
   Icon,
   Image,
   Text,
-  useBreakpointValue
+  useBreakpointValue,
+  useOutsideClick
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
 import { useNavigate } from "react-router-dom";
 import { Product } from "../../data";
@@ -32,15 +33,15 @@ export function BigProductCard2({
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
-  }
+  };
 
   const decreaseQuantity = () => {
     if (quantity == 1) {
-      return false
+      return false;
     } else {
-    setQuantity(quantity - 1)
+      setQuantity(quantity - 1);
     }
-  }
+  };
 
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
@@ -48,6 +49,13 @@ export function BigProductCard2({
     base: "sm",
     md: "md",
     lg: "lg",
+  });
+
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useOutsideClick({
+    ref: cardRef,
+    handler: () => handleClose(),
   });
 
   const cardStyle = {
@@ -119,10 +127,7 @@ export function BigProductCard2({
             <Text>{product.description}</Text>
             <Box>
               <Flex>
-                <Button
-                  sx={buttonStyle}
-                  onClick={decreaseQuantity}
-                >
+                <Button sx={buttonStyle} onClick={decreaseQuantity}>
                   -
                 </Button>
                 <Text>{quantity}</Text>
