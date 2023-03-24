@@ -31,11 +31,10 @@ export function TimeForTeaCard() {
               mb={[1, 2]}
               color={"darkBrownText"}
             >
-              Time for tea
+              Meet your next favorite.
             </Heading>
             <Text color={"darkBrownText"}>
-              Time for tea - weird placeholder text about tea. This talks about
-              tea on and on, I am sad but tea makes me happy. Happy happy happy.
+              We've got something for everyone, and we know you'll find your favorite on our menu. 
             </Text>
             <Button
               color={"white"}
@@ -46,7 +45,7 @@ export function TimeForTeaCard() {
               _hover={{ backgroundColor: "#c27b7b" }}
               _active={{ transform: "scale(0.96)" }}
             >
-              See all drinks!
+              See all drinks
             </Button>
           </Box>
         </Flex>
@@ -58,11 +57,11 @@ export function TimeForTeaCard() {
         >
           <Image
             borderRadius={"3px"}
-            src={"/images/bobatea 2.png"}
+            src={"/images/three-bobas.png"}
             alt="boba picture"
             objectFit={"cover"}
             objectPosition={"50% 50%"}
-            width={"100%"}
+            width={"90%"}
             height="100%"
           />
         </Box>
