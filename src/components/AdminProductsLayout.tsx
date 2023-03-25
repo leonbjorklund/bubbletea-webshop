@@ -23,7 +23,7 @@ export function AdminProductsLayout() {
   );
 }
 
-// Styling
+// Style object for sizing
 const boxStyle = {
   width: [
     "calc(100%/2.08)",

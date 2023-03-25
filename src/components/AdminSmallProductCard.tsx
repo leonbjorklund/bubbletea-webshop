@@ -99,7 +99,7 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
   );
 }
 
-// Styling
+// Style object for card
 const cardStyle = {
   backgroundColor: "lightYellow",
   boxShadow: "3px 3px 5px gray",
@@ -114,6 +114,7 @@ const cardStyle = {
   },
 };
 
+// Style object for header
 const headerStyle = {
   textAlign: "center",
   color: "darkBrownText",
@@ -121,12 +122,14 @@ const headerStyle = {
   fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
+// Style object for price
 const textStyle = {
   textAlign: "center",
   color: "lightBrownText",
   fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
+// Style object for button
 const buttonStyle = {
   margin: "5%",
   backgroundColor: "#f5c945",
@@ -137,6 +140,7 @@ const buttonStyle = {
   },
 };
 
+// Style object for delete button
 const deleteButtonStyle = {
   margin: "5%",
   backgroundColor: "#eb3f3f",
@@ -147,6 +151,7 @@ const deleteButtonStyle = {
   },
 };
 
+// Style object for product image
 const imageStyle = {
   position: "absolute",
   top: "50%",

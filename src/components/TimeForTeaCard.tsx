@@ -10,13 +10,16 @@ import {
 
 export function TimeForTeaCard() {
   return (
+    // Main container with a background color and defined height and width
     <Box bg={"CartBackgroundYellow"} h={["30rem", "35rem", "25rem"]} w={"100%"}>
+      {/* Container with max-width and display properties */}
       <Container
         maxW={"container.xl"}
         h={"100%"}
         display={"flex"}
         flexDirection={["column", "column", "row"]}
       >
+        {/* Flex container for text elements, adjusting alignment based on screen size */}
         <Flex
           textAlign={["center", "center", "left"]}
           flexDirection={"column"}
@@ -25,6 +28,7 @@ export function TimeForTeaCard() {
           h={"100%"}
           w={["100%", "100%", "50%"]}
         >
+          {/* Container for the heading and text elements */}
           <Box maxW={"22rem"} marginLeft={[0, 0, 4, 7]}>
             <Heading
               fontSize={["2rem", "2.5rem", "3rem"]}
@@ -34,7 +38,7 @@ export function TimeForTeaCard() {
               Meet your next favorite.
             </Heading>
             <Text color={"darkBrownText"}>
-              We've got something for everyone, and we know you'll find your favorite on our menu. 
+              We've got something for everyone, and we know you'll find your next favorite on our menu. 
             </Text>
             <Button
               color={"white"}
@@ -49,6 +53,7 @@ export function TimeForTeaCard() {
             </Button>
           </Box>
         </Flex>
+        {/* Container for the image with height, width, min-width and overflow */}
         <Box
           h={["110%", "130%", "100%", "100%"]}
           w={["100%", "100%", "50%", "50%"]}
