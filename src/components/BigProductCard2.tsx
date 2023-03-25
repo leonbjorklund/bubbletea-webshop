@@ -77,11 +77,13 @@ export function BigProductCard2({
     transform: "translate(-50%, -50%)",
   };
 
+  //hides the card and navigates back to home page
   const handleClose = () => {
     setVisible(false);
     navigate("/");
   };
 
+  //detects clicks outside the card and triggers the handleClose function
   useOutsideClick({
     ref: cardRef,
     handler: () => handleClose(),
