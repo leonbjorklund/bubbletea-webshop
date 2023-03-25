@@ -27,10 +27,11 @@ import { useCart } from "../CartContext";
     backgroundAlt,
     backgroundUrl,
   }: BigProductCardProps) {
+    // Access cart-related functions from the CartContext
     const { addToCart, removeFromCart, cartList } = useCart();
   
+    // Set up quantity state and handlers for increasing and decreasing quantity by 1
     const [quantity, setQuantity] = useState(1);
-  
     const increaseQuantity = () => {
       setQuantity(quantity + 1);
     };
@@ -43,9 +44,11 @@ import { useCart } from "../CartContext";
       }
     };
   
+    // Set up the card reference and navigate function
     const cardRef = useRef<HTMLDivElement | null>(null);
-  
     const navigate = useNavigate();
+
+    // Set up visible state and the handleClose function to hide the card and navigate to the home page
     const [visible, setVisible] = useState(true);
     const closeButtonSize = useBreakpointValue({
       base: "sm",
@@ -77,13 +80,13 @@ import { useCart } from "../CartContext";
       transform: "translate(-50%, -50%)",
     };
   
-    //hides the card and navigates back to home page
+    // Hide the card and navigates back to home page
     const handleClose = () => {
       setVisible(false);
       navigate("/");
     };
   
-    //detects clicks outside the card and triggers the handleClose function
+    // Detect clicks outside the card and triggers the handleClose function
     useOutsideClick({
       ref: cardRef,
       handler: () => handleClose(),
@@ -166,7 +169,7 @@ import { useCart } from "../CartContext";
             w={["80%", "70%", "40%", "45%"]}
           >
             <Box sx={roundBG}>
-              <Image sx={imageStyle2} src={backgroundUrl} alt={backgroundAlt} />
+              <Image sx={imageStyleBackground} src={backgroundUrl} alt={backgroundAlt} />
               <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
             </Box>
             <Box></Box>
@@ -176,6 +179,7 @@ import { useCart } from "../CartContext";
     );
   }
   
+  // Style object for product image
   const imageStyle = {
     position: "absolute",
     top: ["40%", "40%", "40%", "40%"],
@@ -186,7 +190,8 @@ import { useCart } from "../CartContext";
     zIndex: "200",
   };
   
-  const imageStyle2 = {
+  // Style object for background image
+  const imageStyleBackground = {
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -196,6 +201,7 @@ import { useCart } from "../CartContext";
     zIndex: "100",
   };
   
+  // Style object for close button
   const xButton = {
     position: "absolute",
     top: "0.5rem",
@@ -203,10 +209,12 @@ import { useCart } from "../CartContext";
     size: ["sm", "md", "lg"],
   };
   
+  // Style object for padding
   const boxStyling = {
     padding: "3%",
   };
   
+  // Styled object for the quantity between the -decrease +increase buttons
   const quantityStyling = {
     display: "flex",
     alignItems: "center",
@@ -215,6 +223,7 @@ import { useCart } from "../CartContext";
     mx: "1rem",
   }
   
+  // Styled object for Allergens and Ingredients
   const inputText = {
     color: "lightBrownText",
     fontSize: [".7rem", ".7rem", ".9rem", "1rem"],
@@ -223,6 +232,7 @@ import { useCart } from "../CartContext";
     alignSelf: ["center", "center", "flex-start"],
   };
   
+  // Styled object for -decrease +increase buttons
   const buttonStyle = {
     backgroundColor: "darkGreenButton",
     color: "white",
@@ -230,12 +240,14 @@ import { useCart } from "../CartContext";
     mx: "1rem",
   };
   
+  // Styled object for add to cart button
   const addButtonStyle = {
     backgroundColor: "yellowButton",
     borderRadius: "4rem",
     width: "5rem",
   };
   
+  // Styled object for cart icon
   const iconStyle = {
     height: "1.5rem",
     width: "1.5rem",
