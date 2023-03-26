@@ -168,6 +168,9 @@ export function Header() {
             display="flex"
             mx="4"
             paddingBottom="10"
+            position="absolute"
+            top="0"
+            left="200px"
           >
             <Icon
               verticalAlign="sub"
