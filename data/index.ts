@@ -88,7 +88,7 @@ export const products: Product[] = [
     description: "Description of the drink!",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, peach syrup(fructose, water, sugar, peach concentrate, acidity regulator, thickener, color, sweetener, preservative, flavor enhancer), sugar, peach pearls(fructose, peach juice, starch, gelling agent)",
+    ingredients: "Water, black tea, peach syrup(fructose, water, sugar, peach concentrate, acidity regulator, thickener, preservative), sugar, peach pearls(fructose, peach juice, starch, gelling agent)",
     bgColor: "#EEA6B4",
     category: "fruit"
   },
@@ -100,7 +100,7 @@ export const products: Product[] = [
     description: "Description of the drink!",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, passion syrup(fructose, water, sugar, peach concentrate, acidity regulator, thickener, color, sweetener, preservative, flavor enhancer), sugar, passion pearls(fructose, passion juice, starch, gelling agent)",
+    ingredients: "Water, black tea, passion syrup(fructose, water, sugar, passion concentrate, acidity regulator, thickener, preservative), sugar, peach pearls(fructose, passion juice, starch, gelling agent)",
     bgColor: "#EEA6B4",
     category: "fruit"
   },
@@ -112,7 +112,7 @@ export const products: Product[] = [
     description: "Description of the drink!", 
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, strawberry syrup(fructose, water, sugar, peach concentrate, acidity regulator, thickener, color, sweetener, preservative, flavor enhancer), sugar, strawberry pearls(fructose, peach juice, starch, gelling agent)",
+    ingredients: "Water, black tea, strawberry syrup(fructose, water, sugar, strawberry concentrate, acidity regulator, thickener, preservative), sugar, strawberry pearls(fructose, strawberry juice, starch, gelling agent)",
     bgColor: "yellowCardCircle",
     category: "fruit"
   },
@@ -124,7 +124,7 @@ export const products: Product[] = [
     description: "Description of the drink!",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, blueberry syrup(fructose, water, sugar, peach concentrate, acidity regulator, thickener, color, sweetener, preservative, flavor enhancer), sugar, blueberry pearls(fructose, peach juice, starch, gelling agent)",
+    ingredients: "Water, black tea, blueberry syrup(fructose, water, sugar, blueberry concentrate, acidity regulator, thickener, preservative), sugar, blueberry pearls(fructose, blueberry juice, starch, gelling agent)",
     bgColor: "bigMatchaCard",
     category: "fruit"
   },
