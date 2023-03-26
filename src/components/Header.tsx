@@ -16,7 +16,7 @@ import {
   Text,
   useDisclosure
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { IoMdCart } from "react-icons/io";
 import { RiAdminFill } from "react-icons/ri";
@@ -37,7 +37,18 @@ export function Header() {
     }
   };
 
-  window.addEventListener("resize", handleResize);
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsMobileView(true);
+      } else {
+        setIsMobileView(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <Container as="header" sx={containerStyle}>
@@ -58,10 +69,10 @@ export function Header() {
         <Spacer />
 
         {/* LINKS */}
+        {!isMobileView ? (
         <HStack
           spacing="1rem"
           whiteSpace="nowrap"
-          display={{ base: "none", md: "flex" }}
         >
           <ChakraLink as={RouterLink} to="/">
             <Icon
@@ -98,18 +109,19 @@ export function Header() {
             <Text data-cy="cart-items-count-badge">({totalItems})</Text>
           </ChakraLink>
         </HStack>
-
-        {/* HAMBURGER MENU */}
+        ) : (
+        /* HAMBURGER MENU */
         <IconButton
+          data-cy="cart-link"
           aria-label="Hamburger menu"
           variant="ghost"
           icon={<HamburgerIcon />}
           size="lg"
-          display={{ base: "flex", md: "none" }}
           onClick={onOpen}
           _hover={{ backgroundColor: "darkPinkButton", color: "white" }}
-        />
-      </Flex>
+          />
+        )}
+          </Flex>
 
       {/* HAMBURGER MENU DRAWER */}
       <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
@@ -148,6 +160,7 @@ export function Header() {
           </Box>
         </DrawerContent>
       </Drawer>
+
     </Container>
   );
 }
