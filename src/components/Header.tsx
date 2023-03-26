@@ -129,6 +129,22 @@ export function Header() {
             >
               Admin
             </ChakraLink>
+            <ChakraLink
+            data-cy="cart-link"
+            as={RouterLink}
+            to="/checkout"
+            display="flex"
+            mx="4"
+            my="2"
+          >
+            <Icon
+              verticalAlign="sub"
+              width="1.8em"
+              height="1.8em"
+              as={IoMdCart}
+            />
+            <Text data-cy="cart-items-count-badge">({totalItems})</Text>
+          </ChakraLink>
           </Box>
         </DrawerContent>
       </Drawer>
