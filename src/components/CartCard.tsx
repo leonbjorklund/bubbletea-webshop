@@ -56,7 +56,6 @@ export function CartCard({ checkOutPage = true }) {
                       >
                         -
                       </Button>
-                      {/* <input data-cy="product-quantity" type="text" value={cartItem.quantity}/> */}
                       <Text data-cy="product-quantity" sx={quantityStyle}>
                         {/* input is cypress-fix */}
                         <input
