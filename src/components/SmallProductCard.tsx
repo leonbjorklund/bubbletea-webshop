@@ -6,9 +6,13 @@ interface SmallProductCardProps {
   product: Product;
 }
 
+
 export function SmallProductCard({ product }: SmallProductCardProps) {
+  // Get addToCart function from useCart custom hook
   const { addToCart } = useCart();
 
+  // Handles the Add to Cart button click
+  // Add to Cart adds the product to the cart with a quantity of 1
   const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     addToCart(product, 1);
@@ -40,7 +44,7 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
   );
 }
 
-
+// Style object for the card
 const cardStyle = {
   backgroundColor: "lightYellow",
   boxShadow: "3px 3px 5px gray",
@@ -56,6 +60,7 @@ const cardStyle = {
   },
 };
 
+// Style object for header text
 const headerStyle = {
   textAlign: "center",
   color: "darkBrownText",
@@ -63,12 +68,14 @@ const headerStyle = {
   fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
+// Style object for price text
 const textStyle = {
   textAlign: "center",
   color: "lightBrownText",
   fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
+// Style object for Add to Cart button
 const buttonStyle = {
   margin: "5%",
   backgroundColor: "pinkCardButton",
@@ -79,6 +86,7 @@ const buttonStyle = {
   },
 };
 
+// Style object for product image
 const imageStyle = {
   position: "absolute",
   top: "50%",

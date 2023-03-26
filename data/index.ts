@@ -5,6 +5,8 @@ export interface Product {
   title: string;
   description: string;
   price: number;
+  allergens: string;
+  ingredients: string;
   bgColor: string;
   category: string;
 }
@@ -25,6 +27,8 @@ export const products: Product[] = [
     title: "Brown sugar Milk",
     description: "Description of the drink!",
     price: 6.50,
+    allergens: "Milk",
+    ingredients: "Milk, brown sugar syrup, tapioca pearls(tapioca starch, water)",
     bgColor: "yellow",
     category: "milk"
   },
@@ -35,6 +39,8 @@ export const products: Product[] = [
     title: "Taro Latte",
     description: "Description of the drink!",
     price: 6.50,
+    allergens: "Milk",
+    ingredients: "Milk, taro powder(taro extract, taro flavor, maltodextrin) tapioca pearls (tapioca starch, water)",
     bgColor: "bigMatchaCard",
     category: "milk"
   },
@@ -45,6 +51,8 @@ export const products: Product[] = [
     title: "Milk Tea",
     description: "Description of the drink!",
     price: 6.50,
+    allergens: "Milk",
+    ingredients: "Milk, black tea, tapioca pearls(tapioca starch, water)",
     bgColor: "#EEA6B4",
     category: "milk"
   },
@@ -55,6 +63,8 @@ export const products: Product[] = [
     title: "Matcha Latte",
     description: "Description of the drink!",
     price: 6.50,
+    allergens: "Gluten",
+    ingredients: "Oat milk, matcha, tapioca pearls (tapioca starch, water)",
     bgColor: "bigMatchaCard",
     category: "milk"
   },
@@ -65,8 +75,10 @@ export const products: Product[] = [
     title: "Thai Iced Tea",
     description: "Description of the drink!",
     price: 6.50,
+    allergens: "",
+    ingredients: "Black tea, sugar, condensed milk, spices(anise, cardamom, cinnamon, vanilla bean, almond extract) tapioca pearls (tapioca starch, water)",
     bgColor: "yellowCardCircle",
-    category: "fruit"
+    category: "milk"
   },
   {
     id: "6",
@@ -75,6 +87,8 @@ export const products: Product[] = [
     title: "Peach Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
+    allergens: "",
+    ingredients: "Water, black tea, peach syrup(fructose, water, sugar, peach concentrate, acidity regulator, thickener, preservative), sugar, peach pearls(fructose, peach juice, starch, gelling agent)",
     bgColor: "#EEA6B4",
     category: "fruit"
   },
@@ -85,6 +99,8 @@ export const products: Product[] = [
     title: "Passion Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
+    allergens: "",
+    ingredients: "Water, black tea, passion syrup(fructose, water, sugar, passion concentrate, acidity regulator, thickener, preservative), sugar, peach pearls(fructose, passion juice, starch, gelling agent)",
     bgColor: "#EEA6B4",
     category: "fruit"
   },
@@ -95,6 +111,8 @@ export const products: Product[] = [
     title: "Strawberry Fruit Tea",
     description: "Description of the drink!", 
     price: 6.00,
+    allergens: "",
+    ingredients: "Water, black tea, strawberry syrup(fructose, water, sugar, strawberry concentrate, acidity regulator, thickener, preservative), sugar, strawberry pearls(fructose, strawberry juice, starch, gelling agent)",
     bgColor: "yellowCardCircle",
     category: "fruit"
   },
@@ -105,6 +123,8 @@ export const products: Product[] = [
     title: "Blueberry Fruit Tea",
     description: "Description of the drink!",
     price: 6.00,
+    allergens: "",
+    ingredients: "Water, black tea, blueberry syrup(fructose, water, sugar, blueberry concentrate, acidity regulator, thickener, preservative), sugar, blueberry pearls(fructose, blueberry juice, starch, gelling agent)",
     bgColor: "bigMatchaCard",
     category: "fruit"
   },
@@ -115,6 +135,8 @@ export const products: Product[] = [
     title: "Oolong Tea",
     description: "Description of the drink!",
     price: 6.00,
+    allergens: "",
+    ingredients: "Water, oolong tea, fructose, tapioca pearls(tapioca starch, water",
     bgColor: "yellowCardCircle",
     category: "milk"
   },

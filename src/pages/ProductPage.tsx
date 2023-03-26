@@ -7,7 +7,7 @@ import {
   Heading, Image, Stack, SystemStyleObject, Text
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import { BigProductCard2 } from "../components/BigProductCard2";
+import { BigProductCard } from "../components/BigProductCard";
 import { Products } from "../components/Products";
 import { TimeForTeaCard } from "../components/TimeForTeaCard";
 import { useProduct } from "../ProductContext";
@@ -106,7 +106,7 @@ export function ProductPage() {
       />
       <Products />
       <TimeForTeaCard />
-      <BigProductCard2
+      <BigProductCard
         product={product}
         backgroundAlt="boba"
         backgroundUrl="/images/fancyBackground.png"

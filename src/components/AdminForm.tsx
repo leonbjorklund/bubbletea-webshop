@@ -27,6 +27,12 @@ const schema = Yup.object<ProductValues>().shape({
     .typeError("Must be a number")
     .positive("Price must be positive")
     .required("Required"),
+    
+  allergens: Yup.string()
+    .required("Required"),
+
+  ingredients: Yup.string()
+    .required("Required"),
 
   bgColor: Yup.string()
     .required("Required"),
@@ -58,6 +64,8 @@ export function AdminForm({ product }: Props) {
       title: "",
       description:"",
       price: "" as any,
+      allergens: "",
+      ingredients: "",
       bgColor: "",
       category:""
     },
@@ -117,7 +125,7 @@ export function AdminForm({ product }: Props) {
         {formik.touched.title && formik.errors.title ? <Text sx={requiredText}>{formik.errors.title}</Text> : null}
       </FormControl>
       <FormControl>
-        <FormLabel>Describtion</FormLabel>
+        <FormLabel>Description</FormLabel>
         <Input
         id="description"
         name="description"
@@ -141,6 +149,32 @@ export function AdminForm({ product }: Props) {
          value={formik.values.price}
         />
         {formik.touched.price && formik.errors.price ? <Text sx={requiredText}>{formik.errors.price}</Text> : null}
+      </FormControl>
+      <FormControl>
+        <FormLabel>Allergens</FormLabel>
+        <Input
+        id="allergens"
+        name="allergens"
+        type="text"
+        placeholder="allergens"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+         value={formik.values.allergens}
+        />
+        {formik.touched.allergens && formik.errors.allergens ? <Text sx={requiredText}>{formik.errors.allergens}</Text> : null}
+      </FormControl>
+      <FormControl>
+        <FormLabel>Ingredients</FormLabel>
+        <Input
+        id="ingredients"
+        name="ingredients"
+        type="text"
+        placeholder="ingredients"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+         value={formik.values.ingredients}
+        />
+        {formik.touched.ingredients && formik.errors.ingredients ? <Text sx={requiredText}>{formik.errors.ingredients}</Text> : null}
       </FormControl>
       <FormControl>
         <FormLabel>BackgroundColor</FormLabel>
