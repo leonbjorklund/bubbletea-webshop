@@ -22,7 +22,7 @@ import { useCart } from "../CartContext";
     backgroundAlt: string;
   }
   
-  export function BigProductCard2({
+  export function BigProductCard({
     product,
     backgroundAlt,
     backgroundUrl,
@@ -151,14 +151,12 @@ import { useCart } from "../CartContext";
             <Box>
               <Text>Allergens:</Text>
               <Flex direction="column" align={["center", "center", "left"]}>
-                <Text sx={inputText}>Milk</Text>
+                <Text sx={inputText}>{product.allergens}</Text>
               </Flex>
               <Text>Ingredients:</Text>
               <Flex direction="column" align={["center", "center", "left"]}>
                 <Text sx={inputText}>
-                  Milk, sugar, black tea, taro powder, hopes and dreams. like
-                  whyMilk, sugar, black tea, taro powder, hopes and dreams. like
-                  why{" "}
+                  {product.ingredients}
                 </Text>
               </Flex>
             </Box>
