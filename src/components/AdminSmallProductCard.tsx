@@ -11,9 +11,10 @@ import {
   Flex,
   Image,
   Text,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Product } from "../../data";
 import { useProduct } from "../ProductContext";
 
@@ -52,6 +53,7 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
   // Handle the product editing process
   const handleEdit = () => {
     editProduct(product);
+
   };
 
   return (
@@ -69,9 +71,11 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
         ${product.price.toFixed(2)}
       </Text>
       <Flex>
-        <Button onClick={handleEdit} sx={buttonStyle}>
-          Edit
-        </Button>
+      <Link to={`edit/${product.id}`}>
+          <Button onClick={handleEdit} sx={buttonStyle}>
+            Edit
+          </Button>
+      </Link>
         <Button
           data-cy="admin-remove-product"
           sx={deleteButtonStyle}
