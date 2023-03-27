@@ -88,7 +88,7 @@ export const products: Product[] = [
     description: "A classic iced tea made with green tea and served with coco jelly, perfect for summer days.",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, peach syrup(fructose, water, sugar, peach concentrate, acidity regulator, thickener, preservative), sugar, peach pearls(fructose, peach juice, starch, gelling agent)",
+    ingredients: "Water, black tea, peach syrup(fructose, water, sugar, peach concentrate), sugar, peach pearls(fructose, peach juice, starch)",
     bgColor: "#EEA6B4",
     category: "fruit"
   },
@@ -100,7 +100,7 @@ export const products: Product[] = [
     description: "We've got passion for passion! This black tea with coco jelly quenches any thirst.",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, passion syrup(fructose, water, sugar, passion concentrate, acidity regulator, thickener, preservative), sugar, peach pearls(fructose, passion juice, starch, gelling agent)",
+    ingredients: "Water, black tea, passion syrup(fructose, water, sugar, passion concentrate), sugar, passion pearls(fructose, passion juice, starch)",
     bgColor: "#EEA6B4",
     category: "fruit"
   },
@@ -112,7 +112,7 @@ export const products: Product[] = [
     description: "Sweet strawberry tea made with black tea, strawberry syrup and strawberry popping boba.", 
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, strawberry syrup(fructose, water, sugar, strawberry concentrate, acidity regulator, thickener, preservative), sugar, strawberry pearls(fructose, strawberry juice, starch, gelling agent)",
+    ingredients: "Water, black tea, strawberry syrup(fructose, water, sugar, strawberry concentrate), sugar, strawberry pearls(fructose, strawberry juice, starch)",
     bgColor: "yellowCardCircle",
     category: "fruit"
   },
@@ -124,7 +124,7 @@ export const products: Product[] = [
     description: "Green tea with blue balls.",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, blueberry syrup(fructose, water, sugar, blueberry concentrate, acidity regulator, thickener, preservative), sugar, blueberry pearls(fructose, blueberry juice, starch, gelling agent)",
+    ingredients: "Water, black tea, blueberry syrup(fructose, water, sugar, blueberry concentrate), sugar, blueberry pearls(fructose, blueberry juice, starch)",
     bgColor: "bigMatchaCard",
     category: "fruit"
   },
