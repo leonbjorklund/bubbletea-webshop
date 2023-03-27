@@ -14,6 +14,8 @@ export function useProduct() {
   return useContext(ProductContext);
 }
 
+const storeProducts = localStorage.setItem("productlist", JSON.stringify(products))
+
 export function ProductProvider({ children }: PropsWithChildren) {
   const [productList, setProductList] = useState<Product[]>(() => {
     const storedproductList = localStorage.getItem("productList");
@@ -27,12 +29,13 @@ export function ProductProvider({ children }: PropsWithChildren) {
       return updatedProductList;
     });
   };
+
   const removeProduct = (id: string) => {
     setProductList((prevProductsList) => {
       const itemIndex = prevProductsList.findIndex(
         (product) => product.id === id
       );
-  
+
       if (itemIndex === -1) {
         // Product not found
         return prevProductsList;
@@ -46,7 +49,12 @@ export function ProductProvider({ children }: PropsWithChildren) {
     });
   };
 
-  const editProduct = (product: Product) => {};
+  const editProduct = (product: Product) => {
+    // setProductList((prevProductsList) => {
+
+    // })
+
+  };
 
   return (
     <ProductContext.Provider value={{ productList, addProduct, removeProduct, editProduct }}>

@@ -14,10 +14,9 @@ import {
   Link as ChakraLink,
   Spacer,
   Text,
-  theme,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { IoMdCart } from "react-icons/io";
 import { RiAdminFill } from "react-icons/ri";
@@ -38,7 +37,18 @@ export function Header() {
     }
   };
 
-  window.addEventListener("resize", handleResize);
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsMobileView(true);
+      } else {
+        setIsMobileView(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <Container as="header" sx={containerStyle}>
@@ -59,57 +69,74 @@ export function Header() {
         <Spacer />
 
         {/* LINKS */}
-        <HStack
-          spacing="1rem"
-          whiteSpace="nowrap"
-          display={{ base: "none", md: "flex" }}
-        >
-          <ChakraLink as={RouterLink} to="/">
-            <Icon
-              verticalAlign="sub"
-              width="1.8em"
-              height="1.8em"
-              as={AiFillHome}
+        {!isMobileView ? (
+          <HStack spacing="1rem" whiteSpace="nowrap">
+            <ChakraLink as={RouterLink} to="/">
+              <Icon
+                verticalAlign="sub"
+                width="1.8em"
+                height="1.8em"
+                as={AiFillHome}
+              />
+            </ChakraLink>
+            <ChakraLink as={RouterLink} to="/admin">
+              <Icon
+                verticalAlign="sub"
+                width="1.8em"
+                height="1.8em"
+                as={RiAdminFill}
+              />
+            </ChakraLink>
+            <ChakraLink
+              data-cy="cart-link"
+              as={RouterLink}
+              to="/checkout"
+              sx={{
+                linkStyles,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Icon
+                verticalAlign="sub"
+                width="1.8em"
+                height="1.8em"
+                as={IoMdCart}
+              />
+              <Text data-cy="cart-items-count-badge">({totalItems})</Text>
+            </ChakraLink>
+          </HStack>
+        ) : (
+          /* HAMBURGER MENU */
+          <HStack>
+            <ChakraLink
+              data-cy="cart-link"
+              as={RouterLink}
+              to="/checkout"
+              sx={{
+                linkStyles,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Icon
+                verticalAlign="sub"
+                width="1.8em"
+                height="1.8em"
+                as={IoMdCart}
+              />
+              <Text data-cy="cart-items-count-badge">({totalItems})</Text>
+            </ChakraLink>
+            <IconButton
+              aria-label="Hamburger menu"
+              variant="ghost"
+              icon={<HamburgerIcon />}
+              size="lg"
+              onClick={onOpen}
+              _hover={{ backgroundColor: "darkPinkButton", color: "white" }}
             />
-          </ChakraLink>
-          <ChakraLink as={RouterLink} to="/admin">
-            <Icon
-              verticalAlign="sub"
-              width="1.8em"
-              height="1.8em"
-              as={RiAdminFill}
-            />
-          </ChakraLink>
-          <ChakraLink
-            data-cy="cart-link"
-            as={RouterLink}
-            to="/checkout"
-            sx={{
-              linkStyles,
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Icon
-              verticalAlign="sub"
-              width="1.8em"
-              height="1.8em"
-              as={IoMdCart}
-            />
-            <Text data-cy="cart-items-count-badge">({totalItems})</Text>
-          </ChakraLink>
-        </HStack>
-
-        {/* HAMBURGER MENU */}
-        <IconButton
-          aria-label="Hamburger menu"
-          variant="ghost"
-          icon={<HamburgerIcon />}
-          size="lg"
-          display={{ base: "flex", md: "none" }}
-          onClick={onOpen}
-          _hover={{ backgroundColor: "darkPinkButton", color: "white" }}
-        />
+          </HStack>
+        )}
       </Flex>
 
       {/* HAMBURGER MENU DRAWER */}
@@ -130,6 +157,22 @@ export function Header() {
             >
               Admin
             </ChakraLink>
+            <ChakraLink
+              data-cy="cart-link"
+              as={RouterLink}
+              to="/checkout"
+              display="flex"
+              mx="4"
+              my="2"
+            >
+              <Icon
+                verticalAlign="sub"
+                width="1.8em"
+                height="1.8em"
+                as={IoMdCart}
+              />
+              <Text data-cy="cart-items-count-badge">({totalItems})</Text>
+            </ChakraLink>
           </Box>
         </DrawerContent>
       </Drawer>
@@ -138,9 +181,13 @@ export function Header() {
 }
 
 const containerStyle = {
+  position: "fixed",
+  zIndex: "1000",
+  top: 0,
   maxWidth: "100%",
-  backgroundColor: theme.colors.pink,
+  backgroundColor: "pink",
   color: "lightBrownText",
+  height: ["4.3rem"],
 };
 
 const linkStyles = {
@@ -150,21 +197,23 @@ const linkStyles = {
 };
 
 const flexStyle = {
-  p: "10px",
+  p: ".5rem",
   alignItems: "center",
   justifyContent: "center",
+  height: ["4.3rem"],
 };
 
 const logo = {
-  width: "5rem",
+  width: ["3.5rem"],
 };
 
 const logoText = {
-  width: "10rem",
-  ml: "1rem",
+  width: ["6rem", "6rem", "9rem"],
+  ml: [".5rem", ".5rem"],
 };
 
 const hamburgerMenuStyling = {
+  zIndex: "3000",
   color: "lightBrownText",
   backgroundColor: "pink",
 };

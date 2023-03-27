@@ -22,10 +22,13 @@ interface SmallProductCardProps {
 }
 
 export function AdminSmallProductCard({ product }: SmallProductCardProps) {
+  // Manage the state of the AlertDialog component for confirming product deletion
   const { isOpen, onOpen, onClose } = useDisclosure();
+  // Cancel button reference in the AlertDialog
   const cancelRef = React.useRef<HTMLButtonElement>(null);
 
-  const { removeProduct } = useProduct()
+  // Get the removeProduct and editProduct functions from the ProductContext
+  const { removeProduct, editProduct } = useProduct();
 
   const roundBG = {
     backgroundColor: "#FFF",
@@ -39,10 +42,16 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
     boxShadow: "1px 5px 5px gray",
   };
 
+  // Handle the product deletion process
   const handleDelete = () => {
     removeProduct(product.id);
     onClose();
-  }
+  };
+
+  // Handle the product editing process
+  const handleEdit = () => {
+    editProduct(product);
+  };
 
   return (
     <Card align="center" sx={cardStyle}>
@@ -52,7 +61,9 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
       <Text sx={headerStyle}>{product.title}</Text>
       <Text sx={textStyle}>${product.price.toFixed(2)}</Text>
       <Flex>
-        <Button sx={buttonStyle}>Edit</Button>
+        <Button onClick={handleEdit} sx={buttonStyle}>
+          Edit
+        </Button>
         <Button sx={deleteButtonStyle} onClick={onOpen}>
           Delete
         </Button>
@@ -88,6 +99,7 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
   );
 }
 
+// Style object for card
 const cardStyle = {
   backgroundColor: "lightYellow",
   boxShadow: "3px 3px 5px gray",
@@ -102,6 +114,7 @@ const cardStyle = {
   },
 };
 
+// Style object for header
 const headerStyle = {
   textAlign: "center",
   color: "darkBrownText",
@@ -109,12 +122,14 @@ const headerStyle = {
   fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
+// Style object for price
 const textStyle = {
   textAlign: "center",
   color: "lightBrownText",
   fontSize: ["1rem", "1rem", "1.4rem"],
 };
 
+// Style object for button
 const buttonStyle = {
   margin: "5%",
   backgroundColor: "#f5c945",
@@ -125,6 +140,7 @@ const buttonStyle = {
   },
 };
 
+// Style object for delete button
 const deleteButtonStyle = {
   margin: "5%",
   backgroundColor: "#eb3f3f",
@@ -135,6 +151,7 @@ const deleteButtonStyle = {
   },
 };
 
+// Style object for product image
 const imageStyle = {
   position: "absolute",
   top: "50%",

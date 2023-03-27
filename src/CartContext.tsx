@@ -4,7 +4,7 @@ import { CartItem, Product } from "../data";
 
 type CartContextType = {
   cartList: CartItem[];
-  addToCart: (item: Product) => void;
+  addToCart: (item: Product, quantity: number) => void;
   removeFromCart: (itemId: string) => void;
   totalItems: number;
 };
@@ -47,7 +47,7 @@ export function CartProvider({ children }: Props) {
   const toastElement = document.getElementById("chakra-toast-manager-bottom");
   toastElement?.setAttribute("data-cy", "added-to-cart-toast");
 
-  const addToCart = (item: Product) => {
+  const addToCart = (item: Product, quantity: number) => {
     const existingCartItem = cartList.find(
       (cartItem) => cartItem.id === item.id
     );
@@ -56,7 +56,7 @@ export function CartProvider({ children }: Props) {
       setCartList((prevCartList) =>
         prevCartList.map((cartItem) =>
           cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            ? { ...cartItem, quantity: cartItem.quantity + quantity }
             : cartItem
         )
       );
@@ -67,10 +67,11 @@ export function CartProvider({ children }: Props) {
         isClosable: true,
       });
     } else {
-      setCartList([...cartList, { ...item, quantity: 1 }]);
+      setCartList([...cartList, { ...item, quantity: quantity }]);
       toast({
-        title: "Item has been added!",
-        description: "Go to cart to complete your order",
+        // title: "Added to cart!",
+        // cypress-testet letar efter "has been added"
+        title: " *item* has been added to cart",
         status: "success",
         duration: 4000,
         isClosable: true,

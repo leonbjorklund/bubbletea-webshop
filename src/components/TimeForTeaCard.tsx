@@ -10,13 +10,16 @@ import {
 
 export function TimeForTeaCard() {
   return (
+    // Main container with a background color and defined height and width
     <Box bg={"CartBackgroundYellow"} h={["30rem", "35rem", "25rem"]} w={"100%"}>
+      {/* Container with max-width and display properties */}
       <Container
         maxW={"container.xl"}
         h={"100%"}
         display={"flex"}
         flexDirection={["column", "column", "row"]}
       >
+        {/* Flex container for text elements, adjusting alignment based on screen size */}
         <Flex
           textAlign={["center", "center", "left"]}
           flexDirection={"column"}
@@ -25,17 +28,17 @@ export function TimeForTeaCard() {
           h={"100%"}
           w={["100%", "100%", "50%"]}
         >
+          {/* Container for the heading and text elements */}
           <Box maxW={"22rem"} marginLeft={[0, 0, 4, 7]}>
             <Heading
               fontSize={["2rem", "2.5rem", "3rem"]}
               mb={[1, 2]}
               color={"darkBrownText"}
             >
-              Time for tea
+              Meet your next favorite.
             </Heading>
             <Text color={"darkBrownText"}>
-              Time for tea - weird placeholder text about tea. This talks about
-              tea on and on, I am sad but tea makes me happy. Happy happy happy.
+              We've got something for everyone, and we know you'll find your next favorite on our menu. 
             </Text>
             <Button
               color={"white"}
@@ -46,10 +49,11 @@ export function TimeForTeaCard() {
               _hover={{ backgroundColor: "#c27b7b" }}
               _active={{ transform: "scale(0.96)" }}
             >
-              See all drinks!
+              See all drinks
             </Button>
           </Box>
         </Flex>
+        {/* Container for the image with height, width, min-width and overflow */}
         <Box
           h={["110%", "130%", "100%", "100%"]}
           w={["100%", "100%", "50%", "50%"]}
@@ -58,11 +62,11 @@ export function TimeForTeaCard() {
         >
           <Image
             borderRadius={"3px"}
-            src={"/images/bobatea 2.png"}
+            src={"/images/three-bobas.png"}
             alt="boba picture"
             objectFit={"cover"}
             objectPosition={"50% 50%"}
-            width={"100%"}
+            width={"90%"}
             height="100%"
           />
         </Box>
