@@ -56,7 +56,9 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
 
   return (
     <Card data-cy="product" align="center" sx={cardStyle}>
-      <Text data-cy="product-id">{id}</Text>
+      <Text data-cy="product-id" sx={idTextStyle}>
+        {id}
+      </Text>
       <Box sx={roundBG}>
         <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
@@ -127,6 +129,11 @@ const cardStyle = {
   ":hover": {
     backgroundColor: "#f3e5d7",
   },
+};
+
+// Style object for hidden id
+const idTextStyle = {
+  visibility: "hidden",
 };
 
 // Style object for header
