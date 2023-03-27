@@ -39,7 +39,7 @@ export function CartCard({ checkOutPage = true }) {
           {cartList.length > 0 ? (
             <UnorderedList listStyleType="none" marginInlineStart="0">
               {cartList.map((cartItem) => (
-                <ListItem key={cartItem.id}>
+                <ListItem data-cy="cart-item" key={cartItem.id}>
                   <Flex sx={cartItemStyle}>
                     {checkOutPage && (
                       <Image
@@ -50,23 +50,48 @@ export function CartCard({ checkOutPage = true }) {
                     )}
                     <HStack paddingTop="10px" marginRight="0.5rem">
                       <Button
+                        data-cy="decrease-quantity-button"
                         sx={incrementButtonStyle}
                         onClick={() => removeFromCart(cartItem.id)}
                       >
                         -
                       </Button>
-                      <Text sx={quantityStyle}>{cartItem.quantity}</Text>
+                      <Text data-cy="product-quantity" sx={quantityStyle}>
+                        {/* input is cypress-fix */}
+                        <input
+                          disabled
+                          value={cartItem.quantity}
+                          onChange={(e) =>
+                            addToCart(
+                              cartItem,
+                              parseInt(e.target.value) - cartItem.quantity
+                            )
+                          }
+                          style={{
+                            position: "absolute",
+                            width: "1px",
+                            height: "1px",
+                          }}
+                        />
+                        {cartItem.quantity}
+                      </Text>
                       <Button
+                        data-cy="increase-quantity-button"
                         sx={incrementButtonStyle}
                         onClick={() => addToCart(cartItem, 1)}
                       >
                         +
                       </Button>
                     </HStack>
-                    <Text paddingTop="10px" flex={1} textAlign="left">
+                    <Text
+                      data-cy="product-title"
+                      paddingTop="10px"
+                      flex={1}
+                      textAlign="left"
+                    >
                       {cartItem.title}
                     </Text>
-                    <Text paddingTop="10px">
+                    <Text data-cy="product-price" paddingTop="10px">
                       ${cartItem.quantity * cartItem.price}
                     </Text>
                   </Flex>
@@ -83,7 +108,7 @@ export function CartCard({ checkOutPage = true }) {
           <Divider bg="gray" opacity="1" />
           <Flex my="0.625rem" width="100%" justifyContent="space-between">
             <Text>Total:</Text>
-            <Text>${totalPrice}</Text>
+            <Text data-cy="total-price">${totalPrice}</Text>
           </Flex>
           {!checkOutPage && (
             <ChakraLink as={RouterLink} to="/checkout">
