@@ -1,14 +1,14 @@
 import {
-    Box,
-    Button,
-    CloseButton,
-    Flex,
-    Heading,
-    Icon,
-    Image,
-    Text,
-    useBreakpointValue,
-    useOutsideClick
+  Box,
+  Button,
+  CloseButton,
+  Flex,
+  Heading,
+  Icon,
+  Image,
+  Text,
+  useBreakpointValue,
+  useOutsideClick
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { BsCartPlus } from "react-icons/Bs";
@@ -58,13 +58,10 @@ import { useCart } from "../CartContext";
   
     const cardStyle = {
       height: ["85vh"],
-      width: ["90%", "94%", "94%", "94%", "78%"],
-      position: "fixed",
+      width: "100%",
       top: 20,
       left: ["5%", "3%", "3%", "3%", "11%"],
       zIndex: "1000",
-      borderRadius: "1rem",
-      boxShadow: "3px 3px 3px gray",
       bgGradient: `linear(${product.bgColor} 30%, yellow.50 90%)`,
     };
     const roundBG = {
