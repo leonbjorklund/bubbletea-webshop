@@ -173,6 +173,9 @@ const quantityStyle = {
 const orderButtonStyle = {
   width: "100%",
   bg: "lightGreenButton",
+  _hover: {
+    background: "#96b59e",
+  },
   color: "black",
   fontSize: "1.2rem",
 };
