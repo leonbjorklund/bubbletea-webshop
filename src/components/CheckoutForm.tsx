@@ -5,8 +5,12 @@ import * as Yup from "yup";
 import { TextField } from "./TextField";
 
 import { Box, Flex, HStack, Stack, SystemStyleObject } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export function CheckoutForm() {
+
+  const navigate = useNavigate();
+
   return (
     <Formik
       initialValues={{
@@ -40,44 +44,51 @@ export function CheckoutForm() {
           .min(2, "City is too short"),
       })}
       onSubmit={(values, actions) => {
-        alert(JSON.stringify(values, null, 2));
+        localStorage.setItem("contactDetails", JSON.stringify(values));
         actions.resetForm();
+        navigate("/confirmation");
       }}
     >
       {(formik) => (
-        <Flex sx={formStyle} onSubmit={formik.handleSubmit as any}>
-          <Stack spacing={8} paddingTop="2rem">
-            <Stack align={"center"}>
-              <Heading fontSize={"4xl"} textAlign={"center"}>
-                Contact Details
-              </Heading>
-            </Stack>
-            <Box sx={formBoxStyle}>
-              <Stack spacing={4}>
-                <HStack>
-                  <TextField name="firstName" label="First Name" />
-                  <TextField name="lastName" label="Last Name" />
-                </HStack>
-                <TextField name="email" label="Email" />
-                <TextField name="phone" label="Phone nr." />
-                <TextField name="street" label="Street" />
-                <TextField name="zipCode" label="Zip Code" />
-                <TextField name="city" label="City" />
-                <Stack spacing={10} pt={2}>
-                  <Button
-                    loadingText="Submitting"
-                    sx={submitButtonStyle}
-                    type="submit"
-                    variant="outline"
-                    colorScheme="teal"
-                  >
-                    Place Order
-                  </Button>
-                </Stack>
+        <form
+          onSubmit={
+            formik.handleSubmit as React.FormEventHandler<HTMLFormElement>
+          }
+        >
+          <Flex sx={formStyle}>
+            <Stack spacing={8} paddingTop="2rem">
+              <Stack align={"center"}>
+                <Heading fontSize={"4xl"} textAlign={"center"}>
+                  Contact Details
+                </Heading>
               </Stack>
-            </Box>
-          </Stack>
-        </Flex>
+              <Box sx={formBoxStyle}>
+                <Stack spacing={4}>
+                  <HStack>
+                    <TextField name="firstName" label="First Name" />
+                    <TextField name="lastName" label="Last Name" />
+                  </HStack>
+                  <TextField name="email" label="Email" />
+                  <TextField name="phone" label="Phone nr." />
+                  <TextField name="street" label="Street" />
+                  <TextField name="zipCode" label="Zip Code" />
+                  <TextField name="city" label="City" />
+                  <Stack spacing={10} pt={2}>
+                    <Button
+                      loadingText="Submitting"
+                      sx={submitButtonStyle}
+                      type="submit"
+                      variant="outline"
+                      colorScheme="teal"
+                    >
+                      Place Order
+                    </Button>
+                  </Stack>
+                </Stack>
+              </Box>
+            </Stack>
+          </Flex>
+        </form>
       )}
     </Formik>
   );
