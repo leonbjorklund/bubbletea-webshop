@@ -1,13 +1,14 @@
 import {
   Box
 } from "@chakra-ui/react";
+import { useRef } from "react";
 import { useParams } from "react-router-dom";
 import { BigProductCard } from "../components/BigProductCard";
 import { useProduct } from "../ProductContext";
 
 export function ProductPage() {
   const { productList } = useProduct();
-
+  const productsRef = useRef(null);
 
 
   const params = useParams();
