@@ -3,8 +3,7 @@ import {
   Card,
   CardBody,
   CardFooter,
-  CardHeader,
-  Divider,
+  CardHeader, Divider,
   Flex,
   Heading,
   HStack,
@@ -34,7 +33,7 @@ export function CartCard({ checkOutPage = true }) {
         <CardHeader w="100%" display="flex" p="5px">
           <Heading size="lg">{checkOutPage ? "Your Cart" : "Cart"}</Heading>
           <Spacer />
-          <Button colorScheme="red" onClick={() => clearCart(cartList)}>
+          <Button sx={buttonGradient} onClick={() => clearCart(cartList)}>
             Empty Cart
           </Button>
         </CardHeader>
@@ -144,6 +143,14 @@ const flexStyle = {
   alignItems: "center",
   rowGap: "1.25rem",
 };
+
+const buttonGradient = {
+  bgGradient: "linear(to-b, red.500, yellow.500)",
+  _hover: {
+    bgGradient: "linear(to-b, yellow.500, red.500)",
+  },
+  color: "white",
+}
 
 const cartItemStyle = {
   alignItems: "center",
