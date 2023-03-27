@@ -21,6 +21,10 @@ import { useCart } from "../CartContext";
 
 export function OrderConfirmationCard() {
   const { cartList } = useCart();
+  const getContactDetails = localStorage.getItem("contactDetails");
+  const contactDetails = getContactDetails
+    ? JSON.parse(getContactDetails)
+    : null;
 
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
@@ -34,7 +38,8 @@ export function OrderConfirmationCard() {
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
           <Heading size="lg" padding="15px">
-            Thank you {"Name"} for your order! {"#Unique order number"}
+            Thank you {contactDetails.firstName} for your order!
+            {"#Unique order number"}
           </Heading>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">
@@ -42,20 +47,32 @@ export function OrderConfirmationCard() {
             {cartList.map((cartItem) => (
               <ListItem key={cartItem.id}>
                 <Flex sx={cartItemStyle}>
-                  <Text marginRight="20px">{cartItem.quantity}</Text>
+                  <Text marginRight="20px">{cartItem.quantity} x</Text>
                   <Box
                     width="70px"
                     height="70px"
                     backgroundColor={cartItem.bgColor}
                     borderRadius="5px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
                   >
                     <Image
                       sx={thumbNailStyle}
                       src={cartItem.image}
                       alt={cartItem.imageAlt}
+                      width="100%"
+                      height="100%"
+                      objectFit="contain"
+                      marginLeft="1rem" //temporär lösning
                     />
                   </Box>
-                  <Text paddingTop="10px" flex={1} textAlign="left">
+                  <Text
+                    paddingTop="10px"
+                    flex={1}
+                    textAlign="left"
+                    marginLeft="1rem"
+                  >
                     {cartItem.title}
                   </Text>
                   <Text paddingTop="10px">
