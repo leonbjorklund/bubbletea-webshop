@@ -145,9 +145,9 @@ const flexStyle = {
 };
 
 const buttonGradient = {
-  bgGradient: "linear(to-b, red.500, yellow.500)",
+  bgGradient: "linear(to-b, red.400, yellow.400)",
   _hover: {
-    bgGradient: "linear(to-b, yellow.500, red.500)",
+    bgGradient: "linear(to-b, yellow.400, red.400)",
   },
   color: "white",
 }
