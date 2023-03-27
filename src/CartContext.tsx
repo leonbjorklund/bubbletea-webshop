@@ -6,6 +6,7 @@ type CartContextType = {
   cartList: CartItem[];
   addToCart: (item: Product, quantity: number) => void;
   removeFromCart: (itemId: string) => void;
+  clearCart: (cart: CartItem[]) => void;
   totalItems: number;
 };
 
@@ -13,6 +14,7 @@ const CartContext = createContext<CartContextType>({
   cartList: [],
   addToCart: () => {},
   removeFromCart: () => {},
+  clearCart: () => {},
   totalItems: 0,
 });
 
@@ -101,8 +103,19 @@ export function CartProvider({ children }: Props) {
     });
   };
 
+  const clearCart = () => {
+    setCartList([]);
+    setTotalItems(0);
+    toast({
+      title: "Cart has been cleared",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cartList, addToCart, removeFromCart, totalItems }}>
+    <CartContext.Provider value={{ cartList, addToCart, removeFromCart, totalItems, clearCart }}>
       {children}
     </CartContext.Provider>
   );

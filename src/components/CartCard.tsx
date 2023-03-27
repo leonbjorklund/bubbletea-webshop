@@ -11,6 +11,7 @@ import {
   Image,
   Link as ChakraLink,
   ListItem,
+  Spacer,
   SystemStyleObject,
   Text,
   UnorderedList,
@@ -20,7 +21,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
 
 export function CartCard({ checkOutPage = true }) {
-  const { addToCart, removeFromCart, cartList } = useCart();
+  const { addToCart, removeFromCart, cartList, clearCart } = useCart();
 
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
@@ -32,8 +33,12 @@ export function CartCard({ checkOutPage = true }) {
   return (
     <Card sx={cartStyle}>
       <Flex sx={flexStyle}>
-        <CardHeader p="5px">
+        <CardHeader w="100%" display="flex" p="5px">
           <Heading size="lg">{checkOutPage ? "Your Cart" : "Cart"}</Heading>
+          <Spacer />
+          <Button colorScheme="red" onClick={() => clearCart(cartList)}>
+            Empty Cart
+          </Button>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">
           {cartList.length > 0 ? (
