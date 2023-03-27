@@ -11,7 +11,7 @@ import {
   Flex,
   Image,
   Text,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import { Product } from "../../data";
@@ -19,9 +19,10 @@ import { useProduct } from "../ProductContext";
 
 interface SmallProductCardProps {
   product: Product;
+  id: string;
 }
 
-export function AdminSmallProductCard({ product }: SmallProductCardProps) {
+export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
   // Manage the state of the AlertDialog component for confirming product deletion
   const { isOpen, onOpen, onClose } = useDisclosure();
   // Cancel button reference in the AlertDialog
@@ -54,17 +55,28 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
   };
 
   return (
-    <Card align="center" sx={cardStyle}>
+    <Card data-cy="product" align="center" sx={cardStyle}>
+      <Text data-cy="product-id" sx={idTextStyle}>
+        {id}
+      </Text>
       <Box sx={roundBG}>
         <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
-      <Text sx={headerStyle}>{product.title}</Text>
-      <Text sx={textStyle}>${product.price.toFixed(2)}</Text>
+      <Text data-cy="product-title" sx={headerStyle}>
+        {product.title}
+      </Text>
+      <Text data-cy="product-price" sx={textStyle}>
+        ${product.price.toFixed(2)}
+      </Text>
       <Flex>
         <Button onClick={handleEdit} sx={buttonStyle}>
           Edit
         </Button>
-        <Button sx={deleteButtonStyle} onClick={onOpen}>
+        <Button
+          data-cy="admin-remove-product"
+          sx={deleteButtonStyle}
+          onClick={onOpen}
+        >
           Delete
         </Button>
 
@@ -87,7 +99,12 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
                 <Button ref={cancelRef} onClick={onClose}>
                   Cancel
                 </Button>
-                <Button colorScheme="red" onClick={handleDelete} ml={3}>
+                <Button
+                  data-cy="confirm-delete-button"
+                  colorScheme="red"
+                  onClick={handleDelete}
+                  ml={3}
+                >
                   Delete
                 </Button>
               </AlertDialogFooter>
@@ -112,6 +129,11 @@ const cardStyle = {
   ":hover": {
     backgroundColor: "#f3e5d7",
   },
+};
+
+// Style object for hidden id
+const idTextStyle = {
+  visibility: "hidden",
 };
 
 // Style object for header
