@@ -40,7 +40,7 @@ export const products: Product[] = [
     description: "Sweet taro root (it tastes like cookies!) with milk, jasmine tea and tapioca.",
     price: 6.50,
     allergens: "Milk",
-    ingredients: "Milk, taro powder(taro extract, taro flavor, maltodextrin) tapioca pearls (tapioca starch, water)",
+    ingredients: "Milk, taro powder(taro extract, maltodextrin), jasmine tea, tapioca pearls (tapioca starch, water)",
     bgColor: "bigMatchaCard",
     category: "milk"
   },
@@ -64,7 +64,7 @@ export const products: Product[] = [
     description: "A fan favorite made with green tea, oat milk and tapioca.",
     price: 6.50,
     allergens: "Gluten",
-    ingredients: "Oat milk, matcha, tapioca pearls (tapioca starch, water)",
+    ingredients: "Oat milk, matcha(green tea powder), tapioca pearls (tapioca starch, water)",
     bgColor: "bigMatchaCard",
     category: "milk"
   },
@@ -73,10 +73,10 @@ export const products: Product[] = [
     image: "/images/yellowboba.png",
     imageAlt: "boba",
     title: "Thai Iced Tea",
-    description: "Sugar spice and everything nice. Our Thai Iced Tea is made with black tea, spices and sweetened condensed milk.",
+    description: "Sugar spice and everything nice! Made with black tea, spices and sweetened condensed milk.",
     price: 6.50,
     allergens: "Milk",
-    ingredients: "Black tea, sugar, condensed milk, spices(anise, cardamom, cinnamon, vanilla bean, almond extract) tapioca pearls (tapioca starch, water)",
+    ingredients: "Black tea, sugar, condensed milk, spices(anise, cardamom, cinnamon, vanilla bean) tapioca pearls (tapioca starch, water)",
     bgColor: "yellowCardCircle",
     category: "milk"
   },
@@ -88,7 +88,7 @@ export const products: Product[] = [
     description: "A classic iced tea made with green tea and served with coco jelly, perfect for summer days.",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, peach syrup(fructose, water, sugar, peach concentrate), sugar, peach pearls(fructose, peach juice, starch)",
+    ingredients: "Water, green tea, syrup(fructose, water, peach concentrate), peach pearls(fructose, peach juice, starch)",
     bgColor: "#EEA6B4",
     category: "fruit"
   },
@@ -100,7 +100,7 @@ export const products: Product[] = [
     description: "We've got passion for passion! This black tea with coco jelly quenches any thirst.",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, passion syrup(fructose, water, sugar, passion concentrate), sugar, passion pearls(fructose, passion juice, starch)",
+    ingredients: "Water, black tea, syrup(fructose, water, passion concentrate), passion pearls(fructose, passion juice, starch)",
     bgColor: "#EEA6B4",
     category: "fruit"
   },
@@ -112,7 +112,7 @@ export const products: Product[] = [
     description: "Sweet strawberry tea made with black tea, strawberry syrup and strawberry popping boba.", 
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, strawberry syrup(fructose, water, sugar, strawberry concentrate), sugar, strawberry pearls(fructose, strawberry juice, starch)",
+    ingredients: "Water, black tea, syrup(fructose, water, strawberry concentrate), strawberry pearls(fructose, strawberry juice, starch)",
     bgColor: "yellowCardCircle",
     category: "fruit"
   },
@@ -124,7 +124,7 @@ export const products: Product[] = [
     description: "Green tea with blue balls.",
     price: 6.00,
     allergens: "",
-    ingredients: "Water, black tea, blueberry syrup(fructose, water, sugar, blueberry concentrate), sugar, blueberry pearls(fructose, blueberry juice, starch)",
+    ingredients: "Water, green tea, syrup(fructose, water, blueberry concentrate), blueberry pearls(fructose, blueberry juice, starch)",
     bgColor: "bigMatchaCard",
     category: "fruit"
   },
@@ -135,8 +135,8 @@ export const products: Product[] = [
     title: "Oolong Tea",
     description: "A hybrid of green and black tea, served with tapioca.",
     price: 6.00,
-    allergens: "",
-    ingredients: "Water, oolong tea, fructose, tapioca pearls(tapioca starch, water",
+    allergens: "Milk",
+    ingredients: "Water, oolong tea, milk, fructose, tapioca pearls(tapioca starch, water",
     bgColor: "yellowCardCircle",
     category: "milk"
   },
