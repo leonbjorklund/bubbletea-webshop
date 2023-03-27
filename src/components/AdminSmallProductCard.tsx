@@ -58,13 +58,21 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
       <Box sx={roundBG}>
         <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
-      <Text sx={headerStyle}>{product.title}</Text>
-      <Text sx={textStyle}>${product.price.toFixed(2)}</Text>
+      <Text data-cy="product-title" sx={headerStyle}>
+        {product.title}
+      </Text>
+      <Text data-cy="product-price" sx={textStyle}>
+        ${product.price.toFixed(2)}
+      </Text>
       <Flex>
         <Button onClick={handleEdit} sx={buttonStyle}>
           Edit
         </Button>
-        <Button sx={deleteButtonStyle} onClick={onOpen}>
+        <Button
+          data-cy="admin-remove-product"
+          sx={deleteButtonStyle}
+          onClick={onOpen}
+        >
           Delete
         </Button>
 
@@ -87,7 +95,12 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
                 <Button ref={cancelRef} onClick={onClose}>
                   Cancel
                 </Button>
-                <Button colorScheme="red" onClick={handleDelete} ml={3}>
+                <Button
+                  data-cy="confirm-delete-button"
+                  colorScheme="red"
+                  onClick={handleDelete}
+                  ml={3}
+                >
                   Delete
                 </Button>
               </AlertDialogFooter>
