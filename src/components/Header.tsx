@@ -14,7 +14,7 @@ import {
   Link as ChakraLink,
   Spacer,
   Text,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useLayoutEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
@@ -79,7 +79,7 @@ export function Header() {
                 as={AiFillHome}
               />
             </ChakraLink>
-            <ChakraLink as={RouterLink} to="/admin">
+            <ChakraLink data-cy="admin-link" as={RouterLink} to="/admin">
               <Icon
                 verticalAlign="sub"
                 width="1.8em"

@@ -11,7 +11,7 @@ import {
   Flex,
   Image,
   Text,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import { Product } from "../../data";
@@ -54,7 +54,7 @@ export function AdminSmallProductCard({ product }: SmallProductCardProps) {
   };
 
   return (
-    <Card align="center" sx={cardStyle}>
+    <Card data-cy="product" align="center" sx={cardStyle}>
       <Box sx={roundBG}>
         <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
