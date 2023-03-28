@@ -16,26 +16,26 @@ type OrderContextType = {
   orderList: Order[];
   addOrder: (order: Order) => void;
   createOrder: (customer: Customer) => Order;
-  getLastOrder: (order:Order) => void;
+  getLastOrder: () => { lastOrder: Order | undefined; ordersCopy: Order[] };
 };
 
 const OrderContext = createContext<OrderContextType>({
-    orderList: [],
-    createOrder: () => ({
-      itemList: [],
-      contactInformation: {
-        name: "",
-        email: "",
-        phone: "",
-        street: "",
-        zipCode: "",
-        city: "",
-      },
-      orderId: "",
-    }),
-    addOrder: () => {},
-    getLastOrder: () => {},
-  });
+  orderList: [],
+  createOrder: () => ({
+    itemList: [],
+    contactInformation: {
+      name: "",
+      email: "",
+      phone: "",
+      street: "",
+      zipCode: "",
+      city: "",
+    },
+    orderId: "",
+  }),
+  addOrder: () => {},
+  getLastOrder: () => ({ lastOrder: undefined, ordersCopy: [] }),
+});
 
 export function useOrder() {
   return useContext(OrderContext);
@@ -76,10 +76,10 @@ export function OrderProvider({ children }: Props) {
         });
       };
   
-      const getLastOrder = () => {
-        const ordersCopy = [...orderList]; // make a copy of the orders array
-        const lastOrder = ordersCopy.pop(); // remove the last item from the copied array and store it in a variable
-        return { lastOrder, ordersCopy }; // return an object with both the last order and the copied array
+      const getLastOrder = (): { lastOrder: Order | undefined; ordersCopy: Order[] } => {
+        const ordersCopy = [...orderList];
+        const lastOrder = ordersCopy.pop();
+        return { lastOrder, ordersCopy };
       };
   
     return (

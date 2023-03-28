@@ -18,6 +18,7 @@ import {
 import { BsCupStraw } from "react-icons/bs";
 import { FaTruckMoving } from "react-icons/fa";
 import { useCart } from "../CartContext";
+import { useOrder } from "../orderContext";
 
 export function generateUniqueNumber(): number {
   let number = Math.floor(Math.random() * 90000) + 10000;
@@ -30,14 +31,14 @@ export function generateUniqueNumber(): number {
 }
 
 export function OrderConfirmationCard() {
+
+  const  {getLastOrder}= useOrder()
   const { cartList } = useCart();
-  const uniqueNumber = generateUniqueNumber();
 
-  const getContactDetails = localStorage.getItem("contactDetails");
-  const contactDetails = getContactDetails
-    ? JSON.parse(getContactDetails)
-    : null;
+  const { lastOrder } = getLastOrder();
+  console.log('Last order:', lastOrder?.contactInformation.name);
 
+  
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
   }, 0);
@@ -50,12 +51,12 @@ export function OrderConfirmationCard() {
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
           <Heading size="lg" padding="15px">
-            Thank you {contactDetails.name} for your order! #{uniqueNumber}
+            Thank you {lastOrder?.contactInformation.name} for your order! Your order id is: #{lastOrder?.orderId}
           </Heading>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">
           <UnorderedList listStyleType="none" marginInlineStart="0">
-            {cartList.map((cartItem) => (
+            {lastOrder?.itemList.map((cartItem) => (
               <ListItem key={cartItem.id}>
                 <Flex sx={cartItemStyle}>
                   <Text marginRight="20px">{cartItem.quantity} x</Text>
