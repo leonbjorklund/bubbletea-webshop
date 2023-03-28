@@ -16,7 +16,7 @@ import {
   Spacer,
   Text,
   UnorderedList,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
@@ -41,6 +41,7 @@ export function CartCard({ checkOutPage = true }) {
             sx={buttonStyle}
             aria-label="Clear cart"
             icon={<DeleteIcon />}
+            
             onClick={() => clearCart(cartList)}
           />
         </CardHeader>

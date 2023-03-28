@@ -6,6 +6,7 @@ import App from './App';
 import { CartProvider } from './CartContext';
 import { NotFound } from './components/NotFound';
 import './main.css';
+import { OrderProvider } from './orderContext';
 import { AdminPage } from './pages/AdminPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { ConfirmationPage } from './pages/ConfirmationPage';
@@ -72,12 +73,16 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
+    
     <CartProvider>
+    <OrderProvider>
       <ProductProvider>
         <ChakraProvider  theme={theme}>
           <RouterProvider router= {router}/>
         </ChakraProvider>
       </ProductProvider>
+      </OrderProvider>
     </CartProvider>
+    
   </React.StrictMode>
 );

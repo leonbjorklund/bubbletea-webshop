@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/layout";
-import { Formik } from "formik";
+import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
 import {
@@ -35,12 +35,33 @@ const customerSchema = Yup.object({
   city: Yup.string().required("City required").min(2, "City is too short"),
 });
 
+
+
 export type Customer = Yup.InferType<typeof customerSchema>;
 
 export function CheckoutForm() {
   const navigate = useNavigate();
 
   const { createOrder } = useOrder()
+
+  const handleSubmit = async (values: Customer, actions: FormikHelpers<Customer>) => {
+    try {
+      await customerSchema.validate(values);
+      const customer = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        street: values.street,
+        zipCode: values.zipCode,
+        city: values.city,
+      };
+      const order = createOrder(customer);
+      actions.resetForm();
+      console.log(order);
+      navigate("/confirmation");
+    } catch (err) {
+      console.log(err);
+  }};
 
   return (
     <Formik
@@ -53,16 +74,8 @@ export function CheckoutForm() {
         city: "",
       }}
       validationSchema={customerSchema}
-      onSubmit={(values, actions) => {
-        customerSchema.validate(values).then(() => {
-          localStorage.setItem("contactDetails", JSON.stringify(values));
-          actions.resetForm();
-          console.log("hej");
-          navigate("/confirmation");
-        }).catch(err => {
-          console.log(err);
-        });
-      }}
+      onSubmit={handleSubmit}
+  
     >
       {(formik) => (
         <form data-cy="customer-form" onSubmit={formik.handleSubmit}>
