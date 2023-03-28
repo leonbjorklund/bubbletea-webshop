@@ -15,22 +15,6 @@ import { TimeForTeaCard } from "../components/TimeForTeaCard";
 export function HomePage() {
   return (
     <Box sx={bigGradient}>
-      <Flex sx={gradientBackground} display={["row", "row", "flex"]}>
-        <Container marginRight="auto">
-          <Image
-            src="/images/showcaseimg.png"
-            alt="Image of bubble tea"
-            width="auto"
-            height={["100px", "150px", "auto"]}
-            display={["none", "none", "flex"]}
-          />
-        </Container>
-        <Container>
-          <Heading
-            fontSize={["2rem", "2.5rem", "3.5rem"]}
-            color={"lightBrownText"}
-          >
-            {/* <Box sx={bigGradient}>
       <Flex
         sx={gradientBackground}
         display={["row", "row", "flex"]}
@@ -38,7 +22,11 @@ export function HomePage() {
         h={"100%"}
         gap={4}
       >
-        <Box marginLeft={[null, null,"2vw","4vw","12%"]}marginRight={[null, null,"2vw","4vw","5vw",]} zIndex={20}>
+        <Box
+          marginLeft={[null, null, "2vw", "4vw", "12%"]}
+          marginRight={[null, null, "2vw", "4vw", "5vw"]}
+          zIndex={20}
+        >
           <Image
             className="heyy"
             src="/images/showcaseimg.png"
@@ -48,11 +36,11 @@ export function HomePage() {
             display={["none", "none", "flex"]}
           />
         </Box>
-        <Container maxWidth={["auto","25rem","27rem","29rem"]}>
+        <Container maxWidth={["auto", "25rem", "27rem", "29rem"]}>
           <Heading
             fontSize={["2rem", "2.1rem", "3rem", "3.5rem"]}
             color={"lightBrownText"}
-          > */}
+          >
             Best boba ever
           </Heading>
           <Text
