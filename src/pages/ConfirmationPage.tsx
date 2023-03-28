@@ -3,7 +3,7 @@ import { useCart } from "../CartContext";
 import { OrderConfirmationCard } from "../components/OrderConfirmationCard";
 
 export function ConfirmationPage() {
-  const { cartList } = useCart();
+  const { cartList, clearCart } = useCart();
   const getContactDetails = localStorage.getItem("contactDetails");
   const contactDetails = getContactDetails
     ? JSON.parse(getContactDetails)
@@ -37,6 +37,7 @@ export function ConfirmationPage() {
           type="submit"
           variant="outline"
           colorScheme="teal"
+          onClick={() => clearCart(cartList)}
         >
           Place another order
         </Button>

@@ -11,12 +11,10 @@ import {
 } from "@chakra-ui/react";
 import { Products } from "../components/Products";
 import { TimeForTeaCard } from "../components/TimeForTeaCard";
-import { ConfirmationPage } from "./ConfirmationPage";
 
 export function HomePage() {
   return (
     <Box sx={bigGradient}>
-      <ConfirmationPage />
       <Flex sx={gradientBackground} display={["row", "row", "flex"]}>
         <Container marginRight="auto">
           <Image

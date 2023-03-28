@@ -19,8 +19,19 @@ import { BsCupStraw } from "react-icons/bs";
 import { FaTruckMoving } from "react-icons/fa";
 import { useCart } from "../CartContext";
 
+function generateUniqueNumber(): number {
+  let number = Math.floor(Math.random() * 90000) + 10000;
+  if (localStorage.getItem(number.toString())) {
+    return generateUniqueNumber();
+  } else {
+    localStorage.setItem(number.toString(), "true");
+    return number;
+  }
+}
+
 export function OrderConfirmationCard() {
   const { cartList } = useCart();
+  const uniqueNumber = generateUniqueNumber();
   const getContactDetails = localStorage.getItem("contactDetails");
   const contactDetails = getContactDetails
     ? JSON.parse(getContactDetails)
@@ -38,8 +49,7 @@ export function OrderConfirmationCard() {
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
           <Heading size="lg" padding="15px">
-            Thank you {contactDetails.firstName} for your order!
-            {"#Unique order number"}
+            Thank you {contactDetails.firstName} for your order! #{uniqueNumber}
           </Heading>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">
