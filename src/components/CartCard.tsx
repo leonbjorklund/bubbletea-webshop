@@ -1,4 +1,3 @@
-import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
@@ -35,7 +34,6 @@ export function CartCard({ checkOutPage = true }) {
           <Heading size="lg">{checkOutPage ? "Your Cart" : "Cart"}</Heading>
           <Spacer />
           <Button sx={buttonStyle} onClick={() => clearCart(cartList)}>
-          <DeleteIcon />
           </Button>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">

@@ -4,16 +4,37 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { TextField } from "./TextField";
 
-import { Box, Flex, HStack, Stack, SystemStyleObject } from "@chakra-ui/react";
+import { Box, Flex, HStack, Stack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../CartContext";
+
+const customerSchema = Yup.object({
+  name: Yup.string()
+    .required("First name required")
+    .min(2, "First name is too short"),
+  email: Yup.string().email("invalid email").required("email required"),
+  phone: Yup.string()
+    .required("Phone required")
+    .min(2, "Phone is too short"),
+  street: Yup.string()
+    .required("Street required")
+    .min(2, "Street is too short"),
+  zipCode: Yup.string()
+    .required("Zip code required")
+    .min(2, "Zip code is too short"),
+  city: Yup.string()
+    .required("City required")
+    .min(2, "City is too short"),
+})
+
+export type Customer = Yup.InferType<typeof customerSchema>
 
 export function CheckoutForm() {
   const navigate = useNavigate();
   const { cartList, clearCart } = useCart();
 
   return (
-    <Formik 
+    <Formik
       initialValues={{
         name: "",
         email: "",
@@ -22,34 +43,19 @@ export function CheckoutForm() {
         zipCode: "",
         city: "",
       }}
-      validationSchema={Yup.object({
-        firstName: Yup.string() 
-          .required("First name required")
-          .min(2, "First name is too short"),
-        email: Yup.string().email("invalid email").required("email required"),
-        phone: Yup.string()
-          .required("Phone required")
-          .min(2, "Phone is too short"),
-        street: Yup.string()
-          .required("Street required")
-          .min(2, "Street is too short"),
-        zipCode: Yup.string()
-          .required("Zip code required")
-          .min(2, "Zip code is too short"),
-        city: Yup.string()
-          .required("City required")
-          .min(2, "City is too short"),
-      })}
+      validationSchema={customerSchema}
       onSubmit={(values, actions) => {
         localStorage.setItem("contactDetails", JSON.stringify(values));
         actions.resetForm();
+        // clearCart(cartList);
+        console.log("hej")
         navigate("/confirmation");
       }}
     >
       {(formik) => (
         <form data-cy="customer-form"
           onSubmit={
-            formik.handleSubmit as React.FormEventHandler<HTMLFormElement>
+            formik.handleSubmit
           }
         >
           <Flex  sx={formStyle}>
@@ -71,13 +77,12 @@ export function CheckoutForm() {
                   <TextField data-cy="customer-city" name="city" label="City" />
                   <Stack spacing={10} pt={2}>
                     <Button
-                    
+
                       loadingText="Submitting"
                       sx={submitButtonStyle}
                       type="submit"
                       variant="outline"
                       colorScheme="teal"
-                      onClick={() => clearCart(cartList)}
                     >
                       Place Order
                     </Button>

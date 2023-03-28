@@ -13,7 +13,7 @@ import {
   SystemStyleObject,
   Text,
   UnorderedList,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { BsCupStraw } from "react-icons/bs";
 import { FaTruckMoving } from "react-icons/fa";
@@ -49,7 +49,7 @@ export function OrderConfirmationCard() {
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
           <Heading size="lg" padding="15px">
-            Thank you {contactDetails.firstName} for your order! #{uniqueNumber}
+            Thank you {contactDetails.name} for your order! #{uniqueNumber}
           </Heading>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">

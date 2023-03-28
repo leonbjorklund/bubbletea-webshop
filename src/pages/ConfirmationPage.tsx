@@ -3,7 +3,7 @@ import {
   Container,
   Flex,
   Link as ChakraLink,
-  SystemStyleObject,
+  SystemStyleObject
 } from "@chakra-ui/react";
 import { OrderConfirmationCard } from "../components/OrderConfirmationCard";
 
@@ -20,7 +20,7 @@ export function ConfirmationPage() {
           {contactDetails ? (
             <div>
               <p>
-                Name: {contactDetails.firstName} {contactDetails.lastName}
+                Name: {contactDetails.name}
               </p>
               <p>Email: {contactDetails.email}</p>
               <p>Phone: {contactDetails.phone}</p>

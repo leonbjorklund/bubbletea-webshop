@@ -5,16 +5,13 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Button, Flex,
-  Heading,
-  Icon,
-  Image,
+  Heading, Image,
   Text,
   useBreakpointValue,
   useOutsideClick
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import { BiArrowBack } from "react-icons/Bi";
-import { BsCartPlus } from "react-icons/Bs";
+
 import { Link, useNavigate } from "react-router-dom";
 import { Product } from "../../data";
 import { useCart } from "../CartContext";
@@ -107,7 +104,6 @@ export function BigProductCard({
         </BreadcrumbItem>
       </Breadcrumb>
       <Button sx={xButton} size={closeButtonSize} onClick={handleClose}>
-      <Icon as={BiArrowBack} />
       </Button>
       <Flex
         w={"100%"}
@@ -160,7 +156,6 @@ export function BigProductCard({
                   sx={addButtonStyle}
                   onClick={() => addToCart(product, quantity)}
                 >
-                  <Icon sx={iconStyle} as={BsCartPlus} />
                 </Button>
               </Flex>
             </Box>
