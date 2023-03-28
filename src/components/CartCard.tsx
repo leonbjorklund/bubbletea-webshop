@@ -1,3 +1,4 @@
+import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
@@ -33,8 +34,8 @@ export function CartCard({ checkOutPage = true }) {
         <CardHeader w="100%" display="flex" p="5px">
           <Heading size="lg">{checkOutPage ? "Your Cart" : "Cart"}</Heading>
           <Spacer />
-          <Button sx={buttonGradient} onClick={() => clearCart(cartList)}>
-            Empty Cart
+          <Button sx={buttonStyle} onClick={() => clearCart(cartList)}>
+          <DeleteIcon />
           </Button>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">
@@ -144,10 +145,10 @@ const flexStyle = {
   rowGap: "1.25rem",
 };
 
-const buttonGradient = {
-  bgGradient: "linear(to-b, red.400, yellow.400)",
+const buttonStyle = {
+  background: "red.400",
   _hover: {
-    bgGradient: "linear(to-b, yellow.400, red.400)",
+    background: "red",
   },
   color: "white",
 }
