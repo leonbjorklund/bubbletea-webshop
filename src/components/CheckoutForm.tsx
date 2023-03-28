@@ -6,10 +6,11 @@ import { TextField } from "./TextField";
 
 import { Box, Flex, HStack, Stack, SystemStyleObject } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../CartContext";
 
 export function CheckoutForm() {
-
   const navigate = useNavigate();
+  const { cartList, clearCart } = useCart();
 
   return (
     <Formik
@@ -80,6 +81,7 @@ export function CheckoutForm() {
                       type="submit"
                       variant="outline"
                       colorScheme="teal"
+                      onClick={() => clearCart(cartList)}
                     >
                       Place Order
                     </Button>

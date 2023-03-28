@@ -1,9 +1,13 @@
-import { Button, Container, Flex, SystemStyleObject } from "@chakra-ui/react";
-import { useCart } from "../CartContext";
+import {
+  Button,
+  Container,
+  Flex,
+  Link as ChakraLink,
+  SystemStyleObject,
+} from "@chakra-ui/react";
 import { OrderConfirmationCard } from "../components/OrderConfirmationCard";
 
 export function ConfirmationPage() {
-  const { cartList, clearCart } = useCart();
   const getContactDetails = localStorage.getItem("contactDetails");
   const contactDetails = getContactDetails
     ? JSON.parse(getContactDetails)
@@ -31,16 +35,21 @@ export function ConfirmationPage() {
         </div>
       </Flex>
       <Flex>
-        <Button
-          loadingText="Submitting"
-          sx={submitButtonStyle}
-          type="submit"
-          variant="outline"
-          colorScheme="teal"
-          onClick={() => clearCart(cartList)}
+        <ChakraLink
+          sx={buttonWrapper}
+          href="/"
+          _hover={{ textDecoration: "none" }}
         >
-          Place another order
-        </Button>
+          <Button
+            loadingText="Submitting"
+            sx={submitButtonStyle}
+            type="submit"
+            variant="outline"
+            colorScheme="teal"
+          >
+            Place another order
+          </Button>
+        </ChakraLink>
       </Flex>
     </Container>
   );
@@ -70,4 +79,8 @@ const informationContainer: SystemStyleObject = {
   borderRadius: "5px",
   background: "#fee5bd",
   color: "lightBrownText",
+};
+
+const buttonWrapper: SystemStyleObject = {
+  mx: "auto",
 };
