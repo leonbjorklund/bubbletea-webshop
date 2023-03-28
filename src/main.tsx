@@ -60,7 +60,9 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="product/:id" element={<ProductPage />} />
     <Route path="checkout" element={<CheckoutPage />}/>
     <Route path="confirmation" element={<ConfirmationPage />}/>
-    <Route path="admin" element={<AdminPage/>}/>
+    <Route path="admin" element={<AdminPage/>}>
+      <Route path="edit/:id" element={<AdminPage />} />
+    </Route>
     <Route path="*" element= {<NotFound />}/>
     {/* Outlet end */}
   </Route>
