@@ -1,11 +1,11 @@
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Box,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   Button, Flex,
-  Heading, Image,
+  Heading, IconButton, Image,
   Text,
   useBreakpointValue,
   useOutsideClick
@@ -56,11 +56,14 @@ export function BigProductCard({
     lg: "lg",
   });
 
+  // Style object for the whole container
   const cardStyle = {
     height: "85vh",
     width: "100%",
     bgGradient: `linear(${product.bgColor} 30%, yellow.50 90%)`,
   };
+
+  // Style object for round background
   const roundBG = {
     marginTop: ".5rem",
     backgroundColor: `${product.bgColor}`,
@@ -73,18 +76,26 @@ export function BigProductCard({
     left: "50%",
     transform: "translate(-50%, -50%)",
   };
-  const backgroundStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "100%",
-    height: "100%",
+
+  const backgroundImageWrapper = {
+    ...roundBG,
+    overflow: "hidden",
     zIndex: "100",
-    backgroundImage: `url(${backgroundUrl})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
   };
+
+  // Style object for background image
+const imageStyleBackground = (backgroundUrl: string) => ({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "100%",
+  height: "100%",
+  zIndex: "100",
+  backgroundImage: `url(${backgroundUrl})`,
+  backgroundSize: 'cover', // Add this line
+  backgroundPosition: 'center', // Add this line
+});
 
   // Hide the card and navigates back to home page
   const handleClose = () => {
@@ -115,8 +126,13 @@ export function BigProductCard({
           <BreadcrumbLink href="#">{product.title}</BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      <Button sx={xButton} size={closeButtonSize} onClick={handleClose}>
-      </Button>
+      <IconButton
+            sx={xButton}
+            size={closeButtonSize} 
+            aria-label="Back"
+            icon={<ArrowBackIcon />}
+            onClick={handleClose}
+          />
       <Flex
         w={"100%"}
         h={"100%"}
@@ -189,13 +205,14 @@ export function BigProductCard({
           w={["80%", "70%", "40%", "45%"]}
         >
           <Box sx={roundBG}>
+          <Box as="div" sx={backgroundImageWrapper}>
             <Box as="div"
               sx={imageStyleBackground(backgroundUrl)}
             >
               </Box>
             <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
           </Box>
-          <Box></Box>
+          </Box>
         </Box>
       </Flex>
     </Box>
@@ -217,20 +234,6 @@ const imageStyle = {
   width: ["40%", "40%", "40%", "40%"],
   zIndex: "200",
 };
-
-// Style object for background image
-const imageStyleBackground = (backgroundUrl: string) => ({
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "100%",
-  height: "100%",
-  zIndex: "100",
-  backgroundImage: `url(${backgroundUrl})`,
-  backgroundSize: 'cover', // Add this line
-  backgroundPosition: 'center', // Add this line
-});
 
 // Style object for close button
 const xButton = {
