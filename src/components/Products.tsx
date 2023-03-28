@@ -22,6 +22,7 @@ export function Products() {
       <Tabs
         borderRadius=".6rem"
         variant="unstyled"
+        boxShadow="2px 2px 2px rgb(0,0,0, 0.2)"
         bg={"white"}
         my={5}
         width={["100%", "100%", "98%", "62.5%"]}
