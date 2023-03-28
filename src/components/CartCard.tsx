@@ -3,17 +3,14 @@ import {
   Card,
   CardBody,
   CardFooter,
-  CardHeader,
-  Divider,
+  CardHeader, Divider,
   Flex,
   Heading,
   HStack,
   Image,
   Link as ChakraLink,
   ListItem,
-  Spacer,
-  SystemStyleObject,
-  Text,
+  Spacer, Text,
   UnorderedList,
   useBreakpointValue
 } from "@chakra-ui/react";
@@ -36,7 +33,7 @@ export function CartCard({ checkOutPage = true }) {
         <CardHeader w="100%" display="flex" p="5px">
           <Heading size="lg">{checkOutPage ? "Your Cart" : "Cart"}</Heading>
           <Spacer />
-          <Button colorScheme="red" onClick={() => clearCart(cartList)}>
+          <Button sx={buttonGradient} onClick={() => clearCart(cartList)}>
             Empty Cart
           </Button>
         </CardHeader>
@@ -126,7 +123,7 @@ export function CartCard({ checkOutPage = true }) {
   );
 }
 
-const cartStyle: SystemStyleObject = {
+const cartStyle = {
   marginTop: "var(--chakra-space-1)",
   bg: "#FFF9F4",
   border: "1px solid rgb(0,0,0, 0.2)",
@@ -135,44 +132,55 @@ const cartStyle: SystemStyleObject = {
   position: "relative",
 };
 
-const thumbNailStyle: SystemStyleObject = {
+const thumbNailStyle = {
   width: "2rem",
   marginRight: "1rem",
 };
 
-const flexStyle: SystemStyleObject = {
+const flexStyle = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   rowGap: "1.25rem",
 };
 
-const cartItemStyle: SystemStyleObject = {
+const buttonGradient = {
+  bgGradient: "linear(to-b, red.400, yellow.400)",
+  _hover: {
+    bgGradient: "linear(to-b, yellow.400, red.400)",
+  },
+  color: "white",
+}
+
+const cartItemStyle = {
   alignItems: "center",
   my: "0.625rem",
 };
 
-const incrementButtonStyle: SystemStyleObject = {
+const incrementButtonStyle = {
   bg: "pinkCardButton",
   marginStart: "0!important",
   marginEnd: "0!important",
 };
 
-const quantityStyle: SystemStyleObject = {
+const quantityStyle = {
   m: "0",
-  w: "1.375rem",
+  w: "2rem",
   textAlign: "center",
   marginStart: "0!important",
 };
 
-const orderButtonStyle: SystemStyleObject = {
+const orderButtonStyle = {
   width: "100%",
   bg: "lightGreenButton",
+  _hover: {
+    background: "#96b59e",
+  },
   color: "black",
   fontSize: "1.2rem",
 };
 
-const cardFooterStyle: SystemStyleObject = {
+const cardFooterStyle = {
   width: "100%",
   display: "block",
   p: "0",
