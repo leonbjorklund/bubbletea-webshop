@@ -8,7 +8,13 @@ type ProductContextType = {
   editProduct: (product: Product) => void;
 };
 
-const ProductContext = createContext<ProductContextType>(null as any);
+
+const ProductContext = createContext<ProductContextType>({
+  productList: [],
+  addProduct: (product: Product) => {},
+  removeProduct: (id: string) => {},
+  editProduct: (product: Product) => {},
+});
 
 export function useProduct() {
   return useContext(ProductContext);
@@ -49,12 +55,26 @@ export function ProductProvider({ children }: PropsWithChildren) {
     });
   };
 
-  const editProduct = (product: Product) => {
-    // setProductList((prevProductsList) => {
+  const editProduct = (editedProduct: Product) => {
+    setProductList((prevProductList) => {
+      const productIndex = prevProductList.findIndex(
+        (product) => product.id === editedProduct.id
+      );
 
-    // })
+      if (productIndex === -1) {
+        // Product not found
+        return prevProductList;
+      }
 
+      const updatedProductList = prevProductList.map((product, index) =>
+        index === productIndex ? editedProduct : product
+      );
+      localStorage.setItem("productList", JSON.stringify(updatedProductList));
+      return updatedProductList;
+    });
   };
+
+
 
   return (
     <ProductContext.Provider value={{ productList, addProduct, removeProduct, editProduct }}>

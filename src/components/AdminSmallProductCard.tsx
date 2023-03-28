@@ -50,10 +50,8 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
     onClose();
   };
 
-  // Handle the product editing process
   const handleEdit = () => {
     editProduct(product);
-
   };
 
   return (
@@ -70,12 +68,12 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
       <Text data-cy="product-price" sx={textStyle}>
         ${product.price.toFixed(2)}
       </Text>
-      <Flex>
-      <Link to={`edit/${product.id}`}>
+      <Flex alignItems="center">
+        <Link to={`edit/${product.id}`}>
           <Button onClick={handleEdit} sx={buttonStyle}>
             Edit
           </Button>
-      </Link>
+        </Link>
         <Button
           data-cy="admin-remove-product"
           sx={deleteButtonStyle}

@@ -1,8 +1,6 @@
 import {
   Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
+  CardBody, CardFooter, CardHeader,
   Flex,
   Heading,
   SystemStyleObject

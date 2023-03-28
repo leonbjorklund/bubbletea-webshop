@@ -6,7 +6,7 @@ import { useProduct } from "../ProductContext";
 
 type ProductValues = Record<keyof Product, Yup.AnySchema>
 
-const schema = Yup.object<ProductValues>().shape({
+export const schema = Yup.object<ProductValues>().shape({
   image: Yup.string()
     .url("Invalid image URL!")
     .required("Required"),
@@ -27,7 +27,7 @@ const schema = Yup.object<ProductValues>().shape({
     .typeError("Must be a number")
     .positive("Price must be positive")
     .required("Required"),
-    
+
   allergens: Yup.string()
     .required("Required"),
 
@@ -211,6 +211,6 @@ export function AdminForm({ product }: Props) {
   )
 }
 
-const requiredText: SystemStyleObject = {
+export const requiredText: SystemStyleObject = {
   color: "red",
 }
