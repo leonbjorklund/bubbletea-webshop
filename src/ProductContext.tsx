@@ -51,6 +51,7 @@ export function ProductProvider({ children }: PropsWithChildren) {
         ...prevProductsList.slice(0, itemIndex),
         ...prevProductsList.slice(itemIndex + 1)
       ];
+      // localStorage.setItem("productList", JSON.stringify(updatedProductsList));
       return updatedProductsList;
     });
   };
