@@ -33,7 +33,7 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
   const { removeProduct, editProduct } = useProduct();
 
   const roundBG = {
-    backgroundColor: "#FFF",
+    backgroundColor: product.bgColor,
     height: "auto",
     width: "90%",
     aspectRatio: "1",

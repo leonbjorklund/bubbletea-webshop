@@ -162,17 +162,26 @@ export default function EditForm() {
       </FormControl>
       <FormControl>
         <FormLabel>BackgroundColor</FormLabel>
-        <Input
-        id="bgColor"
-        name="bgColor"
-        type="text"
-        placeholder="backgroundcolor"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-         value={formik.values.bgColor}
-        />
-        {formik.touched.bgColor && formik.errors.bgColor ? <Text sx={requiredText}>{formik.errors.bgColor}</Text> : null}
+        <Select
+          id="bgColor"
+          name="bgColor"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.bgColor}
+          placeholder="Select a color"
+        >
+          <option value="yellowCardCircle">Yellow</option>
+          <option value="fruitTeaCircle">Pink</option>
+          <option value="bigMatchaCard">Green</option>
+          <option value="#8fc2e9">Blue</option>
+          <option value="#bf96da">Purple</option>
+        </Select>
+        {formik.touched.bgColor && formik.errors.bgColor ? (
+          <Text sx={requiredText}>{formik.errors.bgColor}</Text>
+        ) : null}
       </FormControl>
+      
+
       <FormControl>
         <FormLabel>Category</FormLabel>
         <Select
