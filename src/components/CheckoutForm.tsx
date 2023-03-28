@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { TextField } from "./TextField";
 
-import { Box, Flex, HStack, Stack } from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../CartContext";
 
@@ -48,17 +48,13 @@ export function CheckoutForm() {
         localStorage.setItem("contactDetails", JSON.stringify(values));
         actions.resetForm();
         // clearCart(cartList);
-        console.log("hej")
+        console.log("hej");
         navigate("/confirmation");
       }}
     >
       {(formik) => (
-        <form data-cy="customer-form"
-          onSubmit={
-            formik.handleSubmit
-          }
-        >
-          <Flex  sx={formStyle}>
+        <form data-cy="customer-form" onSubmit={formik.handleSubmit}>
+          <Flex sx={formStyle}>
             <Stack spacing={8} paddingTop="2rem">
               <Stack align={"center"}>
                 <Heading fontSize={"4xl"} textAlign={"center"}>
@@ -67,17 +63,39 @@ export function CheckoutForm() {
               </Stack>
               <Box sx={formBoxStyle}>
                 <Stack spacing={4}>
-                  <HStack>
-                    <TextField data-cy="customer-name" name="name" label="Name" />
-                  </HStack>
-                  <TextField data-cy="customer-email" name="email" label="Email" />
-                  <TextField data-cy="customer-phone" name="phone" label="Phone nr." />
-                  <TextField data-cy="customer-address" name="street" label="Street" />
-                  <TextField data-cy="customer-zipcode" name="zipCode" label="Zip Code" />
-                  <TextField data-cy="customer-city" name="city" label="City" />
+                  <TextField
+                    data-cy="customer-name"
+                    name="name"
+                    label="Name"
+                    autoComplete="name"
+                  />
+                  <TextField
+                    data-cy="customer-email"
+                    name="email"
+                    label="Email"
+                    autoComplete="email"
+                  />
+                  <TextField
+                    data-cy="customer-phone"
+                    name="phone"
+                    label="Phone nr."
+                    autoComplete="tel"
+                  />
+                  <TextField
+                    data-cy="customer-address"
+                    name="street"
+                    label="Street"
+                    autoComplete="street-address"
+                  />
+                  <TextField
+                    data-cy="customer-zipcode"
+                    name="zipCode"
+                    label="Zip Code"
+                    autoComplete="postal-code"
+                  />
+                  <TextField data-cy="customer-city" name="city" label="City" autoComplete="address-level2"/>
                   <Stack spacing={10} pt={2}>
                     <Button
-
                       loadingText="Submitting"
                       sx={submitButtonStyle}
                       type="submit"
