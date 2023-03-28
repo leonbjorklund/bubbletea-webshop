@@ -56,6 +56,7 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
 
   return (
     <Card data-cy="product" align="center" sx={cardStyle}>
+      <Text data-cy="product-id">{id}</Text>
       <Box sx={roundBG}>
         <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
@@ -64,9 +65,6 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
       </Text>
       <Text data-cy="product-price" sx={textStyle}>
         ${product.price.toFixed(2)}
-      </Text>
-      <Text data-cy="product-id">
-        {id}
       </Text>
       <Flex alignItems="center">
         <Link to={`edit/${product.id}`}>

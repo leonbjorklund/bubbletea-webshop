@@ -80,7 +80,6 @@ export function HomePage() {
             display={["none", "none", "none", "flex"]}
           >
             <Button sx={buttonStyling}>PRODUCTS</Button>
-            <Button sx={buttonStyling}>RECIPES</Button>
           </Stack>
         </Container>
       </Flex>
