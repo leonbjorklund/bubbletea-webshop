@@ -1,18 +1,22 @@
+import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
   CardBody,
   CardFooter,
-  CardHeader, Divider,
+  CardHeader,
+  Divider,
   Flex,
   Heading,
   HStack,
+  IconButton,
   Image,
   Link as ChakraLink,
   ListItem,
-  Spacer, Text,
+  Spacer,
+  Text,
   UnorderedList,
-  useBreakpointValue
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useCart } from "../CartContext";
@@ -33,8 +37,12 @@ export function CartCard({ checkOutPage = true }) {
         <CardHeader w="100%" display="flex" p="5px">
           <Heading size="lg">{checkOutPage ? "Your Cart" : "Cart"}</Heading>
           <Spacer />
-          <Button sx={buttonStyle} onClick={() => clearCart(cartList)}>
-          </Button>
+          <IconButton
+            sx={buttonStyle}
+            aria-label="Clear cart"
+            icon={<DeleteIcon />}
+            onClick={() => clearCart(cartList)}
+          />
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">
           {cartList.length > 0 ? (
@@ -149,7 +157,7 @@ const buttonStyle = {
     background: "red",
   },
   color: "white",
-}
+};
 
 const cartItemStyle = {
   alignItems: "center",
