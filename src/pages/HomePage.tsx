@@ -6,7 +6,8 @@ import {
   Flex,
   Heading,
   Image,
-  Stack, Text
+  Stack,
+  Text,
 } from "@chakra-ui/react";
 import { Products } from "../components/Products";
 import { TimeForTeaCard } from "../components/TimeForTeaCard";
@@ -21,7 +22,11 @@ export function HomePage() {
         h={"100%"}
         gap={4}
       >
-        <Box marginLeft={[null, null,"2vw","4vw","12%"]}marginRight={[null, null,"2vw","4vw","5vw",]} zIndex={20}>
+        <Box
+          marginLeft={[null, null, "2vw", "4vw", "12%"]}
+          marginRight={[null, null, "2vw", "4vw", "5vw"]}
+          zIndex={20}
+        >
           <Image
             className="heyy"
             src="/images/showcaseimg.png"
@@ -31,7 +36,7 @@ export function HomePage() {
             display={["none", "none", "flex"]}
           />
         </Box>
-        <Container maxWidth={["auto","25rem","27rem","29rem"]}>
+        <Container maxWidth={["auto", "25rem", "27rem", "29rem"]}>
           <Heading
             fontSize={["2rem", "2.1rem", "3rem", "3.5rem"]}
             color={"lightBrownText"}
@@ -122,7 +127,7 @@ const buttonStyling = {
     color: "white",
   },
   _active: {
-    background:"none",
-    transform: "scale(0.96)"
+    background: "none",
+    transform: "scale(0.96)",
   },
 };
