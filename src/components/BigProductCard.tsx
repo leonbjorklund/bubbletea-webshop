@@ -136,13 +136,13 @@ export function BigProductCard({
             gap={[0, 1, 3, 4]}
             marginTop={"-2rem"}
           >
-            <Heading fontSize={["1.5rem", "1.7rem", "2rem", "2.5rem"]}>
+            <Heading data-cy="product-title" fontSize={["1.5rem", "1.7rem", "2rem", "2.5rem"]}>
               {product.title}
             </Heading>
-            <Heading fontSize={["1.5rem", "1.7rem", "1.7rem", "2rem"]}>
+            <Heading data-cy="product-price" fontSize={["1.5rem", "1.7rem", "1.7rem", "2rem"]}>
               ${product.price}
             </Heading>
-            <Text>{product.description}</Text>
+            <Text data-cy="product-description" >{product.description}</Text>
             <Box>
               <Flex>
                 <Button sx={buttonStyle} onClick={decreaseQuantity}>
@@ -152,7 +152,7 @@ export function BigProductCard({
                 <Button sx={buttonStyle} onClick={increaseQuantity}>
                   +
                 </Button>
-                <Button
+                <Button data-cy="product-buy-button"
                   sx={addButtonStyle}
                   onClick={() => addToCart(product, quantity)}
                 >
