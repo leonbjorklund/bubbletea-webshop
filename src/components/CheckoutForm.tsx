@@ -13,7 +13,7 @@ import {
   Text
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../CartContext";
+import { useOrder } from "../orderContext";
 import { requiredText } from "./AdminForm";
 
 const phoneRegExp = /^[0-9]{10}$/;
@@ -39,7 +39,8 @@ export type Customer = Yup.InferType<typeof customerSchema>;
 
 export function CheckoutForm() {
   const navigate = useNavigate();
-  const { cartList, clearCart } = useCart();
+
+  const { createOrder } = useOrder()
 
   return (
     <Formik

@@ -19,7 +19,7 @@ import { BsCupStraw } from "react-icons/bs";
 import { FaTruckMoving } from "react-icons/fa";
 import { useCart } from "../CartContext";
 
-function generateUniqueNumber(): number {
+export function generateUniqueNumber(): number {
   let number = Math.floor(Math.random() * 90000) + 10000;
   if (localStorage.getItem(number.toString())) {
     return generateUniqueNumber();
