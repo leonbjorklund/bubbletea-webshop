@@ -2,11 +2,21 @@ import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/layout";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { TextField } from "./TextField";
 
-import { Box, Flex, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Text
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../CartContext";
+import { requiredText } from "./AdminForm";
+
+const phoneRegExp = /^[0-9]{10}$/;
 
 const customerSchema = Yup.object({
   name: Yup.string()
@@ -14,20 +24,18 @@ const customerSchema = Yup.object({
     .min(2, "First name is too short"),
   email: Yup.string().email("invalid email").required("email required"),
   phone: Yup.string()
-    .required("Phone required")
-    .min(2, "Phone is too short"),
+    .required("Phone number is required")
+    .matches(phoneRegExp, 'Phone number is not valid'),
   street: Yup.string()
     .required("Street required")
     .min(2, "Street is too short"),
-  zipCode: Yup.string()
-    .required("Zip code required")
-    .min(2, "Zip code is too short"),
-  city: Yup.string()
-    .required("City required")
-    .min(2, "City is too short"),
-})
+    zipCode: Yup.string()
+    .required("Zip code is required")
+    .matches(/^[0-9]{5}(?:-[0-9]{4})?$/, "Invalid zip code"),
+  city: Yup.string().required("City required").min(2, "City is too short"),
+});
 
-export type Customer = Yup.InferType<typeof customerSchema>
+export type Customer = Yup.InferType<typeof customerSchema>;
 
 export function CheckoutForm() {
   const navigate = useNavigate();
@@ -45,11 +53,14 @@ export function CheckoutForm() {
       }}
       validationSchema={customerSchema}
       onSubmit={(values, actions) => {
-        localStorage.setItem("contactDetails", JSON.stringify(values));
-        actions.resetForm();
-        // clearCart(cartList);
-        console.log("hej");
-        navigate("/confirmation");
+        customerSchema.validate(values).then(() => {
+          localStorage.setItem("contactDetails", JSON.stringify(values));
+          actions.resetForm();
+          console.log("hej");
+          navigate("/confirmation");
+        }).catch(err => {
+          console.log(err);
+        });
       }}
     >
       {(formik) => (
@@ -63,37 +74,147 @@ export function CheckoutForm() {
               </Stack>
               <Box sx={formBoxStyle}>
                 <Stack spacing={4}>
-                  <TextField
-                    data-cy="customer-name"
-                    name="name"
-                    label="Name"
-                    autoComplete="name"
-                  />
-                  <TextField
-                    data-cy="customer-email"
-                    name="email"
-                    label="Email"
-                    autoComplete="email"
-                  />
-                  <TextField
-                    data-cy="customer-phone"
-                    name="phone"
-                    label="Phone nr."
-                    autoComplete="tel"
-                  />
-                  <TextField
-                    data-cy="customer-address"
-                    name="street"
-                    label="Street"
-                    autoComplete="street-address"
-                  />
-                  <TextField
-                    data-cy="customer-zipcode"
-                    name="zipCode"
-                    label="Zip Code"
-                    autoComplete="postal-code"
-                  />
-                  <TextField data-cy="customer-city" name="city" label="City" autoComplete="address-level2"/>
+                  <FormControl>
+                    <FormLabel my=".5rem">name</FormLabel>
+                    <Input
+                      border="1px solid black"
+                      data-cy="customer-name"
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="name"
+                      autoComplete="name"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.name}
+                    ></Input>
+                    {formik.touched.name && formik.errors.name ? (
+                      <Text data-cy="customer-name-error" sx={requiredText}>
+                        {formik.errors.name}
+                      </Text>
+                    ) : null}
+                  </FormControl>
+                  <FormControl
+                    isInvalid={!!(formik.touched.email && formik.errors.email)}
+                  >
+                    <FormLabel my=".5rem">Email</FormLabel>
+                    <Input
+                      border="1px solid black"
+                      data-cy="customer-email"
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Email"
+                      autoComplete="email"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.email}
+                    ></Input>
+                    {formik.touched.email && formik.errors.email ? (
+                      <Text data-cy="customer-email-error" sx={requiredText}>
+                        {formik.errors.email}
+                      </Text>
+                    ) : null}
+                  </FormControl>
+
+                  <FormControl
+                    isInvalid={!!(formik.touched.phone && formik.errors.phone)}
+                  >
+                    <FormLabel my=".5rem">Phone nr.</FormLabel>
+                    <Input
+                      border="1px solid black"
+                      data-cy="customer-phone"
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="Phone nr."
+                      autoComplete="tel"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.phone}
+                    ></Input>
+                    {formik.touched.phone && formik.errors.phone ? (
+                      <Text data-cy="customer-phone-error" sx={requiredText}>
+                        {formik.errors.phone}
+                      </Text>
+                    ) : null}
+                  </FormControl>
+
+                  <FormControl
+                    isInvalid={
+                      !!(formik.touched.street && formik.errors.street)
+                    }
+                  >
+                    <FormLabel my=".5rem">Street</FormLabel>
+                    <Input
+                      border="1px solid black"
+                      data-cy="customer-address"
+                      id="street"
+                      name="street"
+                      type="text"
+                      placeholder="Street"
+                      autoComplete="street-address"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.street}
+                    ></Input>
+                    {formik.touched.street && formik.errors.street ? (
+                      <Text data-cy="customer-address-error" sx={requiredText}>
+                        {formik.errors.street}
+                      </Text>
+                    ) : null}
+                  </FormControl>
+
+                  <FormControl
+                    isInvalid={
+                      !!(formik.touched.zipCode && formik.errors.zipCode)
+                    }
+                  >
+                    <FormLabel my=".5rem">Zip Code</FormLabel>
+                    <Input
+                      border="1px solid black"
+                      data-cy="customer-zipcode"
+                      id="zipCode"
+                      name="zipCode"
+                      type="text"
+                      placeholder="Zip Code"
+                      autoComplete="postal-code"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.zipCode}
+                    ></Input>
+                    {formik.touched.zipCode && formik.errors.zipCode ? (
+                      <Text data-cy="customer-zipcode-error" sx={requiredText}>
+                        {formik.errors.zipCode}
+                      </Text>
+                    ) : null}
+                  </FormControl>
+
+                  <FormControl
+                    isInvalid={
+                      !!(formik.touched.city && formik.errors.city)
+                    }
+                  >
+                    <FormLabel my=".5rem">City</FormLabel>
+                    <Input
+                      border="1px solid black"
+                      data-cy="customer-city"
+                      id="city"
+                      name="city"
+                      type="text"
+                      placeholder="city"
+                      autoComplete="address-level2"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.city}
+                    ></Input>
+                    {formik.touched.city && formik.errors.city ? (
+                      <Text data-cy="customer-city-error" sx={requiredText}>
+                        {formik.errors.city}
+                      </Text>
+                    ) : null}
+                  </FormControl>
+
                   <Stack spacing={10} pt={2}>
                     <Button
                       loadingText="Submitting"

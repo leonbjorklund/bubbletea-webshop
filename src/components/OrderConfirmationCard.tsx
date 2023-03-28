@@ -32,6 +32,7 @@ function generateUniqueNumber(): number {
 export function OrderConfirmationCard() {
   const { cartList } = useCart();
   const uniqueNumber = generateUniqueNumber();
+
   const getContactDetails = localStorage.getItem("contactDetails");
   const contactDetails = getContactDetails
     ? JSON.parse(getContactDetails)
