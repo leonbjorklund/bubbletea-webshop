@@ -13,10 +13,9 @@ export function CheckoutForm() {
   const { cartList, clearCart } = useCart();
 
   return (
-    <Formik
+    <Formik 
       initialValues={{
-        firstName: "",
-        lastName: "",
+        name: "",
         email: "",
         phone: "",
         street: "",
@@ -24,12 +23,9 @@ export function CheckoutForm() {
         city: "",
       }}
       validationSchema={Yup.object({
-        firstName: Yup.string()
+        firstName: Yup.string() 
           .required("First name required")
           .min(2, "First name is too short"),
-        lastName: Yup.string()
-          .required("Last name required")
-          .min(2, "Last name is too short"),
         email: Yup.string().email("invalid email").required("email required"),
         phone: Yup.string()
           .required("Phone required")
@@ -51,12 +47,12 @@ export function CheckoutForm() {
       }}
     >
       {(formik) => (
-        <form
+        <form data-cy="customer-form"
           onSubmit={
             formik.handleSubmit as React.FormEventHandler<HTMLFormElement>
           }
         >
-          <Flex sx={formStyle}>
+          <Flex  sx={formStyle}>
             <Stack spacing={8} paddingTop="2rem">
               <Stack align={"center"}>
                 <Heading fontSize={"4xl"} textAlign={"center"}>
@@ -66,16 +62,16 @@ export function CheckoutForm() {
               <Box sx={formBoxStyle}>
                 <Stack spacing={4}>
                   <HStack>
-                    <TextField name="firstName" label="First Name" />
-                    <TextField name="lastName" label="Last Name" />
+                    <TextField data-cy="customer-name" name="name" label="Name" />
                   </HStack>
-                  <TextField name="email" label="Email" />
-                  <TextField name="phone" label="Phone nr." />
-                  <TextField name="street" label="Street" />
-                  <TextField name="zipCode" label="Zip Code" />
-                  <TextField name="city" label="City" />
+                  <TextField data-cy="customer-email" name="email" label="Email" />
+                  <TextField data-cy="customer-phone" name="phone" label="Phone nr." />
+                  <TextField data-cy="customer-address" name="street" label="Street" />
+                  <TextField data-cy="customer-zipcode" name="zipCode" label="Zip Code" />
+                  <TextField data-cy="customer-city" name="city" label="City" />
                   <Stack spacing={10} pt={2}>
                     <Button
+                    
                       loadingText="Submitting"
                       sx={submitButtonStyle}
                       type="submit"
@@ -96,7 +92,7 @@ export function CheckoutForm() {
   );
 }
 
-const formStyle: SystemStyleObject = {
+const formStyle = {
   mx: "auto",
   as: "form",
   bg: "white",
@@ -108,14 +104,14 @@ const formStyle: SystemStyleObject = {
   justify: "center",
 };
 
-const formBoxStyle: SystemStyleObject = {
+const formBoxStyle = {
   rounded: "lg",
   boxShadow: "lg",
   p: "0.5rem",
   paddingTop: "0",
 };
 
-const submitButtonStyle: SystemStyleObject = {
+const submitButtonStyle = {
   width: "14rem",
   height: "4rem",
   mx: "auto",

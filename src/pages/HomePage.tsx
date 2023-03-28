@@ -41,15 +41,15 @@ export function HomePage() {
             fontSize={["2rem", "2.1rem", "3rem", "3.5rem"]}
             color={"lightBrownText"}
           >
-            Best boba ever
+           Boba Bliss
           </Heading>
           <Text
-            fontSize={["1.5rem", "1.3rem", "1.6rem", "2rem"]}
+            fontSize={["1.5rem", "1.3rem", "1.6rem", "1.6rem"]}
             color={"lightBrownText"}
             fontWeight="bold"
             display={["none", "none", "flex"]}
           >
-            In love with React Next
+           Your ultimate destination for an exquisite bubble tea experience.
           </Text>
           <Text
             fontSize={[".85rem", ".9rem", "1rem", "1rem"]}
@@ -57,10 +57,9 @@ export function HomePage() {
             fontFamily="Comfortaa"
             marginTop="1rem"
           >
-            In love with React Next In love with React Next In love with React
-            Next In love with React Next In love with React Next In love with
-            React Next In love with React Next In love with React Next In love
-            with React Next In love with React Next
+            Our wide variety of flavors, toppings, and customizable options ensure that every visit is a delightful journey. 
+            <br></br><br></br>
+            Savor the perfect blend of quality ingredients, crafted with love and expertise, and indulge in the true essence of bubble tea paradise.
           </Text>
           <Center>
             <Image
