@@ -73,6 +73,18 @@ export function BigProductCard({
     left: "50%",
     transform: "translate(-50%, -50%)",
   };
+  const backgroundStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "100%",
+    height: "100%",
+    zIndex: "100",
+    backgroundImage: `url(${backgroundUrl})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
 
   // Hide the card and navigates back to home page
   const handleClose = () => {
@@ -154,7 +166,7 @@ export function BigProductCard({
                 </Button>
                 <Button data-cy="product-buy-button"
                   sx={addButtonStyle}
-                  onClick={() => addToCart(product, quantity)}
+                  onClick={() => addToCart(product, quantity) }
                 >
                 </Button>
               </Flex>

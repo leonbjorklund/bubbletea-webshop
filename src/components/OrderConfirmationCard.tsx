@@ -19,7 +19,7 @@ import { BsCupStraw } from "react-icons/bs";
 import { FaTruckMoving } from "react-icons/fa";
 import { useCart } from "../CartContext";
 
-function generateUniqueNumber(): number {
+export function generateUniqueNumber(): number {
   let number = Math.floor(Math.random() * 90000) + 10000;
   if (localStorage.getItem(number.toString())) {
     return generateUniqueNumber();
@@ -32,6 +32,7 @@ function generateUniqueNumber(): number {
 export function OrderConfirmationCard() {
   const { cartList } = useCart();
   const uniqueNumber = generateUniqueNumber();
+
   const getContactDetails = localStorage.getItem("contactDetails");
   const contactDetails = getContactDetails
     ? JSON.parse(getContactDetails)
