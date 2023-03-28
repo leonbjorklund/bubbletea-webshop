@@ -22,8 +22,8 @@ export function ProductPage() {
     <Box sx={bigGradient} className="parent">
       <BigProductCard
       product={product}
-      backgroundAlt="net"
       backgroundUrl="/images/fancyBackground.png"
+      backgroundAlt="net"
       />
       
     </Box>

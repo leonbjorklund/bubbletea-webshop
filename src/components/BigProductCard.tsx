@@ -24,8 +24,8 @@ interface BigProductCardProps {
 
 export function BigProductCard({
   product,
-  backgroundAlt,
   backgroundUrl,
+  backgroundAlt,
 }: BigProductCardProps) {
   // Access cart-related functions from the CartContext
   const { addToCart, removeFromCart, cartList } = useCart();
@@ -154,7 +154,7 @@ export function BigProductCard({
             <Heading data-cy="product-price" fontSize={["1.5rem", "1.7rem", "1.7rem", "2rem"]}>
               ${product.price}
             </Heading>
-            <Text data-cy="product-description">{product.description}</Text>
+            <Text data-cy="product-description" >{product.description}</Text>
             <Box>
               <Flex>
                 <Button sx={buttonStyle} onClick={decreaseQuantity}>
@@ -189,7 +189,10 @@ export function BigProductCard({
           w={["80%", "70%", "40%", "45%"]}
         >
           <Box sx={roundBG}>
-            <Box sx={backgroundStyle}></Box>
+            <Box as="div"
+              sx={imageStyleBackground(backgroundUrl)}
+            >
+              </Box>
             <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
           </Box>
           <Box></Box>
@@ -216,7 +219,7 @@ const imageStyle = {
 };
 
 // Style object for background image
-const imageStyleBackground = {
+const imageStyleBackground = (backgroundUrl: string) => ({
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -224,7 +227,10 @@ const imageStyleBackground = {
   width: "100%",
   height: "100%",
   zIndex: "100",
-};
+  backgroundImage: `url(${backgroundUrl})`,
+  backgroundSize: 'cover', // Add this line
+  backgroundPosition: 'center', // Add this line
+});
 
 // Style object for close button
 const xButton = {
