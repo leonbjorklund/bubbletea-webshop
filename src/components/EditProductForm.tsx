@@ -1,84 +1,68 @@
-import { Button, FormControl, FormLabel, Input, Select, SystemStyleObject, Text } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input, Select, Text } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useEffect } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
 import { Product } from "../../data";
 import { useProduct } from "../ProductContext";
+import { requiredText, schema } from "./AdminForm";
 
-type ProductValues = Record<keyof Product, Yup.AnySchema>
 
-export const schema = Yup.object<ProductValues>().shape({
-  image: Yup.string()
-    .url("Invalid image URL!")
-    .required("Required"),
+export default function EditForm() {
 
-  imageAlt: Yup.string()
-    .max(20, "Must be 20 characters or less")
-    .required("Required"),
+  const navigate = useNavigate()
+  const { productList, editProduct } = useProduct();
 
-  title: Yup.string()
-    .max(50, "Must be 50 characters or less")
-    .required("Required"),
-
-  description: Yup.string()
-    .max(200, "Must be 200 characters or less")
-    .required("Required"),
-
-  price: Yup.number()
-    .typeError("Must be a number")
-    .positive("Price must be positive")
-    .required("Required"),
-
-  allergens: Yup.string()
-    .required("Required"),
-
-  ingredients: Yup.string()
-    .required("Required"),
-
-  bgColor: Yup.string()
-    .required("Required"),
-
-    category: Yup.string()
-    .oneOf(["milk", "fruit"], "Category must be either 'milk' or 'fruit'")
-    .required("Required")
-});
-
-interface Props {
-  product?: Product
-}
-
-function generateUniqueId(): string {
-  const timestamp = new Date().getTime();
-  const randomValue = Math.floor(Math.random() * 1000000);
-  return `${timestamp}-${randomValue}`;
-}
-
-export function AdminForm({ product }: Props) {
-
-  const { productList, addProduct } = useProduct();
+  const { id } = useParams<{ id: string }>();
+  const productToEdit = productList.find((product) => product.id === id);
 
   const formik = useFormik<Product>({
-    initialValues: {
-      id: "",
-      image: "",
-      imageAlt: "",
-      title: "",
-      description:"",
-      price: "" as any,
-      allergens: "",
-      ingredients: "",
-      bgColor: "",
-      category:""
-    },
+    initialValues: productToEdit
+      ? {
+          ...productToEdit,
+        }
+      : {
+          id: "",
+          image: "",
+          imageAlt: "",
+          title: "",
+          description: "",
+          price: "" as any,
+          allergens: "",
+          ingredients: "",
+          bgColor: "",
+          category: "",
+        },
     validationSchema: schema,
     onSubmit: (values, actions) => {
-      const newProduct = { ...values, id: generateUniqueId() };
-      addProduct(newProduct);
       console.log("Form submitted with values:", values);
-      alert(JSON.stringify(values, null));
+      editProduct(values);
       actions.resetForm();
-      console.log(productList)
-    }
+      console.log(productList);
+      navigate('/admin');
+    },
   });
+
+  useEffect(() => {
+    if (productToEdit) {
+      formik.setValues({
+        ...productToEdit,
+      });
+    } else {
+      formik.setValues({
+        id: "",
+        image: "",
+        imageAlt: "",
+        title: "",
+        description: "",
+        price: "" as any,
+        allergens: "",
+        ingredients: "",
+        bgColor: "",
+        category: "",
+      });
+    }
+  }, [id]);
+
 
   return (
     <form
@@ -208,9 +192,5 @@ export function AdminForm({ product }: Props) {
       </FormControl>
       <Button type="submit">Submit</Button>
     </form>
-  )
-}
-
-export const requiredText: SystemStyleObject = {
-  color: "red",
+  );
 }

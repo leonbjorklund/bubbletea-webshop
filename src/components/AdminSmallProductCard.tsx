@@ -11,9 +11,10 @@ import {
   Flex,
   Image,
   Text,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Product } from "../../data";
 import { useProduct } from "../ProductContext";
 
@@ -49,16 +50,12 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
     onClose();
   };
 
-  // Handle the product editing process
   const handleEdit = () => {
     editProduct(product);
   };
 
   return (
     <Card data-cy="product" align="center" sx={cardStyle}>
-      <Text data-cy="product-id" sx={idTextStyle}>
-        {id}
-      </Text>
       <Box sx={roundBG}>
         <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
@@ -68,10 +65,15 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
       <Text data-cy="product-price" sx={textStyle}>
         ${product.price.toFixed(2)}
       </Text>
-      <Flex>
-        <Button onClick={handleEdit} sx={buttonStyle}>
-          Edit
-        </Button>
+      <Text data-cy="product-id">
+        {id}
+      </Text>
+      <Flex alignItems="center">
+        <Link to={`edit/${product.id}`}>
+          <Button onClick={handleEdit} sx={buttonStyle}>
+            Edit
+          </Button>
+        </Link>
         <Button
           data-cy="admin-remove-product"
           sx={deleteButtonStyle}
@@ -129,11 +131,6 @@ const cardStyle = {
   ":hover": {
     backgroundColor: "#f3e5d7",
   },
-};
-
-// Style object for hidden id
-const idTextStyle = {
-  visibility: "hidden",
 };
 
 // Style object for header
