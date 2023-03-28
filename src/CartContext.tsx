@@ -71,9 +71,7 @@ export function CartProvider({ children }: Props) {
     } else {
       setCartList([...cartList, { ...item, quantity: quantity }]);
       toast({
-        // title: "Added to cart!",
-        // cypress-testet letar efter "has been added"
-        title: " *item* has been added to cart",
+        title: `${item.title} has been added to cart`,
         status: "success",
         duration: 4000,
         isClosable: true,
