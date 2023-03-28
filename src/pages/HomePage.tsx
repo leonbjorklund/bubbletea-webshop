@@ -7,7 +7,6 @@ import {
   Heading,
   Image,
   Stack,
-  SystemStyleObject,
   Text,
 } from "@chakra-ui/react";
 import { Products } from "../components/Products";
@@ -16,7 +15,7 @@ import { ConfirmationPage } from "./ConfirmationPage";
 
 export function HomePage() {
   return (
-    <Box marginTop={["0rem", "0rem", "5rem"]}>
+    <Box sx={bigGradient}>
       <ConfirmationPage />
       <Flex sx={gradientBackground} display={["row", "row", "flex"]}>
         <Container marginRight="auto">
@@ -114,7 +113,7 @@ export function HomePage() {
   );
 }
 
-const gradientBackground: SystemStyleObject = {
+const gradientBackground = {
   background: "rgb(254, 211, 212)",
   backgroundImage:
     "linear-gradient(0deg, rgba(254, 211, 212, 1) 0%, rgba(255, 241, 221, 1) 47%, rgba(254, 211, 212, 1) 100%, rgba(255, 255, 255, 1) 100%)",
@@ -124,12 +123,12 @@ const gradientBackground: SystemStyleObject = {
   fontFamily: "Inconsolata",
 };
 
-const bigGradient: SystemStyleObject = {
+const bigGradient = {
   backgroundImage: "linear-gradient(to bottom, transparent 22%, #FED3D4)",
   backgroundColor: "#fffaf4",
 };
 
-const buttonStyling: SystemStyleObject = {
+const buttonStyling = {
   colorScheme: "brown",
   variant: "outline",
   borderRadius: "50px",
