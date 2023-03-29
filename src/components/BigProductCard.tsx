@@ -5,13 +5,14 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Button, Flex,
-  Heading, IconButton, Image,
+  Heading, Icon, IconButton, Image,
   Text,
   useBreakpointValue,
   useOutsideClick
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
+import { FaCartPlus } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { Product } from "../../data";
 import { useCart } from "../CartContext";
@@ -67,8 +68,8 @@ export function BigProductCard({
   const roundBG = {
     marginTop: ".5rem",
     backgroundColor: `${product.bgColor}`,
-    height: ["16rem", "17rem", "18.5rem", "25rem", "28rem"],
-    width: ["16rem", "17rem", "18.5rem", "25rem", "28rem"],
+    height: ["20rem", "20rem", "18.5rem", "25rem", "28rem"],
+    width: ["20rem", "20rem", "18.5rem", "25rem", "28rem"],
     borderRadius: "50%",
     border: "2px solid darkBrownText",
     position: "relative",
@@ -183,12 +184,14 @@ const imageStyleBackground = (backgroundUrl: string) => ({
                 <Button data-cy="product-buy-button"
                   sx={addButtonStyle}
                   onClick={() => addToCart(product, quantity) }
+                  
                 >
+                  <Icon sx={addToCartButtonStyle} as={FaCartPlus}></Icon>
                 </Button>
               </Flex>
             </Box>
           </Flex>
-          <Box>
+          <Box display={["none","none", "block"]}>
             <Text>Allergens:</Text>
             <Flex direction="column" align={["center", "center", "left"]}>
               <Text sx={inputText}>{product.allergens}</Text>
@@ -201,7 +204,7 @@ const imageStyleBackground = (backgroundUrl: string) => ({
         </Flex>
         <Box
           sx={boxStyling}
-          h={["50%", "50%", "80%"]}
+          h={["70%", "50%", "80%","80%"]}
           w={["80%", "70%", "40%", "45%"]}
         >
           <Box sx={roundBG}>
@@ -242,7 +245,7 @@ const xButton = {
   right: "0.5rem",
   size: ["sm", "md", "lg"],
   background: "pink",
-  color: "white",
+  color: "darkBrownText",
   _hover: {
     backgroundColor: "darkPinkButton",
     color: "white",
@@ -288,7 +291,8 @@ const addButtonStyle = {
 };
 
 // Styled object for cart icon
-const iconStyle = {
+const addToCartButtonStyle = {
   height: "1.5rem",
   width: "1.5rem",
+  color: "lightBrownText"
 };
