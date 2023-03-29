@@ -10,6 +10,7 @@ type Order = {
     itemList: CartItem[];
     contactInformation: Customer
     orderId: string
+    totalPrice: number
 }
 
 type OrderContextType = {
@@ -32,6 +33,7 @@ const OrderContext = createContext<OrderContextType>({
       city: "",
     },
     orderId: "",
+    totalPrice:0
   }),
   addOrder: () => {},
   getLastOrder: () => ({ lastOrder: undefined, ordersCopy: [] }),
@@ -55,17 +57,19 @@ export function OrderProvider({ children }: Props) {
   
     const createOrder = (customer: Customer) => {
       const itemList = cartList
-      console.log(cartList)
-      console.log(itemList)
-      
+      const totalPrice = itemList.reduce((total, item) => {
+        return total + item.quantity * item.price;
+      }, 0);
+      console.log(totalPrice)
+    
       const orderId = generateUniqueId();
       console.log(orderId)
       console.log("creating order")
       const contactInformation = customer;
-      const newOrder = { itemList, contactInformation, orderId };
+      const newOrder = { itemList, contactInformation, orderId, totalPrice };
       addOrder(newOrder); // add new order to orderList
       clearCart(cartList); // clear cart after creating order
-      console.log(newOrder);
+
       return newOrder;
     };
   

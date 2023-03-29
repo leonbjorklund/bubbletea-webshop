@@ -120,7 +120,7 @@ export function OrderConfirmationCard() {
               alt="Logo"
               height="5rem"
             />
-            <Text float="right">Total: ${totalPrice}</Text>
+            <Text float="right">Total: ${lastOrder?.totalPrice}</Text>
           </Flex>
         </CardFooter>
       </Flex>
