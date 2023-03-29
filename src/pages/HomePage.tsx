@@ -23,7 +23,7 @@ export function HomePage() {
         gap={4}
       >
         <Box
-          marginLeft={[null, null, "2vw", "4vw", "12%"]}
+          marginLeft={[null, null, "2vw", "4vw", "8vw","14vw"]}
           marginRight={[null, null, "2vw", "4vw", "5vw"]}
           zIndex={20}
         >
@@ -31,7 +31,7 @@ export function HomePage() {
             src="/images/showcaseimg.png"
             alt="Image of bubble tea"
             width="auto"
-            maxHeight={["auto", "auto", "30rem", "36rem"]}
+            maxHeight={["auto", "auto", "27rem", "35rem"]}
             display={["none", "none", "flex"]}
           />
         </Box>
@@ -55,6 +55,8 @@ export function HomePage() {
             color={"lightBrownText"}
             fontFamily="Comfortaa"
             marginTop="1rem"
+            zIndex={"500"}
+            position= {"relative"}
           >
             Our wide variety of flavors, toppings, and customizable options ensure that every visit is a delightful journey. 
             <br></br><br></br>
@@ -66,7 +68,7 @@ export function HomePage() {
               src="/images/showcaseimg.png"
               alt="Image of bubble tea"
               width="auto"
-              maxHeight={["19rem", "21rem", "auto"]}
+              maxHeight={["19rem", "20rem", "20rem", "30rem"]}
               display={["flex", "flex", "none"]}
             />
           </Center>
@@ -88,7 +90,7 @@ export function HomePage() {
         width="auto"
         height="auto"
         bg={"pink"}
-        marginBottom={["8rem", "8rem", "3rem", "5rem"]}
+        marginBottom={["8rem", "8rem", "5rem", "8rem"]}
       />
       <Products />
       <TimeForTeaCard />
