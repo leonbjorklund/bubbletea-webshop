@@ -1,21 +1,26 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, useLocation } from 'react-router-dom';
-import App from './App';
-import { CartProvider } from './CartContext';
-import { NotFound } from './components/NotFound';
-import './main.css';
-import { OrderProvider } from './orderContext';
-import { AdminPage } from './pages/AdminPage';
-import { CheckoutPage } from './pages/CheckoutPage';
-import { ConfirmationPage } from './pages/ConfirmationPage';
-import { HomePage } from './pages/HomePage';
-import { ProductPage } from './pages/ProductPage';
-import { ProductProvider } from './ProductContext';
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  useLocation,
+} from "react-router-dom";
+import App from "./App";
+import { CartProvider } from "./CartContext";
+import { NotFound } from "./components/NotFound";
+import "./main.css";
+import { OrderProvider } from "./orderContext";
+import { AdminPage } from "./pages/AdminPage";
+import { CheckoutPage } from "./pages/CheckoutPage";
+import { ConfirmationPage } from "./pages/ConfirmationPage";
+import { HomePage } from "./pages/HomePage";
+import { ProductPage } from "./pages/ProductPage";
+import { ProductProvider } from "./ProductContext";
 
 //extent the theme
-
 
 const colors = {
   transparent: "transparent",
@@ -47,9 +52,9 @@ const colors = {
 };
 
 const fonts = {
-  body:'Comfortaa, sans-serif',
-  heading: 'Inconsolata, sans-serif'
-}
+  body: "Comfortaa, sans-serif",
+  heading: "Inconsolata, sans-serif",
+};
 
 export function ScrollToTop() {
   const { pathname } = useLocation();
@@ -61,37 +66,36 @@ export function ScrollToTop() {
   return null;
 }
 
-const theme = extendTheme({colors, fonts})
+const theme = extendTheme({ colors, fonts });
 
-const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<App/>}>
-    {/* Outlet start */} 
-    <Route index element={<HomePage/>}></Route>
-    <Route path="product/:id" element={<ProductPage />} />
-    <Route path="checkout" element={<CheckoutPage />}/>
-    <Route path="confirmation" element={<ConfirmationPage />}/>
-    <Route path="admin" element={<AdminPage/>}>
-      <Route path="edit/:id" element={<AdminPage />} />
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      {/* Outlet start */}
+      <Route index element={<HomePage />}></Route>
+      <Route path="product/:id" element={<ProductPage />} />
+      <Route path="checkout" element={<CheckoutPage />} />
+      <Route path="confirmation" element={<ConfirmationPage />} />
+      <Route path="admin" element={<AdminPage />}>
+        <Route path="edit/:id" element={<AdminPage />} />
+        <Route path="add" element={<AdminPage />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+      {/* Outlet end */}
     </Route>
-    <Route path="*" element= {<NotFound />}/>
-    {/* Outlet end */}
-  </Route>
-))
+  )
+);
 
-
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    
     <CartProvider>
-    <OrderProvider>
-      <ProductProvider>
-        <ChakraProvider  theme={theme}>
-          <RouterProvider router= {router}/>
-        </ChakraProvider>
-      </ProductProvider>
+      <OrderProvider>
+        <ProductProvider>
+          <ChakraProvider theme={theme}>
+            <RouterProvider router={router} />
+          </ChakraProvider>
+        </ProductProvider>
       </OrderProvider>
     </CartProvider>
-    
   </React.StrictMode>
 );

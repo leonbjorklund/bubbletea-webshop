@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   CardBody,
   CardFooter,
@@ -7,7 +8,7 @@ import {
   Heading,
   SystemStyleObject,
 } from "@chakra-ui/react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AdminForm } from "./AdminForm";
 import EditProductForm from "./EditProductForm";
 
@@ -15,20 +16,24 @@ export function AdminCard() {
   const location = useLocation();
 
   const editPage = location.pathname.includes("/edit");
+  const addPage = location.pathname.includes("/add");
 
   return (
     <Card sx={cartStyle}>
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
-          {editPage ? (
-            <Heading size="md">Edit Product</Heading>
-          ) : (
-            <Heading size="md">Add Product</Heading>
-          )}
+          {editPage && <Heading size="md">Edit Product</Heading>}
+          {addPage && <Heading size="md">Add Product</Heading>}
         </CardHeader>
         <CardBody width="100%" p="0">
+          {!addPage && !editPage && (
+            <Link to="/admin/add">
+              <Button data-cy="admin-add-product">Add product!</Button>
+            </Link>
+          )}
           <CardBody width="100%" p="0">
-            {editPage ? <EditProductForm /> : <AdminForm />}
+            {editPage && <EditProductForm />}
+            {addPage && <AdminForm />}
           </CardBody>
         </CardBody>
         <CardFooter sx={cardFooterStyle}></CardFooter>
