@@ -1,7 +1,7 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, useLocation } from 'react-router-dom';
 import App from './App';
 import { CartProvider } from './CartContext';
 import { NotFound } from './components/NotFound';
@@ -51,12 +51,22 @@ const fonts = {
   heading: 'Inconsolata, sans-serif'
 }
 
+export function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    console.log("scroll")
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 const theme = extendTheme({colors, fonts})
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<App/>}>
-    {/* Outlet start */}
+    {/* Outlet start */} 
     <Route index element={<HomePage/>}></Route>
     <Route path="product/:id" element={<ProductPage />} />
     <Route path="checkout" element={<CheckoutPage />}/>
