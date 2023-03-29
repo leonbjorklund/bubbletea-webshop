@@ -16,11 +16,14 @@ export function TimeForTeaCard() {
       <Container
         maxW={"container.xl"}
         h={"100%"}
+        my= {4}
+        py={3}
         display={"flex"}
         flexDirection={["column", "column", "row"]}
       >
         {/* Flex container for text elements, adjusting alignment based on screen size */}
         <Flex
+        py={3}
           textAlign={["center", "center", "left"]}
           flexDirection={"column"}
           justifyContent={["center", "space-around", "center"]}
@@ -66,7 +69,7 @@ export function TimeForTeaCard() {
             alt="boba picture"
             objectFit={"cover"}
             objectPosition={"50% 50%"}
-            width={"90%"}
+            width={"100%"}
             height="100%"
           />
         </Box>

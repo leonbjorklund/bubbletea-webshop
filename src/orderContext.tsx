@@ -51,7 +51,6 @@ type Props = {
 export function OrderProvider({ children }: Props) {
 
     const { cartList,clearCart } = useCart();
-    console.log(cartList)
   
     const [orderList, setOrderList] = useLocalStorageState<Order[]>([], "orderList");
   
@@ -60,11 +59,8 @@ export function OrderProvider({ children }: Props) {
       const totalPrice = itemList.reduce((total, item) => {
         return total + item.quantity * item.price;
       }, 0);
-      console.log(totalPrice)
-    
+
       const orderId = generateUniqueId();
-      console.log(orderId)
-      console.log("creating order")
       const contactInformation = customer;
       const newOrder = { itemList, contactInformation, orderId, totalPrice };
       addOrder(newOrder); // add new order to orderList

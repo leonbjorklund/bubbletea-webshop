@@ -14,7 +14,7 @@ import {
   Link as ChakraLink,
   Spacer,
   Text,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 import { useLayoutEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
@@ -34,6 +34,7 @@ export function Header() {
       setIsMobileView(true);
     } else {
       setIsMobileView(false);
+      onClose();
     }
   };
 
@@ -43,12 +44,22 @@ export function Header() {
         setIsMobileView(true);
       } else {
         setIsMobileView(false);
+        onClose();
       }
     };
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleCloseDrawer = () => {
+    onClose();
+    onOpen();
+  };
+
+  const handleLinkClick = () => {
+    onClose();
+  }
 
   return (
     <Container as="header" sx={containerStyle}>
@@ -118,6 +129,7 @@ export function Header() {
                 display: "flex",
                 alignItems: "center",
               }}
+              onClick={handleLinkClick}
             >
               <Icon
                 verticalAlign="sub"
@@ -145,7 +157,7 @@ export function Header() {
         <DrawerContent sx={hamburgerMenuStyling}>
           <DrawerCloseButton />
           <Box py="4">
-            <ChakraLink as={RouterLink} to="/" display="block" mx="4" my="2">
+            <ChakraLink as={RouterLink} to="/" display="block" mx="4" my="2" onClick={handleLinkClick}>
               Home
             </ChakraLink>
             <ChakraLink
@@ -153,7 +165,7 @@ export function Header() {
               to="/admin"
               display="block"
               mx="4"
-              my="2"
+              my="2" onClick={handleLinkClick}
             >
               Admin
             </ChakraLink>
@@ -164,6 +176,7 @@ export function Header() {
               display="flex"
               mx="4"
               my="2"
+              onClick={handleLinkClick}
             >
               <Icon
                 verticalAlign="sub"

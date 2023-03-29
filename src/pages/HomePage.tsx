@@ -7,7 +7,7 @@ import {
   Heading,
   Image,
   Stack,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { Products } from "../components/Products";
 import { TimeForTeaCard } from "../components/TimeForTeaCard";
@@ -28,7 +28,6 @@ export function HomePage() {
           zIndex={20}
         >
           <Image
-            className="heyy"
             src="/images/showcaseimg.png"
             alt="Image of bubble tea"
             width="auto"
@@ -89,7 +88,7 @@ export function HomePage() {
         width="auto"
         height="auto"
         bg={"pink"}
-        marginBottom={["6rem", "4rem", "5rem"]}
+        marginBottom={["8rem", "8rem", "3rem", "5rem"]}
       />
       <Products />
       <TimeForTeaCard />
