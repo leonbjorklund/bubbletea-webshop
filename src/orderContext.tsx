@@ -1,40 +1,43 @@
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import { CartItem } from "../data";
 import { useCart } from "./CartContext";
 import { generateUniqueId } from "./components/AdminForm";
 import { Customer } from "./components/CheckoutForm";
+import { useLocalStorageState } from "./hooks/useLocalStorageState";
 
 type Order = {
     itemList: CartItem[];
     contactInformation: Customer
     orderId: string
+    totalPrice: number
 }
 
 type OrderContextType = {
   orderList: Order[];
   addOrder: (order: Order) => void;
   createOrder: (customer: Customer) => Order;
-  displayLatestOrder: (order:Order) => void;
+  getLastOrder: () => { lastOrder: Order | undefined; ordersCopy: Order[] };
 };
 
 const OrderContext = createContext<OrderContextType>({
-    orderList: [],
-    createOrder: () => ({
-      itemList: [],
-      contactInformation: {
-        name: "",
-        email: "",
-        phone: "",
-        street: "",
-        zipCode: "",
-        city: "",
-      },
-      orderId: "",
-    }),
-    addOrder: () => {},
-    displayLatestOrder: () => {},
-  });
+  orderList: [],
+  createOrder: () => ({
+    itemList: [],
+    contactInformation: {
+      name: "",
+      email: "",
+      phone: "",
+      street: "",
+      zipCode: "",
+      city: "",
+    },
+    orderId: "",
+    totalPrice:0
+  }),
+  addOrder: () => {},
+  getLastOrder: () => ({ lastOrder: undefined, ordersCopy: [] }),
+});
 
 export function useOrder() {
   return useContext(OrderContext);
@@ -46,37 +49,46 @@ type Props = {
 
 
 export function OrderProvider({ children }: Props) {
-    const { cartList, clearCart } = useCart();
+
+    const { cartList,clearCart } = useCart();
+    console.log(cartList)
   
-    const [orderList, setOrderList] = useState<Order[]>(() => {
-      const storedOrderList = localStorage.getItem("orderList");
-      return storedOrderList ? JSON.parse(storedOrderList) : [];
-    });
+    const [orderList, setOrderList] = useLocalStorageState<Order[]>([], "orderList");
   
-    const createOrder = (customer:Customer) => {
-        const itemList = cartList;
-        const orderId = generateUniqueId();
-        const contactInformation = customer;
-        const newOrder = { itemList, contactInformation, orderId };
-        console.log(newOrder)
-        return newOrder;
-      }
-  
-    const addOrder = (order: Order) => {
-      setOrderList((prevOrderList) => {
-        const updatedOrderList = [...prevOrderList, order];
-        localStorage.setItem("orderList", JSON.stringify(updatedOrderList));
-        return updatedOrderList;
-      });
+    const createOrder = (customer: Customer) => {
+      const itemList = cartList
+      const totalPrice = itemList.reduce((total, item) => {
+        return total + item.quantity * item.price;
+      }, 0);
+      console.log(totalPrice)
+    
+      const orderId = generateUniqueId();
+      console.log(orderId)
+      console.log("creating order")
+      const contactInformation = customer;
+      const newOrder = { itemList, contactInformation, orderId, totalPrice };
+      addOrder(newOrder); // add new order to orderList
+      clearCart(cartList); // clear cart after creating order
+
+      return newOrder;
     };
   
-    const displayLatestOrder = (order: Order) => {
-      // TODO: Implement function to display latest order
-    };
+      const addOrder = (order: Order) => {
+        setOrderList((prevOrderList) => {
+          const updatedOrderList = [...prevOrderList, order];
+          return updatedOrderList;
+        });
+      };
+  
+      const getLastOrder = (): { lastOrder: Order | undefined; ordersCopy: Order[] } => {
+        const ordersCopy = [...orderList];
+        const lastOrder = ordersCopy.pop();
+        return { lastOrder, ordersCopy };
+      };
   
     return (
       <OrderContext.Provider
-        value={{ orderList, createOrder, addOrder, displayLatestOrder }}
+        value={{ orderList, createOrder, addOrder, getLastOrder }}
       >
         {children}
       </OrderContext.Provider>

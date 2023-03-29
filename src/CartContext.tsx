@@ -1,6 +1,7 @@
 import { useToast } from "@chakra-ui/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { CartItem, Product } from "../data";
+import { useLocalStorageState } from "./hooks/useLocalStorageState";
 
 type CartContextType = {
   cartList: CartItem[];
@@ -31,15 +32,13 @@ function calculateTotalItems(cartList: CartItem[]) {
 }
 
 export function CartProvider({ children }: Props) {
-  const [cartList, setCartList] = useState<CartItem[]>(() => {
-    const storedCartList = localStorage.getItem("cart");
-    return storedCartList ? JSON.parse(storedCartList) : [];
-  });
 
-  const [totalItems, setTotalItems] = useState(() => calculateTotalItems(cartList));
+  const [cartList, setCartList] = useLocalStorageState<CartItem[]>([],"cart",);
+
+  const [totalItems, setTotalItems] = useState(calculateTotalItems(cartList));
+
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartList));
     setTotalItems(calculateTotalItems(cartList));
   }, [cartList]);
 

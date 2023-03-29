@@ -6,27 +6,31 @@ import {
   SystemStyleObject
 } from "@chakra-ui/react";
 import { OrderConfirmationCard } from "../components/OrderConfirmationCard";
+import { useOrder } from "../orderContext";
 
 export function ConfirmationPage() {
-  const getContactDetails = localStorage.getItem("contactDetails");
-  const contactDetails = getContactDetails
-    ? JSON.parse(getContactDetails)
-    : null;
+
+  const  {getLastOrder} = useOrder()
+
+  const { lastOrder } = getLastOrder();
+
+
+
   return (
     <Container sx={checkoutContainer} maxW="container.md">
       <OrderConfirmationCard />
       <Flex sx={informationContainer}>
         <div>
-          {contactDetails ? (
+          {lastOrder ? (
             <div>
               <p>
-                Name: {contactDetails.name}
+                Name: {lastOrder?.contactInformation.name}
               </p>
-              <p>Email: {contactDetails.email}</p>
-              <p>Phone: {contactDetails.phone}</p>
+              <p>Email: {lastOrder?.contactInformation.email}</p>
+              <p>Phone: {lastOrder?.contactInformation.phone}</p>
               <p>
-                Address: {contactDetails.street}, {contactDetails.zipCode},{" "}
-                {contactDetails.city}
+                Address: {lastOrder?.contactInformation.street}, {lastOrder?.contactInformation.zipCode},{" "}
+                {lastOrder?.contactInformation.city}
               </p>
             </div>
           ) : (
