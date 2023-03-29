@@ -6,7 +6,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
-  useLocation,
+  useLocation
 } from "react-router-dom";
 import App from "./App";
 import { CartProvider } from "./CartContext";
@@ -77,8 +77,8 @@ const router = createBrowserRouter(
       <Route path="checkout" element={<CheckoutPage />} />
       <Route path="confirmation" element={<ConfirmationPage />} />
       <Route path="admin" element={<AdminPage />}>
-        <Route path="edit/:id" element={<AdminPage />} />
-        <Route path="add" element={<AdminPage />} />
+        <Route path="product/:id" element={<AdminPage />} />
+        <Route path="product/new" element={<AdminPage />} />
       </Route>
       <Route path="*" element={<NotFound />} />
       {/* Outlet end */}

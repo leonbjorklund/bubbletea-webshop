@@ -67,8 +67,12 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
         ${product.price.toFixed(2)}
       </Text>
       <Flex alignItems="center">
-        <Link to={`edit/${product.id}`}>
-          <Button onClick={handleEdit} sx={buttonStyle}>
+        <Link to={`product/${product.id}`}>
+          <Button
+            data-cy="admin-edit-product"
+            onClick={handleEdit}
+            sx={buttonStyle}
+          >
             Edit
           </Button>
         </Link>

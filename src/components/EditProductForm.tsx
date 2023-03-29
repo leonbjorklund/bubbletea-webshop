@@ -1,15 +1,20 @@
-import { Button, FormControl, FormLabel, Input, Select, Text } from "@chakra-ui/react";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  Text
+} from "@chakra-ui/react";
 import { useFormik } from "formik";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Product } from "../../data";
 import { useProduct } from "../ProductContext";
 import { requiredText, schema } from "./AdminForm";
 
-
 export default function EditForm() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { productList, editProduct } = useProduct();
 
   const { id } = useParams<{ id: string }>();
@@ -38,7 +43,7 @@ export default function EditForm() {
       editProduct(values);
       actions.resetForm();
       console.log(productList);
-      navigate('/admin');
+      navigate("/admin");
     },
   });
 
@@ -63,102 +68,126 @@ export default function EditForm() {
     }
   }, [id]);
 
-
   return (
-    <form
-    // as="form"
-      onSubmit={formik.handleSubmit as React.FormEventHandler<HTMLFormElement>}
-      >
+    <form data-cy="product-form" onSubmit={formik.handleSubmit}>
       <FormControl>
         <FormLabel>Image URL</FormLabel>
         <Input
-        id="image"
-        name="image"
-        type="text"
-        placeholder="Image URL"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.image}
+          data-cy="product-image"
+          id="image"
+          name="image"
+          type="text"
+          placeholder="Image URL"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.image}
         />
-       {formik.touched.image && formik.errors.image ? <Text sx={requiredText}>{formik.errors.image}</Text> : null}
+        {formik.touched.image && formik.errors.image ? (
+          <Text data-cy="product-image-error" sx={requiredText}>
+            {formik.errors.image}
+          </Text>
+        ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>Image Alt</FormLabel>
         <Input
-        id="imageAlt"
-        name="imageAlt"
-        type="text"
-        placeholder="Image Alt"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-         value={formik.values.imageAlt}
+          id="imageAlt"
+          name="imageAlt"
+          type="text"
+          placeholder="Image Alt"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.imageAlt}
         />
-        {formik.touched.imageAlt && formik.errors.imageAlt ? <Text sx={requiredText}>{formik.errors.imageAlt}</Text> : null}
+        {formik.touched.imageAlt && formik.errors.imageAlt ? (
+          <Text sx={requiredText}>{formik.errors.imageAlt}</Text>
+        ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>Title</FormLabel>
         <Input
-        id="title"
-        name="title"
-        type="text"
-        placeholder="Image Alt"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-         value={formik.values.title}
+          data-cy="product-title"
+          id="title"
+          name="title"
+          type="text"
+          placeholder="Image Alt"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.title}
         />
-        {formik.touched.title && formik.errors.title ? <Text sx={requiredText}>{formik.errors.title}</Text> : null}
+        {formik.touched.title && formik.errors.title ? (
+          <Text data-cy="product-title-error" sx={requiredText}>
+            {formik.errors.title}
+          </Text>
+        ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>Description</FormLabel>
         <Input
-        id="description"
-        name="description"
-        type="text"
-        placeholder="description"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-         value={formik.values.description}
+          data-cy="product-description"
+          id="description"
+          name="description"
+          type="text"
+          placeholder="description"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.description}
         />
-        {formik.touched.description && formik.errors.description ? <Text sx={requiredText}>{formik.errors.description}</Text> : null}
+        {formik.touched.description && formik.errors.description ? (
+          <Text data-cy="product-description-error" sx={requiredText}>
+            {formik.errors.description}
+          </Text>
+        ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>Price</FormLabel>
         <Input
-        id="price"
-        name="price"
-        type="text"
-        placeholder="price"
-        onChange={(e) => formik.setFieldValue('price', Number(e.target.value))}
-        onBlur={formik.handleBlur}
-         value={formik.values.price}
+          data-cy="product-price"
+          id="price"
+          name="price"
+          type="text"
+          placeholder="price"
+          onChange={(e) =>
+            formik.setFieldValue("price", Number(e.target.value))
+          }
+          onBlur={formik.handleBlur}
+          value={formik.values.price}
         />
-        {formik.touched.price && formik.errors.price ? <Text sx={requiredText}>{formik.errors.price}</Text> : null}
+        {formik.touched.price && formik.errors.price ? (
+          <Text data-cy="product-price-error" sx={requiredText}>
+            {formik.errors.price}
+          </Text>
+        ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>Allergens</FormLabel>
         <Input
-        id="allergens"
-        name="allergens"
-        type="text"
-        placeholder="allergens"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-         value={formik.values.allergens}
+          id="allergens"
+          name="allergens"
+          type="text"
+          placeholder="allergens"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.allergens}
         />
-        {formik.touched.allergens && formik.errors.allergens ? <Text sx={requiredText}>{formik.errors.allergens}</Text> : null}
+        {formik.touched.allergens && formik.errors.allergens ? (
+          <Text sx={requiredText}>{formik.errors.allergens}</Text>
+        ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>Ingredients</FormLabel>
         <Input
-        id="ingredients"
-        name="ingredients"
-        type="text"
-        placeholder="ingredients"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-         value={formik.values.ingredients}
+          id="ingredients"
+          name="ingredients"
+          type="text"
+          placeholder="ingredients"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.ingredients}
         />
-        {formik.touched.ingredients && formik.errors.ingredients ? <Text sx={requiredText}>{formik.errors.ingredients}</Text> : null}
+        {formik.touched.ingredients && formik.errors.ingredients ? (
+          <Text sx={requiredText}>{formik.errors.ingredients}</Text>
+        ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>BackgroundColor</FormLabel>
@@ -180,7 +209,6 @@ export default function EditForm() {
           <Text sx={requiredText}>{formik.errors.bgColor}</Text>
         ) : null}
       </FormControl>
-      
 
       <FormControl>
         <FormLabel>Category</FormLabel>
