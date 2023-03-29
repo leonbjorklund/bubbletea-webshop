@@ -6,7 +6,6 @@ interface SmallProductCardProps {
   product: Product;
 }
 
-
 export function SmallProductCard({ product }: SmallProductCardProps) {
   // Get addToCart function from useCart custom hook
   const { addToCart } = useCart();
@@ -33,13 +32,21 @@ export function SmallProductCard({ product }: SmallProductCardProps) {
   return (
     <Card data-cy="product" align="center" sx={cardStyle}>
       <Box sx={roundBG}>
-          <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
+        <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
       </Box>
       <Text data-cy="product-title" as="h6" sx={headerStyle}>
         {product.title}
       </Text>
-      <Text data-cy="product-price" sx={textStyle}>${product.price}</Text>
-      <Button data-cy="product-buy-button" sx={buttonStyle} onClick={handleAddToCartClick}>Add to cart </Button>
+      <Text data-cy="product-price" sx={textStyle}>
+        ${product.price.toFixed(2)}
+      </Text>
+      <Button
+        data-cy="product-buy-button"
+        sx={buttonStyle}
+        onClick={handleAddToCartClick}
+      >
+        Add to cart{" "}
+      </Button>
     </Card>
   );
 }
