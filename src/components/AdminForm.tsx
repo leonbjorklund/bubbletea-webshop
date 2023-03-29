@@ -8,6 +8,7 @@ import {
   Text
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Product } from "../../data";
 import { useProduct } from "../ProductContext";
@@ -17,10 +18,8 @@ type ProductValues = Record<keyof Product, Yup.AnySchema>;
 export const schema = Yup.object<ProductValues>().shape({
   image: Yup.string().url("Invalid image URL!").required("Required"),
 
-  imageAlt: Yup.string()
-    .max(20, "Must be 20 characters or less")
-    .required("Required"),
-
+  imageAlt: Yup.string().max(20, "Must be 20 characters or less"),
+  // .required("Required")
   title: Yup.string()
     .max(50, "Must be 50 characters or less")
     .required("Required"),
@@ -34,20 +33,26 @@ export const schema = Yup.object<ProductValues>().shape({
     .positive("Price must be positive")
     .required("Required"),
 
-  allergens: Yup.string().required("Required"),
-
-  ingredients: Yup.string().required("Required"),
-
-  bgColor: Yup.string()
-  .oneOf(
-    ["yellowCardCircle", "fruitTeaCircle", "bigMatchaCard", "#8fc2e9", "#bf96da"],
+  allergens: Yup.string(),
+  // .required("Required")
+  ingredients: Yup.string(),
+  // .required("Required")
+  bgColor: Yup.string().oneOf(
+    [
+      "yellowCardCircle",
+      "fruitTeaCircle",
+      "bigMatchaCard",
+      "#8fc2e9",
+      "#bf96da",
+    ],
     "Background color must be selected"
-  )
-    .required("Required")
-,
-  category: Yup.string()
-    .oneOf(["milk", "fruit"], "Category must be either 'milk' or 'fruit'")
-    .required("Required"),
+  ),
+  // .required("Required")
+  category: Yup.string().oneOf(
+    ["milk", "fruit"],
+    "Category must be either 'milk' or 'fruit'"
+  ),
+  // .required("Required")
 });
 
 interface Props {
@@ -62,6 +67,8 @@ export function generateUniqueId(): string {
 
 export function AdminForm({ product }: Props) {
   const { productList, addProduct } = useProduct();
+
+  const navigate = useNavigate();
 
   const formik = useFormik<Product>({
     initialValues: {
@@ -84,17 +91,20 @@ export function AdminForm({ product }: Props) {
       alert(JSON.stringify(values, null));
       actions.resetForm();
       console.log(productList);
+      navigate("/admin");
     },
   });
 
   return (
     <form
+      data-cy="product-form"
       // as="form"
       onSubmit={formik.handleSubmit as React.FormEventHandler<HTMLFormElement>}
     >
       <FormControl>
         <FormLabel>Image URL</FormLabel>
         <Input
+          data-cy="product-image"
           id="image"
           name="image"
           type="text"
@@ -104,7 +114,9 @@ export function AdminForm({ product }: Props) {
           value={formik.values.image}
         />
         {formik.touched.image && formik.errors.image ? (
-          <Text sx={requiredText}>{formik.errors.image}</Text>
+          <Text data-cy="product-image-error" sx={requiredText}>
+            {formik.errors.image}
+          </Text>
         ) : null}
       </FormControl>
       <FormControl>
@@ -125,6 +137,7 @@ export function AdminForm({ product }: Props) {
       <FormControl>
         <FormLabel>Title</FormLabel>
         <Input
+          data-cy="product-title"
           id="title"
           name="title"
           type="text"
@@ -134,12 +147,15 @@ export function AdminForm({ product }: Props) {
           value={formik.values.title}
         />
         {formik.touched.title && formik.errors.title ? (
-          <Text sx={requiredText}>{formik.errors.title}</Text>
+          <Text data-cy="product-title-error" sx={requiredText}>
+            {formik.errors.title}
+          </Text>
         ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>Description</FormLabel>
         <Input
+          data-cy="product-description"
           id="description"
           name="description"
           type="text"
@@ -149,12 +165,15 @@ export function AdminForm({ product }: Props) {
           value={formik.values.description}
         />
         {formik.touched.description && formik.errors.description ? (
-          <Text sx={requiredText}>{formik.errors.description}</Text>
+          <Text data-cy="product-description-error" sx={requiredText}>
+            {formik.errors.description}
+          </Text>
         ) : null}
       </FormControl>
       <FormControl>
         <FormLabel>Price</FormLabel>
         <Input
+          data-cy="product-price"
           id="price"
           name="price"
           type="text"
@@ -166,7 +185,9 @@ export function AdminForm({ product }: Props) {
           value={formik.values.price}
         />
         {formik.touched.price && formik.errors.price ? (
-          <Text sx={requiredText}>{formik.errors.price}</Text>
+          <Text data-cy="product-price-error" sx={requiredText}>
+            {formik.errors.price}
+          </Text>
         ) : null}
       </FormControl>
       <FormControl>
