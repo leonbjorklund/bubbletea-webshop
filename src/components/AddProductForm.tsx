@@ -66,8 +66,8 @@ export function generateUniqueId(): string {
   return `${timestamp}-${randomValue}`;
 }
 
-export function AdminForm({ product }: Props) {
-  const { productList, addProduct } = useProduct();
+export function AdminForm() {
+  const { addProduct } = useProduct();
 
   const navigate = useNavigate();
 

@@ -1,7 +1,5 @@
 import {
-  Box,
-  Button,
-  Center,
+  Box, Center,
   Container,
   Flex,
   Heading,
@@ -84,7 +82,6 @@ export function HomePage() {
             marginTop="40px"
             display={["none", "none", "none", "flex"]}
           >
-            <Button sx={buttonStyling}>PRODUCTS</Button>
           </Stack>
         </Container>
       </Flex>

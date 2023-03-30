@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { CartItem } from "../data";
 import { useCart } from "./CartContext";
-import { generateUniqueId } from "./components/AdminForm";
+import { generateUniqueId } from "./components/AddProductForm";
 import { Customer } from "./components/CheckoutForm";
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
 

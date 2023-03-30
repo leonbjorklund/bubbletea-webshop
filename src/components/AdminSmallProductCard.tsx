@@ -85,6 +85,7 @@ export function AdminSmallProductCard({ product, id }: SmallProductCardProps) {
         </Button>
 
         <AlertDialog
+          isCentered
           isOpen={isOpen}
           leastDestructiveRef={cancelRef}
           onClose={onClose}

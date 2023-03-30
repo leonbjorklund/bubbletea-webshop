@@ -13,7 +13,7 @@ import {
   SystemStyleObject
 } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
-import { AdminForm } from "./AdminForm";
+import { AdminForm } from "./AddProductForm";
 import EditProductForm from "./EditProductForm";
 
 export function AdminCard() {
@@ -26,7 +26,7 @@ export function AdminCard() {
     <Card sx={cartStyle}>
       <Flex sx={flexStyle}>
         {editPage && (
-          <CardHeader px="0" w="100%">
+          <CardHeader pb="0" px="0" w="100%">
             {editPage && !addPage && (
               <HStack>
                 <Heading size="md">Edit Product</Heading>

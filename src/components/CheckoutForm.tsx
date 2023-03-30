@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../orderContext";
-import { requiredText } from "./AdminForm";
+import { requiredText } from "./AddProductForm";
 
 const phoneRegExp = /^[0-9]{10}$/;
 
@@ -89,14 +89,14 @@ export function CheckoutForm() {
               <Box sx={formBoxStyle}>
                 <Stack spacing={4}>
                   <FormControl>
-                    <FormLabel my=".5rem">name</FormLabel>
+                    <FormLabel my=".5rem">Name</FormLabel>
                     <Input
                       border="1px solid black"
                       data-cy="customer-name"
                       id="name"
                       name="name"
                       type="text"
-                      placeholder="name"
+                      placeholder="Name"
                       autoComplete="name"
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
@@ -227,7 +227,7 @@ export function CheckoutForm() {
                     ) : null}
                   </FormControl>
 
-                  <Stack spacing={10} pt={2}>
+                  <Stack spacing={10} pt={2} pb="1rem">
                     <Button
                       loadingText="Submitting"
                       sx={submitButtonStyle}

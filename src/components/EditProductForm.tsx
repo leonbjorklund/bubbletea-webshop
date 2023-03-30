@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Product } from "../../data";
 import { useProduct } from "../ProductContext";
-import { requiredText, schema } from "./AdminForm";
+import { requiredText, schema } from "./AddProductForm";
 import { orderButtonStyle } from "./CartCard";
 
 export default function EditForm() {
