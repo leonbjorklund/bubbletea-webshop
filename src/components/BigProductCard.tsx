@@ -282,14 +282,6 @@ const quantityStyling = {
   mx: "1rem",
 };
 
-// Styled object for Allergens and Ingredients
-const inputText = {
-  color: "lightBrownText",
-  fontSize: [".7rem", ".7rem", ".9rem", "1rem"],
-  whiteSpace: "pre-wrap",
-  maxWidth: "200px",
-  alignSelf: ["center", "center", "flex-start"],
-};
 
 // Styled object for -decrease +increase buttons
 const buttonStyle = {
