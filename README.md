@@ -3,27 +3,7 @@
 
 ## Installation
 
-Här är en lista på de olika skripten som kan köras i terminalen:
-
-- `npm install` - Installerar alla NodeJS moduler (körs en gång).
-- `npm run update` - Uppdaterar testerna och behöver köras om läraren har ändrat dom.
-- `npm run dev` - Startar Vite dev servern.
-- `npm test` - Startar dev servern & Cypress så du kan jobba med kravlistan.
-- `npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion` - Laddar ner Chakra UI
-Icons:
-- `npm install react-icons --save` - Laddar ner react icons
-hitta ikonen du vill ha på https://react-icons.github.io/react-icons
-"<Icon as={HiLocationMarker} />"
-och se till att den är importerad från rätt ställe(kolla hemsidan)
-import { HiLocationMarker } from "react-icons/hi";
-- `npm install react-icons --save` - Laddar ner react icons
-- `npm install formik --save` - Laddar ner formik
-- `npm install yup` - Laddar ner yup-validation
-
-
-## Rättning
-
-Om de inte visa samma resultat kan du behöva köra `npm run update` för att få hem de senaste testerna så du kan åtgärda eventuella fel i din kod.
+- `npm install` - Installerar alla NodeJS moduler & dependencies (körs en gång).
 
 ## Beskrivning
 
@@ -68,51 +48,6 @@ Ni ska vid presentationstillfället hålla i en muntlig presentation för klasse
 - Reflektioner om projektets genomförande.
 - Designsystemet ni valde, hur det används, samt egna reflektioner (VG).
 
-## Kravlista
-
-### Lista på data-cy som ska finnas i koden för Godkänt
-
-- `data-cy="product"` produkt-korten/raden på startsidan & adminsidan.
-- `data-cy="product-title"` titeln på en produkt.
-- `data-cy="product-price"` priset på en produkt.
-- `data-cy="product-description"` beskrivningen av en produkt.
-- `data-cy="product-buy-button"` lägg till i kundvagnen knappen.
-- `data-cy="added-to-cart-toast"` toast som visas när en produkt läggs till i kundvagnen.
-
-- `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
-- `data-cy="cart-items-count-badge"` siffran intill kundvagnsikonen som visar antalet tillagda produkter.
-- `data-cy="cart-item"` en produktrad på kassasidan.
-- `data-cy="increase-quantity-button"` knappen för att öka antalet av en produkt på kassasida.
-- `data-cy="decrease-quantity-button"` knappen för att minska antalet av en produkt på kassasida.
-- `data-cy="product-quantity"` antalet valda produkter av samma typ på kassasida.
-- `data-cy="total-price"` totala priset för alla produkter i kundvagnen.
-
-- `data-cy="customer-form"` formulär för att fylla i kunduppgifter på checkout-sidan.
-- `data-cy="customer-name"` kundens namn (som fylls i på checkout-sidan).
-- `data-cy="customer-address"` kundens gatuadress (som fylls i på checkout-sidan).
-- `data-cy="customer-zipcode"` kundens postnummer (som fylls i på checkout-sidan).
-- `data-cy="customer-city"` kundens stad (som fylls i på checkout-sidan).
-- `data-cy="customer-email"` kundens emailadress (som fylls i på checkout-sidan).
-- `data-cy="customer-phone"` kundens telefonnummer (som fylls i på checkout-sidan).
-- `data-cy="customer-name-error"` felmeddelande vid felaktigt angivet namn.
-- `data-cy="customer-address-error"` felmeddelande vid felaktigt angiven adress.
-- `data-cy="customer-email-error"` felmeddelande vid felaktigt angiven emailadress.
-- `data-cy="customer-phone-error"` felmeddelande vid felaktigt angivet telefonnummer.
-
-### Lista på data-cy som ska finnas i koden för Väl Godkänt
-
-- `data-cy="admin-link"` den länk/knapp som går till admin.
-- `data-cy="admin-add-product"` edit-knappen för admin som ska editera en produkt.
-- `data-cy="admin-edit-product"` edit-knappen för admin som ska editera en produkt.
-- `data-cy="admin-remove-product"` den knapp som ska kunna radera en produkt.
-- `data-cy="confirm-delete-button"` konfirmera att man vill radera en produkt.
-
-- `data-cy="product-form"` formuläret för att lägga till eller editera en produkt.
-- `data-cy="product-title-error"` felmeddelande vid felaktigt angiven titel.
-- `data-cy="product-description-error"` felmeddelande vid felaktigt angiven beskrivning.
-- `data-cy="product-price-error"` felmeddelande vid felaktigt angivet pris.
-- `data-cy="product-image-error"` felmeddelande vid felaktigt angiven bild.
-
 ### Krav för Godkänt
 
 - [x] Git & GitHub har använts
@@ -122,14 +57,14 @@ Ni ska vid presentationstillfället hålla i en muntlig presentation för klasse
 **Home**
 
 - [x] Ska ha en övergripande layout med header, main & footer.
-- [ ] Startsidan ska lista samtliga produkter.
+- [x] Startsidan ska lista samtliga produkter.
 - [x] Det ska gå att lägga till produkter i kundvagnen (header + toast + ls).
 - [x] Det ska gå att klicka på en produkt och komma till en detaljsida.
 - [x] Sidan ska vara responsiv och gå att använda på mobil, tablet & desktop.
 
 **Produkt**
 
-- [?] Ska ha en övergripande layout med header, main & footer.
+- [x] Ska ha en övergripande layout med header, main & footer.
 - [x] Detaljsidan ska visa all info om en produkt.
 - [x] Det ska gå att lägga till produkten i kundvagnen (header + toast + ls).
 - [x] Sidan ska vara responsiv och gå att använda på mobil, tablet & desktop.
@@ -142,10 +77,8 @@ Ni ska vid presentationstillfället hålla i en muntlig presentation för klasse
 - [x] Det ska gå att ändra produkterna i kundvagnen (header + vyn + pris + ls).
 - [x] Det ska gå att ange leveransuppgifter i ett formulär.
 - [x] Samtliga fält för checkoutsidans formulär ska ha valideringsregler.
-- [x] Formulären vid utcheckningen ska gå att automatiskt fyllas i. (ej klar)
-- [ ] Bekräftelsesidan ska visa orderdetaljer och leveransuppgifter. (delvis klar)
-
-_Gjorda krav ska kryssas för._
+- [x] Formulären vid utcheckningen ska gå att automatiskt fyllas i.
+- [x] Bekräftelsesidan ska visa orderdetaljer och leveransuppgifter.
 
 ### Krav för Väl Godkänt
 
@@ -154,10 +87,8 @@ _Gjorda krav ska kryssas för._
 **Admin**
 
 - [x] Det finns en admin-sida för produkthantering
-- [ ] Det ska gå att se alla produkter på admin sidan
-- [ ] Det går att lägga till produkter via admin sidan + ls
-- [ ] Det går att ta bort produkter via admin sidan + ls
-- [ ] Det går att redigera produkter via admin sidan + ls
-- [ ] Samtliga fält för adminsidans formulär ska ha valideringsregler
-
-_Gjorda krav ska kryssas för._
+- [x] Det ska gå att se alla produkter på admin sidan
+- [x] Det går att lägga till produkter via admin sidan + ls
+- [x] Det går att ta bort produkter via admin sidan + ls
+- [x] Det går att redigera produkter via admin sidan + ls
+- [x] Samtliga fält för adminsidans formulär ska ha valideringsregler
