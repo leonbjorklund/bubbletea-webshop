@@ -4,11 +4,15 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  Button, Flex,
-  Heading, Icon, IconButton, Image,
+  Button,
+  Flex,
+  Heading,
+  Icon,
+  IconButton,
+  Image,
   Text,
   useBreakpointValue,
-  useOutsideClick
+  useOutsideClick,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
@@ -85,18 +89,18 @@ export function BigProductCard({
   };
 
   // Style object for background image
-const imageStyleBackground = (backgroundUrl: string) => ({
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "100%",
-  height: "100%",
-  zIndex: "100",
-  backgroundImage: `url(${backgroundUrl})`,
-  backgroundSize: 'cover', // Add this line
-  backgroundPosition: 'center', // Add this line
-});
+  const imageStyleBackground = (backgroundUrl: string) => ({
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "100%",
+    height: "100%",
+    zIndex: "100",
+    backgroundImage: `url(${backgroundUrl})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  });
 
   // Hide the card and navigates back to home page
   const handleClose = () => {
@@ -111,16 +115,21 @@ const imageStyleBackground = (backgroundUrl: string) => ({
 
   return (
     <Box ref={cardRef} sx={cardStyle}>
-      <Breadcrumb sx={breadcrumbStyle}
+      <Breadcrumb
+        sx={breadcrumbStyle}
         spacing="8px"
         separator={<ChevronRightIcon color="black.500" />}
       >
         <BreadcrumbItem>
-          <BreadcrumbLink as={Link} to="/" onClick={() => navigate("/")}>Home</BreadcrumbLink>
+          <BreadcrumbLink as={Link} to="/" onClick={() => navigate("/")}>
+            Home
+          </BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem>
-          <BreadcrumbLink as={Link} to="/" onClick={() => navigate("/")}>Products</BreadcrumbLink>
+          <BreadcrumbLink as={Link} to="/" onClick={() => navigate("/")}>
+            Products
+          </BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem isCurrentPage>
@@ -128,12 +137,12 @@ const imageStyleBackground = (backgroundUrl: string) => ({
         </BreadcrumbItem>
       </Breadcrumb>
       <IconButton
-            sx={xButton}
-            size={closeButtonSize} 
-            aria-label="Back"
-            icon={<ArrowBackIcon />}
-            onClick={handleClose}
-          />
+        sx={xButton}
+        size={closeButtonSize}
+        aria-label="Back"
+        icon={<ArrowBackIcon />}
+        onClick={handleClose}
+      />
       <Flex
         w={"100%"}
         h={"100%"}
@@ -165,13 +174,19 @@ const imageStyleBackground = (backgroundUrl: string) => ({
             gap={[0, 1, 3, 4]}
             marginTop={"-2rem"}
           >
-            <Heading data-cy="product-title" fontSize={["1.5rem", "1.7rem", "2rem", "2.5rem"]}>
+            <Heading
+              data-cy="product-title"
+              fontSize={["1.5rem", "1.7rem", "2rem", "2.5rem"]}
+            >
               {product.title}
             </Heading>
-            <Heading data-cy="product-price" fontSize={["1.5rem", "1.7rem", "1.7rem", "2rem"]}>
+            <Heading
+              data-cy="product-price"
+              fontSize={["1.5rem", "1.7rem", "1.7rem", "2rem"]}
+            >
               ${product.price}
             </Heading>
-            <Text data-cy="product-description" >{product.description}</Text>
+            <Text data-cy="product-description">{product.description}</Text>
             <Box>
               <Flex>
                 <Button sx={buttonStyle} onClick={decreaseQuantity}>
@@ -181,17 +196,17 @@ const imageStyleBackground = (backgroundUrl: string) => ({
                 <Button sx={buttonStyle} onClick={increaseQuantity}>
                   +
                 </Button>
-                <Button data-cy="product-buy-button"
+                <Button
+                  data-cy="product-buy-button"
                   sx={addButtonStyle}
-                  onClick={() => addToCart(product, quantity) }
-                  
+                  onClick={() => addToCart(product, quantity)}
                 >
                   <Icon sx={addToCartButtonStyle} as={FaCartPlus}></Icon>
                 </Button>
               </Flex>
             </Box>
           </Flex>
-          <Box display={["none","none", "block"]}>
+          <Box display={["none", "none", "block"]}>
             <Text>Allergens:</Text>
             <Flex direction="column" align={["center", "center", "left"]}>
               <Text sx={inputText}>{product.allergens}</Text>
@@ -204,17 +219,18 @@ const imageStyleBackground = (backgroundUrl: string) => ({
         </Flex>
         <Box
           sx={boxStyling}
-          h={["70%", "50%", "80%","80%"]}
+          h={["70%", "50%", "80%", "80%"]}
           w={["80%", "70%", "40%", "45%"]}
         >
           <Box sx={roundBG}>
-          <Box as="div" sx={backgroundImageWrapper}>
-            <Box as="div"
-              sx={imageStyleBackground(backgroundUrl)}
-            >
-              </Box>
-            <Image sx={imageStyle} src={product.image} alt={product.imageAlt} />
-          </Box>
+            <Box as="div" sx={backgroundImageWrapper}>
+              <Box as="div" sx={imageStyleBackground(backgroundUrl)}></Box>
+              <Image
+                sx={imageStyle}
+                src={product.image}
+                alt={product.imageAlt}
+              />
+            </Box>
           </Box>
         </Box>
       </Flex>
@@ -224,8 +240,8 @@ const imageStyleBackground = (backgroundUrl: string) => ({
 
 //Style object for breadcrumbs
 const breadcrumbStyle = {
-padding: "1rem"
-}
+  padding: "1rem",
+};
 
 // Style object for product image
 const imageStyle = {
@@ -294,5 +310,5 @@ const addButtonStyle = {
 const addToCartButtonStyle = {
   height: "1.5rem",
   width: "1.5rem",
-  color: "lightBrownText"
+  color: "lightBrownText",
 };

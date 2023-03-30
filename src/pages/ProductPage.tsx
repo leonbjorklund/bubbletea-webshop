@@ -1,6 +1,4 @@
-import {
-  Box
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
 import { BigProductCard } from "../components/BigProductCard";
@@ -9,7 +7,6 @@ import { useProduct } from "../ProductContext";
 export function ProductPage() {
   const { productList } = useProduct();
   const productsRef = useRef(null);
-
 
   const params = useParams();
   const product = productList.find((p) => p.id === params.id);
@@ -21,11 +18,10 @@ export function ProductPage() {
   return (
     <Box sx={bigGradient} className="parent">
       <BigProductCard
-      product={product}
-      backgroundUrl="/images/fancyBackground.png"
-      backgroundAlt="net"
+        product={product}
+        backgroundUrl="/images/bubble-background-1.png"
+        backgroundAlt="net"
       />
-      
     </Box>
   );
 }
