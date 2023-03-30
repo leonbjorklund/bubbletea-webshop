@@ -6,7 +6,7 @@ import {
   CardHeader,
   Flex,
   Heading,
-  SystemStyleObject
+  SystemStyleObject,
 } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import { AdminForm } from "./AdminForm";
@@ -56,6 +56,7 @@ const flexStyle: SystemStyleObject = {
   justifyContent: "center",
   alignItems: "center",
   rowGap: "1.25rem",
+  textAlign: "center",
 };
 
 const cartItemStyle: SystemStyleObject = {

@@ -5,9 +5,9 @@ export function AdminPage() {
   return (
     <Box bg={"pink"}>
       <Container as="section" maxWidth="container.xl" my="">
-        <Heading>Admin Page</Heading>
+        <Heading>Admin</Heading>
       </Container>
       <AdminProducts />
     </Box>
-  )
+  );
 }
