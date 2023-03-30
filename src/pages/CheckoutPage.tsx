@@ -12,7 +12,8 @@ export function CheckoutPage() {
 }
 
 const checkoutContainer: SystemStyleObject = {
-  my: "2rem",
+  mt: "5rem",
+  mb: "2rem",
   borderRadius: "0.625rem",
   py: "1rem",
   bg: "lightYellow",

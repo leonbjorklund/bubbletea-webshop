@@ -31,14 +31,12 @@ export function generateUniqueNumber(): number {
 }
 
 export function OrderConfirmationCard() {
-
-  const  {getLastOrder}= useOrder()
+  const { getLastOrder } = useOrder();
   const { cartList } = useCart();
 
   const { lastOrder } = getLastOrder();
-  console.log('Last order:', lastOrder?.contactInformation.name);
+  console.log("Last order:", lastOrder?.contactInformation.name);
 
-  
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
   }, 0);
@@ -51,7 +49,8 @@ export function OrderConfirmationCard() {
       <Flex sx={flexStyle}>
         <CardHeader p="5px">
           <Heading size="lg" padding="15px">
-            Thank you {lastOrder?.contactInformation.name} for your order! Your order id is: #{lastOrder?.orderId}
+            Thank you {lastOrder?.contactInformation.name} for your order! Your
+            order id is: #{lastOrder?.orderId}
           </Heading>
         </CardHeader>
         <CardBody fontSize={cardBodyFontSize} width="100%" p="0">

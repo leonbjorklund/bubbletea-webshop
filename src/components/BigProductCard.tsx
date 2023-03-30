@@ -12,7 +12,7 @@ import {
   Image,
   Text,
   useBreakpointValue,
-  useOutsideClick,
+  useOutsideClick
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
@@ -206,7 +206,7 @@ export function BigProductCard({
               </Flex>
             </Box>
           </Flex>
-          <Box display={["none", "none", "block"]}>
+          {/* <Box display={["none", "none", "none"]}>
             <Text>Allergens:</Text>
             <Flex direction="column" align={["center", "center", "left"]}>
               <Text sx={inputText}>{product.allergens}</Text>
@@ -215,7 +215,7 @@ export function BigProductCard({
             <Flex direction="column" align={["center", "center", "left"]}>
               <Text sx={inputText}>{product.ingredients}</Text>
             </Flex>
-          </Box>
+          </Box> */}
         </Flex>
         <Box
           sx={boxStyling}
@@ -282,14 +282,6 @@ const quantityStyling = {
   mx: "1rem",
 };
 
-// Styled object for Allergens and Ingredients
-const inputText = {
-  color: "lightBrownText",
-  fontSize: [".7rem", ".7rem", ".9rem", "1rem"],
-  whiteSpace: "pre-wrap",
-  maxWidth: "200px",
-  alignSelf: ["center", "center", "flex-start"],
-};
 
 // Styled object for -decrease +increase buttons
 const buttonStyle = {

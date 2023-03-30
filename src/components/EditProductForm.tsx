@@ -12,6 +12,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Product } from "../../data";
 import { useProduct } from "../ProductContext";
 import { requiredText, schema } from "./AdminForm";
+import { orderButtonStyle } from "./CartCard";
 
 export default function EditForm() {
   const navigate = useNavigate();
@@ -39,10 +40,8 @@ export default function EditForm() {
         },
     validationSchema: schema,
     onSubmit: (values, actions) => {
-      console.log("Form submitted with values:", values);
       editProduct(values);
       actions.resetForm();
-      console.log(productList);
       navigate("/admin");
     },
   });
@@ -227,7 +226,9 @@ export default function EditForm() {
           <Text sx={requiredText}>{formik.errors.category}</Text>
         ) : null}
       </FormControl>
-      <Button type="submit">Submit</Button>
+      <Button mt="1rem" sx={orderButtonStyle} type="submit">
+        Submit
+      </Button>
     </form>
   );
 }

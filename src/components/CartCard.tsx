@@ -41,7 +41,6 @@ export function CartCard({ checkOutPage = true }) {
             sx={buttonStyle}
             aria-label="Clear cart"
             icon={<DeleteIcon />}
-            
             onClick={() => clearCart(cartList)}
           />
         </CardHeader>
@@ -178,7 +177,7 @@ const quantityStyle = {
   marginStart: "0!important",
 };
 
-const orderButtonStyle = {
+export const orderButtonStyle = {
   width: "100%",
   bg: "lightGreenButton",
   _hover: {

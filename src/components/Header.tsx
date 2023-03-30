@@ -14,7 +14,7 @@ import {
   Link as ChakraLink,
   Spacer,
   Text,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 import { useLayoutEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";

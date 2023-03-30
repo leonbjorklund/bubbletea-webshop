@@ -9,12 +9,9 @@ import { OrderConfirmationCard } from "../components/OrderConfirmationCard";
 import { useOrder } from "../orderContext";
 
 export function ConfirmationPage() {
-
-  const  {getLastOrder} = useOrder()
+  const { getLastOrder } = useOrder();
 
   const { lastOrder } = getLastOrder();
-
-
 
   return (
     <Container sx={checkoutContainer} maxW="container.md">
@@ -23,13 +20,12 @@ export function ConfirmationPage() {
         <div>
           {lastOrder ? (
             <div>
-              <p>
-                Name: {lastOrder?.contactInformation.name}
-              </p>
+              <p>Name: {lastOrder?.contactInformation.name}</p>
               <p>Email: {lastOrder?.contactInformation.email}</p>
               <p>Phone: {lastOrder?.contactInformation.phone}</p>
               <p>
-                Address: {lastOrder?.contactInformation.street}, {lastOrder?.contactInformation.zipCode},{" "}
+                Address: {lastOrder?.contactInformation.street},{" "}
+                {lastOrder?.contactInformation.zipCode},{" "}
                 {lastOrder?.contactInformation.city}
               </p>
             </div>

@@ -3,11 +3,15 @@ import { AdminCard } from "./AdminCard";
 import { AdminProductsLayout } from "./AdminProductsLayout";
 
 export function AdminProducts() {
-
   return (
     <Container maxWidth="container.xl" my=".3rem">
       <Flex
-        direction={["column-reverse", "column-reverse", "column-reverse", "row"]}
+        direction={[
+          "column-reverse",
+          "column-reverse",
+          "column-reverse",
+          "row",
+        ]}
         justify={["center", "center", "center", "space-between"]}
         gap={1}
       >

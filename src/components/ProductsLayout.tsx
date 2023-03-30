@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 import { useProduct } from "../ProductContext";
 import { SmallProductCard } from "./SmallProductCard";
 
-
 // Three categories: fruit, milk or null (all)
 interface ProductsLayoutProps {
   filterCategory: "fruit" | "milk" | null;
 }
 
-export function ProductsLayout({ filterCategory }:ProductsLayoutProps) {
+export function ProductsLayout({ filterCategory }: ProductsLayoutProps) {
   // Get the product list from the product context
-  const { productList } = useProduct()
+  const { productList } = useProduct();
   // Filter the product list based on the filterCategory prop
   const filteredProductList = filterCategory
     ? productList.filter((product) => product.category === filterCategory)
@@ -30,7 +29,7 @@ export function ProductsLayout({ filterCategory }:ProductsLayoutProps) {
         <Box sx={boxStyle} key={product.id}>
           {/* Wrap each SmallProductCard with a link for navigation */}
           <Link key={product.id} to={`/product/${product.id}`}>
-          <SmallProductCard product={product} />
+            <SmallProductCard product={product} />
           </Link>
         </Box>
       ))}

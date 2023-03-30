@@ -25,26 +25,27 @@ const customerSchema = Yup.object({
   email: Yup.string().email("invalid email").required("email required"),
   phone: Yup.string()
     .required("Phone number is required")
-    .matches(phoneRegExp, 'Phone number is not valid'),
+    .matches(phoneRegExp, "Phone number is not valid"),
   street: Yup.string()
     .required("Street required")
     .min(2, "Street is too short"),
-    zipCode: Yup.string()
+  zipCode: Yup.string()
     .required("Zip code is required")
     .matches(/^[0-9]{5}(?:-[0-9]{4})?$/, "Invalid zip code"),
   city: Yup.string().required("City required").min(2, "City is too short"),
 });
-
-
 
 export type Customer = Yup.InferType<typeof customerSchema>;
 
 export function CheckoutForm() {
   const navigate = useNavigate();
 
-  const { createOrder } = useOrder()
+  const { createOrder } = useOrder();
 
-  const handleSubmit = async (values: Customer, actions: FormikHelpers<Customer>) => {
+  const handleSubmit = async (
+    values: Customer,
+    actions: FormikHelpers<Customer>
+  ) => {
     try {
       await customerSchema.validate(values);
       const customer = {
@@ -57,11 +58,11 @@ export function CheckoutForm() {
       };
       const order = createOrder(customer);
       actions.resetForm();
-      console.log(order);
       navigate("/confirmation");
     } catch (err) {
       console.log(err);
-  }};
+    }
+  };
 
   return (
     <Formik
@@ -75,7 +76,6 @@ export function CheckoutForm() {
       }}
       validationSchema={customerSchema}
       onSubmit={handleSubmit}
-  
     >
       {(formik) => (
         <form data-cy="customer-form" onSubmit={formik.handleSubmit}>
@@ -205,9 +205,7 @@ export function CheckoutForm() {
                   </FormControl>
 
                   <FormControl
-                    isInvalid={
-                      !!(formik.touched.city && formik.errors.city)
-                    }
+                    isInvalid={!!(formik.touched.city && formik.errors.city)}
                   >
                     <FormLabel my=".5rem">City</FormLabel>
                     <Input

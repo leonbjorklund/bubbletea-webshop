@@ -32,11 +32,9 @@ function calculateTotalItems(cartList: CartItem[]) {
 }
 
 export function CartProvider({ children }: Props) {
-
-  const [cartList, setCartList] = useLocalStorageState<CartItem[]>([],"cart",);
+  const [cartList, setCartList] = useLocalStorageState<CartItem[]>([], "cart");
 
   const [totalItems, setTotalItems] = useState(calculateTotalItems(cartList));
-
 
   useEffect(() => {
     setTotalItems(calculateTotalItems(cartList));
@@ -112,7 +110,9 @@ export function CartProvider({ children }: Props) {
   };
 
   return (
-    <CartContext.Provider value={{ cartList, addToCart, removeFromCart, totalItems, clearCart }}>
+    <CartContext.Provider
+      value={{ cartList, addToCart, removeFromCart, totalItems, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );

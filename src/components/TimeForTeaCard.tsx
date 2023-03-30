@@ -16,14 +16,14 @@ export function TimeForTeaCard() {
       <Container
         maxW={"container.xl"}
         h={"100%"}
-        my= {4}
+        my={4}
         py={3}
         display={"flex"}
         flexDirection={["column", "column", "row"]}
       >
         {/* Flex container for text elements, adjusting alignment based on screen size */}
         <Flex
-        py={3}
+          py={3}
           textAlign={["center", "center", "left"]}
           flexDirection={"column"}
           justifyContent={["center", "space-around", "center"]}
@@ -41,7 +41,8 @@ export function TimeForTeaCard() {
               Meet your next favorite.
             </Heading>
             <Text color={"darkBrownText"}>
-              We've got something for everyone, and we know you'll find your next favorite on our menu. 
+              We've got something for everyone, and we know you'll find your
+              next favorite on our menu.
             </Text>
             <Button
               color={"white"}

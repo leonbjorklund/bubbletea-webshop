@@ -17,8 +17,10 @@ export function Products() {
   >(null);
 
   return (
-    <Container maxWidth="container.xl" my=".3rem"  >
-      <Heading color={"darkBrownText"}>Our Drinks</Heading>
+    <Container maxWidth="container.xl" my=".3rem">
+      <Heading mt="1rem" color={"darkBrownText"}>
+        Our Drinks
+      </Heading>
       <Tabs
         borderRadius=".6rem"
         variant="unstyled"
@@ -35,21 +37,21 @@ export function Products() {
       >
         <TabList>
           <Tab
-            fontSize={[".8rem",".9rem","1rem"]}
+            fontSize={[".8rem", ".9rem", "1rem"]}
             borderRadius=".6rem"
             _selected={{ color: "white", bg: "pinkCardButton" }}
           >
             ALL TEAS
           </Tab>
           <Tab
-            fontSize={[".8rem",".9rem","1rem"]}
+            fontSize={[".8rem", ".9rem", "1rem"]}
             borderRadius=".6rem"
             _selected={{ color: "white", bg: "pinkCardButton" }}
           >
             FRUIT TEA
           </Tab>
           <Tab
-          fontSize={[".8rem",".9rem","1rem"]}
+            fontSize={[".8rem", ".9rem", "1rem"]}
             borderRadius=".6rem"
             _selected={{ color: "white", bg: "pinkCardButton" }}
           >
@@ -61,7 +63,6 @@ export function Products() {
         direction={["column", "column", "column", "row"]}
         justify={["center", "center", "center", "space-between"]}
         gap={1}
-        
       >
         <ProductsLayout filterCategory={selectedCategory} />
 
