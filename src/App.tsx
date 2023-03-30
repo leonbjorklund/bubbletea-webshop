@@ -5,7 +5,6 @@ import { Header } from "./components/Header";
 import { ScrollToTop } from "./main";
 
 function App() {
-
   return (
     <div>
       <ScrollToTop />
@@ -15,6 +14,6 @@ function App() {
       </Container>
       <Footer />
     </div>
-  )
+  );
 }
 export default App;

@@ -23,7 +23,7 @@ export function HomePage() {
         gap={4}
       >
         <Box
-          marginLeft={[null, null, "2vw", "4vw", "8vw","14vw"]}
+          marginLeft={[null, null, "2vw", "4vw", "8vw", "14vw"]}
           marginRight={[null, null, "2vw", "4vw", "5vw"]}
           zIndex={20}
         >
@@ -40,7 +40,7 @@ export function HomePage() {
             fontSize={["2rem", "2.1rem", "3rem", "3.5rem"]}
             color={"lightBrownText"}
           >
-           Boba Bliss
+            Boba Bliss
           </Heading>
           <Text
             fontSize={["1.5rem", "1.3rem", "1.6rem", "1.6rem"]}
@@ -48,7 +48,7 @@ export function HomePage() {
             fontWeight="bold"
             display={["none", "none", "flex"]}
           >
-           Your ultimate destination for an exquisite bubble tea experience.
+            Your ultimate destination for an exquisite bubble tea experience.
           </Text>
           <Text
             fontSize={[".85rem", ".9rem", "1rem", "1rem"]}
@@ -56,11 +56,15 @@ export function HomePage() {
             fontFamily="Comfortaa"
             marginTop="1rem"
             zIndex={"500"}
-            position= {"relative"}
+            position={"relative"}
           >
-            Our wide variety of flavors, toppings, and customizable options ensure that every visit is a delightful journey. 
-            <br></br><br></br>
-            Savor the perfect blend of quality ingredients, crafted with love and expertise, and indulge in the true essence of bubble tea paradise.
+            Our wide variety of flavors, toppings, and customizable options
+            ensure that every visit is a delightful journey.
+            <br></br>
+            <br></br>
+            Savor the perfect blend of quality ingredients, crafted with love
+            and expertise, and indulge in the true essence of bubble tea
+            paradise.
           </Text>
           <Center>
             <Image

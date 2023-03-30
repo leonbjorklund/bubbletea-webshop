@@ -12,7 +12,7 @@ import {
   Image,
   Text,
   useBreakpointValue,
-  useOutsideClick,
+  useOutsideClick
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 

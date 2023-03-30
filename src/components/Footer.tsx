@@ -16,7 +16,7 @@ import { TbCup } from "react-icons/tb";
 export function Footer() {
   return (
     <Box as="footer" sx={footerStyle}>
-      <Center sx= {socialMediaFooter}>
+      <Center sx={socialMediaFooter}>
         <Icon w={8} h={8} as={MdFacebook}></Icon>
         <Icon w={8} h={8} as={FiInstagram}></Icon>
         <Icon w={8} h={8} as={FaTiktok}></Icon>
@@ -24,16 +24,20 @@ export function Footer() {
       </Center>
       <Container sx={containerStyle}>
         <Grid sx={gridStyles}>
-          <Flex  sx={logo}>
+          <Flex sx={logo}>
             <Center h="7rem">
-              <Image src="/images/bobablissicon.png" alt="bobasmile" height="7rem"></Image>
+              <Image
+                src="/images/bobablissicon.png"
+                alt="bobasmile"
+                height="7rem"
+              ></Image>
             </Center>
             <Center>
               <Image src="/images/bobablisstextlogo.png" width="10rem"></Image>
             </Center>
           </Flex>
           <Flex sx={gridItemStyle}>
-            <Center  sx= {leftIconBox}>
+            <Center sx={leftIconBox}>
               <Icon w={6} h={6} as={TbCup} />
             </Center>
             <Flex
@@ -61,8 +65,7 @@ export function Footer() {
             <Center sx={leftIconBox}>
               <Icon w={6} h={6} as={MdOutlineLocationOn} />
             </Center>
-            <Flex sx= {rightTextBox}
-            >
+            <Flex sx={rightTextBox}>
               <Text as="address" sx={rightBoxText}>
                 Sverigegatan 112
               </Text>
@@ -74,13 +77,11 @@ export function Footer() {
               </Text>
             </Flex>
           </Flex>
-          <Flex sx={gridItemStyle} >
+          <Flex sx={gridItemStyle}>
             <Center sx={leftIconBox}>
               <Icon w={5} h={6} as={MdPhoneIphone} />
             </Center>
-            <Flex
-              sx={rightTextBox}
-            >
+            <Flex sx={rightTextBox}>
               <Text as="p" sx={rightBoxText}>
                 Contact us:
               </Text>
@@ -94,28 +95,27 @@ export function Footer() {
           </Flex>
         </Grid>
       </Container>
-      <Center sx= {copyrightMediaFooter}>
-        <Text fontSize = {[".8rem", ".9rem"]}>BOBA BLISS © || 2021-2023 </Text>
+      <Center sx={copyrightMediaFooter}>
+        <Text fontSize={[".8rem", ".9rem"]}>BOBA BLISS © || 2021-2023 </Text>
       </Center>
     </Box>
   );
 }
 
-const socialMediaFooter =  {
-  height:"2.5rem",
+const socialMediaFooter = {
+  height: "2.5rem",
   background: "beige",
-  gap: ["1rem", "2rem", "3rem"]
-
-}
-const copyrightMediaFooter =  {
+  gap: ["1rem", "2rem", "3rem"],
+};
+const copyrightMediaFooter = {
   height: ["1.5rem", "1.7rem", "2rem"],
   background: "footerBottom",
-  color:"white",
-  textAlign:"center",
-  FontSize: ["1.2rem", "1.7rem", "2rem"]
-}
+  color: "white",
+  textAlign: "center",
+  FontSize: ["1.2rem", "1.7rem", "2rem"],
+};
 
-const logo= {
+const logo = {
   flexDirection: ["column"],
   paddingLeft: ["2rem", "-2rem", "1rem"],
   padding: ".5rem",
@@ -123,7 +123,7 @@ const logo= {
   backgroundColor: "transparent",
   height: ["8.5rem", "10rem", "10rem"],
   width: ["70%", "100%", "100%"],
-}
+};
 
 const footerStyle = {
   color: "lightBrownText",
@@ -154,15 +154,15 @@ const gridItemStyle = {
 };
 
 const leftIconBox = {
-  width:"20%",
-  flexDirection:"column"
-}
+  width: "20%",
+  flexDirection: "column",
+};
 const rightTextBox = {
-  width:"75%",
-  flexDirection:"column",
-  justifyContent:"center",
-  whiteSpace: "nowrap"
-}
+  width: "75%",
+  flexDirection: "column",
+  justifyContent: "center",
+  whiteSpace: "nowrap",
+};
 const rightBoxText = {
-  fontSize: "sm"
-}
+  fontSize: "sm",
+};

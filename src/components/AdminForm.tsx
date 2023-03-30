@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Product } from "../../data";
 import { useProduct } from "../ProductContext";
+import { orderButtonStyle } from "./CartCard";
 
 type ProductValues = Record<keyof Product, Yup.AnySchema>;
 
@@ -87,20 +88,13 @@ export function AdminForm({ product }: Props) {
     onSubmit: (values, actions) => {
       const newProduct = { ...values, id: generateUniqueId() };
       addProduct(newProduct);
-      console.log("Form submitted with values:", values);
-      alert(JSON.stringify(values, null));
       actions.resetForm();
-      console.log(productList);
       navigate("/admin");
     },
   });
 
   return (
-    <form
-      data-cy="product-form"
-      // as="form"
-      onSubmit={formik.handleSubmit as React.FormEventHandler<HTMLFormElement>}
-    >
+    <form data-cy="product-form" onSubmit={formik.handleSubmit}>
       <FormControl>
         <FormLabel>Image URL</FormLabel>
         <Input
@@ -240,7 +234,7 @@ export function AdminForm({ product }: Props) {
           <Text sx={requiredText}>{formik.errors.bgColor}</Text>
         ) : null}
       </FormControl>
-      <FormControl>
+      <FormControl pb="1rem">
         <FormLabel>Category</FormLabel>
         <Select
           id="category"
@@ -257,7 +251,9 @@ export function AdminForm({ product }: Props) {
           <Text sx={requiredText}>{formik.errors.category}</Text>
         ) : null}
       </FormControl>
-      <Button type="submit">Submit</Button>
+      <Button sx={orderButtonStyle} type="submit">
+        Add Product
+      </Button>
     </form>
   );
 }

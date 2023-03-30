@@ -1,3 +1,4 @@
+import { CloseIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
@@ -6,7 +7,10 @@ import {
   CardHeader,
   Flex,
   Heading,
-  SystemStyleObject,
+  HStack,
+  IconButton,
+  Spacer,
+  SystemStyleObject
 } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import { AdminForm } from "./AdminForm";
@@ -21,14 +25,40 @@ export function AdminCard() {
   return (
     <Card sx={cartStyle}>
       <Flex sx={flexStyle}>
-        <CardHeader p="5px">
-          {editPage && !addPage && <Heading size="md">Edit Product</Heading>}
-          {addPage && <Heading size="md">Add Product</Heading>}
-        </CardHeader>
+        {editPage && (
+          <CardHeader px="0" w="100%">
+            {editPage && !addPage && (
+              <HStack>
+                <Heading size="md">Edit Product</Heading>
+                <Spacer />
+                <Link to="/admin">
+                  <IconButton
+                    aria-label="Close Edit Product"
+                    icon={<CloseIcon />}
+                  />
+                </Link>
+              </HStack>
+            )}
+            {addPage && (
+              <HStack>
+                <Heading size="md">Add Product</Heading>
+                <Spacer />
+                <Link to="/admin">
+                  <IconButton
+                    aria-label="Close Add Product"
+                    icon={<CloseIcon />}
+                  />
+                </Link>
+              </HStack>
+            )}
+          </CardHeader>
+        )}
         <CardBody width="100%" p="0">
           {!addPage && !editPage && (
             <Link to="/admin/product/new">
-              <Button data-cy="admin-add-product">Add product!</Button>
+              <Button sx={orderButtonStyle} data-cy="admin-add-product">
+                Add product!
+              </Button>
             </Link>
           )}
           <CardBody width="100%" p="0">
@@ -47,7 +77,7 @@ const cartStyle: SystemStyleObject = {
   bg: "#FFF9F4",
   border: "1px solid rgb(0,0,0, 0.2)",
   borderRadius: "0.625rem",
-  padding: "1rem",
+  px: "1rem",
   position: "relative",
 };
 
@@ -59,25 +89,8 @@ const flexStyle: SystemStyleObject = {
   textAlign: "center",
 };
 
-const cartItemStyle: SystemStyleObject = {
-  alignItems: "center",
-  my: "0.625rem",
-};
-
-const incrementButtonStyle: SystemStyleObject = {
-  bg: "pinkCardButton",
-  marginStart: "0!important",
-  marginEnd: "0!important",
-};
-
-const quantityStyle: SystemStyleObject = {
-  m: "0",
-  w: "1.375rem",
-  textAlign: "center",
-  marginStart: "0!important",
-};
-
 const orderButtonStyle: SystemStyleObject = {
+  mt: "1.1rem",
   width: "100%",
   bg: "lightGreenButton",
   color: "black",

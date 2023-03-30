@@ -9,12 +9,9 @@ html {
 }
 
 body {
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   position: relative;
   min-height: 100%;
   box-sizing: inherit;
-  background-color: #FED3D4 !important;
+  background-color: #fed3d4 !important;
 }
-
-
-
