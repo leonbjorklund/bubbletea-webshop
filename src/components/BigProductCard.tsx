@@ -206,7 +206,7 @@ export function BigProductCard({
               </Flex>
             </Box>
           </Flex>
-          <Box display={["none", "none", "block"]}>
+          {/* <Box display={["none", "none", "none"]}>
             <Text>Allergens:</Text>
             <Flex direction="column" align={["center", "center", "left"]}>
               <Text sx={inputText}>{product.allergens}</Text>
@@ -215,7 +215,7 @@ export function BigProductCard({
             <Flex direction="column" align={["center", "center", "left"]}>
               <Text sx={inputText}>{product.ingredients}</Text>
             </Flex>
-          </Box>
+          </Box> */}
         </Flex>
         <Box
           sx={boxStyling}
