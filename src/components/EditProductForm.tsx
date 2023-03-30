@@ -227,7 +227,7 @@ export default function EditForm() {
         ) : null}
       </FormControl>
       <Button mt="1rem" sx={orderButtonStyle} type="submit">
-        Submit
+        Edit Product
       </Button>
     </form>
   );
