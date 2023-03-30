@@ -14,7 +14,7 @@ import {
   Link as ChakraLink,
   Spacer,
   Text,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useLayoutEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
@@ -52,14 +52,9 @@ export function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleCloseDrawer = () => {
-    onClose();
-    onOpen();
-  };
-
   const handleLinkClick = () => {
     onClose();
-  }
+  };
 
   return (
     <Container as="header" sx={containerStyle}>
@@ -81,42 +76,47 @@ export function Header() {
 
         {/* LINKS */}
         {!isMobileView ? (
-          <HStack spacing="1rem" whiteSpace="nowrap">
-            <ChakraLink as={RouterLink} to="/">
-              <Icon
-                verticalAlign="sub"
-                width="1.8em"
-                height="1.8em"
-                as={AiFillHome}
-              />
-            </ChakraLink>
-            <ChakraLink data-cy="admin-link" as={RouterLink} to="/admin">
-              <Icon
-                verticalAlign="sub"
-                width="1.8em"
-                height="1.8em"
-                as={RiAdminFill}
-              />
-            </ChakraLink>
-            <ChakraLink
-              data-cy="cart-link"
-              as={RouterLink}
-              to="/checkout"
-              sx={{
-                linkStyles,
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Icon
-                verticalAlign="sub"
-                width="1.8em"
-                height="1.8em"
-                as={IoMdCart}
-              />
-              <Text data-cy="cart-items-count-badge">({totalItems})</Text>
-            </ChakraLink>
-          </HStack>
+          <Box>
+            <HStack spacing="1rem" whiteSpace="nowrap">
+              <ChakraLink as={RouterLink} to="/">
+                <Icon
+                  verticalAlign="sub"
+                  width="1.8em"
+                  height="1.8em"
+                  as={AiFillHome}
+                  _hover={{ color: "#c8a59b" }}
+                />
+              </ChakraLink>
+              <ChakraLink data-cy="admin-link" as={RouterLink} to="/admin">
+                <Icon
+                  verticalAlign="sub"
+                  width="1.8em"
+                  height="1.8em"
+                  as={RiAdminFill}
+                  _hover={{ color: "#c8a59b" }}
+                />
+              </ChakraLink>
+              <ChakraLink
+                data-cy="cart-link"
+                as={RouterLink}
+                to="/checkout"
+                sx={{
+                  linkStyles,
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Icon
+                  verticalAlign="sub"
+                  width="1.8em"
+                  height="1.8em"
+                  as={IoMdCart}
+                  _hover={{ color: "#c8a59b" }}
+                />
+                <Text data-cy="cart-items-count-badge">({totalItems})</Text>
+              </ChakraLink>
+            </HStack>
+          </Box>
         ) : (
           /* HAMBURGER MENU */
           <HStack>
@@ -157,7 +157,14 @@ export function Header() {
         <DrawerContent sx={hamburgerMenuStyling}>
           <DrawerCloseButton />
           <Box py="4">
-            <ChakraLink as={RouterLink} to="/" display="block" mx="4" my="2" onClick={handleLinkClick}>
+            <ChakraLink
+              as={RouterLink}
+              to="/"
+              display="block"
+              mx="4"
+              my="2"
+              onClick={handleLinkClick}
+            >
               Home
             </ChakraLink>
             <ChakraLink
@@ -165,7 +172,8 @@ export function Header() {
               to="/admin"
               display="block"
               mx="4"
-              my="2" onClick={handleLinkClick}
+              my="2"
+              onClick={handleLinkClick}
             >
               Admin
             </ChakraLink>
